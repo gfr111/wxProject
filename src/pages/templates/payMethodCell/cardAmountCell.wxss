@@ -1,0 +1,27 @@
+.info-body{
+  padding: 36rpx 16rpx;
+  display: flex;
+}
+.photo{
+background-size: cover;
+width: 160rpx;
+height: 96rpx;
+}
+.rightDetail {
+  margin-left: 28rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* height: 102rpx; */
+  padding-top: 6rpx;
+  padding-bottom: 6rpx;
+  box-sizing: border-box;
+}
+.cardsName{
+  width: 450rpx;
+  line-height:40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 30rpx;
+}

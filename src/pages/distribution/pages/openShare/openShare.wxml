@@ -1,0 +1,9 @@
+<!--pages/distribution//pages/openShare/openShare.wxml-->
+<view class="shareBox">
+  <view class="contentBox">
+   <image src="{{mess.inviter.photo||'../../../../images/default_user.png'}}" class="avatar"></image>
+    <span class='userName'>{{mess.inviter.name}}</span>
+  <image src="{{mess.poster.background}}" class="poster"></image>
+  <view class="accept" bindtap="acceptPoster">接受邀请</view>
+  </view>
+</view>

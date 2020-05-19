@@ -1,0 +1,36 @@
+<!--pages/traineeCenter/evaluationList.wxml-->
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+ <view class="evaluateBox" wx:if="{{list.length>0}}">
+    <view class="evaluateList">
+      <view class="evaluateItem" wx:for="{{list}}" wx:key="{{index}}">
+        <view class="userBox">
+            <view class="messBox">
+              <image src="{{item.photo||'../../images/default_user.png'}}" class="userImage"></image>
+              <view class="userMess">
+                <span class='userName'>{{item.name}}</span>
+                <span class='userPhone'>{{item.phone}}</span>
+              </view>
+            </view>
+            <span class='time'>{{dateUtil.getMonthDates(item.date)}}</span>
+        </view>
+        <view class="judgeBox">{{item.content}}</view>
+        <view class="photoList" wx:if="{{item.pictures.length>0}}" >
+          <image src="{{photos}}" wx:for="{{item.pictures}}" wx:for-item="photos"></image>
+        </view>
+        <view class="replyBox" wx:if='{{item.replyContent}}'>
+          <view class="replyTitle">
+            <span>工作人员回复</span>
+            <span>{{dateUtil.getMonthDates(item.replyTime)}}</span>
+          </view>
+          <view class="judgeBox">{{item.replyContent}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+ <view class='nullOrder' wx:else>
+    <image src='../../../../../images/noRank.png' class='noOrderImg'></image>
+    <text class='noOrderTxt'>暂无评价反馈</text>
+  </view>
+    <view class="judgeBtn" bindtap="toJudge">
+    <span>评价</span>
+  </view>

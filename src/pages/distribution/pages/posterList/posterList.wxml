@@ -1,0 +1,15 @@
+<!--pages/distribution//pages/posterList/posterList.wxml-->
+      <wxs src="../../../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+  <view class='nullBox' wx:if="{{list.length==0}}">
+     <image src='../../../../images/noRank.png' class='nullIcon'></image>
+      <text class='nullTxt'>暂无数据</text>
+  </view>
+  <view class="posterList" wx:else>
+   <view class="posterItem" wx:for="{{list}}" bindtap="toPoster" data-id="{{item.id}}">
+     <image src="{{item.background}}" class='posterImg'></image>
+     <view class="posterMess">
+       <view class="posterNname">{{item.name}}</view>
+       <view class="posterTime">创建时间：{{dateUtil.formatTimes(item.createTime)}}</view>
+     </view>
+   </view> 
+  </view>

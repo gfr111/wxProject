@@ -1,0 +1,139 @@
+//四种预约操作样式
+var btnUtil = (function () {
+  // var styles = {
+  //   "0": {
+  //     title: "取消预约",
+  //     btnStyle: 'oderActionBtn-blackBorder',
+  //   },
+  //   "1": {
+  //     title: "去支付",
+  //     btnStyle: 'oderActionBtn-greenBack',
+  //   },
+  //   "2": {
+  //     title: "评价",
+  //     btnStyle: 'oderActionBtn-greenBorder',
+  //   },
+  //   "3":{
+  //     title: "删除",
+  //     btnStyle: 'oderActionBtn-blackBorder',
+  //   }
+  // }
+  function isOverReservEndTime(plannedDateStr, endTime) {
+
+    var dateTime = getDate(plannedDateStr + " " + endTime);
+    var interval = getDate() - dateTime;
+    if (interval > 0) {
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  }
+
+  function showSecondCancelBtn(status, cancelable) {
+    if (status == 8) {
+      return true
+    }
+    return false
+  }
+
+  function btnStyle(status, cancelable, rated, plannedDateStr, endTime, num) {
+    console.log("eeeeeenTime" + endTime + "plannedDateStr" + plannedDateStr);
+    if (status == 8) {
+      return {
+        title: "去支付",
+        btnStyle: 'oderActionBtn-greenBack',
+        showSecond: cancelable,
+        showSelf: true,
+        btnType: 'payBtn'
+      };
+    }
+    else if (status == 2 && !rated) {
+      return {
+        title: "评价",
+        btnStyle: 'oderActionBtn-greenBorder',
+        showSecond: false,
+        showSelf: true,
+        btnType: 'evaluateBtn'
+      };
+    }
+    else if (status == 5 && !rated) {
+
+      var isOver = isOverReservEndTime(plannedDateStr, endTime);
+
+      if (isOver) {
+        return {
+          title: "评价",
+          btnStyle: 'oderActionBtn-greenBorder',
+          showSecond: false,
+          showSelf: true,
+          btnType: 'evaluateBtn'
+        };
+
+      }
+      else {
+        return {
+          title: "评价",
+          btnStyle: 'oderActionBtn-greenBorder',
+          showSecond: false,
+          showSelf: false,
+          btnType: 'evaluateBtn'
+        };
+      }
+    }
+    else if (cancelable) {
+      return {
+        title: "取消预约",
+        btnStyle: 'oderActionBtn-blackBorder',
+        showSecond: false,
+        showSelf: true,
+        btnType: 'cancelBtn'
+      };
+    }
+    else if (num) {
+      return {
+        showSelf: true,
+      }
+    } else {
+      return {
+        showSelf: false,
+      }
+    }
+    // else if (status == 1 && !cancellable) {
+    //   return {
+    //     hideSelf: true
+    //   }
+    // }else {
+    //   return {
+    //     title: "删除",
+    //     btnStyle: 'oderActionBtn-blackBorder',
+    //     showSecond: false,
+    //     hideSelf: false,
+    //     btnType: 'deleteBtn'
+    //   };
+    // }
+  }
+
+  // function btnStyle(status) {
+  //   var style = styles[status];
+  //   return style ? style.btnStyle : 'oderActionBtn-blackBorder'
+  // }
+
+  // function btnTitle(status) {
+  //   var style = styles[status];
+  //   return style ? style.title : "";
+  // }
+
+  return {
+    btnStyle: btnStyle,
+    showSecondCancelBtn: showSecondCancelBtn
+    // btnTitle:btnTitle
+  }
+})()
+
+
+
+
+
+module.exports = btnUtil

@@ -1,0 +1,27 @@
+/* pages/courseBuyOnline/useClub.wxss *//* pages/cardsPurchaseOnline/usePlace.wxss */
+.placeDetsail{
+  padding: 40rpx 20rpx;
+  border-bottom: 2rpx solid #e6e6e6;
+}
+.placeTxt{
+  margin-left:20rpx;
+  width: 70%;
+  float: left;
+}
+.placeName,.placeAddress{
+  font-size: 30rpx;
+  display: block;
+  line-height: 45rpx;
+}
+.placeAddress{
+  color: #7A7A7A;
+  font-size: 24rpx;
+}
+.clearfix::after {
+      content: ".";
+      clear: both;
+      display: block;
+      overflow: hidden;
+      font-size: 0;
+      height: 0;
+  }

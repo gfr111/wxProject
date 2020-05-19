@@ -1,0 +1,20 @@
+<import src="../../templates/orderCell/orderCell.wxml" />
+
+<wxs src="../../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+
+<template name='myOrderSection'>
+  <view class="basicSection-item">
+  wx:for-items="{{list}}" wx:key="{{item.id}}"
+    <block >
+      <view class="sectionTitle"  wx:if="{{index == 0}}">
+        {{item.plannedYear}}
+      </view>
+      wx:else class='sectionTopView'
+      <view >
+      </view>
+     
+      <template is="orderCell"  data="{{dateStr:item.createTimeStr, statusStr:item.status, showGreen:item.statusId != 3, url:item.coursePic, levelColor:item.courseLevelColor, levelStr:item.courseLevelName, courseTime:item.courseDate + ' ' + item.courseTime, courseName:item.orderName, status:item.status, amount:'实付￥' + item.amount, orderNum:'订单编号：'+item.orderNo, btnTitle:'查看', showDetail:true, index:index, checkDetail:checkDetail(1), btnStyle:btnStyle}}"></template>
+    </block>
+  </view>
+
+</template>

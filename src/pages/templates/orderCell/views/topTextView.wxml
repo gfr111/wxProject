@@ -1,0 +1,8 @@
+<template name="topTextView">
+  <view class="topTextView-bg">
+    <view class="topTextView-left-label">{{title}}</view>
+    <view class="topTextView-right-green-label {{showGreen ? '':'topTextView-right-gray-label'}}"> {{value}}</view>
+
+  </view>
+
+</template>

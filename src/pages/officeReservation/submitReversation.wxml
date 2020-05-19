@@ -1,0 +1,45 @@
+<!--pages/groupCourse/groupOrder.wxml-->
+<view class='myOrderDetail'>
+   <view class='myOrderDetailList'>
+      <text>课程名称</text>
+      <text>{{trainer.name}}</text>      
+   </view>
+   <view class='myOrderDetailList'>
+      <text>教练</text>
+      <text>{{trainer.trainerName}}</text>      
+   </view>
+   <view class='myOrderDetailList' style='border-bottom:0;'>
+      <text>时长</text>
+      <text>{{trainer.duration}}分钟</text>      
+   </view>
+
+  <view style='border-top:20rpx solid #F7F8F9'>
+  <view class='myOrderDetailList' style='display:flex;align-items:center;justify-content:space-between;'>
+      <text>会员卡</text>
+      <view style='display:flex;align-items:center;' bindtap='toChooseCard'>
+         <text style='color:#B1B1B1;' wx:if="{{memberCardStr==''}}">请选择预约会员卡</text> 
+         <text  wx:if="{{memberCardStr}}">{{memberCardStr}}</text>   
+         <image src='../../images/officeRight.png' style='width:32rpx;height:32rpx;'></image>
+      </view>   
+   </view>
+      <view class='myOrderDetailList'>
+        <view class='title' style='font-size:28rpx;'>预约时间</view>
+        <picker class='picker' mode="date" value="{{date}}" start="{{pickerStart}}" end="{{pickerEnd}}" bindchange="bindDateChange" data-idx='2'>
+          <input class='pickerinput' value='{{year}}年{{month}}月{{day}}日' disabled='true' placeholder='{{year}}年{{month}}月{{day}}日'/>
+        </picker>
+      </view>
+    <view class='timeList' wx:for="{{grids}}" wx:key="{{index}}">
+      <text  class='timeStr unableChoose' wx:if="{{!item.available}}" data-id="{{index}}">{{item.display}}</text>
+      <text  class="{{index == id?'choose':'timeStr'}}" wx:if="{{item.available}}"  bindtap='chooseTime' data-item='{{item}}' data-id="{{index}}">{{item.display}}</text>
+    </view>
+  </view>
+   <view class='bottom' bindtap='reserve' wx:if="{{!isNeedPay}}">确定</view>
+   <view class='bottomOffice'  wx:if="{{isNeedPay}}">
+      <view style='margin-left:30rpx;'> 
+        <text style='color:#383838;font-size:36rpx;font-weight:600;'>实付：</text>
+        <text style='color:#383838;font-size:28rpx;font-weight:600;'>¥</text>
+        <text style='color:#383838;font-size:36rpx;font-weight:600;'>{{needPayPrice}}</text>
+      </view>
+      <view class='submitBtn' bindtap='reserve' >确认</view>
+   </view>
+</view>

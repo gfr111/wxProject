@@ -1,0 +1,276 @@
+/* pages/space/buyCarInfo.wxss */
+
+page{
+  background: #ffffff;
+}
+.cardDetail{
+  padding-bottom: 220rpx;
+}
+.cardMess{
+  width: 690rpx;
+  height: 356rpx;
+  position: relative;
+  margin: auto;
+  margin-top:30rpx;
+  border-radius: 16rpx;
+}
+.cardImg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+   border-radius: 16rpx;
+}
+.cardBG{
+  position: absolute;
+  top:0;
+  height: 30%;
+  width: 100%;
+}
+.cardName{
+  position:absolute;
+top:46rpx;
+left:40rpx;
+font-size:40rpx;
+color:#F3D2AE;
+width:76%;
+height:48rpx;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.surplus{
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28rpx;
+  position: absolute;
+  left: 40rpx;
+  top:110rpx;
+}
+
+.tofv{
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24rpx;
+  position: absolute;
+  bottom: 40rpx;
+  right: 24rpx;
+}
+.electronicData{
+  width:690rpx;
+  margin: auto;
+  margin-top:60rpx;
+  height: 60rpx;
+  line-height: 70rpx;
+  display: flex;
+  position: relative;
+  margin-bottom: 50rpx;
+  color: #FA4A11;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.electronicData span{
+  font-size: 50rpx;
+  line-height: 60rpx;
+  margin-left: 10rpx;
+}
+.applyMess{
+  display: flex;
+  padding: 36rpx 0;
+  justify-content: space-between;
+  align-items: center;
+  width: 92%;
+  margin: auto;
+  border-top:1px solid #ECECEC;
+  border-bottom: 1px solid #ECECEC;
+}
+.applygym{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.applygym:nth-child(1){
+  padding-right: 30rpx;
+  border-right: 1px solid #ECECEC;
+}
+.applygym:nth-child(2){
+  padding-left: 30rpx;
+}
+.applygym>view{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.applygym>view>span:nth-child(1){
+  color: #383838;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.applygym>view>span:nth-child(2){
+  color: #6E6E6E;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+.applygym>image:nth-child(1){
+  width: 40rpx;
+  height: 40rpx;
+}
+.applygym>image:nth-child(3){
+  width:  32rpx;
+  height: 32rpx;
+}
+.basicMess{
+  padding: 50rpx 0;
+  width: 92%;
+  margin:auto;
+  border-bottom: 1px solid #ECECEC;
+}
+.title{
+  color: #383838;
+  font-size: 36rpx;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 50rpx;
+}
+.messBox{
+  margin-bottom: 30rpx;
+  display: flex;
+}
+.messBox>span:nth-child(1){
+  color: #383838;
+  font-size: 28rpx;
+  display: inline-block;
+  margin-right: 80rpx;
+  font-weight: 600;
+  width: 120rpx;
+}
+.messBox .timeLimit{
+  color: #6E6E6E;
+  font-size: 28rpx;
+  margin-bottom:10rpx;
+
+}
+.limitBox{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.foot_view{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  bottom: 0;
+  background-color: #fff;
+  width: 100%;
+  height: 212rpx;
+}
+
+.foot_view .top_view{
+  margin-left: 0;
+  margin-top: 0;
+  width: 100%;
+  height: 92rpx;
+  line-height: 92rpx;
+  border-top: 2rpx solid #E5E5E5;
+  text-align: center;
+  font-size: 28rpx;
+  color: #383838;
+  display: flex;
+  z-index: 150;
+}
+
+.top_view image{
+  width: 44rpx;
+  height: 44rpx;
+  margin: 24rpx 30rpx;
+}
+.top_view span{
+  display: inline-block;
+  color: #00BC71;
+}
+
+
+.foot_view .bottom_view{
+  margin-left: 0;
+  margin-top: 0;
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+  border-top: 2rpx solid #E5E5E5;
+  font-weight: bold;
+  font-size: 36rpx;
+  display: flex;
+  z-index: 150;
+}
+
+.bottom_view .price_unit{
+  margin-left: 30rpx;
+  color: #383838;
+}
+.price_unit span{
+  color: #070707;
+  font-size: 28rpx;
+  margin-left: 6rpx;
+}
+
+.bottom_view .price_amount{
+  color: #070707;
+  margin-left: 8rpx;
+}
+
+.btn_buy{
+  position: absolute;
+  right: 30rpx!important;
+  background: #00BC71;
+  border-radius: 40rpx;
+  width: 320rpx;
+  height: 72rpx;
+  font-size: 32rpx;
+  color: #fff;
+  letter-spacing: 0;
+  margin-top: 24rpx;
+  text-align: center;
+  line-height: 72rpx;
+  font-weight: 500;
+}
+
+.select-type {
+  background: #fff;
+  position: fixed;
+  font-size: 29rpx;
+  bottom: 130rpx;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  border-top: 2rpx solid #eee;
+  padding: 16rpx 24rpx;
+  z-index: 150;
+}
+
+.btn-first{
+  margin-right: 30rpx;
+}
+.type-text{
+  margin-bottom: 10rpx;
+}
+.type-text-big{
+  font-size: 30rpx;
+}
+.btn-selected{
+  border: 1rpx solid #00B792;
+  color: #00B792;
+  background: #fff;
+}
+.btn-selected::after{
+  border: none;
+}
+.cancel-select{
+  float:right;
+  margin-right:50rpx;
+  color: #00B792;
+}
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}

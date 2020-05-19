@@ -1,0 +1,57 @@
+/* pages/cardsPurchaseOnline/usePlace.wxss */
+
+page {
+  padding-top: 20rpx;
+}
+
+.placeDetsail {
+  padding: 40rpx 20rpx;
+  background: #fff;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.placeTxt {
+  margin-left: 20rpx;
+  width: 80%;
+  float: left;
+  padding-bottom: 40rpx;
+  border-bottom: 2rpx solid #e6e6e6;
+}
+
+.placeName, .placeAddress {
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+
+.placeAddress {
+  color: #7a7a7a;
+  font-size: 24rpx;
+}
+
+.clearfix::after {
+  content: ".";
+  clear: both;
+  display: block;
+  overflow: hidden;
+  font-size: 0;
+  height: 0;
+}
+
+.telimg {
+  width: 84rpx;
+  height: 84rpx;
+  float: left;
+  margin-top: 10rpx;
+  position: absolute;
+  right: 16rpx;
+}
+
+.choosed {
+  color: #00bc71;
+  font-size: 24rpx;
+  margin-left: 30rpx;
+  padding: 2rpx 4rpx;
+  background: rgba(0, 188, 113, 0.1);
+}

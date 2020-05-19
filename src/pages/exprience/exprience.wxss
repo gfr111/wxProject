@@ -1,0 +1,108 @@
+
+.index {
+  background-color: white;
+  margin-bottom: 28rpx;
+  padding-bottom: 20rpx
+}
+
+.blackTitleValue {
+  margin: 27rpx 40rpx 18rpx;
+  width: 160rpx;
+  color: #222;
+  font-size: 30rpx;
+  line-height: 68rpx;
+  text-align: left;
+}
+
+.tip {
+  text-align: center;
+  font-size: 29rpx;
+  /* margin-top: -90rpx;
+  /*position: fixed;*/
+}
+.tip-bottom{
+  margin-bottom: 310rpx;
+}
+
+.buy-warp {
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  border-top: 2rpx solid #eee;
+  padding: 16rpx 24rpx;
+  z-index: 150;
+}
+.select-type {
+  background: #fff;
+  position: fixed;
+  font-size: 29rpx;
+  bottom: 130rpx;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  border-top: 2rpx solid #eee;
+  padding: 16rpx 24rpx;
+  z-index: 150;
+}
+.price-unit{
+  float: left;
+padding-left: 40rpx;
+padding-top: 48rpx;
+font-size: 24rpx;
+color: #222222;
+letter-spacing: 0;
+font-weight: bold;
+}
+.price-amount{
+  float: left;
+font-size: 40rpx;
+color: #222222;
+letter-spacing: 0;
+padding-left: 8rpx;
+padding-top: 32rpx;
+}
+.btn-buy{
+  float: right;
+background: #00B792;
+border-radius: 8rpx;
+width: 320rpx;
+height: 84rpx;
+font-size: 34rpx;
+color: #FFFFFF;
+letter-spacing: 0;
+margin-top: 12rpx;
+margin-right: 40rpx;
+text-align:center;
+line-height:76rpx;
+
+}
+.btn-first{
+  margin-right: 30rpx;
+}
+.type-text{
+  margin-bottom: 10rpx;
+}
+.type-text-big{
+  font-size: 30rpx;
+}
+.btn-selected{
+  border: 1rpx solid #00B792;
+  color: #00B792;
+  background: #fff;
+}
+.btn-selected::after{
+  border: none;
+}
+.cancel-select{
+  float:right;
+  margin-right:50rpx;
+  color: #00B792;
+}
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}

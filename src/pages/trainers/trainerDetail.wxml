@@ -1,0 +1,39 @@
+<view class="trainerDetail">
+  <view class='trainer-detail-top'>
+    <view class="mainPic">
+      <image mode='aspectFill' src="{{trainerMessage.personalPortrait||trainerMessage.photo}}" class='photo'></image>
+    </view>
+    <view class='info_view'>
+      <view class='name'>{{trainerMessage.nickName||trainerMessage.trainer.name}}</view>
+      <view class='level'>
+        <image src='../../images/yellowStar.png' wx:if="{{trainerMessage.trainer.level>=1}}"></image>
+        <image src='../../images/yellowStar.png' wx:if="{{trainerMessage.trainer.level>=2}}"></image>
+        <image src='../../images/yellowStar.png' wx:if="{{trainerMessage.trainer.level>=3}}"></image>
+        <image src='../../images/yellowStar.png' wx:if="{{trainerMessage.trainer.level>=4}}"></image>
+        <image src='../../images/yellowStar.png' wx:if="{{trainerMessage.trainer.level>=5}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class='trainer-detail-intro'>
+    <view class='intro'>简介</view>
+    <text class='intro-txt'>
+       {{trainerMessage.description?trainerMessage.description:''}}
+    </text>
+  </view>
+  <view class='trainer-detail-intro'>
+    <view class='intro'>专长&资质</view>
+    <text class='intro-txt'>
+     {{trainerMessage.qualifications}}
+    </text>
+  </view>
+  <view class='trainer-detail-pic'>
+    <view class='intro'>个人风采</view>
+    <view class='intro-pic'>
+      <image src='{{item}}' class='pic' wx:for="{{trainerMessage.pictures}}" bindtap='BigPic' data-urls='{{trainerMessage.pictures}}' data-url='{{item}}'></image>
+    </view>
+  </view>
+</view>
+
+<view class='inputButton' bindtap='selectTrainer' data-trainer='{{trainerMessage.trainerBasic.id}}' wx:if="{{!isFRomLeague}}">
+  <view>私教课预约</view>
+</view>

@@ -1,0 +1,67 @@
+<!--pages/courseBuyOnline/buyDetail.wxml-->
+<view class="courseDetail">
+  <view class="courseMess">
+    <image mode='aspectFill'  wx:if="{{course.pictures}}" src="{{course.pictures[0]}}"></image>
+    <view class="mess">
+      <view>{{course.name}}</view>
+       <view>
+         <text style="font-size:32rpx;">¥</text>
+         <text style="font-size:40rpx;">{{course.onlineBuyPrice}}</text>
+         <text style="font-size:20rpx;">{{course.cardType==2?'/'+course.effectiveDays+'天':'/节'}}</text>
+       </view>
+    </view>
+  </view>
+  <view class="itemBox" >
+    <view class="item" wx:if='{{course.cardType==1}}' >
+      <span class='itemName'>购买数量</span>
+      <view class='numBox' >
+         <image src="/images/subBuy.png"  bindtap='refreshCount' data-method='{{false}}'></image>
+         <input value='{{count}}' bindinput='countInput' bindblur='blur' type='number'/>
+         <image src="/images/addBuy.png" bindtap='refreshCount' data-method='{{true}}'></image>
+      </view>
+    </view>
+     <view class="item">
+      <span class='itemName'>授课教练</span>
+      <view bindtap="chooseTrainer">
+         <text>{{trainerName}}</text>
+         <image src="../../images/officeRight.png" class="rightIcon"></image>
+      </view>
+    </view>
+  </view>
+  <view class="itemBox" wx:if="{{couponList.length!=0}}">
+   <view class="item">
+      <span class='itemName'>优惠券</span>
+      <view bindtap="toCoupon">
+        <view style="display:flex;align-items:center">
+          <text style="color:#FA4A11" wx:if="{{coupon==null}}">{{couponList.length}}张可用</text>
+          <text style="color:#FA4A11" wx:if="{{coupon!=null&&coupon.type==1}}">-{{coupon.discount}}</text>
+          <text style="color:#FA4A11" wx:if="{{coupon!=null&&coupon.type!=1}}">{{coupon.discount*10}}折</text>
+           <image src="../../images/officeRight.png" class="rightIcon"></image>
+        </view>
+      </view>
+    </view> 
+  </view>
+  <view class="priceBox" wx:if="{{couponList.length!=0}}">
+    <view class="priceItem">
+      <span>订单金额</span>
+      <span>¥{{allPricre}}</span>
+    </view>
+    <view class="priceItem">
+      <span>优惠</span>
+      <span>-¥{{discountPrice}}</span>
+    </view>
+    <view class="priceItem">
+      <span>实际支付</span>
+      <span style='font-weight:600;font-size:32rpx;'>¥{{realPrice}}</span>
+    </view>
+  </view>
+  <view class='tip' style='display:flex;padding-left:15px;position: fixed;bottom: 134rpx;left: 0;'>
+    <image src='{{agree?"../../images/selected.png":"../../images/unSelect.png"}}' style="width:32rpx;height:32rpx;margin-right:5px;margin-top:2px" bindtap='selectAgree'></image>点击确定表示同意<navigator url='../agreement/agreement?tp=0&type=2' style='display:inline-block;color:#00BC71 ;'>《服务协议》</navigator>
+  </view>
+  <view class='buy-warp'>
+    <view class='price-unit' >总价￥</view>
+    <view class='price-amount' >{{coupon==null?amount:realPrice}}</view>
+    <view class='btn-buy' style='{{agree?"":"background:#99E4C6"}}'  bindtap='{{agree?"goBuyCourse":""}}'>立即购买</view>
+    <!--  -->
+  </view>
+</view>

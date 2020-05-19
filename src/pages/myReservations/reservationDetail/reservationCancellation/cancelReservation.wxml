@@ -1,0 +1,18 @@
+<import src="../../../templates/orderCell/views/topTextView.wxml" />
+<import src="../../../templates/orderCell/views/middleContentView.wxml" />
+<import src="../../../templates/greenBtn.wxml" />
+
+<view>
+  <block wx:if='{{isPayedOder}}'>
+  <view class='headerTitle'>取消成功后为您申请退款，费用将原路退还到您的支付账户</view>
+  <view class='orderCell'wx:if='{{order}}'>
+    <template is='topTextView' data='{{title:order.createTimeStr, value: "订单编号：" + order.orderNo}}' id="1"></template>
+    <view class='separatorLine'></view>
+    <template is='middleContentView' data='{{url:order.coursePic,levelColor:order.courseLevelColor, levelStr:order.courseLevelName,  courseName:order.orderName, courseTime:order.courseDate + " " + order.courseTime, amount: "￥" + order.amount, showDetail:false, index:1}}'></template>
+  </view>
+  </block>
+  <view class='textArea-bg {{orderId > 0 ? "" : "textArea-second-bg"}}'>
+    <textarea class="textInput" maxlength="150" bindinput="bindReasonInput" placeholder="请填写取消原因方便我们改进服务" placeholder-style="color: #ABABAB"/>
+  </view>
+  <template is='greenBtn' data='{{title:"确定", didTapGreenBtn:didTapGreenBtn}}'></template>
+</view>

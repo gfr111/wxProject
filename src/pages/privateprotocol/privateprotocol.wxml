@@ -1,0 +1,143 @@
+<!--pages/privateprotocol/privateprotocol.wxml-->
+
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="util" />
+<view class='protocolBox'>
+  <view class='protocolMess'>
+    <view class='carNameBox'>
+      <span>私教课</span>
+      <span>{{preMess.prePrivateCourse.courseName}}</span>
+    </view>
+    <view class='carNameBox'>
+      <span>有效期</span>
+      <span>{{preMess.prePrivateCourse.effectiveDays}}</span>
+    </view>
+    <view class='buyCarMess'>
+      <view class='carNameBox leftBox' wx:if="{{preMess.prePrivateCourse.saleType==1}}">
+        <span>购买课时</span>
+        <span style="width:80rpx;">{{preMess.prePrivateCourse.count}}次</span>
+      </view>
+      <view class='carNameBox leftBox' wx:else>
+        <span>购买天数</span>
+        <span style="width:80rpx;">{{preMess.prePrivateCourse.count}}天</span>
+      </view>
+      <view class='carNameBox'>
+        <span>授课方式</span>
+        <span wx:if="{{preMess.prePrivateCourse.privateCourseTeachType==1}}" style="width:200rpx;">一对一</span>
+        <span wx:if="{{preMess.prePrivateCourse.privateCourseTeachType==2}}" style="width:200rpx;">一对多</span>
+      </view>
+      <view class='carNameBox leftBox'>
+        <span>合同金额</span>
+        <span>¥{{preMess.prePrivateCourse.amount}}</span>
+      </view>
+      <view class='carNameBox'>
+        <span>生效方式</span>
+        <span wx:if="{{preMess.prePrivateCourse.activatedMode==1}}">立即生效</span>
+        <span wx:if="{{preMess.prePrivateCourse.activatedMode==2}}">指定{{cardMess.contract.beActivatedInDays}}天生效</span>
+        <span wx:if="{{preMess.prePrivateCourse.activatedMode==3}}">指定日期生效</span>
+        <span wx:if="{{preMess.prePrivateCourse.activatedMode==4}}">首次使用生效</span>
+      </view>
+    </view>
+  </view>
+  <view class='useOfficeBox clearfix'>
+    <span>可用门店</span>
+    <view class='centerListBox'>
+      <span class="useOffice" wx:key='index'>{{preMess.usableCenters}} </span>
+    </view>
+  </view>
+  <view class='officeBox wideBorder'>
+    <view class='carNameBox'>
+      <span>合同备注</span>
+      <span>{{preMess.prePrivateCourse.notes.length==0?'----':preMess.prePrivateCourse.notes}}</span>
+    </view>
+  </view>
+  <view class='buyerMess'>
+    <view class='buyerName carNameBox'>
+      <span>购买人</span>
+      <span>{{preMess.trainee.traineeName||'----'}}</span>
+    </view>
+    <view class='buyerPhone carNameBox'>
+      <span>手机号</span>
+      <span>{{preMess.trainee.phone||'----'}}</span>
+    </view>
+    <view class='buyerName carNameBox'>
+      <span>证件类型</span>
+      <span>{{preMess.trainee.idType||'----'}}</span>
+    </view>
+    <view class='buyerPhone carNameBox'>
+      <span>证件号</span>
+      <span>{{preMess.trainee.idNumber||'----'}}</span>
+    </view>
+  </view>
+  <view class='salespersonBox' wx:if="{{preMess.prePrivateCourse.assistSellerName}}">
+    <view class='carNameBox'>
+      <span>销售人</span>
+      <span>{{preMess.prePrivateCourse.assistSellerName}}</span>
+    </view>
+  </view>
+  <view class='signBox'>
+    <view class='officeSign'>
+      <span>场馆签字/印章</span>
+      <image src='{{preMess.setting.centerSignUrl||"../../images/agree.png"}}' mode='aspectFit'></image>
+    </view>
+    <view class='officeSign'>
+      <span>会员签字</span>
+      <!-- <span class="nosign" wx:if="{{!noPic&&!preMess.prePrivateCourse.signaturePhoto||!isShow}}">未签名</span>
+      <image src='{{signImg}}' class='noBorder' mode='aspectFit' wx:if="{{noPic&&!preMess.prePrivateCourse.signaturePhoto}}"></image>
+      <image class='seal noBorder' src='{{preMess.prePrivateCourse.signaturePhoto}}' wx:if="{{preMess.prePrivateCourse.signaturePhoto&&noPic}}"></image> -->
+       <span class="nosign" wx:if="{{!noPic&&!preMess.prePrivateCourse.signaturePhoto||!isShow}}">未签名</span>
+        <view wx:if="{{noPic&&!preMess.prePrivateCourse.signaturePhoto}}" style='width: 260rpx;height: 120rpx;'>
+          <image  src='{{signImg}}' class='noBorder' mode='aspectFit' style='width: 260rpx;height: 120rpx;'></image>
+        </view>
+        <view  wx:if="{{preMess.prePrivateCourse.signaturePhoto&&noPic}}">
+         <image class='seal noBorder' src='../../images/agree.png' mode='aspectFit'></image>
+       </view>
+    </view>
+  </view>
+  <view class='protocolServe' wx:if="{{preMess.protocol!=null}}">
+    <span class="title">服务协议</span>
+    <span class="edition">协议版本号：{{preMess.protocol.version}}</span>
+    <span class="releaseTime">发布日期：{{util.formatTimec(preMess.protocol.issueTime)}}</span>
+    <view class='richTxt'>
+      <text>{{preMess.protocol.protocolContent}}</text>
+    </view>
+  </view>
+  <view class='signBtn'>
+  <!-- <span bindtap="showSignPop" >签字</span> -->
+    <span bindtap="showSignPop" wx:if="{{!preMess.prePrivateCourse.signaturePhoto&&!isShowSign}}">签字</span>
+    <span bindtap="goPay" wx:if="{{showPay}}">支付</span>
+    <span wx:if="{{!preMess.prePrivateCourse.signaturePhoto&&!noPic}}" bindtap='confirm'>确认</span>
+  </view>
+</view>
+<view class='popBox' catchtouchmove="prevent" wx:if="{{showSignBox}}">
+  <view class='popSignBox'>
+    <!-- <view class='popTitle'>
+      <span></span>
+      <span>签字</span>
+      <image src='../../images/closeRule.png' class='popCancel' bindtap='cancelEvent'></image>
+    </view>
+    <canvas class="canvas" id="canvas" canvas-id="canvas" disable-scroll="true" bindtouchstart="canvasStart" bindtouchmove="canvasMove" bindtouchend="canvasEnd" touchcancel="canvasEnd" binderror="canvasIdErrorCallback"></canvas>
+    <view class='btnGroup'>
+      <span bindtap="cancelEvent">清除</span>
+      <span bindtap='clickMe'>确认</span>
+    </view> -->
+     <view class='imgButtonBox'>
+      <image src='../../images/fontReturn.png' class='returnBtn' bindtap='cancelEvent'></image>
+      <view class='submitBtnBox'>
+        <image src='../../images/fontClear.png' class='returnBtn' bindtap="cancelEvent"></image>
+        <image src='../../images/fontSubmit.png' class='returnBtn' style='margin-top:30rpx;height:220rpx;' bindtap='clickMe'></image>
+      </view>
+    </view>
+    <canvas class="canvas" id="canvas" canvas-id="canvas" disable-scroll="true" bindtouchstart="canvasStart" bindtouchmove="canvasMove" bindtouchend="canvasEnd" touchcancel="canvasEnd" binderror="canvasIdErrorCallback" style='width:{{canvasWidth}}px;height:{{canvasHeight}}px'></canvas>
+     <canvas class="canvas2" id="canvas2" canvas-id="canvas2" disable-scroll="true"   style='width:300px;height:180px'></canvas>
+  <view class='signTitle'>
+      <image src='../../images/signTitle.png'></image>
+    </view>
+  </view>
+</view>
+
+
+<view wx:if="{{signersError}}" class='tip_bgview'></view>
+<view wx:if="{{signersError}}" class='tip_view'>
+  <view class='tit'>非本人扫码</view>
+  <navigator open-type="exit" target="miniProgram">确定</navigator>
+</view>

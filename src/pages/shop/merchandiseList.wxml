@@ -1,0 +1,513 @@
+<view>
+  <view class="head-box {{isopen?'':'nobg'}}">
+    <image src='../../images/shop.jpg'></image>
+  </view>
+  <view class="head-text">
+    <view class='center-name'>{{centerName}}</view>
+  </view>
+  <view class='line' wx:if="{{isopen}}"></view>
+</view>
+
+
+<view wx:if="{{isopen}}" style='height:100%;display:flex;flex-direction:column;'>
+
+  <view class='main'>
+    <view class='main-left'>
+      <view class='type-box'>
+
+        <view class='{{type==1?"type-item":"unSelected-type"}}' bindtap='selectType' data-type='1'>
+          <view class='{{type==1?"selected-tip":"unSelected-tip"}}'></view>
+          <view>饮料类</view>
+        </view>
+        <view class='{{type==2?"type-item":"unSelected-type"}}' bindtap='selectType' data-type='2'>
+          <view class='{{type==2?"selected-tip":"unSelected-tip"}}'></view>
+          <view>服饰类</view>
+        </view>
+        <view class='{{type==3?"type-item":"unSelected-type"}}' bindtap='selectType' data-type='3'>
+          <view class='{{type==3?"selected-tip":"unSelected-tip"}}'></view>
+          <view>补剂</view>
+        </view>
+        <view class='{{type==4?"type-item":"unSelected-type"}}' bindtap='selectType' data-type='4'>
+          <view class='{{type==4?"selected-tip":"unSelected-tip"}}'></view>
+          <view>场地</view>
+        </view>
+        <view class='{{type==5?"type-item":"unSelected-type"}}' bindtap='selectType' data-type='5'>
+          <view class='{{type==5?"selected-tip":"unSelected-tip"}}'></view>
+          <view>赠品</view>
+        </view>
+        <view class='{{type==6?"type-item":"unSelected-type"}}' bindtap='selectType' data-type='6'>
+          <view class='{{type==6?"selected-tip":"unSelected-tip"}}'></view>
+          <view>服务类</view>
+        </view>
+        <view class='{{type==7?"type-item":"unSelected-type"}}' bindtap='selectType' data-type='7'>
+          <view class='{{type==7?"selected-tip":"unSelected-tip"}}'></view>
+          <view>其他</view>
+        </view>
+        <view class='{{type==8?"type-item":"unSelected-type"}}' bindtap='selectType' data-type='8'>
+          <view class='{{type==8?"selected-tip":"unSelected-tip"}}'></view>
+          <view>积分兑换</view>
+        </view>
+
+
+      </view>
+
+    </view>
+    <view class='main-right'>
+      <scroll-view scroll-y="true" scroll-into-view="{{selectTypeId}}" class='scroll-box'>
+        <view id="item1" class='item-head'>
+
+          <view class='item-head-text'>饮料类</view>
+          <view class='type-line'></view>
+        </view>
+
+        <view class='item-body' wx:if="{{stock.drink.length<1}}">
+          <view class='item-pic'>
+            <image src='../../images/noPic.png'></image>
+          </view>
+          <view class='noItem'>
+            <view>
+              <view>店主很懒，</view>
+              <view>还没上架此类商品~</view>
+            </view>
+
+          </view>
+        </view>
+        <view class='item-body' wx:if='{{stock.drink.length>0}}' wx:for="{{stock.drink}}" wx:key="index">
+          <view class='item-pic'>
+            <view wx:if="{{item.countInStock==null||item.countInStock<1}}" class='noStock'>
+              <text>售罄</text>
+            </view>
+            <image src='{{item.photo==null?"../../images/noPic.png":item.photo}}'></image>
+          </view>
+          <view class='item-text'>
+            <view>
+              <view>{{item.name}}</view>
+              <view class='item-member'>库存:{{item.countInStock==null?0:item.countInStock}}{{item.unit==null?"":item.unit}}</view>
+            </view>
+            <view style='display:flex;justify-content:space-between'>
+              <view>￥{{item.priceOnSale}}</view>
+              <view style="display:flex">
+                <view style='margin-right:10px' wx:if="{{item.buyCount>0}}" bindtap='subBuy' data-item="{{item}}" data-index="{{index}}">
+                  <image src='../../images/subBuy.png' style='width:20px;height:20px;'></image>
+                </view>
+                <view style='margin-right:10px;width:10px' wx:if="{{item.buyCount>0}}">{{item.buyCount}}</view>
+
+
+                <view bindtap='{{item.buyCount>=item.countInStock||item.countInStock<=0?"":"addBuy"}}' data-item="{{item}}" data-index="{{index}}">
+                  <image src='{{item.buyCount>=item.countInStock||item.countInStock<=0?"../../images/unAddBuy.png":"../../images/addBuy.png"}}' style='width:20px;height:20px;'></image>
+                </view>
+
+
+
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+        <view id="item2" class='item-head'>
+
+          <view class='item-head-text'>服饰类</view>
+          <view class='type-line'></view>
+        </view>
+
+        <view class='item-body' wx:if="{{stock.dress.length<1}}">
+          <view class='item-pic'>
+            <image src='../../images/noPic.png'></image>
+          </view>
+          <view class='noItem'>
+            <view>
+
+              <view>店主很懒，</view>
+              <view>还没上架此类商品~</view>
+            </view>
+
+          </view>
+        </view>
+        <view class='item-body' wx:if='{{stock.dress.length>0}}' wx:for="{{stock.dress}}" wx:key="index">
+          <view class='item-pic'>
+            <view wx:if="{{item.countInStock==null||item.countInStock<1}}" class='noStock'>
+              <text>售罄</text>
+            </view>
+            <image src='{{item.photo==null?"../../images/noPic.png":item.photo}}'></image>
+          </view>
+          <view class='item-text'>
+            <view>
+              <view>{{item.name}}</view>
+              <view class='item-member'>库存:{{item.countInStock==null?0:item.countInStock}}{{item.unit==null?"":item.unit}}</view>
+            </view>
+            <view style='display:flex;justify-content:space-between'>
+              <view>￥{{item.priceOnSale}}</view>
+              <view style="display:flex">
+                <view style='margin-right:10px' wx:if="{{item.buyCount>0}}" bindtap='subBuy' data-item="{{item}}" data-index="{{index}}">
+                  <image src='../../images/subBuy.png' style='width:20px;height:20px;'></image>
+                </view>
+                <view style='margin-right:10px;width:10px' wx:if="{{item.buyCount>0}}">{{item.buyCount}}</view>
+                <view bindtap='{{item.buyCount>=item.countInStock||item.countInStock<=0?"":"addBuy"}}' data-item="{{item}}" data-index="{{index}}">
+                  <image src='{{item.buyCount>=item.countInStock||item.countInStock<=0?"../../images/unAddBuy.png":"../../images/addBuy.png"}}' style='width:20px;height:20px;'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+        <view id="item3" class='item-head'>
+
+          <view class='item-head-text'>补剂</view>
+          <view class='type-line'></view>
+        </view>
+
+        <view class='item-body' wx:if="{{stock.tonic.length<1}}">
+          <view class='item-pic'>
+            <image src='../../images/noPic.png'></image>
+          </view>
+          <view class='noItem'>
+            <view>
+
+              <view>店主很懒，</view>
+              <view>还没上架此类商品~</view>
+            </view>
+
+          </view>
+        </view>
+        <view class='item-body' wx:if='{{stock.tonic.length>0}}' wx:for="{{stock.tonic}}" wx:key="index">
+          <view class='item-pic'>
+            <view wx:if="{{item.countInStock==null||item.countInStock<1}}" class='noStock'>
+              <text>售罄</text>
+            </view>
+            <image src='{{item.photo==null?"../../images/noPic.png":item.photo}}'></image>
+          </view>
+          <view class='item-text'>
+            <view>
+              <view>{{item.name}}</view>
+              <view class='item-member'>库存:{{item.countInStock==null?0:item.countInStock}}{{item.unit==null?"":item.unit}}</view>
+            </view>
+            <view style='display:flex;justify-content:space-between'>
+              <view>￥{{item.priceOnSale}}</view>
+              <view style="display:flex">
+                <view style='margin-right:10px' wx:if="{{item.buyCount>0}}" bindtap='subBuy' data-item="{{item}}" data-index="{{index}}">
+                  <image src='../../images/subBuy.png' style='width:20px;height:20px;'></image>
+                </view>
+                <view style='margin-right:10px;width:10px' wx:if="{{item.buyCount>0}}">{{item.buyCount}}</view>
+                <view bindtap='{{item.buyCount>=item.countInStock||item.countInStock<=0?"":"addBuy"}}' data-item="{{item}}" data-index="{{index}}">
+                  <image src='{{item.buyCount>=item.countInStock||item.countInStock<=0?"../../images/unAddBuy.png":"../../images/addBuy.png"}}' style='width:20px;height:20px;'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+        <view id="item4" class='item-head'>
+
+          <view class='item-head-text'>场地</view>
+          <view class='type-line'></view>
+        </view>
+
+        <view class='item-body' wx:if="{{stock.place.length<1}}">
+          <view class='item-pic'>
+            <image src='../../images/noPic.png'></image>
+          </view>
+          <view class='noItem'>
+            <view>
+
+              <view>店主很懒，</view>
+              <view>还没上架此类商品~</view>
+            </view>
+
+          </view>
+        </view>
+        <view class='item-body' wx:if='{{stock.place.length>0}}' wx:for="{{stock.place}}" wx:key="index">
+          <view class='item-pic'>
+            <view wx:if="{{item.countInStock==null||item.countInStock<1}}" class='noStock'>
+              <text>售罄</text>
+            </view>
+            <image src='{{item.photo==null?"../../images/noPic.png":item.photo}}'></image>
+          </view>
+          <view class='item-text'>
+            <view>
+              <view>{{item.name}}</view>
+              <view class='item-member'>库存:{{item.countInStock==null?0:item.countInStock}}{{item.unit==null?"":item.unit}}</view>
+            </view>
+            <view style='display:flex;justify-content:space-between'>
+              <view>￥{{item.priceOnSale}}</view>
+              <view style="display:flex">
+                <view style='margin-right:10px' wx:if="{{item.buyCount>0}}" bindtap='subBuy' data-item="{{item}}" data-index="{{index}}">
+                  <image src='../../images/subBuy.png' style='width:20px;height:20px;'></image>
+                </view>
+                <view style='margin-right:10px;width:10px' wx:if="{{item.buyCount>0}}">{{item.buyCount}}</view>
+                <view bindtap='{{item.buyCount>=item.countInStock||item.countInStock<=0?"":"addBuy"}}' data-item="{{item}}" data-index="{{index}}">
+                  <image src='{{item.buyCount>=item.countInStock||item.countInStock<=0?"../../images/unAddBuy.png":"../../images/addBuy.png"}}' style='width:20px;height:20px;'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+        <view id="item5" class='item-head'>
+
+          <view class='item-head-text'>赠品</view>
+          <view class='type-line'></view>
+        </view>
+
+        <view class='item-body' wx:if="{{stock.gift.length<1}}">
+          <view class='item-pic'>
+            <image src='../../images/noPic.png'></image>
+          </view>
+          <view class='noItem'>
+            <view>
+
+              <view>店主很懒，</view>
+              <view>还没上架此类商品~</view>
+            </view>
+
+          </view>
+        </view>
+        <view class='item-body' wx:if='{{stock.gift.length>0}}' wx:for="{{stock.gift}}" wx:key="index">
+          <view class='item-pic'>
+            <view wx:if="{{item.countInStock==null||item.countInStock<1}}" class='noStock'>
+              <text>售罄</text>
+            </view>
+            <image src='{{item.photo==null?"../../images/noPic.png":item.photo}}'></image>
+          </view>
+          <view class='item-text'>
+            <view>
+              <view>{{item.name}}</view>
+              <view class='item-member'>库存:{{item.countInStock==null?0:item.countInStock}}{{item.unit==null?"":item.unit}}</view>
+            </view>
+            <view style='display:flex;justify-content:space-between'>
+              <view>￥{{item.priceOnSale}}</view>
+              <view style="display:flex">
+                <view style='margin-right:10px' wx:if="{{item.buyCount>0}}" bindtap='subBuy' data-item="{{item}}" data-index="{{index}}">
+                  <image src='../../images/subBuy.png' style='width:20px;height:20px;'></image>
+                </view>
+                <view style='margin-right:10px;width:10px' wx:if="{{item.buyCount>0}}">{{item.buyCount}}</view>
+                <view bindtap='{{item.buyCount>=item.countInStock||item.countInStock<=0?"":"addBuy"}}' data-item="{{item}}" data-index="{{index}}">
+                  <image src='{{item.buyCount>=item.countInStock||item.countInStock<=0?"../../images/unAddBuy.png":"../../images/addBuy.png"}}' style='width:20px;height:20px;'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+        <view id="item6" class='item-head'>
+
+          <view class='item-head-text'>服务类</view>
+          <view class='type-line'></view>
+        </view>
+
+        <view class='item-body' wx:if="{{stock.serve.length<1}}">
+          <view class='item-pic'>
+            <image src='../../images/noPic.png'></image>
+          </view>
+          <view class='noItem'>
+            <view>
+
+              <view>店主很懒，</view>
+              <view>还没上架此类商品~</view>
+            </view>
+
+          </view>
+        </view>
+        <view class='item-body' wx:if='{{stock.serve.length>0}}' wx:for="{{stock.serve}}" wx:key="index">
+          <view class='item-pic'>
+            <view wx:if="{{item.countInStock==null||item.countInStock<1}}" class='noStock'>
+              <text>售罄</text>
+            </view>
+            <image src='{{item.photo==null?"../../images/noPic.png":item.photo}}'></image>
+          </view>
+          <view class='item-text'>
+            <view>
+              <view>{{item.name}}</view>
+              <view class='item-member'>库存:{{item.countInStock==null?0:item.countInStock}}{{item.unit==null?"":item.unit}}</view>
+            </view>
+            <view style='display:flex;justify-content:space-between'>
+              <view>￥{{item.priceOnSale}}</view>
+              <view style="display:flex">
+                <view style='margin-right:10px' wx:if="{{item.buyCount>0}}" bindtap='subBuy' data-item="{{item}}" data-index="{{index}}">
+                  <image src='../../images/subBuy.png' style='width:20px;height:20px;'></image>
+                </view>
+                <view style='margin-right:10px;width:10px' wx:if="{{item.buyCount>0}}">{{item.buyCount}}</view>
+                <view bindtap='{{item.buyCount>=item.countInStock||item.countInStock<=0?"":"addBuy"}}' data-item="{{item}}" data-index="{{index}}">
+                  <image src='{{item.buyCount>=item.countInStock||item.countInStock<=0?"../../images/unAddBuy.png":"../../images/addBuy.png"}}' style='width:20px;height:20px;'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+        <view id="item7" class='item-head'>
+
+          <view class='item-head-text'>其他</view>
+          <view class='type-line'></view>
+        </view>
+
+        <view class='item-body' wx:if="{{stock.other.length<1}}">
+          <view class='item-pic'>
+            <image src='../../images/noPic.png'></image>
+          </view>
+          <view class='noItem'>
+            <view>
+
+              <view>店主很懒，</view>
+              <view>还没上架此类商品~</view>
+            </view>
+
+          </view>
+        </view>
+        <view class='item-body' wx:if='{{stock.other.length>0}}' wx:for="{{stock.other}}" wx:key="index">
+          <view class='item-pic'>
+            <view wx:if="{{item.countInStock==null||item.countInStock<1}}" class='noStock'>
+              <text>售罄</text>
+            </view>
+            <image src='{{item.photo==null?"../../images/noPic.png":item.photo}}'></image>
+          </view>
+          <view class='item-text'>
+            <view>
+              <view>{{item.name}}</view>
+              <view class='item-member'>库存:{{item.countInStock==null?0:item.countInStock}}{{item.unit==null?"":item.unit}}</view>
+            </view>
+            <view style='display:flex;justify-content:space-between'>
+              <view>￥{{item.priceOnSale}}</view>
+              <view style="display:flex">
+                <view style='margin-right:10px' wx:if="{{item.buyCount>0}}" bindtap='subBuy' data-item="{{item}}" data-index="{{index}}">
+                  <image src='../../images/subBuy.png' style='width:20px;height:20px;'></image>
+                </view>
+                <view style='margin-right:10px;width:10px' wx:if="{{item.buyCount>0}}">{{item.buyCount}}</view>
+                <view bindtap='{{item.buyCount>=item.countInStock||item.countInStock<=0?"":"addBuy"}}' data-item="{{item}}" data-index="{{index}}">
+                  <image src='{{item.buyCount>=item.countInStock||item.countInStock<=0?"../../images/unAddBuy.png":"../../images/addBuy.png"}}' style='width:20px;height:20px;'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+
+
+
+
+        <view id="item8" class='item-head'>
+
+          <view class='item-head-text'>积分兑换</view>
+          <view class='type-line'></view>
+        </view>
+
+        <view class='item-body' wx:if="{{stock.scoreExchange.length<1}}">
+          <view class='item-pic'>
+            <image src='../../images/noPic.png'></image>
+          </view>
+          <view class='noItem'>
+            <view>
+
+              <view>店主很懒，</view>
+              <view>还没上架此类商品~</view>
+            </view>
+
+          </view>
+        </view>
+        <view class='item-body' wx:if='{{stock.scoreExchange.length>0}}' wx:for="{{stock.scoreExchange}}" wx:key="index">
+          <view class='item-pic'>
+            <view wx:if="{{item.countInStock==null||item.countInStock<1}}" class='noStock'>
+              <text>售罄</text>
+            </view>
+            <image src='{{item.photo==null?"../../images/noPic.png":item.photo}}'></image>
+          </view>
+          <view class='item-text'>
+            <view>
+              <view>{{item.name}}</view>
+              <view class='item-member'>库存:{{item.countInStock==null?0:item.countInStock}}{{item.unit==null?"":item.unit}}</view>
+            </view>
+
+            <view style='display:flex;justify-content:space-between;align-items: flex-start'>
+              <view>{{item.exchangeScore?item.exchangeScore:'--'}}积分</view>
+
+              <view style="display:flex" bindtap="tochange" data-idx="{{item}}">
+                <view class="change" style='margin-right:10px;width:10px'>兑换</view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+        <view style='height:100px'></view>
+
+      </scroll-view>
+    </view>
+  </view>
+
+</view>
+
+<view wx:if="{{isopen}}" style='background-color:white;height:60px;box-sizing:border-box;position:fixed;bottom:0px;width:100%;padding:10px 15px;display:flex;align-items:center;justify-content:space-between;z-index:2;border-top:1px solid #F4F4F4;'>
+  <view style="display:flex;align-items:center;">
+    <view wx:if="{{count>0}}" style="width:27rpx;height:27rpx;background-color:red;border-radius:50%;position:absolute;top:5px;left:42px;display:flex;align-items:center;justify-content:center;color:white;font-size:10px">{{count}}</view>
+    <image src='{{count>0?"../../images/buyCar.png":"../../images/unBuy.png"}}' bindtap="{{count>0?'openCars':''}}" style='height:42px;width:42px'></image>
+    <view wx:if="{{count>0}}">
+      <text style='margin-left:14px;font-size:17px'>￥</text>
+      <text>{{amount}}</text>
+    </view>
+    <view wx:else style='font-size:14px;color:#989898;margin-left:10px'>
+      <text>未选购商品</text>
+    </view>
+  </view>
+  <view class='tn-buy' style='{{count>0?"":"background:#DFDFDF"}}' bindtap="goBuy">购买</view>
+</view>
+
+<view wx:if="{{!isopen}}" class="closed">
+  <image src="/images/noRank.png" class="blank"></image>
+  <text>暂未开放，敬请期待</text>
+</view>
+
+
+
+
+
+
+
+
+
+
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{openCar}}"></view>
+
+
+
+<view class='car' wx:if="{{openCar}}">
+  <view class="car-head">
+    <view>已选商品</view>
+    <view bindtap='goClear'>
+      <image src='../../images/delete.png' style='width:14px;height:13px'></image>
+      清空购物车
+    </view>
+  </view>
+  <view class="car-item" wx:for="{{buyItems}}" wx:key="index">
+    <view>{{item.name}}</view>
+    <view class='car-pay-info'>
+      <view style='margin-right:25px'>￥{{item.priceOnSale}}</view>
+      <view style='margin-right:10px'>
+        <image src='../../images/subBuy.png' class='pay-info-icon' bindtap='subBuy' data-item="{{item}}" data-type="1"></image>
+      </view>
+      <view style='margin-right:10px;width:10px'>{{item.buyCount}}</view>
+      <view>
+        <image src='{{item.buyCount>=item.countInStock||item.countInStock<=0?"../../images/unAddBuy.png":"../../images/addBuy.png"}}' class='pay-info-icon' bindtap='{{item.buyCount>=item.countInStock||item.countInStock<=0?"":"addBuy"}}' data-item="{{item}}" data-type="1"></image>
+      </view>
+    </view>
+  </view>
+  <!-- <view style="height:40px;display:flex;align-items:center;justify-content:space-between;padding:10px 15px;font-size:15px;color:#323232;border-bottom:1px solid #F4F4F4;">
+    <view>哇哈哈水水水水dff</view>
+    <view style='display:flex;justify-content:flex-end;align-items:center;'>
+      <view style='margin-right:25px'>2000</view>
+      <view style='margin-right:10px'>
+        <image src='../../images/subBuy.png' style='width:20px;height:20px;margin-top:3px'></image>
+      </view>
+      <view style='margin-right:10px;width:20px'>88</view>
+      <view>
+        <image src='../../images/addBuy.png' style='width:20px;height:20px;margin-top:3px'></image>
+      </view>
+    </view>
+  </view> -->
+
+</view>

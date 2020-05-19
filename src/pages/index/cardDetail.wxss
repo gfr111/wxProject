@@ -1,0 +1,363 @@
+/* pages/index/cardDetail.wxss */
+
+page {
+  background: #fff;
+}
+
+.cardMess {
+  width: 690rpx;
+  height: 356rpx;
+  position: relative;
+  margin: auto;
+  margin-top: 30rpx;
+  border-radius: 16rpx;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 16rpx;
+}
+
+.cardBG {
+  position: absolute;
+  top: 0;
+  height: 30%;
+  width: 100%;
+}
+
+.cardName {
+  position: absolute;
+  top: 46rpx;
+  left: 40rpx;
+  font-size: 40rpx;
+  color: #f3d2ae;
+  width: 76%;
+  height: 48rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.surplus {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28rpx;
+  position: absolute;
+  left: 40rpx;
+  top: 110rpx;
+}
+
+.sardStatus {
+  position: absolute;
+  top: 40rpx;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 18rpx;
+  padding-right: 10rpx;
+  height: 40rpx;
+  font-size: 24rpx;
+  background: rgba(55, 56, 60, 1);
+  color: #fff;
+  border-top-left-radius: 100rpx;
+  border-bottom-left-radius: 100rpx;
+}
+
+.tofv {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24rpx;
+  position: absolute;
+  bottom: 40rpx;
+  right: 24rpx;
+}
+
+.electronicData {
+  width: 690rpx;
+  margin: auto;
+  margin-top: 60rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  background: -webkit-linear-gradient(left, #aea79a, #9f988c); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #aea79a, #9f988c); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #aea79a, #9f988c); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #aea79a, #9f988c); /* 标准的语法 */
+  border-radius: 8rpx;
+  position: relative;
+  margin-bottom: 50rpx;
+}
+
+.electronicData>image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+  margin-right: 20rpx;
+}
+
+.electronicData>span:nth-child(2) {
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.electronicData>span:nth-child(3) {
+  width: 136rpx;
+  height: 44rpx;
+  background: #393a3e;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 44rpx;
+  position: absolute;
+  right: 26rpx;
+  color: #fff;
+  border-radius: 100rpx;
+}
+
+.applyMess {
+  display: flex;
+  padding: 36rpx 0;
+  justify-content: space-between;
+  align-items: center;
+  width: 92%;
+  margin: auto;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+}
+
+.applygym {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.applygym:nth-child(1) {
+  padding-right: 30rpx;
+  border-right: 1px solid #ececec;
+}
+
+.applygym:nth-child(2) {
+  padding-left: 30rpx;
+}
+
+.applygym>view {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.applygym>view>span:nth-child(1) {
+  color: #383838;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.applygym>view>span:nth-child(2) {
+  color: #6e6e6e;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+
+.applygym>image:nth-child(1) {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.applygym>image:nth-child(3) {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.basicMess {
+  padding: 50rpx 0;
+  width: 92%;
+  margin: auto;
+  border-bottom: 1px solid #ececec;
+}
+
+.title {
+  color: #383838;
+  font-size: 36rpx;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 50rpx;
+}
+
+.messBox {
+  margin-bottom: 30rpx;
+  display: flex;
+}
+
+.messBox>span:nth-child(1) {
+  color: #383838;
+  font-size: 28rpx;
+  display: inline-block;
+  margin-right: 80rpx;
+  font-weight: 600;
+  width: 120rpx;
+}
+
+.messBox .timeLimit {
+  color: #6e6e6e;
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+
+.limitBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.showAllMess {
+  margin-top: 40rpx;
+  padding-bottom: 160rpx;
+}
+
+.btnBox {
+  width: 310rpx;
+  height: 72rpx;
+  border-radius: 100rpx;
+  border: 1px solid #979797;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.btnBox>span {
+  color: #303030;
+  font-size: 28rpx;
+}
+
+.btnBox>image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 24rpx;
+}
+
+.hideMessBox {
+  width: 194rpx;
+  height: 72rpx;
+  border-radius: 100rpx;
+  border: 1px solid #979797;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.hideMessBox>span {
+  color: #303030;
+  font-size: 28rpx;
+}
+
+.hideMessBox>image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 24rpx;
+}
+
+.detail {
+  margin-left: 270rpx;
+  border-radius: 15rpx;
+  border: 2rpx solid rgba(243, 210, 174, 1);
+  color: #f3d2ae;
+  font-size: 24rpx;
+  padding: 2rpx 17rpx;
+}
+
+.showcode {
+  width: 60rpx;
+  height: 60rpx;
+  z-index: 9999;
+  position: absolute;
+  left: 39rpx;
+  top: 160rpx;
+}
+
+.model {
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modelcontent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 550rpx;
+  height: 640rpx;
+  background: #fff;
+  z-index: 99;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  color: #898989;
+  font-size: 34rpx;
+}
+
+.modelcontent view {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  padding: 20rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modelcontent view text {
+  color: #000;
+  font-size: 32rpx;
+}
+
+.modelcontent view image {
+  width: 32rpx;
+  height: 32rpx;
+  float: right;
+  position: absolute;
+  right: 26rpx;
+}
+
+.modelcontent>image {
+  width: 360rpx;
+  height: 360rpx;
+  background-color: yellow;
+  margin-top: 54rpx;
+  margin-bottom: 40rpx;
+}
+
+.modelfixed {
+  filter: blur(10rpx);
+}
+.rechargeBox{
+  width: 100%;
+  height: 120rpx;
+  border-top:1px solid #E5E5E5;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+.rechargeBox>span{
+  width: 670rpx;
+  height: 72rpx;
+  text-align: center;
+  line-height: 72rpx;
+  background: #00BC71;
+  font-size: 32rpx;
+  color: #ffffff;
+  border-radius: 40rpx;
+}

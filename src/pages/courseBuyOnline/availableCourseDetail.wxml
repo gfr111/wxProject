@@ -1,0 +1,87 @@
+<import src="../templates/cardAmountCell.wxml" />
+<import src="../templates/blackTitleValueCell.wxml" />
+<import src="../templates/spotGrayCell.wxml" />
+
+
+<view class='index'>
+  <!-- 卡背景图 -->
+  <image mode='aspectFill' class="bg" wx:if="{{course.pictures}}" src="{{course.pictures[0]}}"></image>
+  <image wx:else src="/images/course.png" mode='aspectFill' class="bg"></image>
+    <!-- 拼团 -->
+  <navigator class="groups" url='/pages/cardsPurchaseOnline/collageCarDetail?id={{groupBooking.id}}&pageTip=courses'>
+    <view class='toCollage' wx:if="{{isGroupBooking}}">
+      <span>￥{{groupBooking.collagePrice}}<i style='font-size:22rpx;' wx:if="{{groupBooking.objectType==2||groupBooking.objectType==3}}">{{course.cardType==1?'/'+groupBooking.objectCount+'节':'/'+groupBooking.effectiveDays+'天'}}</i> · {{groupBooking.groupNumber}}人团</span>
+      <text class='view'>去拼团</text>
+    </view>
+  </navigator>
+    <!-- 私教课信息 -->
+ <view class="courseMess">
+    <view class="courseName">{{course.name}}</view>
+    <view class="courseType">
+      <span>{{course.cardType==1?'课时课':'期限课'}}</span>
+      <span>{{course.privateCourseTeachType == 1 ? "一对一": "一对多"}}</span>
+    </view>
+    <view class="coursePrice">
+      <view>
+        <span style='font-size:32rpx;'>¥</span>
+        <span style='font-size:40rpx;'>{{course.onlineBuyPrice}}</span>
+        <span style='font-size:22rpx;'>{{course.cardType==2?'/'+course.effectiveDays+'天':'/节'}}</span>
+      </view>
+    </view>
+  </view>
+ 
+  <!-- 适用场馆，课程 -->
+  <view class="navs">
+    <navigator url='/pages/trainers/trainerList?id={{options.id}}' class="navdetail">
+      <image src="../../images/trainerIcon.png"></image>
+      <view>
+        <text>授课教练</text>
+        <text>{{trainers.length}}人</text>
+      </view>
+      <view></view>
+    </navigator>
+    <navigator url='useClub?id={{course.id}}' class="navdetail">
+      <image src="../../images/fitcourse.png"></image>
+      <view>
+        <text>适用场馆</text>
+        <text>{{availableCenterCount+'家'}}</text>
+      </view>
+      <view></view>
+    </navigator>
+  </view>
+  <!-- 各种信息 -->
+  <!-- <view class='showAllMess' wx:if="{{!showhide}}" bindtap='showEvent'>
+    <view class='btnBox'>
+      <span> 展开完整信息</span>
+      <image src='../../images/down.png'></image>
+    </view>
+  </view> -->
+
+
+  <view>
+    <view class="beforeBuy">
+      <text class='blackTitleValue'>购买须知</text>
+      <template is="spotGrayCell" wx:if="{{course.cardType==2}}" data='{{tint:"有效期", value:"生效后"+course.effectiveDays+"天"}}'></template>
+      <template is="spotGrayCell" data='{{tint:"课程类型", value:course.privateCourseSubType == 1 ? "私教课": "体验课"}}'></template>
+      <template is="spotGrayCell" data='{{tint:"授课方式", value:!course.privateCourseTeachType||course.privateCourseTeachType == 1 ? "一对一": "一对多"}}'></template>
+       <template is="spotGrayCell" wx:if="{{course.cardType==2}}" data='{{tint:"生效方式", value:course.onlineActivatedMode==1?"立即生效":course.onlineActivatedMode==2?course.onlineActivatedInDays+"内生效":"--"}}'></template>
+      <template is="spotGrayCell" data='{{tint:"温馨提示", value:course.onlineWarmReminder?course.onlineWarmReminder:"--"}}'></template>
+    </view>
+  </view>
+  <!-- 会员卡介绍 -->
+  <view wx:if="{{course.introduction}}">
+    <text class="carddes">私教课介绍</text>
+    <!-- <rich-text nodes="{{course.introduction||'--'}}"></rich-text> -->
+    <text class="courseIntroduction">{{course.introduction}}</text>
+  </view>
+
+  <view style="margin-bottom:200rpx;"></view>
+
+
+
+</view>
+<view class='buy-warp'>
+
+  <view class='btn-buy' bindtap="toDetail">立即购买</view>
+</view>
+

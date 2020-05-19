@@ -1,0 +1,143 @@
+<view class='orderBox'>
+    <view class='topTabSwiper'>
+      <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>全部</view>
+      <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>待支付</view>
+      <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}'  data-current = "2" bindtap='checkCurrent'>已支付</view>
+  </view>
+  <swiper current="{{currentData}}" class='swiper' style="height: {{listHeight}}px;" duration="300" bindchange="bindchange" >
+    <swiper-item>
+      <view class='swiper_con'>
+      <scroll-view scroll-y="true" style="height: {{listHeight}}px;overflow:auto;" >
+        <view class='nullOrder' wx:if="{{list.length==0}}">
+           <image src='../../../images/noOrders.png'></image>
+           <text>暂无订单</text>
+        </view>
+         <view class='listBox' wx:else>
+           <view class='orderList' id='{{item.id}}'  wx:for="{{list}}" wx:key="{{item.id}}">
+             <view class='orderTop'>
+               <image src='../../../images/orderTime.png' class='orderImg'></image>
+               <span class='orderTimes'>{{item.createTimeStr}}</span>
+               <span class='orderStatus' wx:if="{{item.statusId==1}}" style='color:#898989'>{{item.status}}</span>
+               <span class='orderStatus' wx:if="{{item.statusId==0}}">{{item.status}}</span>
+               <span class='orderStatus' wx:if="{{item.statusId==3}}" style='color:#F96262'>{{item.status}}</span>
+             </view>
+             <view class='orderCenter clearfix'>
+               <view class='orderImgBox'>
+                 <image src='../../../images/teachPic.png' mode='aspectFill' class='cardImg' wx:if="{{item.type==1||item.type==2}}"></image>
+                 <image src='../../../images/timeLimitCard.jpg' mode='aspectFill'class='cardImg' wx:if='{{item.type==3||item.type==6}}'></image>
+                 <image src='../../../images/subCard.jpg' class='cardImg' mode='aspectFill' wx:if='{{item.type==4}}'></image>
+                  <image src='{{item.coursePic?item.coursePic:"https://www.forzadata.cn/static/images/ticket/swim.jpg"}}' class='cardImg' mode='aspectFill' wx:if="{{item.type==10}}"></image>
+                  <image src='../../../images/StoredvalueCard.jpg' class='cardImg' wx:if='{{item.type==5}}'></image>
+                  <span class='imgName' wx:if="{{item.type==1||item.type==2}}" style='color:#FFFFFF;'>私教课</span>
+                  <span class='imgName' wx:if="{{item.type==3||item.type==6}}" style='color:#9CC0F4;'>期限卡</span>
+                  <span class='imgName' wx:if="{{item.type==4}}" style='color:#FFFFFF;'>次卡</span>
+                  <span class='imgName' wx:if="{{item.type==5}}" style='color:#F3D2AE;'>储值卡</span>
+                  <!-- <span class='imgName' wx:if="{{item.type==10}}" style='color:#FFFFFF;'>{{item.cardName}}</span> -->
+               </view>
+               <view class='orderMess'>
+                 <span class='orderName'>{{item.cardName}}</span>
+                 <span class='orderPrice'>¥{{item.amount}}</span>
+                 <span class='orderNum'>数量：1</span>
+               </view>
+             </view>
+             <view class='orderBottom'>
+               <span class='orderBottomPrice'><i>￥</i>{{item.amount}}</span>
+               <span class='orderDeatil toPay' wx:if="{{item.statusId==0}}" bindtap='goPay' data-source='{{item.orderSource}}' data-type='{{item.type}}' data-id='{{item.id}}'>去支付</span>
+              <span class='orderDeatil' wx:if="{{item.statusId!=0&&item.type!=10}}"  bindtap='goDetail' data-id='{{item.id}}'>订单详情</span>
+              <span class='orderDeatil' wx:if="{{item.statusId!=0&&item.type==10}}"  bindtap='goCouponDetail' data-id='{{item.id}}'>订单详情</span>
+             </view>
+           </view>
+         </view>
+      </scroll-view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='swiper_con'>
+         <scroll-view scroll-y="true" style="height: {{listHeight}}px;overflow:auto;" >
+            <view class='nullOrder' wx:if="{{willPay.length==0}}">
+              <image src='../../../images/noOrders.png'></image>
+              <text>暂无订单</text>
+            </view>
+            <view class='listBox' wx:else>
+              <view class='orderList' id='{{item.id}}'  wx:for="{{willPay}}" wx:key="{{item.id}}">
+                <view class='orderTop'>
+                  <image src='../../../images/orderTime.png' class='orderImg'></image>
+                  <span class='orderTimes'>{{item.createTimeStr}}</span>
+                  <span class='orderStatus' wx:if="{{item.statusId==1}}" style='color:#898989'>{{item.status}}</span>
+                  <span class='orderStatus' wx:if="{{item.statusId==0}}">{{item.status}}</span>
+                </view>
+                <view class='orderCenter clearfix'>
+                  <view class='orderImgBox'>
+                    <image src='../../../images/teachPic.png' class='cardImg' wx:if="{{item.type==1||item.type==2}}"></image>
+                    <image src='../../../images/timeLimitCard.jpg' class='cardImg' wx:if='{{item.type==3||item.type==6}}'></image>
+                    <image src='../../../images/subCard.jpg' class='cardImg' wx:if='{{item.type==4}}'></image>
+                    <image src='../../../images/StoredvalueCard.jpg' class='cardImg' wx:if='{{item.type==5}}'></image>
+                     <image src='{{item.coursePic?item.coursePic:"https://www.forzadata.cn/static/images/ticket/swim.jpg"}}' class='cardImg' wx:if="{{item.type==10}}"></image>
+                     <!-- <span class='imgName' wx:if="{{item.type==10}}" style='color:#FFFFFF;'>{{item.cardName}}</span> -->
+                      <span class='imgName' wx:if="{{item.type==1||item.type==2}}" style='color:#FFFFFF;'>私教课</span>
+                      <span class='imgName' wx:if="{{item.type==3||item.type==6}}" style='color:#9CC0F4;'>期限卡</span>
+                      <span class='imgName' wx:if="{{item.type==4}}" style='color:#FFFFFF;'>次卡</span>
+                      <span class='imgName' wx:if="{{item.type==5}}" style='color:#F3D2AE;'>储值卡</span>
+                  </view>
+                  <view class='orderMess'>
+                    <span class='orderName'>{{item.cardName}}</span>
+                    <span class='orderPrice'>¥{{item.amount}}</span>
+                    <span class='orderNum'>数量：1</span>
+                  </view>
+                </view>
+                <view class='orderBottom'>
+                  <span class='orderBottomPrice'><i>￥</i>{{item.amount}}</span>
+                   <span class='orderDeatil toPay' wx:if="{{item.statusId==0}}" bindtap='goPay' data-source='{{item.orderSource}}' data-type='{{item.type}}' data-id='{{item.id}}'>去支付</span>
+                </view>
+              </view>
+            </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='swiper_con'>
+        <scroll-view scroll-y="true" style="height: {{listHeight}}px;overflow:auto;" >
+            <view class='nullOrder' wx:if="{{finishPay.length==0}}">
+              <image src='../../../images/noOrders.png'></image>
+              <text>暂无订单</text>
+            </view>
+            <view class='listBox' wx:else>
+              <view class='orderList' id='{{item.id}}'  wx:for="{{finishPay}}" wx:key="{{item.id}}">
+                <view class='orderTop'>
+                  <image src='../../../images/orderTime.png' class='orderImg'></image>
+                  <span class='orderTimes'>{{item.createTimeStr}}</span>
+                  <span class='orderStatus' wx:if="{{item.statusId==1}}" style='color:#898989'>{{item.status}}</span>
+                  <span class='orderStatus' wx:if="{{item.statusId==0}}">{{item.status}}</span>
+                </view>
+                <view class='orderCenter clearfix'>
+                  <view class='orderImgBox'>
+                    <image src='../../../images/teachPic.png' class='cardImg' wx:if="{{item.type==1||item.type==2}}"></image>
+                    <image src='../../../images/timeLimitCard.jpg' class='cardImg' wx:if='{{item.type==3||item.type==6}}'></image>
+                    <image src='../../../images/subCard.jpg' class='cardImg' wx:if='{{item.type==4}}'></image>
+                    <image src='../../../images/StoredvalueCard.jpg' class='cardImg' wx:if='{{item.type==5}}'></image>
+                    <image src='{{item.coursePic?item.coursePic:"https://www.forzadata.cn/static/images/ticket/swim.jpg"}}' class='cardImg' wx:if="{{item.type==10}}"></image>
+                     <!-- <span class='imgName' wx:if="{{item.type==10}}" style='color:#FFFFFF;'>{{item.cardName}}</span> -->
+                    <span class='imgName' wx:if="{{item.type==1||item.type==2}}" style='color:#FFFFFF;'>私教课</span>
+                      <span class='imgName' wx:if="{{item.type==3||item.type==6}}" style='color:#9CC0F4;'>期限卡</span>
+                      <span class='imgName' wx:if="{{item.type==4}}" style='color:#FFFFFF;'>次卡</span>
+                      <span class='imgName' wx:if="{{item.type==5}}" style='color:#F3D2AE;'>储值卡</span>
+                  </view>
+                  <view class='orderMess'>
+                    <span class='orderName'>{{item.cardName}}</span>
+                    <span class='orderPrice'>¥{{item.amount}}</span>
+                    <span class='orderNum'>数量：1</span>
+                  </view>
+                </view>
+                <view class='orderBottom'>
+                  <span class='orderBottomPrice'><i>￥</i>{{item.amount}}</span>
+                  <span class='orderDeatil toPay' wx:if="{{item.statusId==0}}" bindtap='goPay' data-source='{{item.orderSource}}' data-type='{{item.type}}' data-id='{{item.id}}'>去支付</span>
+                   <span class='orderDeatil' wx:if="{{item.statusId!=0&&item.type!=10}}"  bindtap='goDetail' data-id='{{item.id}}'>订单详情</span>
+                    <span class='orderDeatil' wx:if="{{item.statusId!=0&&item.type==10}}"  bindtap='goCouponDetail' data-id='{{item.id}}'>订单详情</span>
+                </view>
+              </view>
+            </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

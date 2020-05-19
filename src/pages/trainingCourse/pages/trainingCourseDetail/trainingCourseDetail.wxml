@@ -1,0 +1,29 @@
+<!--pages/trainingCourse/pages/trainingCourseDetail/trainingCourseDetail.wxml-->
+<view class="detailBox">
+  <image src="{{course.pictures.length>0?course.pictures[0]:'../../../../images/teachPic.png'}}" class="courseImg"></image>
+  <view class="courseMess">
+    <view class="courseName">{{course.courseName}}</view>
+    <view class="courseTime">
+      <image src="../../../../images/time.png"></image>
+      <span>课程时长 {{course.duration}} 分钟</span>
+    </view>
+  </view>
+  <view class="courseIntro">
+    <view class="title">课程介绍</view>
+    <view class='introContent'>
+      <rich-text nodes="{{course.introduction?course.introduction:'暂无课程介绍'}}"></rich-text>
+    </view>
+  </view>
+  <view class="buybtn">
+    <span bindtap='toBuy'>立即报名</span>
+  </view>
+</view>
+<view class="pop" catchtouchmove="preventTouchMove" wx:if='{{showPop}}'>
+  <view class="popBox">
+    <view class="popTitle">
+      <span>您拥有的会员卡已有上课资格~</span>
+      <image src="../../../../images/closeRule.png" bindtap="cancelPop"></image>
+    </view>
+    <view class="continueBuy" bindtap="continueBuy">继续报名</view>
+  </view>
+</view>

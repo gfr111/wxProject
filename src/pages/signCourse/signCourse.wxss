@@ -1,0 +1,88 @@
+/* pages/signCourse/signCourse.wxss */
+.signCourseBox{
+  width: 100%;
+  height: 100%;
+  background: #F7F8F9;
+}
+.memberMess{
+  width: 100%;
+  height: 200rpx;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.messBox{
+  display: flex;
+  align-items: center;
+}
+.messBox .photo{
+  width: 120rpx;
+  height: 120rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  border-radius: 50%;
+}
+.memberMess image{
+  width:32rpx;
+  height: 32rpx;
+  margin-right: 54rpx;
+}
+.messBox>view{
+  display: flex;
+  flex-direction:column;
+}
+.messBox>view>text:nth-child(1){
+  color: #383838;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.messBox>view>text:nth-child(2){
+  color: #80848F;
+  font-size: 28rpx;
+}
+.signResult{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top:136rpx;
+}
+.signResult>image{
+   width:66rpx;
+   height: 72rpx;
+   margin-bottom: 40rpx;
+}
+.signTime{
+  color: #383838;
+  font-size: 36rpx;
+  margin-bottom: 16rpx;
+}
+.signTxt{
+  color: #383838;
+  font-size: 48rpx;
+  font-weight: 600;
+  margin-bottom: 40rpx;
+}
+.resultBox>text:nth-child(1){
+  color: #808080;
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+.resultBox>text:nth-child(2){
+  color: #FE5756;
+  font-size: 36rpx;
+  
+}
+.submitBtn{
+  position: fixed;
+  bottom: 24rpx;
+  width: 670rpx;
+  height: 84rpx;
+  text-align: center;
+  color: #ffffff;
+  font-size: 32rpx;
+  line-height: 84rpx;
+  margin-left: 40rpx;
+  background: #00BC71;
+  border-radius: 44rpx;
+}

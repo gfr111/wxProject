@@ -1,0 +1,112 @@
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="util" />
+
+<scroll-view scroll-y class='list' wx:if="{{list.length>0}}">
+  <block wx:for="{{list}}" wx:key="index">
+    <view class="date">{{util.formatTime(item.createTime)}}</view>
+    <view class="main">
+      <view class="info" wx:if="{{item.items.length<=1}}">
+        <view class='pic'>
+          <image src='{{item.items[0].photo==null?"../../images/noPic.png":item.items[0].photo}}'></image>
+        </view>
+        <view>
+          <view>
+            {{item.items[0].name}}
+          </view>
+          <view>
+            ￥{{item.items[0].priceOnSale}}
+          </view>
+          <view class='list-member'>
+            数量：{{item.items[0].count}}
+          </view>
+        </view>
+      </view>
+      <view class="info" wx:else>
+        <view class='pic' wx:for="{{item.items}}" wx:key="index">
+          <image src='{{item.photo==null?"../../images/noPic.png":item.photo}}'></image>
+        </view>
+
+      </view>
+
+      <view class='pay-info'>
+        <view>
+          <text style='font-size:15px;margin-right:7px'>￥{{item.pricePayed}}</text>
+          <text class='list-member'>共{{item.itemCount}}件商品</text>
+        </view>
+        <view class='bn-buy-info' bindtap='openDetail' data-order='{{item}}'>购物小票</view>
+      </view>
+    </view>
+  </block>
+  <view style='height:80px'></view>
+</scroll-view>
+
+<view class='goBuy' bindtap="goBuy">
+  <view class='goBuy-bn'>
+    <image style='height:18px;width:18px;margin-bottom:-3px;' src='../../images/bnCar.png'></image>
+    去购买
+  </view>
+</view>
+
+
+
+
+
+
+
+<view style='padding-top:164px;text-align:center;' wx:if="{{list.length<1||list==null}}">
+  <image src='../../images/noRank.png' style='width:136px;height:152px'></image>
+  <view style='font-size:16px;color:#757575;'>暂无商品订单</view>
+</view>
+
+
+
+
+
+<view class="mask" catchtouchmove="true" wx:if="{{showMer}}"></view>
+<view class='getInfo' wx:if="{{showMer}}">
+  <image src='../../images/shopBack.png' style='width:100%;height:100%'></image>
+</view>
+
+
+
+<view class='getInfo' wx:if="{{showMer}}" style='z-index:3;padding:30rpx;box-sizing:border-box;text-align:center;'>
+  <view class="logo">
+    <image src="{{centerphoto||'../../images/bocai.png'}}"></image>
+  </view>
+  <view style='margin-top:20rpx'>
+    <image src='../../images/closeBack.png' class="close" bindtap='close'></image>
+    <view class='top-timetwo'>
+      <text class='top-time'>{{order.createTime[0]}}</text>
+      <text style="color:'#6F6F6F';font-size:'24rpx'">{{order.createTime[1]}}.{{order.createTime[2]}}</text>
+    </view>
+  </view>
+
+
+  <view wx:if="{{showgoods}}">
+    <view class="tips">您购买了以下商品</view>
+    <scroll-view scroll-x class='scroll-box'>
+      <view class="item" style='' wx:for="{{order.items}}" wx:key="index">
+        <image class="bgcount" src='../../images/count.png'></image>
+        <view class="count">数量</view>
+        <view class="countnum">{{item.count}}</view>
+        <image class="goodspic" src='{{item.photo==null?"../../images/noPic.png":item.photo}}'></image>
+        <text class="goodname" style=''>{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <view wx:else>
+    <view class="tips">请将此页面展示给前台进行核实</view>
+    <text class="num {{order.taken?'numtaken':''}}" style=''>{{num}}</text>
+
+    <image class="code" src="{{order.imgsrc}}"></image>
+    <image wx:if="{{order.taken}}" class="pickup" src="../../../images/pickup.png"></image>
+  </view>
+
+
+
+
+  <view style='color:#B4B4B4;font-size:14px'>关闭后可在我的·商品订单·里查询</view>
+  <button class="btn" bindtap="show">{{showgoods?'核销码':'查看商品'}}</button>
+  <!-- <view style='color:#35B493;font-size:16px;margin-top:10px'>{{centerName}}祝您健身愉快</view> -->
+  <canvas class="canvas" style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;" canvas-id='canvas' bindlongtap='save'></canvas>
+
+</view>

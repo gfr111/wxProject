@@ -1,0 +1,158 @@
+<!--pages/integral/integral.wxml-->
+
+<!-- <view class='integral'>
+  <view class='integralTop'>
+    <view class='title'>
+      <image src='../../images/jifen.png' class='center-img'></image>所有门店总积分</view>
+    <text class='integralNum'>{{totalScore==null?0:totalScore}}分</text>
+    <view class='changePoint' wx:if="{{active}}">
+      <image class='bg-img' src='../../images/Bitmap.png'></image>
+      <image class='run-img' src='../../images/run.png'></image>
+      <text class='run-text'>步数换积分</text>
+      <view class='intoNow' bindtap='intoNow'>立即进入</view>
+    </view>
+  </view>
+
+  <view class='integralList'>
+    <view class='center-name' wx:if="{{list.length>0}}">
+      <view class='tip-icon'></view>
+      <view>
+        <text class='center-name-text1'>{{centerName}}</text>
+        <text class='center-name-text2'>积分明细</text>
+      </view>
+    </view>
+    <view style='padding-top:{{active?"64px":"0"}};text-align:center;' wx:else>
+      <image src='../../images/noRank.png' style='width:171px;height:191px'></image>
+      <view style='font-size:16px;color:#757575;'>暂无本店数据</view>
+    </view>
+    <view class='singleList' wx:for="{{list}}" wx:key="index">
+      <text>{{item.typeStr}}</text>
+      <text>{{item.timeStr}}</text>
+      <text>{{item.changeValue>0?'+'+item.changeValue:item.changeValue}}分</text>
+    </view>
+
+  </view>
+
+</view> -->
+
+<view class="head">
+  <view class="header">
+    <text>所有门店总积分</text>
+    <view bindtap="showrules">
+      <image class="rulesicon" src="../../images/lintegralrules.png"></image>
+      <text>规则</text>
+    </view>
+  </view>
+  <view class="total">
+    <text>{{totalScore==null?0:totalScore}}</text>
+    <text>分</text>
+  </view>
+</view>
+
+
+<view class="content">
+  <view class="nav">
+    <view class="navitem navitem1" wx:if="{{active}}" bindtap='intoNow'>
+      <view>
+        <text>步数换积分</text>
+        <text>点击兑换</text>
+      </view>
+      <image src="../../images/lintegralfoot.png"></image>
+    </view>
+
+    <view class="navitem  {{active?'':'navone'}}" bindtap='intoshop'>
+      <view>
+        <text>积分商城</text>
+        <text>点击查看</text>
+      </view>
+      <image src="../../images/lintegralbuy.png"></image>
+    </view>
+    <view>
+    </view>
+  </view>
+
+  <view class="select">
+    <picker mode="date" value='YYYY-MM' fields="month" bindchange="year" end="{{now[0]}}-{{now[1]}}">
+      <text class="selectword">{{year[0]}}年{{year[1]}}月</text>
+      <image class="selecticon" src="../../images/down.png"></image>
+    </picker>
+    <view bindtap="model" id="1">
+      <text class="selectword">{{type[typeIndex]}}</text>
+      <image class="selecticon" src="../../images/down.png"></image>
+
+    </view>
+  </view>
+  <view style='padding-top:{{active?"64px":"0"}};text-align:center;' wx:if="{{list.length<1}}">
+    <image src='../../images/noRank.png' style='width:171px;height:191px'></image>
+    <view style='font-size:16px;color:#757575;'>暂无数据</view>
+  </view>
+  <view class="scroll">
+    <view class="item" wx:for="{{list}}" wx:key="index">
+      <view>
+        <view>
+          <text class="tip">{{type[item.scoreBigTypeId]}}</text>
+          <text class="time">{{item.createTime}}</text>
+        </view>
+        <text class="des">{{item.comment?item.comment:item.typeStr}}</text>
+      </view>
+      <view class="itemNum {{item.isadd?'':'reduce'}}">
+        <text>{{item.isadd?'+':'-'}}</text>
+        <text>{{item.changeValue}}</text>
+      </view>
+    </view>
+  </view>
+
+
+
+
+
+
+</view>
+
+<view class="mask" wx:if="{{showmodel||rulesModel}}" bindtap="model" id="2"></view>
+<view class="model" wx:if="{{showmodel}}">
+  <view class="model_title">选择类型</view>
+  <view class="model_item">
+    <text class="{{typeIndex==index?'choosed':''}}" wx:for="{{type}}" wx:key="index" bindtap="choosetype" id="{{index}}">{{item}}</text>
+  </view>
+</view>
+
+
+
+<view class="rulesmodel" wx:if="{{rulesModel}}">
+  <view class="rulesmodel_title">
+    <text>积分规则</text>
+    <image src="../../images/closeRule.png" bindtap="model" id="2"></image>
+  </view>
+  <view class="scrollModel" style="padding:0 40rpx;">
+    <view class="ruleItem">
+      <text>签到积分获取</text>
+      <text wx:if="{{rules.allowCenterCheckInExchangeScore}}">场馆签到可得 {{rules.centerCheckInExchangeUnitScore}}积分/次，每日上限{{rules.restrictCenterCheckInExchangeCount}}次;      </text>
+
+      <text wx:if="{{rules.allowGroupCourseSignExchangeScore}}"> 团课签到可得 {{rules.groupCourseSignExchangeUnitScore}}积分/次，每日上限{{rules.restrictGroupCourseExchangeCount}}次;</text>
+      <text wx:if="{{rules.allowPrivateCourseSignExchangeScore}}">私教签课可得 {{rules.privateCourseSignExchangeUnitScore}}积分/次，每日上限{{rules.restrictPrivateCourseSignExchangeCount}}次;</text>
+
+      <text wx:if="{{rules.allowTrainingCourseSignExchangeScore}}">培训课签课可得 {{rules.trainingCourseSignExchangeUnitScore}} 积分/次，每日上限{{rules.restrictTrainingCourseSignExchangeCount}}次 ;</text>
+
+    </view>
+    <view class="ruleItem">
+      <text>消费积分获取</text>
+      <text wx:if="{{rules.allowMembershipCardConsumeExchangeScore}}">购买会员卡每消费 {{rules.  membershipCardConsumeExchangeCondition }}元，可获得{{rules.membershipCardConsumeUnitScore}}个积分;
+      </text>
+      <text wx:if="{{rules.allowPrivateCourseConsumeExchangeScore}}">购买私教课每消费 {{rules. privateCourseConsumeExchangeCondition}}元，可获得{{rules.privateCourseConsumeUnitScore}}个积分;</text>
+      <text wx:if="{{rules.allowTrainingCourseConsumeExchangeScore}}">购买培训课每消费 {{rules. trainingCourseConsumeExchangeCondition}}元，可获得{{rules.trainingCourseConsumeUnitScore}}个积分;</text>
+      <text wx:if="{{rules.allowMerchandiseConsumeExchangeScore}}">购买商品每消费 {{rules.merchandiseConsumeExchangeCondition}} 元，可获得{{rules.merchandiseConsumeUnitScore}}个积分 ;</text>
+    </view>
+    <view class="ruleItem">
+      <text>其他积分获取</text>
+      <text wx:if="{{rules.allowWxSportExchangeScore}}">微信步数换积分，每日微信运动步数每达到 {{rules.wxSportExchangeCondition}}步可兑换{{rules.wxSportUnitScore}}积分；每日步数达到{{rules.restrictMinWxSportCondition}}步才能兑换
+      </text>
+    </view>
+    <view class="ruleItem">
+      <text>规则说明</text>
+      <rich-text nodes="{{rules.notice?rules.notice:'暂无'}}"></rich-text>
+    </view>
+  </view>
+
+
+</view>

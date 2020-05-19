@@ -1,0 +1,112 @@
+<import src="../templates/cardAmountCell.wxml" />
+<import src="../templates/blackTitleValueCell.wxml" />
+<import src="../templates/spotGrayCell.wxml" />
+<view class="header">
+  <!-- <image  src="{{cardImg}}"></image> -->
+
+  <image mode='aspectFill'class="bgimg" wx:if="{{card.card.cardBg}}" src="{{card.card.cardBg}}"></image>
+  <image wx:else src="../../images/{{card.card.cardType==5?'StoredvalueCard':card.card.cardType==4||card.card.cardType==7?'subCard':'timeLimitCard'}}.jpg" mode='aspectFill' class="bgimg"></image>
+
+    <view >
+      <text>{{card.card.name}}</text>
+      <text>¥{{price}}</text>
+    </view>
+</view>
+ <navigator  wx:if="{{!card.salable}}" url="../memberCarlist/memberCarlist?a=0" hover-class="none">
+ <view class="rechargeBox" >
+  <span>购买其他会员卡</span>
+</view>
+</navigator>
+
+<view class="cannnotBuy" wx:if="{{!card.salable}}">
+   <image src="../../images/noRank.png"></image>
+   <text>{{card.reason}}</text>
+</view>
+<view style="margin-bottom:218rpx;">
+  <view class="multiCardBox" wx:if="{{card.card.cardStandards&&card.card.cardStandards.length>0&&card.salable}}">
+    <view class="listTitle">
+      <span>优惠套餐</span>
+      <span>{{multilName}}</span>
+    </view>
+    <view class="multiCardList">
+      <view class="multiCardItem {{item.id==multiId?'active':''}}" wx:for="{{card.card.cardStandards}}" wx:key='index' bindtap="selectMulti" data-item="{{item}}">
+        <view class="multiCardMess">
+          <image src="../../images/multiCardIcon.png"></image>
+          <text>{{item.name}}</text>
+          <text>{{card.card.cardType==4||card.card.cardType==9?item.count+'次 卡':item.amount+'元 卡'}}</text>
+        </view>
+        <text class="multiCardDate">有效期：{{item.effectiveDays}}天</text>
+        <text class="multiCardPrice">¥ {{item.price}}</text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{!card.card.cardStandards&&couponList.length!=0}}" class="choositem"  bindtap="toCoupon">
+    <text>优惠券</text>
+    <view>
+      <text style="color:#FA4A11" wx:if="{{coupon==null}}">{{couponList.length}}张可用</text>
+      <text style="color:#FA4A11" wx:if="{{coupon!=null&&coupon.type==1}}">-{{coupon.discount}}</text>
+       <text style="color:#FA4A11" wx:if="{{coupon!=null&&coupon.type!=1}}">{{coupon.discount*10}}折</text>
+      <text class="tochoose"></text>
+    </view>
+  </view>
+  <view wx:if="{{!options.exId&&!alreadyBuy&&card.salable}}" class="choositem" bindtap="cardType">
+    <text>购卡类型</text>
+    <view>
+      <text>{{newCard?'新卡':'续卡'}}</text>
+      <text class="tochoose"></text>
+    </view>
+  </view>
+
+  <view class="choositem" bindtap="{{trainer.length!=1?'totrainer':''}}" wx:if="{{!alreadyBuy&&card.salable&&card.salesPromotion==undefined}}" >
+    <text>销售人</text>
+    <view>
+      <text class="{{choosedTrainer.name?'':'NOtrainer'}}">{{choosedTrainer.name?choosedTrainer.name:'请选择销售人'}}</text>
+      <text class="tochoose"></text>
+    </view>
+  </view>
+  <view class="priceBox" wx:if="{{!card.card.cardStandards&&couponList.length!=0}}">
+    <view class="priceItem">
+      <span>订单金额</span>
+      <span>¥{{allPricre}}</span>
+    </view>
+    <view class="priceItem">
+      <span>优惠</span>
+      <span>-¥{{discountPrice}}</span>
+    </view>
+    <view class="priceItem">
+      <span>实际支付</span>
+      <span style='font-weight:600;font-size:32rpx;'>¥{{realPrice}}</span>
+    </view>
+</view>
+</view>
+
+
+<view class='buy-warp' wx:if="{{!select&&card.salable}}">
+
+<view class='tip tip-bottom' style='display:flex;padding-left:15px;'>
+  <image src='{{agree?"../../images/selected.png":"../../images/unSelect.png"}}' style="width:32rpx;height:32rpx;margin-right:5px;margin-top:2px" bindtap='selectAgree'></image>点击确定表示同意
+  <navigator url='../agreement/agreement?tp=0' style='display:inline-block;color:#00BC71;'>《服务协议》</navigator>
+</view>
+
+
+  <view class='price-unit'>合计￥</view>
+  <view class='price-amount' wx:if="{{coupon==null}}">{{multiId?multiPrice:price}}</view>
+    <view class='price-amount' wx:if="{{coupon!=null}}">{{realPrice}}</view>
+  <view class='btn-buy' style='{{agree?"":"background:#DFDFDF"}}' bindtap='{{agree?"selectType":""}}'>去支付</view>
+</view>
+
+
+<view wx:if="{{select}}" class='dely' catchtouchmove='true' bindtap="cancle"></view>
+
+<view wx:if="{{select}}" class='models' catchtouchmove='true'>
+  <view wx:if="{{card.haveContractId!=null}}" bindtap='selectWay'data-way='{{false}}'>
+    <text>续卡</text>
+    <text>（原卡到期后自动开卡）</text>
+  </view>
+  <view style="border:none" bindtap='selectWay' data-way='{{true}}'>
+    <text>新卡</text>
+    <text>（{{modeText}}）</text>
+  </view>
+  <view bindtap="cancle" class="cancle"> 取消</view>
+
+</view>

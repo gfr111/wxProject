@@ -1,0 +1,114 @@
+<!--pages/space/orderinfo.wxml-->
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="util" />
+<wxs module="splitString">
+var getStringDate=function(str){
+  var str = str.toString();
+  return str.substring(0,4)+"-"+str.substring(4,6)+"-"+str.substring(6,8);
+}
+
+ module.exports={
+   getStringDate:getStringDate
+ }
+</wxs>
+<view class='main_view'>
+  <!-- <view wx:if="{{orderStatus==2||orderStatus==3||orderStatus==4}}" class='top_view'>
+    <image class='topbg_view' src='/images/orderbg.png'></image>
+    <image wx:if="{{orderStatus==2}}" class='bg_topview' src='/images/staypay.png'></image>
+    <image wx:elif="{{orderStatus==3}}" class='bg_topview' src='/images/stayverif.png'></image>
+    <image wx:else class='bg_topview' src='/images/complete.png'></image>
+    <text wx:if="{{orderStatus==2}}" class='title_topview'>等待付款</text>
+    <text wx:elif="{{orderStatus==3}}" class='title_topview'>待核销</text>
+    <text wx:else class='title_topview'>已完成</text>
+    <text wx:if="{{orderStatus==2}}" class='time_topview'>剩余：29分57秒</text>
+    <text wx:elif="{{orderStatus==3}}" class='time_topview'>预订时间：2019.01.22 12:23</text>
+    <text wx:else class='time_topview'>核销时间：2019.01.22 12:23</text>
+  </view>
+  <view wx:else class='top_view'>
+    <image class='topbg_view' src='/images/orderbg.png'></image>
+    <image class='bg_topview' src='/images/cancle.png'></image>
+    <text wx:if="{{orderStatus==0}}" class='title_topview'>已取消</text>
+    <text wx:else class='title_topview'>已过期</text>
+    <text wx:if="{{orderStatus==0}}" class='time_topview'>取消时间：2019.01.22 12:23</text>
+    <text wx:else class='time_topview'>未按时签到</text>
+  </view> -->
+  <view class='topStatusBox'>
+    <image src='/images/orderbg.png' class='bgImg' wx:if='{{orderDetail.reserve.status==1||orderDetail.reserve.status==2||orderDetail.reserve.status==5}}'></image>
+     <image src='/images/orderbg1.png' class='bgImg' wx:if='{{orderDetail.reserve.status==3||orderDetail.reserve.status==4}}'></image>
+    <view class='contentBox'>
+      <view class='leftBox'>
+        <image src='/images/complete.png' wx:if='{{orderDetail.reserve.status==2}}'></image>
+        <image src='/images/stayverif.png' wx:if='{{orderDetail.reserve.status==1||orderDetail.reserve.status==5}}'></image>
+        <image src='/images/cancle.png' wx:if='{{orderDetail.reserve.status==3}}'></image>
+        <image src='/images/cancle.png' wx:if='{{orderDetail.reserve.status==4}}'></image>
+        <span wx:if='{{orderDetail.reserve.status==1}}'>待核销</span>
+        <span wx:if='{{orderDetail.reserve.status==2}}'>已完成</span>
+        <span wx:if='{{orderDetail.reserve.status==5}}'>已预定</span>
+        <span wx:if='{{orderDetail.reserve.status==3}}'>已取消</span>
+        <span wx:if='{{orderDetail.reserve.status==4}}'>已过期</span>
+      </view>
+      <view class='rightBox' wx:if='{{orderDetail.reserve.status==1||orderDetail.reserve.status==5}}'>预订时间：{{orderDetail.reserve.createTimeStr}}</view>
+      <view class='rightBox' wx:if='{{orderDetail.reserve.status==2}}'>核销时间:{{orderDetail.reserve.completeTsStr}}</view>
+      <view class='rightBox' wx:if='{{orderDetail.reserve.status==3}}'>取消时间：{{orderDetail.reserve.cancelTsStr}}</view>
+      <view class='rightBox' wx:if='{{orderDetail.reserve.status==4}}'>未按时核销</view>
+    </view>
+  </view>
+  <view class='content_view'>
+    <view class='personal_info'>{{orderDetail.reserve.subscriberName}}
+      <text>{{orderDetail.reserve.subscriberPhone}}</text>
+    </view>
+    <view class='address_view'>
+      <view class='tit_view'>
+        <image src='../../images/siteplace.png' class='spaceIcon'></image>
+        <text class='title'>{{orderDetail.ground.name}}</text>
+      </view>
+      <view class='info_view' wx:for='{{orderDetail.ins}}' wx:key='index' style='{{index+1==orderDetail.ins.length?"border-bottom: 20rpx solid #F7F8F9;":""}}'>
+        <image class='ground_img' src='../../images/ground.png'></image>
+        <view class='ground_info'>
+          <text style='color:#383838'>{{splitString.getStringDate(item.planDate)}} {{item.startTime}}~{{item.endTime}}</text>
+          <text style='color:#9f9f9f'>{{item.siteName}}号场地</text>
+        </view>
+      </view>
+      <view class='address_nav' bindtap='addressNav'>
+        <image class='address_img' src='/images/address.png'></image>
+        <view class='address_info'>
+          <text style='color:#383838;font-size: 28rpx;'>{{orderDetail.ground.name}}</text>
+          <text style='color:#9f9f9f;font-size: 24rpx;'>{{orderDetail.ground.address||'--'}}</text>
+        </view>
+        <!-- <image class='right_img' src='/images/next.png'></image> -->
+      </view>
+    </view>
+    <view class='order_info'>
+      <view class='order_key'>订单编号：<text class='order_value'>{{orderDetail.reserve.orderNo}}</text></view>
+      <view class='order_key'>创建时间：<text class='order_value'>{{orderDetail.reserve.createTimeStr}}</text></view>
+      <view class='order_key' wx:if="{{orderDetail.reserve.status!=5}}">付款时间：<text class='order_value'>{{orderDetail.reserve.payTsStr}}</text></view>
+    </view>
+    <view class='order_info'>
+      <view class='order_key'>订单总价：<text class='order_value' style='font-weight: bold;'>¥{{orderDetail.reserve.price}}</text></view>
+      <view class='order_key'>优惠金额：<text class='order_value' style='font-weight: bold;'>-¥{{reducePrice}}</text></view>
+      <view wx:if="{{orderDetail.reserve.status==1||orderDetail.reserve.status==2}}" class='order_key'>实际支付：<text class='order_value' style='font-weight: bold;'>¥{{orderDetail.reserve.realAmount}}</text></view>
+      <view wx:if="{{orderDetail.reserve.status==1||orderDetail.reserve.status==2}}" class='order_key'>支付方式：<text class='order_value' style='font-weight: bold;' wx:if='{{orderDetail.reserve.discountType==1}}'>{{orderDetail.reserve.objectInstanceName}}</text>
+       <text class='order_value' style='font-weight: bold;' wx:if='{{orderDetail.reserve.discountType==2}}'>微信支付</text>
+      </view>
+      <view  wx:if="{{orderDetail.reserve.status==3||orderDetail.reserve.status==4}}" class='order_key'>还需支付：<text class='order_value' style='font-weight: bold;font-size:32rpx;color:#EE0100'>¥{{orderDetail.reserve.realAmount}}</text></view>
+    </view>
+  </view>
+</view>
+
+   <view wx:if="{{orderDetail.reserve.status==3||orderDetail.reserve.status==4}}" class='foot_view'>
+     <view class='again_view' catchtap='again'>重新预订</view>
+  </view>
+  <view wx:if="{{orderDetail.reserve.status==1}}" class='foot_view'>
+    <view class='cancle_view' catchtap='cancle'>取消预订</view>
+    <view  class='payfor_view' catchtap='verification'>去核销</view>
+  </view>
+
+  <view class="baffle_view" wx:if="{{showModal}}" catchtap='onCancle'></view>
+<view class="modal_dialog" wx:if="{{showModal}}">
+  <view class='title' catchtap='onCancle'>预订码
+    <image src='/images/closeRule.png'></image>
+  </view>
+  <view class='qr_number'>{{orderDetail.reserve.orderNo}}</view>
+    <image src='{{qrCode}}' class='qr_view'></image>
+  <view class='tip_view'>向前台展示此码进行核销</view>
+
+</view>

@@ -1,0 +1,13 @@
+<!--pages/courseBuyOnline/useClub.wxml-->
+<!--pages/cardsPurchaseOnline/usePlace.wxml-->
+<view class='placeList'>
+  <view class='placeDetsail clearfix' wx:for="{{place}}" bindtap='callSome' data-phone='{{item.phone}}' wx:key="{{item.id}}"> 
+     <image src='{{item.photo}}' style='width:20%;height:100rpx;float:left;' wx:if="{{item.photo}}"></image>
+     <image src='../../images/teachPic.png' style='width:20%;height:100rpx;float:left;' wx:else></image>          
+     <view class='placeTxt'>
+       <text class='placeName'>{{item.name}}</text>
+       <text class='placeAddress'>{{item.address}}</text>
+     </view>
+      <image src='../../images/phone.png' style='width:40rpx;height:40rpx;float:left;margin-top:22rpx'  wx:if="{{item.phone!=null}}"></image>
+  </view>
+</view>

@@ -1,0 +1,61 @@
+/* pages/activity/signUp.wxss */
+@import './activity.wxss';
+.signUpBox{
+  background-color: #fff;
+}
+.address_view{
+  margin: 20rpx 30rpx 0 0;
+  font-size: 28rpx;
+  border-bottom: 2rpx solid #ECECEC;
+  background: #fff;
+  overflow: hidden;
+  color: #6E6E6E;
+  font-weight: 400;
+  padding-bottom: 50rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.address_view>text{
+  margin-top: 6rpx;
+  color: #6E6E6E;
+  font-weight: 400;
+  font-size: 28rpx;
+  padding-right: 68rpx;
+  width: 80%;
+}
+.address_view>image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 16rpx;
+}
+.number{
+   line-height: 80rpx;
+  padding-left:27rpx;
+  font-size: 28rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #cfcfcf;
+}
+.name{
+  line-height: 80rpx;
+  padding-left:30rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+}
+.number image{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 12rpx;
+  position:relative;
+  top:4px;
+}
+.confirm{
+  width: 100%;
+  line-height: 100rpx;
+  font-size: 40rpx;
+  background: #00BC71;
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}

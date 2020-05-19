@@ -1,0 +1,9 @@
+<!--pages/activity/signUp.wxml-->
+<view class='signUpBox'>
+ <view class='name'>{{acti.title}}</view>
+<view class='time'><image src='../../images/time.png' mode='aspectFill'/>{{acti.startDate}}至{{acti.endDate}}</view>
+<view class='address_view'><image src="../../images/position.png" mode='aspectFill'/><text>{{acti.address?acti.address:'--'}}</text></view>
+<view class='number'> <image src="../../images/user_normal.png" mode='aspectFill'/>{{count>0?(count+'人次'):'--'}}</view>
+<view class='price'><text style='color:#7a7a7a;display:inline-block;'>￥</text> 报名总费用：{{totalPrice>0?totalPrice+'元':'免费'}}</view>
+<view class='confirm' bindtap='signUp'>确定</view>
+</view>

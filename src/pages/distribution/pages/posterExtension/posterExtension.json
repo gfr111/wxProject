@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "推广海报",
+  "usingComponents": {
+    "painter": "/pages/distribution/components/painter/painter"
+  }
+}

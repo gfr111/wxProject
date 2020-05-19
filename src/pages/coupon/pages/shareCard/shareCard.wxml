@@ -1,0 +1,42 @@
+<!--pages/coupon//pages/shareCard/shareCard.wxml-->
+<view class="cardShareBox">
+   <view class="shareItem" >
+     <span>每人可领取次数</span>
+     <view>
+       <input placeholder='填写次数' placeholder-class="place-holder" type="number" value="{{count}}" bindinput="getNum" id='0'/>
+       <span>次</span>
+     </view>
+   </view>
+    <view class="shareItem" >
+     <span>领取人数</span>
+     <view> 
+       <input placeholder='填写人数' placeholder-class="place-holder" type="number" value="{{num}}" bindinput="getNum" id='1'/>
+       <span>人</span>
+     </view>
+   </view>
+    <view class="shareItem" style="margin-bottom:50rpx;">
+     <span>链接有效时间</span>
+     <view>
+       <input placeholder='填写时间' placeholder-class="place-holder" type="number" value="{{time}}" bindinput="getNum" id='2'/>
+       <span>时</span>
+     </view>
+   </view>
+   <view class="cardCount">卡内剩余{{remianCount}}次，本次分享{{count*num}}次</view>
+     <view  class='shareBox' bindtap="loadShareBox">
+      <span>一键分享</span>
+    </view>
+    <view class="tips">未领取的次卡，将在有效时间结束后返还</view>
+</view>
+<cover-view class="popBox" wx:if="{{showPop}}">
+  <cover-view class="popContent">
+   <cover-view class='popTop'>
+       <cover-view class="title">提示</cover-view>
+        <cover-view class="shareTxt" style='margin-bottom:4rpx;'>将分享给{{num}}人，每人领取{{count}}次，</cover-view>
+        <cover-view class="shareTxt" style='margin-top:0;'>确认分享</cover-view>
+   </cover-view>
+    <cover-view class="shareBtnBox">
+      <cover-view bindtap="cancelShare" class="cancelBtn">取消</cover-view>
+      <button open-type="share">确定</button>
+    </cover-view>
+  </cover-view>
+</cover-view>

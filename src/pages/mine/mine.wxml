@@ -1,0 +1,153 @@
+<wxs src="../../utils/uiUtils/imageUrlUtil.wxs" module="imageUrlUtil"></wxs>
+
+<view class="index">
+  <scroll-view scroll-y style='height:{{height}}px;'>
+    <view class="">
+      <view class="bg1" wx:if="{{account}}"></view>
+      <view class="bg2"></view>
+      <view class="userInfoBox" wx:if="{{account}}">
+        <view class="messBox" bindtap="changeData">
+          <image class='userinfo-avatar' src='{{headerImg}}' mode='aspectFill'></image>
+          <view class='rightBox'>
+            <view class='peopleMess'>
+              <text class="userinfo-nickname">{{account.name}}</text>
+              <text class="center-name">{{account.phone}}</text>
+            </view>
+            <view class='changeBox'>
+
+              <image wx:if="{{isother}}" class='userInfo-next' bindtap='changetoown' style="margin-right:20rpx" src='../../images/onlypersonal.png'></image>
+
+              <image wx:if="{{!isother&&wxAppSetting.showParentAgent}}" class='userInfo-next' bindtap='tochangepeople' style="margin-right:20rpx" src='../../images/changepeople.png'></image>
+
+              <image class='userInfo-next' src='../../images/setup.png' bindtap='goAccount' wx:if="{{!enableParent}}"></image>
+            </view>
+          </view>
+        </view>
+        <view class="btnBox" wx:if="{{!enableParent}}" bindtap='myCup'>
+          <view class="couponBox">
+            <!-- <span style='font-weight:600;'>{{ticketList==null?0:ticketList.length}}</span> -->
+            <span>我的卡券</span>
+          </view>
+          <view class="pointBox" bindtap='myIntegral'>
+            <span style='font-weight:600;'>{{totalScore==null?0:totalScore}}</span>
+            <span> 积分</span>
+          </view>
+        </view>
+      </view>
+      <view class="userInfoBox" wx:else style="display: flex;align-items: center;">
+        <image class="userinfo-avatar" src="../../images/exampleImg.png" background-size="cover"></image>
+        <text class="tapLogin" bindtap='userInforViewTap'>点击登录</text>
+      </view>
+    </view>
+    <!-- 不是衢州版本的时候-->
+
+    <view class='authenticationBox' wx:if='{{!isTrial&&showPop&&!enableParent&&wxAppSetting.showWxFaceRecognition}}'>
+      <view class="box">
+        <view style="display: inline-block;">上传真实头像认证身份，就可以
+          <span style=' color:#FF5200;'>人脸识别入场</span>啦～ </view>
+        <span class='authenticationBtn' bindtap='recognitionEvent'>去认证</span>
+      </view>
+    </view>
+
+<!-- 邀请banner -->
+  <view class="inviteBox" wx:if="{{supportInviteFriends}}">
+    <image src="../../images/inviteBanner.png"></image>
+    <text>邀请好友，福利送不停</text>
+    <text bindtap="toInvite">去邀请</text>
+  </view>
+
+
+    <view class='class_view' wx:if="{{!enableParent}}">
+      <block wx:for="{{classArr}}" wx:key='index' wx:if="{{clubType!=4}}">
+        <view wx:if="{{(!item.showname)||(index!=4&&wxAppSetting[item.showname])||(item.showname=='allowTicket'&&allowTicket)||(item.showname=='isDistributor'&&isDistributor)}}" class=' {{clubType==4?"twentyPrecent":"class_item"}}' bindtap='selectClass' data-idx='{{index}}'
+          id="{{item.path}}">
+          <image class='imgbg' src='{{item.img}}'></image>
+          <view class='recom_goodtitle'>{{item.title}}</view>
+        </view>
+      </block>
+
+
+
+      <block wx:if="{{clubType==4}}">
+        <view wx:if="{{(!item.showname)||(item.showname=='allowTicket'&&allowTicket)||(item.showname=='isDistributor'&&isDistributor)}}" wx:for="{{classArr}}" wx:key='index' class=' {{clubType==4?"twentyPrecent":"class_item"}} ' id="{{item.path}}" bindtap='selectClass'
+          data-idx='{{index}}'>
+          <image class='imgbg' src='{{item.img}}'></image>
+          <view class='recom_goodtitle'>{{item.title}}</view>
+        </view>
+      </block>
+    </view>
+
+
+
+
+
+    <!-- 衢州版本 -->
+    <view class="officeCard" wx:if="{{enableParent}}">
+      <view class="cardBox" bindtap="toNext" data-number="1">
+        <image src="../../images/officeBuyCar.png"></image>
+        <span>我的会员卡</span>
+        <span>点击查看</span>
+      </view>
+      <view class="cardBox" bindtap="toNext" data-number="2">
+        <image src="../../images/courseRevers.png"></image>
+        <span>课程预约</span>
+        <span>点击查看</span>
+      </view>
+    </view>
+
+
+
+
+
+
+    <!-- 跳转到菠派 -->
+    <view class="bopai" wx:if="{{featureSetting.ptToolClubId>0}}">
+      <text class="bopaititle">运动数据</text>
+      <view class="bopainav">
+        <view class="bopaiitem" wx:for="{{bopainav}}" wx:key="index" bindtap="tobopai" id="{{index}}">
+          <image src="/images/{{item.icon}}.png"></image>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+
+    <!-- 分销中心这一块 -->
+    <!-- 衢州版本 -->
+    <view class='navListBox' wx:if="{{enableParent}}">
+      <view class='navList' wx:if="{{isDistributor}}" bindtap="toNext" data-number="5">
+        <text>分销中心</text>
+        <image src='../../images/next.png'></image>
+      </view>
+      <view class='navList' wx:if="{{enableParent}}" bindtap="toNext" data-number="4">
+        <text>我的健身圈</text>
+        <image src='../../images/next.png'></image>
+      </view>
+      <!-- <view class='navList' wx:if="{{enableParent}}"  bindtap="toNext" data-number="4">
+          <text>体侧报告</text>
+          <image src='../../images/next.png'></image>
+        </view> -->
+      <view  class='navList' wx:for="{{array}}" wx:key="{{index}}" bindtap="scrollViewTap" id="{{item.path}}">
+        <text>{{item.title}}</text>
+        <image src='{{item.img}}'></image>
+      </view>
+    </view>
+
+    <!-- 非衢州版本 -->
+    <view class="bopai {{wxAppSetting.showOtherOpenDoorViaQr&&featureSetting.ptToolClubId>0?'getbottom':''}}" wx:else >
+     <text class="bopaititle">其他服务</text>
+      <view class="bopainav" >
+        <view wx:if="{{!item.show||(item.show&&wxAppSetting.showMyCards)}}" class='bopaiitem'   wx:for="{{array}}" wx:key="{{index}}" bindtap="scrollViewTap" id="{{item.path}}">
+          <image src='{{item.img}}'></image>
+          <text>{{item.title}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="qrcode-back" wx:if="{{wxAppSetting.showOtherOpenDoorViaQr}}">
+      <view bindtap='{{!buttonClicked ? "qrCode":""}}' class="qrcode">
+        <image class="qrcode-image" src="../../images/floatScan.png"></image>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,405 @@
+page {
+  background: white;
+}
+
+.index {
+  padding: 30rpx;
+}
+
+.header {
+  width: 690rpx;
+  height: 356rpx;
+  padding: 30rpx;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  color: #fff;
+  border-radius: 16rpx;
+  position: absolute;
+
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  box-sizing: border-box;
+  padding-left: 0;
+  box-shadow: 0 10rpx 6rpx #ababab;
+}
+
+.bg {
+  width: 690rpx;
+  height: 356rpx;
+  border-radius: 16rpx;
+  margin-bottom: 50rpx;
+  position: absolute;
+  left: 30rpx;
+  z-index: 100;
+  top: 30rpx;
+}
+
+.title {
+  padding-left: 30rpx;
+}
+
+.title>text:first-child {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 4rpx;
+}
+
+.title>text:last-child {
+  font-size: 28rpx;
+  font-weight: 400;
+  width: 600rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.money {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.money>view {
+  padding: 11rpx 52rpx;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 0px 200rpx 200rpx 0px;
+  color: #fa4a11;
+  font-size: 50rpx;
+  padding-left: 30rpx;
+}
+
+.money>view>text:first-child {
+  font-size: 32rpx;
+  margin-right: 4rpx;
+}
+
+.money>text {
+  font-size: 24rpx;
+  font-weight: 300;
+  margin-bottom: 10rpx;
+}
+
+.navs {
+  padding: 44rpx 0;
+  border-top: 2rpx solid #ececec;
+  border-bottom: 2rpx solid #ececec;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navdetail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 30rpx;
+  border-right: 2rpx solid #ececec;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.navdetail>image:first-child {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.navdetail>view>text {
+  display: block;
+  color: #383838;
+  font-size: 32rpx;
+}
+
+.navdetail>view>text:last-child {
+  color: #6e6e6e;
+  font-size: 24rpx;
+}
+
+.navdetail>view:last-child {
+  width: 16rpx;
+  height: 16rpx;
+  border-right: 1px solid #000;
+  border-top: 1px solid #000;
+  transform: rotate(45deg);
+}
+
+.navs>.navdetail:last-child {
+  padding-left: 20rpx;
+  padding-right: 0;
+  border: none;
+}
+
+.carddes {
+  color: #383838;
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.beforeBuy {
+  padding: 50rpx 0;
+}
+
+.attention {
+  margin-top: 20rpx;
+}
+
+.attention>text:first-child {
+  color: #383838;
+  font-size: 28rpx;
+  font-weight: 600;
+  display: inline-block;
+  width: 180rpx;
+}
+
+.attention>text:last-child {
+  color: #6e6e6e;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+
+.blackTitleValue {
+  color: #383838;
+  font-size: 36rpx;
+  text-align: left;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 20rpx;
+}
+
+.usetime {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.usetime>view>text {
+  display: block;
+  color: #6e6e6e;
+  font-size: 28rpx;
+  font-weight: 400;
+  margin-bottom: 10rpx;
+}
+
+.groups {
+  margin-top: 400rpx;
+}
+
+.tip {
+  text-align: center;
+  font-size: 29rpx;
+}
+
+.tip-bottom {
+  margin-bottom: 310rpx;
+}
+
+.buy-warp {
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  border-top: 2rpx solid #eee;
+  padding: 16rpx 24rpx;
+  z-index: 150;
+}
+
+.select-type {
+  background: #fff;
+  position: fixed;
+  font-size: 29rpx;
+  bottom: 130rpx;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  border-top: 2rpx solid #eee;
+  padding: 16rpx 24rpx;
+  z-index: 150;
+}
+
+.price-unit {
+  float: left;
+  padding-left: 40rpx;
+  padding-top: 48rpx;
+  font-size: 24rpx;
+  color: #222;
+  letter-spacing: 0;
+  font-weight: bold;
+}
+
+.price-amount {
+  float: left;
+  font-size: 40rpx;
+  color: #222;
+  letter-spacing: 0;
+  padding-left: 8rpx;
+  padding-top: 32rpx;
+}
+
+.btn-buy {
+  float: right;
+  background: #00bc71;
+  border-radius: 42rpx;
+  width: 320rpx;
+  height: 84rpx;
+  font-size: 34rpx;
+  color: #fff;
+  letter-spacing: 0;
+  margin-top: 12rpx;
+  margin-right: 40rpx;
+  text-align: center;
+  line-height: 76rpx;
+}
+
+.btn-first {
+  margin-right: 30rpx;
+}
+
+.type-text {
+  margin-bottom: 10rpx;
+}
+
+.type-text-big {
+  font-size: 30rpx;
+}
+
+.btn-selected {
+  border: 1rpx solid #00b792;
+  color: #00b792;
+  background: #fff;
+}
+
+.btn-selected::after {
+  border: none;
+}
+
+.cancel-select {
+  float: right;
+  margin-right: 50rpx;
+  color: #00b792;
+}
+
+.oldAmount {
+  color: #ababab;
+  text-decoration: line-through;
+  font-size: 24rpx;
+  margin-left: 12rpx;
+}
+
+.toCollage {
+  width: 100%;
+  margin: auto;
+  color: #fff;
+  border-radius: 8rpx;
+  padding: 20rpx 28rpx;
+  font-size: 30rpx;
+  margin-bottom: 40rpx;
+  box-sizing: border-box;
+  background: linear-gradient(315deg, rgba(255, 160, 93, 1) 0%, rgba(245, 114, 82, 1) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view {
+  width: 116rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 22rpx;
+  color: #f57352;
+  font-size: 28rpx;
+  text-align: center;
+  display: inline-block;
+  margin-top: 4rpx;
+  padding: 6rpx 0;
+}
+
+.view text {
+  font-size: 26rpx;
+}
+
+.view image {
+  width: 17rpx;
+  height: 21rpx;
+  margin-left: 4rpx;
+}
+
+.showAllMess {
+  margin-top: 40rpx;
+  padding-bottom: 60rpx;
+}
+
+.btnBox {
+  width: 310rpx;
+  height: 72rpx;
+  border-radius: 100rpx;
+  border: 1px solid #979797;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.btnBox>span {
+  color: #303030;
+  font-size: 28rpx;
+}
+
+.btnBox>image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 24rpx;
+}
+
+.hideMessBox {
+  width: 194rpx;
+  height: 72rpx;
+  border-radius: 100rpx;
+  border: 1px solid #979797;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.hideMessBox>span {
+  color: #303030;
+  font-size: 28rpx;
+}
+
+.hideMessBox>image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 24rpx;
+}
+
+.buybtn {
+  width: 690rpx;
+  height: 72rpx;
+  background: rgba(0, 188, 113, 1);
+  border-radius: 40px;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 72rpx;
+}
+.buy{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background: #fff;
+    position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+}
+.rich{
+  background: red;
+}

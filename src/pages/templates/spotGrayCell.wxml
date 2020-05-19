@@ -1,0 +1,17 @@
+<template name='spotGrayCell'>
+  <view class='spotGrayCell'>
+    <text class='graytitle'>{{tint}}</text>
+    <!-- <view style="display:inline-block"> -->
+        <text class='graySpotDetail'>{{value}}</text>
+    <!-- </view> -->
+
+  </view>
+</template>
+
+
+<template name='privatecourse'>
+  <view class='spotGrayCellcourse'>
+    <view class='graySpotcourse'></view>
+    <view class='graySpotDetailcourse'>{{tint}}{{value}}</view>
+  </view>
+</template>

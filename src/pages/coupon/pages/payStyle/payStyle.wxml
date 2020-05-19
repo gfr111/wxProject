@@ -1,0 +1,28 @@
+<!--pages/coupon/pages/payStyle/payStyle.wxml-->
+<view class='payStyleBox'>
+  <view class='weChatPay'>
+    <view class='payLeft'>
+      <image src='../../../../images/payIcon.png' class='weChatIcon'></image>
+      <view class='messBox'>
+        <text>微信支付</text>
+        <text>在线支付</text>
+      </view>
+    </view>
+    <image src='{{isWechat=="true"?"../../../../images/circularSelcted.png":"../../../../images/circularNullSelcted.png"}}' class='checkIcon' bindtap='chooseWechat'></image>
+  </view>
+  <view class='cardList'>
+    <view class='cardListTitle'>储值卡</view>
+    <view class='cardItem' wx:for='{{cardList}}' wx:if='{{cardList.length!=0}}'>
+      <view class='payLeft' style='margin-left:0rpx;'>
+        <image src='../../../../images/StoredvalueCard.jpg' class='cardIcon'></image>
+        <view class='messBox' >
+          <text>{{item.cardName}}</text>
+          <text>余额：{{item.amount}}元</text>
+        </view>
+      </view>
+      <image src='{{contractId==item.contractId?"../../../../images/circularSelcted.png":"../../../../images/circularNullSelcted.png"}}' class='checkIcon'  style='margin-right:0rpx;' bindtap='selectCard' data-contractId='{{item.contractId}}'></image>
+    </view>
+      <view  wx:if='{{cardList.length==0}}' style='color:#9F9F9F;font-size:28rpx;margin-left:30rpx;'>暂无储值卡</view>
+  </view>
+
+</view>

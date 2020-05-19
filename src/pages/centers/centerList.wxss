@@ -1,0 +1,131 @@
+.bgView {
+  margin-top: 32rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30rpx;
+}
+
+page {
+  background: #fff;
+}
+
+.leftImageCell-bg-noBorder {
+  border: 0;
+}
+
+.leftImageCell-bg::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 0px;
+  border-bottom: 0.5px solid #e6e6e6;
+  color: #e6e6e6;
+}
+
+.leftImageCell-bg:first-child:before {
+  display: none;
+}
+
+.leftImageCell-bg {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  background: rgba(0, 0, 0, 0.2);
+  position: relative;
+  margin-bottom: 20rpx;
+  border-radius: 16rpx;
+}
+
+.leftImageCell-image {
+  width: 690rpx;
+  height: 178rpx;
+  border-radius: 16rpx;
+  position: absolute;
+  margin-bottom: 20rpx;
+  z-index: -1;
+}
+
+.leftImageCell-right-bg-detail {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  display: flex;
+  height: 178rpx;
+  padding-left: 28rpx;
+  z-index: 10;
+}
+
+.leftImageCell-right-title {
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  text-align: left;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.leftImageCell-right-detail {
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  text-align: left;
+  margin-top: 4rpx;
+  font-weight: 400;
+}
+
+.selectbtn {
+  background: #00bc71;
+  color: #fff;
+  font-size: 20rpx;
+  border-radius: 6rpx;
+  margin-left: 20rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  padding: 0 6rpx;
+  margin-top: 4rpx;
+
+}
+.colorbg{
+  background:rgba(0,0,0,0.6);
+  width: 690rpx;
+  height: 178rpx;
+  border-radius: 16rpx;
+  position: absolute;
+  /* margin-bottom: 20rpx;
+  z-index: -1; */
+}
+
+.message-title {
+  width: 100%;
+  height: 74rpx;
+  line-height: 74rpx;
+  text-align: center;
+  color: #7e7e7e;
+  font-size: 24rpx;
+  position: absolute;
+  left: 0rpx;
+  /* bottom: 46rpx; */
+}
+
+.no-center-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.no-center-title {
+  position: absolute;
+  left: 150rpx;
+  right: 150rpx;
+  text-align: center;
+  color: #888;
+  font-size: 28rpx;
+}

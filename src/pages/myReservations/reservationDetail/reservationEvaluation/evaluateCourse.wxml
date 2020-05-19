@@ -1,0 +1,55 @@
+<wxs src="starUrlUtil.wxs" module="getStarUrl">
+</wxs>
+<view class='index'>
+  <import src="../../../templates/greenBtn.wxml" />
+  <view class="courseMess">
+    <view class="course">
+      <image src="{{courseMessData.pictures?courseMessData.pictures:'../../../../images/teachPic.png'}}" mode='aspectFill' ></image>
+      <view>
+       <text>{{courseMessData.courName}}</text>
+       <text>{{courseMessData.plannedDate}} {{courseMessData.startTime}}-{{courseMessData.endTime}}</text>
+      </view>
+    </view>
+    <view class="trainerMess">
+      <image src="{{courseMessData.personalPortrait||courseMessData.photo||'../../../../images/default_user.png'}}" mode='aspectFill' ></image>
+      <text>{{courseMessData.trainerName}}</text>
+    </view>
+  </view>
+  <view class='headerView'>
+    <view class='star-bg'>
+      <block wx:for-items="{{stars}}" wx:key="star">
+        <!-- <view class='star'> -->
+        <image class='star' src="{{getStarUrl(item)}}" model='aspectFit' bindtap='starTapped' id='{{index}}'></image>
+        <!-- </view> -->
+      </block>
+    </view>
+    <view class='evaluationText'>{{levelStr}}</view>
+    <!-- <view class='separatorLine'></view> -->
+  </view>
+  <view class='textArea-bg'>
+    <textarea class="textInputRate" maxlength="250" bindinput="bindCommentsInput" placeholder="说说你对此次课程的感受吧（选填）" placeholder-style="color: #ABABAB" />
+  </view>
+
+  <view style="background:#ffffff;margin-top:20rpx;padding:40rpx 80rpx;" >
+     <view class='uploadImageStyle inline' wx:for="{{photo}}" wx:key="{{index}}">
+        <image class="cancel" catchtap='deleteImg' data-index='{{index}}' src='../../../../images/cancel.png'></image>
+        <image class='fill' data-url='{{item.path}}' src='{{item.path}}'></image>
+    </view>
+   <view class='uploadImageStyle inline' wx:if="{{photo.length<3}}">
+        <image class='fill' src='../../../../images/addPhoto.png' bindtap='selectPhoto'></image>
+    </view>
+  </view>
+
+  <!-- <template is='greenBtn' data='{{title:"确定", didTapGreenBtn:didTapGreenBtn}}'></template> -->
+  <view class="bottomBox">
+    <span  bindtap='uploadEvaluation'>确定</span>
+  </view>
+</view>
+
+<view class='bg' wx:if='{{isShow}}' catchtouchmove="preventTouchMove">
+  <view class='chooseImgBox'>
+     <view bindtap='chooseImg' data-type='1'>立即照相</view>
+     <view bindtap='chooseImg' data-type='2'>从相册中选取</view>
+     <view bindtap='hideUpload'>取消</view>
+  </view>
+</view>

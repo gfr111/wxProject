@@ -1,0 +1,45 @@
+<!--pages/distribution//pages/inviteRecord/inviteRecord.wxml-->
+<!--pages/distribution//pages/saleRecord/saleRecord.wxml-->
+<view class="saleRecordBox">
+  <view  wx:if="{{list.length>0}}">
+    <view class="interestBbox">
+      <view class="order" style="border-right:1px solid #CECFD0;">
+        <span>{{result.totalCount}}</span>
+        <span>总邀请</span>
+      </view>
+      <view class="order">
+        <span>{{result.totalReward}}</span>
+        <span>邀请奖励</span>
+      </view>
+    </view>
+    <scroll-view scroll-y style="height:{{windowHeight}}px">
+      <view class="inviterList">
+        <view class="inviterItem" wx:for="{{list}}" bindtap="toSaleRecord" data-id="{{item.traineeId}}">
+          <view class="inviterMMess">
+            <image src="{{item.photo?item.photo:'../../../../images/default_user.png'}}"></image>
+            <view class="mess">
+              <view>{{item.name}}</view>
+              <view style="display:flex;">
+                <span>邀请奖励</span>
+                <span style='color:#353535;padding:0 4rpx;'>{{item.rewardAmount}}</span>
+                <span>元</span>
+              </view>
+            </view>
+          </view>
+          <image src="../../../../images/changeRight.png"></image>
+        </view>
+         <view class="moreBtn">
+          <view class='moreBtnBox' bindtap='showMore' wx:if="{{showMore&&list.length>=pageSize*(pageNum+1)}}">
+            <span>查看更多</span>
+            <image src='../../../../images/down.png'></image>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class='nullBox' wx:else>
+     <image src='../../../../images/noRank.png' class='nullIcon'></image>
+      <text class='nullTxt'>暂无邀请记录</text>
+  </view>
+</view>
+

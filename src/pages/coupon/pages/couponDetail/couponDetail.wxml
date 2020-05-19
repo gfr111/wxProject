@@ -1,0 +1,195 @@
+<!--pages/coupon/pages/couponDetail/couponDetail.wxml-->
+<view class='couponDetailBox'>
+     <view class='topTabSwiper'> 
+        <view class='tab' data-current = "0" bindtap='checkCurrent'>
+          <text class=' {{currentData == 0 ? "tabBorer" : ""}}' bindtap='checkCurrent' data-current = "0">购买票券</text>
+        </view> 
+        <view class='tab' data-current = "1" bindtap='checkCurrent'>
+          <text class=' {{currentData == 1 ? "tabBorer" : ""}}' bindtap='checkCurrent'  data-current = "1">详情介绍</text>
+        </view> 
+        <view class='tab' data-current = "2" bindtap='checkCurrent'>
+          <text class=' {{currentData == 2 ? "tabBorer" : ""}}' bindtap='checkCurrent'  data-current = "2">购买须知</text>
+        </view> 
+     </view> 
+     <swiper current="{{currentData}}" class='swiper' style="height:{{defaultHeight}}px;" duration="300" bindchange="bindchange"> 
+      <swiper-item>
+        <view class='swiper_con'>
+           <scroll-view style="height: {{defaultHeight}}px;" scroll-y>
+              <view class='buyCouponBox'>
+                <image src='{{couponImg?couponImg:"https://www.forzadata.cn/static/images/ticket/swim.jpg"}}' class='couponImg'></image>
+                <view class='couponMess'>
+                    <text class='couponName'>{{couponName}}</text>
+                    <text class='couponStyle' wx:if="{{usageType==1}}">当天票</text>
+                    <text class='couponStyle' wx:if="{{usageType==2}}">{{effectiveDays}}天有效票</text>                 
+                </view>
+                <view class='couponRemind' wx:if='{{usageType==2}}'>
+                   <view style='display:flex;align-items:center;margin-bottom:6rpx;' wx:if="{{couponDetailMess.openingDay!=null&&couponDetailMess.closingDay!=null}}">
+                     <text style='color:#6E6E6E;font-size:26rpx;margin-right:10rpx'>场馆开放：</text>
+                     <text style='color:#303030;font-size:26rpx;'>{{openingDay}}-{{closingDay}}</text>
+                   </view>
+                   <view style='display:flex;align-items:center;'>
+                     <text style='color:#6E6E6E;font-size:26rpx;margin-right:10rpx'>开放时间：</text>
+                     <text style='color:#303030;font-size:26rpx;' wx:for="{{weekDayList}}">{{item+' '}}</text>
+                   </view>
+                </view>
+                  <view class='date-view' wx:if='{{usageType==1}}'>
+                      <view class='date-view-left-button-view' id='left' bindtap='changeCurrentWeek' wx:if="{{currentShowDaysIndex != 0}}">
+                        <image class='date-view-left-button' src='../../../../images/blackLeft.png'></image>
+                      </view>
+                      <view class='date-view-left-button-view' id='left' wx:else>
+                        <image class='date-view-left-button' src='../../../../images/greyLeft.png'></image>
+                      </view>
+                      <view class='date-view-right-button-view' id='right' wx:if="{{currentShowDaysIndex != divisor}}" bindtap='changeCurrentWeek'>
+                        <image class='date-view-right-button' src='../../../../images/blackRight.png'></image>
+                      </view>
+                      <view class='date-view-right-button-view' id='right' wx:else>
+                        <image class='date-view-right-button' src='../../../../images/greyRight.png'></image>
+                      </view>
+                      <scroll-view class='date-view-scroll-view'>
+                        <view wx:for="{{currentShowDays}}" wx:for-index="index" wx:for-item="item" wx:key='currentShowDaysId' class="date-view-scroll-view-section {{index == daysScrollViewCurrentIndex?'active':''}}" wx:key="{{index}}">
+                          <view class='date-view-scroll-view-section-tap' id="{{item.index}}" bindtap='dayBindTap'>
+                            <text class='date-view-scroll-view-section-day' style='color:#303030;font-weight:600;' wx:if="{{index == daysScrollViewCurrentIndex}}">{{item.month+'.'+item.date==today?'今天':item.day}}</text>
+                            <text class='date-view-scroll-view-section-day' style='color:#9F9F9F' wx:else>{{item.month+'.'+item.date==today?'今天':item.day}}</text>
+                            <text class='date-view-scroll-view-section-date' style='color:#303030;font-weight:600;' wx:if="{{index == daysScrollViewCurrentIndex}}">{{item.month}}.{{item.date}}</text>
+                            <text class='date-view-scroll-view-section-date' style='color:#9F9F9F' wx:else>{{item.month}}.{{item.date}}</text>
+                          </view>
+                        </view>
+                      </scroll-view>
+                  </view>
+                  <view class='{{usageType==2?"couponList":"hasMargin"}}' wx:if='{{scenceList.length>0}}'>
+                       <view class='couponItem' wx:for="{{scenceList}}" wx:key="{{index}}" >
+                          <view style='display:flex;align-items:center;'>
+                            <view class='sceneMess'>
+                              <image class='timeIcon' src='../../resources/moring.png' wx:if="{{item.startTime<'08:00'}}"></image>
+                              <image class='timeIcon' src='../../resources/afternoon.png' wx:if="{{item.startTime>='08:00'&&item.startTime<'18:00'}}"></image>
+                              <image class='timeIcon' src='../../resources/night.png' wx:if="{{item.startTime>='18:00'}}"></image>
+                              <view class='nameBox'>
+                                <text class='sceneName'>{{item.name}}</text>
+                                <text class='sceneTime'>{{item.startTime}}-{{item.endTime}}</text>
+                              </view>
+                            </view>
+                            <text class='tips' wx:if="{{(item.singleCount==item.count)&&item.singleCount!=null}}">暂无余票</text>
+                            <text class='tips' wx:if="{{(item.singleCount-item.count<20)&&item.singleCount!=null&&(item.singleCount-item.count!=0)}}">余票仅剩{{item.singleCount-item.count}}张</text>
+                          </view>
+                          <view class='couponPrice'>
+                            <view class='price'> <text>¥</text> <text>{{item.price}}</text> </view>
+                            <view class='numBox' wx:if="{{item.singleCount==item.buyCount||cartsNum==singleCount}}">   
+                                  <image wx:if='{{item.buyCount!=0}}' src='../../../../images/subBuy.png' class='emptyNum' bindtap='reduceCouponNum' data-item='{{item}}'></image>
+                                  <text wx:if='{{item.buyCount!=0}}'>{{item.buyCount}}</text>                  
+                                <image src='../../../../images/unAddBuy.png' class='emptyNum' ></image>
+                            </view>
+                            <view class='numBox' wx:else>
+                                  <image wx:if='{{item.buyCount!=0}}' src='../../../../images/subBuy.png' class='emptyNum' bindtap='reduceCouponNum' data-item='{{item}}'></image>
+                                  <text wx:if='{{item.buyCount!=0}}'>{{item.buyCount}}</text>
+                                   <image src='../../../../images/unAddBuy.png' class='emptyNum' data-item='{{item}}'wx:if="{{(item.singleCount==item.count)&&item.singleCount!=null}}"></image>
+                                  <image src='../../../../images/addBuy.png' class='emptyNum' bindtap='addCouponNum' data-item='{{item}}' wx:else></image>
+                                  
+                            </view>
+                          </view>
+                       </view>                                            
+                  </view>
+                  <view class='emptyScence' wx:else>
+                     <image src='../../../../images/noRank.png'></image>
+                     <text>暂无票券</text>
+                  </view>
+              </view>
+           </scroll-view>
+        </view>
+      </swiper-item> 
+      <swiper-item>
+        <view class='swiper_con'>
+          <scroll-view scroll-y style="height: {{defaultHeight}}px;">
+            <view class='rachTxt'>
+              <rich-text nodes="{{descrip}}" ></rich-text>
+            </view>          
+          </scroll-view>
+        </view>
+      </swiper-item> 
+      <swiper-item>
+        <view class='swiper_con'>
+          <scroll-view scroll-y style="height: {{defaultHeight}}px;background:#ffffff;" >
+             <view class='rachTxt' >
+                <rich-text nodes="{{notice}}" ></rich-text>
+                <view class='tipsTxt' style='margin-top:40rpx;'wx:if="{{tipsTxt}}">
+                  <span style='display:block;'>温馨提示：</span>
+                  <span>{{tipsTxt}}</span>
+                </view>
+              </view>    
+          </scroll-view>
+        </view>
+      </swiper-item> 
+     </swiper>
+     <view class='shoppingCarBox' wx:if='{{cartsNum==0&&currentData == 0}}'>
+       <view class='leftBox'>
+         <view class='cartsBox'>
+           <image src='../../../../images/unBuy.png' class='emptyCarts'></image>
+           <text>未选购商品</text>
+         </view>
+       </view>
+        <view class='rightBox'>
+            <text class='emptytxt'>购买</text>
+         </view>
+     </view>
+     <view class='shoppingCarBox' wx:if='{{cartsNum>0&&currentData == 0}}'>
+       <view class='leftBox'>
+         <view class='cartNumBox'  bindtap='showShoppingCartEvent'>
+             <image src='../../../../images/buyCar.png' class='emptyCarts'></image>
+             <text class='pointNum'>{{cartsNum}}</text>
+         </view>
+         <view class='priceBox'>
+           <text>¥</text>
+           <text>{{allPrice}}</text>
+         </view>
+       </view>
+        <view class='rightBox'>
+            <text class='emptytxt' style='background:#00BC71;' bindtap='toOrder'>购买</text>
+         </view>
+     </view>
+</view>
+<view class='bg' catchtouchmove="preventTouchMove" wx:if='{{showShoppingCart}}' bindtap='hideShoppingCartEvent'>
+  <view class='cartsList' catchtap='preventTouchMove'>
+      <view class='cartsTop'>
+         <text>已选{{cartsNum}}件</text>
+         <view bindtap='clearCart'>
+           <image src='../../../../images/delete.png'></image>
+           <text>清空购物车</text>
+         </view>
+      </view>
+      <view class='scenceLists'>
+        <view class='scenceItem' wx:for='{{scenceList}}' wx:if="{{item.buyCount>0}}">
+           <view class='scenceMess'>
+             <text>{{item.name}}</text>
+             <text>{{item.data}} {{item.startTime}}-{{item.endTime}}</text>
+           </view>
+           <view class='scencePriceNum'>
+              <text>¥{{item.price}}</text>
+               <view class='operationBox' wx:if="{{item.singleCount==item.buyCount||cartsNum==singleCount}}">
+                <image src='../../../../images/subBuy.png' bindtap='reduceCouponNum' data-item='{{item}}'></image>
+                <text class='scenceNum'>{{item.buyCount}}</text>
+                <image src='../../../../images/unAddBuy.png' ></image>
+              </view>
+              <view class='operationBox' wx:else>
+                <image src='../../../../images/subBuy.png' bindtap='reduceCouponNum' data-item='{{item}}'></image>
+                <text class='scenceNum'>{{item.buyCount}}</text>
+                <image src='../../../../images/addBuy.png' bindtap='addCouponNum' data-item='{{item}}'></image>
+              </view>
+           </view>
+        </view>
+      </view>
+      <view class='shoppingCar'>
+        <view class='leftBox'>
+          <view class='cartNumBox'>
+              <image src='../../../../images/buyCar.png' class='emptyCarts'></image>
+              <text class='pointNum'>{{cartsNum}}</text>
+          </view>
+          <view class='priceBox'>
+            <text>¥</text>
+            <text>{{allPrice}}</text>
+          </view>
+        </view>
+          <view class='rightBox'>
+              <text class='emptytxt' style='background:#00BC71;' bindtap='toOrder'>购买</text>
+          </view>
+      </view>
+  </view>
+</view>

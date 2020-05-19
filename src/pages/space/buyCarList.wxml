@@ -1,0 +1,43 @@
+<!--pages/space/buyCarList.wxml-->
+
+<view class='swiper_con'>
+    <view class='nocarBox' wx:if="{{deduction.length==0&&discount.length==0}}">
+      <image src='../../images/noRank.png'></image>
+      <span>暂无数据</span>
+    </view>
+    <scroll-view scroll-y style="height:{{defaultHeight}}px;" wx:else>
+      <view class='cardListBox'>
+        <view class='card_title'>扣卡</view>
+        <view class='cardList' wx:for="{{deduction}}" wx:key="{{index}}" bindtap='chooseCar' data-online='{{item.onlineBuySupport}}' data-id='{{item.objectId}}' data-discount='{{item.discountRatio}}' data-count='item.deductionCount'>
+          <image src='../../images/StoredvalueCard.jpg' class='cardImg' wx:if="{{item.cardType==5}}"></image>
+          <image src='../../images/subCard.jpg' class='cardImg' wx:if="{{item.cardType==4||item.cardType==7}}"></image>
+          <image src='../../images/timeLimitCard.jpg' class='cardImg' wx:if="{{item.cardType==3||item.cardType==6}}"></image>
+          <view class="cardName" wx:if="{{item.cardType==5}}">{{item.objectName}}</view>
+          <view class="cardName" wx:if="{{item.cardType==4||item.cardType==7}}">{{item.objectName}}</view>
+          <view class="cardName" wx:if="{{item.cardType==3||item.cardType==6}}">{{item.objectName}}</view>
+          <!-- <span class="cardLimit" wx:if="{{item.cardType==5}}">余额¥{{item.remain||'0'}}元</span>
+              <span class="cardLimit" wx:if="{{item.cardType==4||item.cardType==7}}">剩余{{item.remain||'0'}}次</span>
+              <span class="cardLimit" wx:if="{{item.cardType==3||item.cardType==6}}">剩余{{item.remain||'0'}}天</span> -->
+          <span wx:if="{{item.cardType==4||item.cardType==7}}" class="cardState">{{item.deductionCount}}次</span>
+          <span wx:if="{{item.cardType==5}}" class="cardState">{{item.deductionAmount}}元</span>
+          <image class='right_img' src='../../images/changeRight.png'></image>
+        </view>
+      </view>
+      <view class='cardListBox'>
+        <view class='card_title'>优惠</view>
+        <view class='cardList' wx:for="{{discount}}" wx:key="{{index}}" bindtap='chooseCar' data-online='{{item.onlineBuySupport}}' data-id='{{item.objectId}}' data-discount='{{item.discountRatio}}' data-count='item.deductionCount'>
+          <image src='../../images/StoredvalueCard.jpg' class='cardImg' wx:if="{{item.cardType==5}}"></image>
+          <image src='../../images/subCard.jpg' class='cardImg' wx:if="{{item.cardType==4||item.cardType==7}}"></image>
+          <image src='../../images/timeLimitCard.jpg' class='cardImg' wx:if="{{item.cardType==3||item.cardType==6}}"></image>
+          <span class="cardName" wx:if="{{item.cardType==5}}">{{item.objectName}}</span>
+          <span class="cardName" wx:if="{{item.cardType==4||item.cardType==7}}">{{item.objectName}}</span>
+          <span class="cardName" wx:if="{{item.cardType==3||item.cardType==6}}">{{item.objectName}}</span>
+          <span wx:if="{{item.discountRatio}}" class="cardState">{{item.discountRatio}}折</span>
+          <!-- <span wx:if="{{item.cardType==4||item.cardType==7}}" class="cardState">5折</span>
+              <span wx:if="{{item.cardType==4||item.cardType==7}}" class="cardState">7折</span>
+              <span wx:if="{{item.cardType==4||item.cardType==7}}" class="cardState">8折</span> -->
+              <image class='right_img' src='../../images/changeRight.png'></image>
+        </view>
+      </view>
+    </scroll-view>
+  </view>

@@ -1,0 +1,57 @@
+<!--pages/couponOrder/pages/admissionCode/admissionCode.wxml-->
+<wxs src="../../../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<view class='codeBox'>
+  <view class='admissionCodeBox'>
+      <view class='ceterBox'>
+        <image src='{{codeMess.photo||"../../resources/defaultImg.png"}}' class='centerImg'></image>
+        <text class='centerName'>{{codeMess.name}}</text>
+      </view>
+      <view class='ticketBg'>
+         <image src='../../resources/ticketBg.png' class='ticketBgIcon'></image>
+          <view class='ticketMess'>
+            <view class='ticketTop'>
+              <view class='coupon'style='width:30%;'>
+                <text>票券名称</text>
+                <text>{{codeMess.ins.ticketName}}</text>
+              </view>
+              <view class='coupon' style='width:50%;'>
+                <text>场次</text>
+                <text style="width:100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{codeMess.ins.timesName}}</text>
+              </view>
+              <view class='coupon' style='width:20%;' wx:if="{{codeMess.ticket.presenceRestrictMinutes}}">
+                <text>在场时限</text>
+                <text>{{codeMess.ticket.presenceRestrictMinutes}}分钟</text>
+              </view>
+            </view>
+            <view class='ticketTop'>
+              <view class='coupon'  style='width:50%;'>
+                <text>使用时间</text>
+                <text>{{codeMess.ins.startTime}}-{{codeMess.ins.endTime}}</text>
+              </view>
+              <view class='coupon' wx:if='{{codeMess.ins.usageType==1}}' style='width:70%;'>
+                <text>有效期</text>
+                <text>{{codeMess.ins.timeDate}}</text>
+              </view>
+              <view class='coupon' wx:if='{{codeMess.ins.usageType==2}}' style='width:70%;'>
+                <text>有效期</text>
+                <text>{{dateUtil.formatTimes(codeMess.ins.effectiveStartDate)}}-{{dateUtil.formatTimes(codeMess.ins.effectiveEndDate)}}</text>
+              </view>
+            </view>
+             <view class='weekdayList' wx:if='{{codeMess.ins.usageType==2}}'>
+               <text class='weekDayItem' wx:for="{{weekDay}}">{{item}}</text>              
+            </view>
+         </view>
+         <view class='ticketCodeBox'>
+            <view class='ticketCode'>
+              <image src='{{codeMess.qr}}' style="opacity:0.2;" wx:if="{{codeMess.isOvertime}}"></image>
+              <image src='{{codeMess.qr}}'  wx:else></image>
+              <view style="color:#343434;font-size:24rpx;" wx:if="{{codeMess.maxCheckoutTime&&!codeMess.isOvertime}}">请在<text style="color:#FF7F7F;font-size:24rpx;">{{codeMess.maxCheckoutTime}}之前出场</text>，超时需要补款</view>
+              <view style="color:#FF7F7F;font-size:24rpx;" wx:if="{{codeMess.isOvertime}}">您已超时，请补差票后出场</view>
+              <text>NO. {{codeMess.ins.writeOffCode}}</text>
+            </view>
+         </view>
+         <text class='checkDetailBtn' bindtap='checkDetilEvent' data-orderId='{{item.orderId}}' wx:if="{{!codeMess.ticketFareAdjustment}}">订单详情</text>
+         <view class="disparity" wx:if="{{codeMess.ticketFareAdjustment}}" bindtap="toDisparity">补差票</view>
+      </view>
+  </view>
+</view>

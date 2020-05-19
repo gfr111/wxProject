@@ -1,0 +1,66 @@
+<!--pages/activity/activity.wxml-->
+<view class='activityBox'>
+  <swiper indicator-dots='true' autoplay='true' interval='5000' duration='1000' class='swiper'>
+    <block wx:for="{{img}}" wx:key=''>
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" mode='aspectFill' />
+      </swiper-item>
+    </block>
+
+  </swiper>
+  <view class='name_view'>
+    <text>{{acti.title}}</text>
+    <image src='../../images/share_icn.png'></image>
+    <button open-type='share'></button>
+  </view>
+  <view class='time'>
+    <!-- <image src='../../images/time.png' mode='aspectFill' /> -->
+    <text>时间</text>{{acti.startDate}}至{{acti.endDate}}</view>
+  <view class='address'>
+    <!-- <image src="../../images/position.png" mode='aspectFill' /> -->
+    <text style='color:#383838;font-weight: 600;'>地点</text><text>{{acti.address?acti.address:'--'}}</text></view>
+  <view class='price' style='{{acti.unitPrice>0?"":"color: #383838;"}}'>
+    <text wx:if="{{acti.unitPrice>0}}" style='color:#7a7a7a;display:inline-block;'>￥</text> {{acti.unitPrice>0?acti.unitPrice+'元/人':'免费'}}</view>
+  <view class='activities'>
+    <text>活动详情</text>
+    <view>
+      <rich-text nodes="{{acti.content}}" bindtap="tap"></rich-text>
+    </view>
+  </view>
+  <block wx:if="{{acti.needReserve && acti.status ==2}}">
+    <view class='center-info' wx:if="{{acti.processStatus==6}}">
+      <text style='margin-right:15rpx;display:inline-block;'>报名人数</text>
+      <text class='operation-box' bindtap='refreshCount' data-method='{{false}}'>-</text>
+      <text class='operation-box'>{{count}}</text>
+      <text class='operation-box' bindtap='refreshCount' data-method='{{true}}'>+</text>
+      <text class='signUp' bindtap='toSignUp'>立即报名</text>
+    </view>
+
+    <view class='center-info' wx:if="{{acti.processStatus==3}}">
+      <text style='margin-right:15rpx;display:inline-block;'>已报名</text>
+      <text class='signUp' bindtap='goCouponDetail'>票券详情</text>
+    </view>
+    <view class='center-info' wx:if="{{acti.processStatus==1}}">
+      <text style='margin-right:15rpx;display:inline-block;'>活动未开始</text>
+      <text class='unSignUp'>未开始</text>
+    </view>
+    <view class='center-info' wx:if="{{acti.processStatus==2}}">
+      <text style='margin-right:15rpx;display:inline-block;'>人数已满</text>
+      <text class='unSignUp'>人数已满</text>
+    </view>
+    <view class='center-info' wx:if="{{acti.processStatus==4}}">
+      <text style='margin-right:15rpx;display:inline-block;'>已结束</text>
+      <text class='unSignUp'>已结束</text>
+    </view>
+    <view class='center-info' wx:if="{{acti.processStatus==5}}">
+      <text style='margin-right:15rpx;display:inline-block;'>报名已截止</text>
+      <text class='unSignUp'>已截止</text>
+    </view>
+  </block>
+  <block wx:if="{{acti.needReserve&&acti.status !=2}}">
+    <view class='center-info'>
+      <text style='margin-right:15rpx;display:inline-block;'>{{acti.status==1?"该活动暂未发布":"该活动已结束"}}</text>
+
+    </view>
+  </block>
+</view>

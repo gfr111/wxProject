@@ -1,0 +1,130 @@
+/* pages/traineeCenter/evaluationList.wxss */
+.evaluateBox{
+  height: 100%;
+  background: #F7F8F9;
+}
+.evaluateList{
+  padding:30rpx;
+  margin-bottom: 100rpx;
+}
+.evaluateItem{
+  padding:30rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+}
+.userBox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.messBox{
+   display: flex;
+   align-items: center;
+}
+.userImage{
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.userMess{
+  display: flex;
+  flex-direction: column;
+}
+.userName{
+  font-size: 28rpx;
+  color: #303030;
+  font-weight: 600;
+  margin-bottom: 4rpx;
+}
+.userPhone{
+  color: #B8B8B8;
+  font-size: 24rpx;
+}
+.time{
+  color: #85858B;
+  font-size: 24rpx;
+}
+.judgeBox{
+  color: #5E5E5E;
+  font-size: 28rpx;
+}
+.replyBox{
+  margin-top: 40rpx;
+}
+.replyTitle{
+  margin-bottom: 4rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.replyTitle>span:nth-child(1){
+  color: #303030;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.replyTitle>span:nth-child(2){
+  color: #85858B;
+  font-size: 24rpx;
+}
+.judgeBtn{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+  border-top:1px solid #E5E5E5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+.judgeBtn>span{
+  width: 690rpx;
+  height: 72rpx;
+  background: #00BC71;
+  color: #ffffff;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 72rpx;
+  border-radius: 40rpx;
+}
+.photoList{
+  display: flex;
+  align-items: center;
+  flex-wrap:wrap;
+  margin-top: 10rpx;
+}
+.photoList>image{
+  width: 128rpx;
+  height: 128rpx;
+  margin-right: 16rpx;
+  border-radius: 8rpx;
+}
+.nullOrder {
+  width: 500rpx;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  transform: translateX(-250rpx);
+}
+
+.nullOrder .noOrderImg {
+  width: 272rpx;
+  height: 304rpx;
+}
+
+.nullOrder .noOrderTxt {
+  display: block;
+  font-size: 30rpx;
+  color: #7a7a7a;
+  margin-top: 40rpx;
+  position: relative;
+  left: -15rpx;
+}

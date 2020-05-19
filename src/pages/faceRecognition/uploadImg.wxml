@@ -1,0 +1,33 @@
+<!--pages/faceRecognition /faceRecognition .wxml-->
+  <view class='uploadBox'>
+  <view class='tipBox' wx:if="{{showTip}}">
+    <span>使用人脸识别需要场馆有设备和软件支持，请进一步确认。</span>
+    <image src='../../images/uploadCancel.png' bindtap='hideTip'></image>
+  </view>
+  <view class='uploadContent'>
+   <view class='photoBox'>
+      <image src='{{imgFile==null?"../../images/exampleImg.png":imgFile}}' mode='aspectFill'></image>
+   </view>
+    <view class='considerationsBox'>
+      <span>{{imgFile==null?'请遵照要求上传本人照片':'这张照片清楚吗？'}}</span>
+      <span>1. 照片背景要清爽，最好是纯白色；</span>
+      <span>2. 照片中不要有反光；</span>
+      <span>3. 脸部正面照片，角度参照证件照；</span>
+      <span>4. 面部占整张照片比例与证件照相同。</span>
+    </view>
+    <view wx:if="{{imgFile==null}}" class='camera'>
+      <image src='../../images/takePhotoBtn.png' bindtap='showPop'></image>
+    </view>
+    <view class='submitBtn' wx:else>
+      <view class='toCompare' bindtap='toComparePage'>是的,很清楚</view>
+      <view class='rePhoto' bindtap='showPop'>再拍一张</view>
+    </view>
+  </view>
+</view>
+<view class='popBox' catchtouchmove="preventTouchMove"  bindtap='hidePop' wx:if='{{isShowPop}}'>
+  <view class='chooseBox' catchtap='inbtn'>
+     <view class='takePhoto' bindtap='takePhotoEvent'>立即拍照</view>
+     <view class='takePhoto' style=' border-bottom: 0;' bindtap='chooseImgEvent'>从相册选取</view>
+     <view class='cancel' bindtap='hidePop'>取消</view>
+  </view>
+</view>

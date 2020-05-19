@@ -1,0 +1,46 @@
+/* pages/distribution//pages/openShare/openShare.wxss */
+page{
+  background: #ffffff;
+}
+.shareBox{
+  padding: 0 60rpx;
+  overflow: hidden;
+}
+.contentBox{
+  width: 630rpx;
+  height: 1100rpx;
+  box-shadow:0px 4px 20px 2px rgba(0,0,0,0.1);
+  background: #ffffff;
+  border-radius:20rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 55rpx;
+}
+.avatar{
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  margin-top: -55rpx;
+}
+.userName{
+  color: #303030;
+  font-size: 32rpx;
+  margin: 10rpx 0;
+}
+.poster{
+  width: 470rpx;
+  height: 836rpx;
+  margin-bottom: 20rpx;
+}
+.accept{
+   width: 470rpx;
+   height: 80rpx;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: #00BC71;
+   color: #ffffff;
+   border-radius: 4rpx;
+   font-size: 28rpx;
+}

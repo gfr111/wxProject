@@ -1,0 +1,9 @@
+<import src="../templates/detailCell.wxml" />
+
+<view class='index'>
+ <block wx:for="{{notifications}}" wx:key="item.id">
+  <navigator url="{{item.navigator}}" class="detailCell">
+      <template is='detailCell' data='{{title:item.title, detailTitle: item.imgurl}}'></template>
+  </navigator>
+</block>
+</view>

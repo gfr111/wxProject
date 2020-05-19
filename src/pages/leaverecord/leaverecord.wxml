@@ -1,0 +1,76 @@
+<!--pages/leaverecord/leaverecord.wxml-->
+
+<view wx:if="{{swpPic.length>0}}" class='main_view'>
+  <view class="bg_gray"></view>
+  <view class='swiper_container'>
+    <swiper class="swiper" next-margin="10rpx" current-item-id="{{currentItemId}}" previous-margin="32rpx" bindchange="swiperChange">
+      <block wx:for="{{swpPic}}" wx:key="index">
+        <swiper-item item-id="{{index}}" data-item-id="{{index}}" bindtap='clickChange'>
+          <view class='li'>
+            <image wx:if="{{item.cardType==5}}" class='li1' src='../../images/StoredvalueCard.jpg'></image>
+            <image src='../../images/subCard.jpg' class='li1' wx:if="{{item.cardType==4||item.cardType==7}}"></image>
+            <image src='../../images/timeLimitCard.jpg' class='li1' wx:if="{{item.cardType==3||item.cardType==6}}"></image>
+
+            <view class="name_view" wx:if="{{item.cardType==5}}">{{item.cardName}}</view>
+            <view class="name_view" wx:if="{{item.cardType==4||item.cardType==7}}" style="color:#FFFFFF;">{{item.cardName}}</view>
+            <view class="name_view" wx:if="{{item.cardType==3||item.cardType==6}}" style="color:#9CC0F4;">{{item.cardName}}</view>
+            
+            <view class="amount_view" wx:if="{{item.cardType==5&&item.status!=3}}">剩余金额：{{item.amount||'--'}}元</view>
+            <view class="amount_view" wx:if="{{(item.cardType==4||item.cardType==7)&&item.status!=3}}" >剩余次数：{{item.availableCount||'--'}}次</view>
+            <view class="amount_view" wx:if="{{(item.cardType==3||item.cardType==6)&&item.status!=3}}" >剩余天数：{{item.remainDays}}天</view>
+
+            <view class='status_view'>{{item.statusStr}}</view>
+            <view class="time_view" wx:if='{{item.statusStr=="未开卡"}}'>有效期：365天</view>
+            <view class="time_view" wx:else>有效期至：{{item.effectiveEndDate}}</view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- <view class='info_view'>
+    <view class='info_contview'>
+      <view class='info_bg'>
+        <view class='title_view'>已请天数</view>
+        <view class='day_view'>{{card.remainFreeLeaveDays}}天
+          <span>/{{card.allowedFreeLeaveDays}}天</span>
+        </view>
+      </view>
+      <view class='info_bg'>
+        <view class='title_view' style='margin-left: 30rpx;'>已请次数</view>
+        <view class='day_view'>{{card.remainFreeLeaveCount}}次
+          <span>/{{card.allowedFreeLeaveCount}}次</span>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <view class='record_view'>
+    <view class='title'>请假记录</view>
+    <view wx:if="{{listData.length>0}}" class='listbg_view'>
+      <block wx:for="{{listData}}" wx:key="">
+        <view class='list_view'>
+          <view class='mark_view'></view>
+          <view class='info_data'>
+            <view class='reason'>{{item.remark}}</view>
+            <view class='time'>{{item.startDate}} - {{item.endDate}}</view>
+          </view>
+          <view class='time_view'>共
+            <span>{{item.days}}</span>天</view>
+        </view>
+        <view class='line'></view>
+      </block>
+      <view class='moreBtnBox' wx:if='{{shoeMore}}' bindtap='showMore'>
+        <span>查看更多</span>
+        <image src='../../images/down.png'></image>
+      </view>
+    </view>
+    <view wx:else class='nomal_data'>暂无数据</view>
+  </view>
+  <view class='foot_view'>
+    <view class='data_view'>剩余：{{card.remainFreeLeaveDays}}天/{{card.remainFreeLeaveCount}}次</view>
+    <view class='apply_view' style='{{type==0?"background-color:#BDBDBD":"background-color: #00bc71"}}' bindtap='{{type==0?"":"applyClick"}}'>请假申请</view>
+  </view>
+</view>
+<view wx:else class='nomal_view'>
+  <image src='../../images/noRank.png'></image>
+  <span>暂无记录</span>
+</view>

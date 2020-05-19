@@ -1,0 +1,103 @@
+/* pages/shop/payway/payway.wxss */
+
+.wxpay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  background: #fff;
+}
+.wxpic{
+    width: 72rpx;
+  height: 72rpx;
+  margin-right: 30rpx;
+}
+.cardbg{
+  width: 136rpx;
+  height: 71rpx;
+  margin-right: 30rpx;
+}
+
+ .choosed{
+  width: 36rpx;
+  height: 36rpx;
+}
+.wxpay>view {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.word {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.word>text:first-child {
+  color: #000;
+  font-size: 28rpx;
+}
+
+.word>text:last-child {
+  color: #9f9f9f;
+  font-size: 24rpx;
+}
+
+.radio {
+  display: inline-block;
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 50%;
+  border: 1px solid #303030;
+}
+.card{
+  margin-top: 20rpx;
+  padding: 30rpx;
+  background: #fff;
+  box-sizing: border-box;
+  padding-bottom: 0;
+}
+.cardtitle{
+  color: #000000;
+  font-size: 28rpx;
+  padding: 30rpx 0;
+  display: block;
+  border-bottom: 1px solid #F7F7F7;
+}
+.cards{
+  padding: 30rpx 0;
+}
+.nomoney{
+  color: #F19776;
+  font-size: 24rpx;
+}
+.bottom{
+  background: #fff;
+  border-top: 1px solid #F7F8F9;
+  position: fixed;
+  bottom: 0;
+  padding: 24rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  color: #070707;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+.bottom>button{
+  width: 100%;
+  background: #00BC71;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 50rpx;
+}
+.bottom>button::after{
+  border: none
+}
+.bottom>button::before{
+  border: none
+}

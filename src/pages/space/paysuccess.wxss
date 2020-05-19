@@ -1,0 +1,61 @@
+/* pages/space/paysuccess.wxss */
+
+page {
+  height: 100%;
+  position: relative;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica;
+  background-color: #fff;
+}
+
+.main_view {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.main_view .paysuccess_icon{
+  width: 256rpx;
+  height: 206rpx;
+  margin: 158rpx 250rpx 0 250rpx;
+}
+
+.main_view .paysuccess_title{
+  width: 100%;
+  margin-top: 2rpx;
+  color: #364F64;
+  font-size: 52rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.main_view .paysuccess_sub{
+  width: 100%;
+  margin-top: 14rpx;
+  color: #A2AABC;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.main_view .pay_info{
+  margin: 210rpx 220rpx 0 220rpx;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+  padding: 24rpx 0;
+  background-color: #00BC71;
+  border-radius: 46rpx;
+  font-weight: bold;
+}
+
+.main_view .back_view{
+  margin: 0 220rpx 0 220rpx;
+  font-size: 32rpx;
+  text-align: center;
+  padding: 24rpx 0;
+  color: #00BC71;
+  font-weight: bold;
+}

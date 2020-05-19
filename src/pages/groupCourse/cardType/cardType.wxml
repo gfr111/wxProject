@@ -1,0 +1,39 @@
+
+<view>
+  <text class='type' wx:if="{{cardData.line.length!=0}}">支持线上购买</text>
+  <view class='item' wx:for="{{cardData.line}}" wx:key="index">
+    <image src="../../../images/{{item.cardType==3?'timeLimitCard':item.cardType==4?'subCard':item.cardType==5?'StoredvalueCard':''}}.jpg"></image>
+    <view class='itemContent'>
+      <text>{{item.name}}</text>
+      <!-- <text wx:if="{{item.cardType==3}}">有效期{{item.remainDays}}天</text>
+      <text wx:if="{{item.cardType==4}}">卡内次数{{item.availableCount}}次</text>
+      <text wx:if="{{item.cardType==5}}">卡内金额{{item.amount}}</text> -->
+      <view>
+        <view class='money'>
+          <text style='font-size:32rpx;'>¥</text>
+          <text> {{item.onlineBuyPrice}}</text>
+        </view>
+        <view>
+          <navigator url='../../../pages/cardsPurchaseOnline/availableCardDetail?id={{item.id}}&pageTip=cars' class='goby'>去购买</navigator>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <text class='type' wx:if="{{cardData.noline.length!=0}}">不支持线上购买</text>
+  <view class='item nobuy' wx:for="{{cardData.noline}}" wx:key="index">
+    <image class='nobuyimg' src="../../../images/{{item.cardType==3?'timeLimitCard':item.cardType==4?'subCard':item.cardType==5?'StoredvalueCard':''}}.jpg"></image>
+    <view class='itemContent'>
+      <text>{{item.name}}</text>
+  <!-- <text wx:if="{{item.cardType==3}}">有效期{{item.remainDays}}天</text>
+      <text wx:if="{{item.cardType==4}}">卡内次数{{item.availableCount}}次</text>
+      <text wx:if="{{item.cardType==5}}">卡内金额{{item.amount}}</text> -->
+      <!-- <view class='money'>
+        <text style='font-size:32rpx;'>¥</text>
+        <text> {{item.standardPrice}}</text>
+      </view> -->
+    </view>
+  </view>
+</view>
+

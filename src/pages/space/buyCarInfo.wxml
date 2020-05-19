@@ -1,0 +1,115 @@
+<!--pages/space/buyCarInfo.wxml-->
+
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="util" />
+<view class='cardDetail'>
+  <image src='../../images/cardBG.png' class='cardBG'></image>
+  <view class='cardMess'>
+    <image src='../../images/StoredvalueCard.jpg' class='cardImg' wx:if="{{card.card.cardType==5}}"></image>
+    <image src='../../images/subCard.jpg' class='cardImg' wx:if="{{card.card.cardType==4||card.card.cardType==7}}"></image>
+    <image src='../../images/timeLimitCard.jpg' class='cardImg' wx:if="{{card.card.cardType==3||card.card.cardType==6}}"></image>
+    <span class="cardName" wx:if="{{card.card.cardType==5}}">{{card.card.name}}</span>
+    <span class="cardName" wx:if="{{card.card.cardType==4||card.card.cardType==7}}" style="color:#FFFFFF;">{{card.card.name}}</span>
+    <span class="cardName" wx:if="{{card.card.cardType==3||card.card.cardType==6}}" style="color:#9CC0F4;">{{card.card.name}}</span>
+    <span class="surplus" wx:if="{{card.card.cardType==5&&card.card.status!=3}}">卡内金额：{{card.card.amount||'--'}}元</span>
+    <span class="surplus" wx:if="{{(card.card.cardType==4||card.card.cardType==7)&&card.card.status!=3}}">卡内次数：{{card.card.availableCount||'--'}}次</span>
+    <span class="surplus" wx:if="{{(card.card.cardType==3||card.card.cardType==6)&&card.card.status!=3}}">卡内天数：{{card.card.remainEffectiveDays}}天</span>
+    <span class="tofv">有效期：{{card.card.cardEffectiveDays}}天</span>
+  </view>
+  <!-- <view class='electronicData'>¥<span>{{card.card.amount}}</span></view> -->
+  <view class='electronicData'>¥<span>{{price}}</span></view>
+  <view class='applyMess'>
+    <view class='applygym' bindtap='toGym'>
+      <image src='../../images/applyGym.png'></image>
+      <view>
+        <span>适用场馆</span>
+        <span>{{card.availableCenterCount}}家</span>
+      </view>
+      <image src='../../images/changeRight.png'></image>
+    </view>
+    <view class='applygym' bindtap='toCourse'>
+      <image src='../../images/applyCourse.png'></image>
+      <view>
+        <span>可用课程</span>
+        <span>{{card.availableCourseCount}}节</span>
+      </view>
+      <image src='../../images/changeRight.png'></image>
+    </view>
+  </view>
+  <view class='basicMess'>
+    <span class="title">基本信息</span>
+    <view class='messBox'>
+      <span>卡名称</span>
+      <span class="timeLimit">{{card.card.name}}</span>
+    </view>
+    <view class='messBox'>
+      <span>卡种类型</span>
+      <span wx:if="{{card.card.cardType==5}}" class="timeLimit">储值卡</span>
+      <span wx:if="{{card.card.cardType==4||card.card.cardType==7}}" class="timeLimit">次卡</span>
+      <span wx:if="{{card.card.cardType==3||card.card.cardType==6}}" class="timeLimit">期限卡</span>
+    </view>
+    <view class='messBox'>
+      <span>开卡方式</span>
+      <span class="timeLimit" wx:if="{{card.card.onlineActivatedMode==1}}">立即开卡</span>
+      <span class="timeLimit" wx:elif="{{card.card.onlineActivatedMode==2}}">购卡后{{card.card.onlineActivatedInDays}}天内开卡</span>
+      <span class="timeLimit" wx:else>首次使用开卡</span>
+    </view>
+    <view class='messBox'>
+      <span>使用时间</span>
+      <span class="timeLimit">{{useTime?useTime:'无'}}</span>
+    </view>
+    <view class='messBox'>
+      <span>限制使用</span>
+      <span class="timeLimit">{{periodRestriction?periodRestriction:'无'}}</span>
+    </view>
+  </view>
+  <view class="hiddenMess">
+    <view class='basicMess'>
+      <span class="title">请假权益</span>
+      <view class='messBox'>
+        <span>请假天数</span>
+        <span class="timeLimit">最多允许请假{{card.card.freeLeaveDays}}天</span>
+      </view>
+      <view class='messBox'>
+        <span>请假次数</span>
+        <span class="timeLimit">最多允许请假{{card.card.freeLeaveCount}}次</span>
+      </view>
+    </view>
+    <view class='basicMess'>
+      <span class="title">预约限制</span>
+      <view class='messBox'>
+        <span>团课预约</span>
+        <span class="timeLimit">单节团课每次最多可预约{{cardMess.maxGroupCourseReservedCount}}人</span>
+      </view>
+    </view>
+    <view class='basicMess' style='border-bottom:none;'>
+      <span class="title">使用限制</span>
+      <view class='messBox'>
+        <span>使用人数</span>
+        <span class="timeLimit">允许该卡使用人数 {{card.card.maxAllowedUserCount}}人（包括卡主）</span>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{select}}" class='select-type'>
+  <view class='type-text'>
+    <text class='type-text-big'>开卡方式：</text>
+    <text>{{modeText}}</text>
+    <text class='cancel-select' bindtap='cancelSelect'>取消</text>
+  </view>
+  <view>
+    <button size='mini' class='btn-first {{newCard?"btn-selected":""}}' bindtap='selectWay' data-way='{{true}}'>新卡</button>
+    <button size='mini' wx:if="{{card.haveContractId!=null}}" class='{{newCard?"":"btn-selected"}}' bindtap='selectWay' data-way='{{false}}'>续卡</button>
+  </view>
+</view>
+
+<view class='foot_view'>
+  <view class='top_view' bindtap='selectAgree'>
+    <image src='{{agree?"../../images/payagree.png":"../../images/unpayagree.png"}}'></image>点击确定表示同意<span catchtap='agreementClick'>《条款协议》</span>
+  </view>
+  <view class='bottom_view'>
+    <view class='price_unit'>合计：<span>￥</span></view>
+    <view class='price_amount' >{{price}}</view>
+    <view class='btn_buy' style='{{agree?"":"background:#99E4C6"}}' bindtap='{{agree?"selectType":""}}'>{{buyText}}</view>
+  </view>
+</view>

@@ -1,0 +1,52 @@
+<import src="../templates/cardAmountCell.wxml" />
+<import src="../templates/blackTitleValueCell.wxml" />
+<import src="../templates/spotGrayCell.wxml" />
+
+<!--<scroll-view scroll-y class='index'>
+<!-- <view class='separatorLine'></view> -->
+<view class='index'>
+
+  <template is="cardAmountCell" data="{{name:card.card.name, cardImg:cardImg, price:card.card.onlineBuyPrice}}"></template>
+  <view class='grayLine'></view>
+  <navigator url='usePlace?id={{card.card.id}}'>
+     <template is="blackTitleValueCell" data='{{title:"适用场馆", value:card.availableCenterCount}}' data-id="{{card.card.id}}"></template>     
+  </navigator>
+  <!-- <view class='grayLine'></view> -->
+   <navigator url='useClass?id={{card.card.id}}'>
+      <template is="blackTitleValueCell" data='{{title:"可用课程", value:card.availableCourseCount}}'></template>
+    </navigator>
+  <!-- <view class='grayLine'></view> -->
+  <text class='blackTitleValue'>购买须知</text>
+  <template wx:if="{{card.card.cardType==3}}" is="spotGrayCell" data='{{tint:"有效期：", value:"开卡后"+card.card.cardEffectiveDays+"天"}}'></template>
+  <template wx:if="{{card.card.cardType==4}}" is="spotGrayCell" data='{{tint:"次数：", value:card.card.availableCount+"次"}}'></template>
+  <template wx:if="{{card.card.cardType==5}}" is="spotGrayCell" data='{{tint:"卡内金额：", value:"开卡后"+card.card.amount+"元"}}'></template>
+  <template is="spotGrayCell" data='{{tint:"开卡方式：", value:card.card.onlineActivatedMode == 1? "立即开卡":(card.card.onlineActivatedMode == 2 ? ("购卡后" +card.card.onlineActivatedInDays+ "天内开卡"):"首次使用开卡")}}'></template>
+  <template is="spotGrayCell" data='{{tint:"使用时间：", value:useTime}}'></template>
+  <template is="spotGrayCell" data='{{tint:"限制使用：", value:periodRestriction}}'></template>
+  <template is="spotGrayCell" data='{{tint:"适用人数：", value:"可给"+card.card.maxAllowedUserCount+"人使用（包括卡主）"}}'></template>
+  <template is="spotGrayCell" data='{{tint:"团课预约：", value:"单节课最多预约"+card.card.maxGroupCourseReservedCount+"人"}}'></template>
+  <template is="spotGrayCell" data='{{tint:"允许请假：", value:"最多允许请假"+(card.card.freeLeaveDays? card.card.freeLeaveDays : 0)+"天"}}'></template>
+  <template is="spotGrayCell" data='{{tint:"温馨提示：", value:card.card.onlineWarmReminder}}'></template>
+</view>
+<view class='tip tip-bottom'>
+  点击确定表示同意<navigator url='../agreement/agreement??tp=0' style='display:inline-block;color:#00BC71 ;'>《服务协议》</navigator>
+</view>
+
+
+
+<view wx:if="{{select}}" class='select-type'>
+  <view class='type-text'>
+    <text class='type-text-big'>开卡方式：</text>
+    <text>{{modeText}}</text>
+    <text class='cancel-select' bindtap='cancelSelect'>取消</text>
+  </view>
+  <view>
+    <button size='mini' class='btn-first {{newCard?"btn-selected":""}}' bindtap='selectWay' data-way='{{true}}'>新卡</button>
+    <button size='mini' wx:if="{{card.haveContractId!=null}}" class='{{newCard?"":"btn-selected"}}' bindtap='selectWay' data-way='{{false}}'>续卡</button>
+  </view>
+</view>
+<view class='buy-warp'>
+  <view class='price-unit'>总价￥</view>
+  <view class='price-amount'>{{card.card.onlineBuyPrice}}</view>
+  <view class='btn-buy' bindtap='selectType'>{{buyText}}</view>
+</view>

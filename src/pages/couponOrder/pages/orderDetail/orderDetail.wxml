@@ -1,0 +1,109 @@
+<!--pages/couponOrder/pages/orderDetail/orderDetail.wxml-->
+<wxs src="../../../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<view class='orderDetailBox'>
+  <view class='statusBox'>
+   <image src='../../../../images/orderbg.png' class='statusBg' wx:if='{{orderMess.status!=2}}'></image>
+   <image src='../../../../images/orderbg1.png' class='statusBg' wx:if='{{orderMess.status==2}}'></image>
+    <view>
+      <view class='payStatus'>
+        <image src='../../../../images/complete.png'></image>
+        <text wx:if='{{orderMess.status!=2}}'>已支付</text>
+         <text wx:if='{{orderMess.status==2}}'>已退款</text>
+      </view>
+      <text class='payTime'>付款时间：{{dateUtil.getDates(orderMess.payTime)}}</text>
+      </view>
+  </view>
+  <view class='ticketMess'>
+      <image src='{{img?img:"https://www.forzadata.cn/static/images/ticket/swim.jpg"}}' ></image>
+    <view>
+      <text>{{orderMess.instances[0].ticketName}}</text>
+      <text>数量：{{orderMess.instances.length}}</text>
+    </view>
+  </view>
+  <view class='ticketCollectionBox' wx:if="{{orderMess.instances[0].ticketName!='超时补款'}}">
+    <view class='ticketCollectionTop'>
+       <view style='color:#303030;font-size:28rpx;font-weight:600;'>
+         取<text  wx:if="{{orderMess.type==1}}">游泳</text>
+            <text  wx:if="{{orderMess.type==2}}">潜水</text>
+            <text  wx:if="{{orderMess.type==3}}">攀岩</text>
+            <text  wx:if="{{orderMess.type==4}}">篮球</text>
+            <text  wx:if="{{orderMess.type==5}}">羽毛球</text>
+            <text  wx:if="{{orderMess.type==99}}">其他</text>票
+       </view>
+       <text style='color:#00BC71;font-size:28rpx;' bindtap='showCourseBox'>如何取票</text>
+    </view>
+    <view class='codeBox' wx:if='{{orderMess.status!=2}}'>
+         <image src='{{qr}}'></image>
+         <text>{{orderMess.instances.length}} 张票</text>
+         <text>取票码：{{orderMess.takeCode}}</text>
+    </view>
+    <view class='popBox' wx:if='{{orderMess.status==2}}'>
+    <image src='../../resources/icon1.png' wx:if='{{orderMess.status==1}}'></image>
+    <image src='../../resources/icon2.png' wx:if='{{orderMess.status==2}}'></image>
+    <image src='../../resources/icon3.png' wx:if='{{orderMess.status==3}}'></image>
+      <view class='codeBox'>
+         <image src='{{qr}}'></image>
+         <text>{{orderMess.instances.length}} 张票</text>
+         <text style='text-decoration:line-through;'>取票码：{{orderMess.takeCode}}</text>
+    </view>
+    </view>
+  </view>
+  <view class='orderMess'>
+    <view class='messItem'>
+      <text>订单编号：</text>
+      <text style='font-weight: 400;'>{{orderMess.orderNumber}}</text>
+    </view>
+    <view class='messItem'>
+      <text>创建时间：</text>
+      <text style='font-weight: 400;'>{{dateUtil.getDates(orderMess.payTime)}}</text>
+    </view>
+  </view>
+  <view class='orderMess'>
+    <view class='messItem'>
+      <text>订单总价：</text>
+      <text>¥{{orderMess.total}}</text>
+    </view>
+    <view class='messItem'>
+      <text>实际支付：</text>
+      <text>¥{{orderMess.payAmount}}</text>
+    </view>
+    <view class='messItem'>
+      <text>支付方式：</text>
+      <text>{{orderMess.paymethod==5?'微信支付':'储值卡支付'}}</text>
+    </view>
+    <view class='messItem' wx:if='{{orderMess.status==2}}'>
+      <text>退款金额：</text>
+      <text>-¥{{orderMess.refundAmount}}</text>
+    </view>
+    <view class='messItem' wx:if='{{orderMess.status==2}}'>
+      <text>退款方式：</text>
+      <text wx:if='{{orderMess.paymethod==1}}'>刷卡</text>
+      <text wx:if='{{orderMess.paymethod==2}}'>现金</text>
+      <text wx:if='{{orderMess.paymethod==4}}'>支付宝</text>
+      <text wx:if='{{orderMess.paymethod==5}}'>微信</text>
+      <text wx:if='{{orderMess.paymethod==7}}'>其他</text>   
+    </view>
+  </view>
+  <view class='orderNotes' wx:if='{{orderMess.status==2}}'>
+    <text>备注信息：</text>
+    <text>{{orderMess.refundNote||'--'}}</text>
+  </view>
+</view>
+<view class='bg' wx:if="{{showCourse}}" catchtouchmove="preventTouchMove" >
+  <view class='courseBox'>
+    <view class='courseTop'>
+      <view class='leftBtn'>
+        <text>如何取票</text>
+        <text>How to collect the tickets ？</text>
+      </view>
+      <image src='../../../../images/closeRule.png' bindtap='hideCourse'></image>
+    </view>
+    <view class='courseContent'>
+      <image src='../../resources/courseImg.png'></image>
+      <text>将二维码对准取票机二维码窗口即可扫码取票</text>
+    </view>
+  </view>
+</view>
+<view class='checkScence' wx:if="{{orderMess.instances[0].ticketName!='超时补款'}}">
+  <text bindtap='checkScenceEvent'>查看票券</text>
+</view>

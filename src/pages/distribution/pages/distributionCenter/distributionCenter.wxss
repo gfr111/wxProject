@@ -1,0 +1,101 @@
+/* pages/distribution//pages/distributionCenter/distributionCenter.wxss */
+.userMess{
+  padding: 30rpx;
+  background-color: #323232;
+  position: relative;
+}
+.messBox{
+  padding: 15px; 
+  display: flex;
+  margin-bottom: 56rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.avatur{
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.rightBox{
+  display: flex;
+  flex-direction: column;
+}
+.name{
+  color:#FFFFFF;
+  font-size: 44rpx;
+  font-weight: 600;
+}
+.centerName{
+  color: #A4A4A6;
+  font-size: 28rpx;
+  margin-top:6rpx;
+
+}
+.levelBox{
+  width:690rpx;
+  height:54rpx;
+  background:linear-gradient(270deg,rgba(188,150,115,1) 0%,rgba(223,200,171,1) 100%);
+  border-radius:20rpx 20rpx 0px 0px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+.levelBox>image{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+  margin-left: 36rpx;
+}
+.levelBox>span{
+  color: #62341B;
+  font-size: 24rpx;
+}
+.navBox{
+  margin:30rpx; 
+  border-radius: 10rpx;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.navItem{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx 0;
+}
+.navItem>image{
+ width: 68rpx;
+ height: 68rpx;
+ margin-bottom: 16rpx; 
+}
+.navItem>span{
+  color: #303030;
+  font-size: 26rpx;
+}
+.navlistBox{
+  margin:30rpx; 
+  border-radius: 10rpx;
+  background: #FFFFFF;
+  padding: 0 30rpx;
+}
+.navIist{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 44rpx 0;
+  border-bottom: 1px solid #EFEFEF;
+}
+.navIist:last-child{
+  border-bottom: 0;
+}
+.navIist>span{
+  color: #303030;
+  font-size: 30rpx;
+}
+.navIist image{
+  width: 32rpx;
+  height: 32rpx;
+}

@@ -1,0 +1,160 @@
+/* pages/courseBuyOnline/buyDetail.wxss */
+.courseMess{
+ background: #ffffff;
+ padding: 30rpx;
+ display: flex;
+ align-items: center; 
+ margin-bottom: 20rpx;
+}
+.courseMess image{
+  width: 286rpx;
+  height: 180rpx;
+  margin-right: 30rpx;
+  border-radius: 8rpx;
+}
+.mess{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 180rpx;
+}
+.mess>view:nth-child(1){
+  color: #303030;
+  font-weight: 600;
+  font-size: 32rpx;
+}
+.mess>view:nth-child(2){
+  color: #FA4A11;
+}
+.itemBox{
+  margin-bottom: 20rpx;
+  background: #ffffff;
+}
+.item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:30rpx;
+}
+.itemName{
+   color: #303030;
+   font-size: 28rpx;
+}
+.numBox{
+  display: flex;
+  align-items: center;
+
+}
+.numBox>image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.numBox>input{
+  width: 72rpx;
+  text-align: center;
+}
+.item>view{
+  display: flex;
+  align-items: center;
+}
+.item>view text{
+  color: #303030;
+  font-size: 28rpx;
+
+}
+.rightIcon{
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+}
+.priceBox{
+  background: #ffffff;
+  padding: 30rpx;
+}
+.priceItem{
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.priceItem:last-child{
+  margin-bottom: 0;
+}
+.priceItem>span:nth-child(1){
+  color: #303030;
+  font-size: 28rpx;
+}
+.priceItem>span:nth-child(2){
+    color: #EE0100;
+  font-size: 28rpx;
+}
+.tip {
+  text-align: center;
+  font-size: 29rpx;
+  width: 100%;
+  background: #ffffff;
+  padding: 20rpx 0;
+}
+
+
+.buy-warp {
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  border-top: 2rpx solid #eee;
+  padding: 16rpx 24rpx;
+  z-index: 150;
+}
+
+.select-type {
+  background: #fff;
+  position: fixed;
+  font-size: 29rpx;
+  bottom: 130rpx;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  border-top: 2rpx solid #eee;
+  padding: 16rpx 24rpx;
+  z-index: 150;
+}
+.price-unit {
+  float: left;
+  padding-left: 40rpx;
+  padding-top: 48rpx;
+  font-size: 24rpx;
+  color: #222;
+  letter-spacing: 0;
+  font-weight: bold;
+}
+
+.price-amount {
+  float: left;
+  font-size: 40rpx;
+  color: #222;
+  letter-spacing: 0;
+  padding-left: 8rpx;
+  padding-top: 32rpx;
+}
+
+.btn-buy {
+  float: right;
+  background: #00bc71;
+  border-radius: 42rpx;
+  width: 320rpx;
+  height: 84rpx;
+  font-size: 34rpx;
+  color: #fff;
+  letter-spacing: 0;
+  margin-top: 12rpx;
+  margin-right: 40rpx;
+  text-align: center;
+  line-height: 76rpx;
+}
+
+.btn-first {
+  margin-right: 30rpx;
+}

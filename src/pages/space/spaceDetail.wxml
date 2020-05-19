@@ -1,0 +1,67 @@
+<!--pages/space/spaceDetail.wxml-->
+
+<view class='main_view'>
+  <scroll-view scroll-y style='height:{{height}}px;'>
+    <view class='bookBox'>
+  
+      <image src='{{sapceDetail.typeImage}}' class='spaceIcon'></image> 
+      <span class="name">{{sapceDetail.name}}</span>
+      <span class="typeStr">{{sapceDetail.typeStr}}</span>
+    </view>
+    <view class='spaceMess'>
+      <view class='spaceTime'>
+        <span class='messTitle'>时间</span>
+        <view class='timeStep'>
+          <span wx:for="{{sapceDetail.openingPeriod}}" wx:key='index'>
+            <text wx:if='{{item.weekDay==2}}'>周一 {{item.startTime}}～{{item.endTime}}</text>
+            <text wx:if='{{item.weekDay==3}}'>周二 {{item.startTime}}～{{item.endTime}}</text>
+            <text wx:if='{{item.weekDay==4}}'>周三 {{item.startTime}}～{{item.endTime}}</text>
+            <text wx:if='{{item.weekDay==5}}'>周四 {{item.startTime}}～{{item.endTime}}</text>
+            <text wx:if='{{item.weekDay==6}}'>周五 {{item.startTime}}～{{item.endTime}}</text>
+            <text wx:if='{{item.weekDay==7}}'>周六 {{item.startTime}}～{{item.endTime}}</text>
+            <text wx:if='{{item.weekDay==1}}'>周日 {{item.startTime}}～{{item.endTime}}</text>
+          </span>
+        </view>
+      </view>
+      <view class='spacePhone' bindtap='callTel' wx:if="{{sapceDetail.phone}}">
+        <view>
+          <span class='messTitle'>电话</span>
+          <span>{{sapceDetail.phone}}</span>
+        </view>
+        <image src='../../images/changeRight.png'></image>
+      </view>
+      <!-- bindtap='intoMap'  -->
+      <view class='spacePhone' wx:if="{{sapceDetail.address}}">
+        <view>
+          <span class='messTitle'>地点</span>
+          <span>{{sapceDetail.address}}</span>
+        </view>
+        <!-- <image src='../../images/changeRight.png'></image> -->
+      </view>
+      <view class='line_view' wx:if="{{sapceDetail.address}}"></view>
+      <view class='tipsBox' wx:if='{{sapceDetail.remark}}'>
+        <span>公告信息</span>
+        <view class='txt'>{{sapceDetail.remark}}</view>
+      </view>
+      <view class='tipsBox'>
+        <span>预订须知</span>
+        <view class='txt'>{{sapceDetail.reservedNotice||'暂无预订须知'}}</view>
+      </view>
+      <view class='tipsBox' wx:if="{{sapceDetail.sitesPhoto}}">
+        <span>片区分布图</span>
+        <view class='imgBox'>
+          <image src='{{sapceDetail.sitesPhoto}}' bindtap='previewImgs' mode='aspectFill'></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+
+<view wx:if="{{showPhone}}" class='callBox' catchtouchmove="preventTouchMove" bindtap='hidePhone'>
+  <view class='phoneBox' catchtap='inbtn'>
+    <span class='phone'>{{sapceDetail.phone}}</span>
+    <span class='callPhone' bindtap='phoneEvent'>呼叫</span>
+    <span class='cancel' bindtap='cancelTel'>取消</span>
+  </view>
+</view>

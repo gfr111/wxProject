@@ -1,0 +1,32 @@
+<!--pages/coupon/pages/couponList/couponList.wxml-->
+<view class='couponList'>
+   <view class='navBox'>
+     <text class='navItem {{item.type==type?"selectedNav":""}}'  wx:for="{{navList}}" wx:key='index' bindtap='chooseNav' data-type='{{item.type}}'>{{item.name}}</text>
+   </view>
+   <view class='listBox' >
+    <scroll-view style="height: {{defaultHeight}}px;" scroll-y  wx:if='{{couponList.length!=0}}'>
+      <view class='listItem' bindtap='toCouponDetail' data-id='{{item.id}}' data-item='{{item}}'  wx:for='{{couponList}}' wx:key="{{index}}">
+        <image src='{{item.img?item.img:"https://www.forzadata.cn/static/images/ticket/swim.jpg"}}'></image>
+        <view class='itemMess'>
+          <view class='couponName'>{{item.name}}</view>
+          <view class='couponStyle' wx:if="{{item.type==1}}">游泳</view>
+          <view class='couponStyle' wx:if="{{item.type==2}}">潜水</view>
+          <view class='couponStyle' wx:if="{{item.type==3}}">攀岩</view>
+          <view class='couponStyle' wx:if="{{item.type==4}}">篮球</view>
+          <view class='couponStyle' wx:if="{{item.type==5}}">羽毛球</view>
+          <view class='couponStyle' wx:if="{{item.type==99}}">其他</view>
+          <view class='couponPrice'>
+              <text>¥</text>
+              <text>{{item.minPrice}}</text>
+              <text>起</text>
+          </view>
+        </view>
+      </view>
+      </scroll-view>
+      <view class='emptyScence' wx:else>
+        <image src='../../../../images/noRank.png'></image>
+        <text>暂无票券</text>
+    </view>
+   </view>
+    
+</view>

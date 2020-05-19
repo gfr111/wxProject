@@ -1,0 +1,31 @@
+/* pages/agreement/agreement.wxss */
+  .wxParse-inline{
+    font-size: 28rpx;
+
+  }
+  .contant{
+    width:90%;
+  margin:auto;
+  background:#ffffff;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
+  border-radius: 8rpx;
+  padding:0 2%;
+  }
+  .nullOrder{
+  position: absolute;
+  left: 44%;
+  top:20%;
+  transform: translate(-50% -50%)
+}
+.nullOrder .noOrderImg{
+  width: 120rpx;
+  height: 120rpx;
+}
+  .nullOrder .noOrderTxt{
+    display: block;
+    font-size: 30rpx;
+    color: #7a7a7a;
+    margin-top: 40rpx;
+
+  }

@@ -1,0 +1,73 @@
+<!--pages/locker/openLocker.wxml-->
+<view class='lockerBox' wx:if='{{loadingStatus}}'>
+ <view class='welcomePage'>
+    <view class='userMess'>
+      <image src='{{account.photo}}' class='avatar'></image>
+      <view class='rightBox'>
+        <span class='userName'>{{account.name}}</span>
+        <span class='userPhone'>{{account.phone}}</span>
+      </view>
+    </view>
+    <!-- <view wx:if='{{cabinetStatus==null}}'>
+        <view class='mess'>欢迎使用更衣柜</view>
+        <view class='result'>请在平板上查看分配结果</view>
+        <image src='../../images/welcome.png' class='welcome'></image>
+    </view> -->
+    <view wx:if='{{cabinetStatus==3}}'>
+        <view class='mess'>您暂未签到或记录到访</view>
+        <view class='result'>请先签到或联系工作人员</view>
+        <image src='../../images/signIcon.png' class='welcome'></image>
+    </view>
+    <view class='messBox' wx:if='{{cabinetStatus==1}}'>
+      <view class='messTxt'>
+        <span>扫码成功</span>
+        <span>正在开启更衣柜</span>
+      </view>
+      <view class='sexType' wx:if="{{cabinetType}}">{{cabinetType}}</view>
+      <view class='cabinet {{cabinetType?"":"marginTop"}}'>
+        <view class='cabinetBox'>
+          <image src='../../images/codeSuccess.png' class='cabinetImg'></image>
+          <text class='cabinetCode'>{{cabinetCode}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='messBox' wx:if="{{cabinetStatus==4}}">
+      <view class='messTxt'>
+        <span>您的租柜已过期</span>
+        <span>请先续柜或使用其他临时柜</span>
+      </view>
+      <view class='sexType' wx:if="{{cabinetType}}" style='color:#CCCCCC;'>{{cabinetType}}</view>
+      <view class='cabinet {{cabinetType?"":"marginTop"}}'>
+        <view class='cabinetBox'>
+          <image src='../../images/codefalse.png' class='cabinetImg'></image>
+          <text class='cabinetCode'>{{cabinetCode||'XXX'}}</text>
+          <text class='updata'>已过期</text>
+        </view>
+      </view>
+    </view>
+    <view class='messBox'  wx:if="{{cabinetStatus==2}}">
+      <view class='messTxt'>
+        <span>分配失败</span>
+        <span>{{message}}</span>
+      </view>
+      <view class='cabinet'>
+        <view class='cabinetBox'>
+          <image src='../../images/codefalse.png' class='cabinetImg'></image>
+          <text class='cabinetCode'>{{cabinetCode||'XXX'}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='clubBox' bindtap='toIndexEvent'>
+      <image src='../../images/toIndex.png' class='clubImg' wx:if="{{centerImg==null||centerImg==''}}"></image>
+      <image src='{{centerImg}}' class='clubImg' wx:else></image>
+      <span class='clubName'>{{centerName}}</span>
+      <image src='../../images/toIndex.png' class='toIndex'></image>
+    </view>
+ </view>
+</view>
+<view class='loadingBox' wx:else>
+  <view class='content'>
+    <!-- <span>加载中</span> -->
+    <span class="loader-13"></span>
+  </view>
+</view>

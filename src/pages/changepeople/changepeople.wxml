@@ -1,0 +1,29 @@
+<!--pages/changepeople/changepeople.wxml-->
+<view class="content">
+  <view class="item" bindtap="change" id="{{owner.traineeId}}">
+    <view class="litem">
+      <image class="photo" src="{{owner.photo||'/images/default_user.png'}}"></image>
+      <view>
+        <view>
+          <text class="name">{{owner.traineeName}}</text>
+          <text class="tag">本人</text>
+        </view>
+        <text>{{owner.phone}}</text>
+      </view>
+    </view>
+    <image wx:if="{{owner.selected}}" src="/images/peoplechoosed.png"></image>
+  </view>
+  <view class="item" wx:for="{{relationTrainees}}" wx:key="index" bindtap="change" id="{{item.traineeId}}">
+    <view class="litem">
+      <image class="photo" src="{{item.photo||'/images/default_user.png'}}"></image>
+      <view>
+        <view>
+          <text class="name">{{item.traineeName}}</text>
+          <text class="tag contact">关联账号</text>
+        </view>
+        <text>{{item.phone}}</text>
+      </view>
+    </view>
+    <image wx:if="{{item.selected}}" src="/images/peoplechoosed.png"></image>
+  </view>
+</view>

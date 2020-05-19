@@ -1,0 +1,136 @@
+/* pages/coupon//pages/shareCard/shareCard.wxss */
+page{
+  overflow: hidden;
+  height: 100%;
+  background: #F7F8F9;
+}
+.cardShareBox{
+  width: 100%;
+  height: 100%;
+  background: #F7F8F9; 
+  padding-top:60rpx;
+  overflow: hidden;
+}
+.shareBox{
+  width:530rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  border-radius:  54rpx;
+  color: #FFFFFF;
+  position: fixed;
+  bottom: 140rpx;
+  margin-left: 110rpx;
+  background: #00BC71;
+}
+.shareItem{
+  width: 660rpx;
+  margin: 0 auto;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 110rpx;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+}
+.shareItem view{
+   display: flex;
+  align-items: center;
+  margin-right: 30rpx;
+}
+.shareItem>span{
+  color: #191A1B;
+  font-size: 32rpx;
+  margin-left: 22rpx;
+}
+.shareItem>view input{
+  width: 140rpx;
+  font-size: 32rpx;
+  text-align: right;
+}
+.shareItem>view span{
+  margin-left: 20rpx;
+  color: #7F8081;
+  font-size: 32rpx;
+}
+.place-holder{
+  color: #C3C4C6;
+}
+.cardCount{
+  color: #878889;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.tips{
+  color: #7B7D7D;
+  font-size: 28rpx;
+  position: fixed;
+  bottom: 36rpx;
+  left: 124rpx;
+}
+.popBox{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top:0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popContent{
+  width: 550rpx;
+  background: #ffffff;
+  border-radius: 18rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title{
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-top:40rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+.shareTxt{
+  font-size: 28rpx;
+  color: #80848F;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+.shareBtnBox{
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  border-top: 1px solid #DDDEE1;
+}
+.shareBtnBox .cancelBtn{
+  width: 275rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 32rpx;
+   background: #ffffff;
+  border: 1px solid #DDDEE1;
+  border-left: 0;
+}
+
+.shareBtnBox button::after{
+  border: none;
+}
+.shareBtnBox button{
+  width: 273rpx;
+  height: 100rpx;
+  text-align: center;
+  background: #ffffff;
+  color: #00BC71;
+  margin: 0;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  margin-left: 2rpx;
+  
+}

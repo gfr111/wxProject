@@ -1,0 +1,3 @@
+<!--pages/deposit/depositDetail.wxml-->
+<web-view wx:if="{{url}}" src="{{url}}"></web-view>
+<text wx:else class="tip">没有获取到数据</text>

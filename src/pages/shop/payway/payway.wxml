@@ -1,0 +1,40 @@
+<!--pages/shop/payway/payway.wxml-->
+<view class="wxpay">
+  <view>
+    <image class="wxpic" src="../../../images/wxPay.png"></image>
+    <view class="word">
+      <text>微信支付</text>
+      <text>在线支付</text>
+    </view>
+  </view>
+
+  <image class="choosed" wx:if="{{!choosecard.id}}" src="../../../images/payway.png"></image>
+    <text class="radio" wx:else bindtap="choose" id='-1'></text>
+</view>
+
+
+
+<view class="card">
+  <text class="cardtitle">储值卡支付</text>
+
+  <view class="wxpay cards" wx:for="{{card}}">
+    <view>
+      <image class="cardbg"  src="../../../images/StoredvalueCard.jpg"></image>
+      <view class="word">
+        <text>{{item.cardName}}</text>
+        <text>余额¥{{item.amount}}</text>
+      </view>
+    </view>
+    <text class="nomoney" wx:if="{{item.amount<price}}"> 余额不足</text>
+    <view wx:else>
+      <image class="choosed" wx:if="{{choosecard.id==item.contractId}}" src="../../../images/payway.png"></image>
+      <text wx:else bindtap="choose" id='{{item.contractId}}' data-name="{{item.cardName}}" class="radio"></text>
+    </view>
+
+  </view>
+</view>
+
+
+<view class="bottom">
+  <button bindtap="sure">确认</button>
+</view>

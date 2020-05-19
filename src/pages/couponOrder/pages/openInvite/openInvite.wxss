@@ -1,0 +1,182 @@
+/* pages/couponOrder//pages/openInvite/openInvite.wxss */
+page{
+  background: #FF5956;
+}
+.inviteBox{
+ width: 100%;
+ height: 100%;
+ background: #FF5956;
+  overflow: hidden;
+}
+page{
+    background: #FF5956;
+}
+.userImageBox{
+  width: 152rpx;
+  height: 152rpx;
+  border-radius: 50%;
+  margin-top: 68rpx;
+  margin-bottom: 22rpx;
+  overflow: hidden;
+}
+.bgIconBox{
+  width: 100%;
+  height: 506rpx;
+  position: absolute;
+  top:0;
+}
+.shareContent{
+   width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top:0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userImage{
+   width: 152rpx;
+  height: 152rpx;
+}
+.userName{
+  color: #ffffff;
+  font-size: 40rpx;
+  margin-bottom: 30rpx;
+  font-weight: 600;
+}
+.shareTxt{
+  color: #ffffff;
+  font-size: 28rpx;
+  margin-bottom: 66rpx;
+}
+.cardBox{
+  width: 670rpx;
+  height: 200rpx;
+  border:4rpx solid #FFBC35;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+}
+.cardBox>image{
+  width: 230rpx;
+  height: 140rpx;
+  border-radius: 12rpx;
+  margin-left: 40rpx;
+  margin-right: 30rpx;
+}
+.cardMess{
+  display: flex;
+  flex-direction: column;
+}
+.cardName{
+  color: #323437;
+  font-size: 32rpx;
+  font-weight: 600
+}
+.cardPrice{
+  color: #323437;
+  font-size: 24rpx;
+  margin-top:4rpx;
+}
+.line{
+  width: 16rpx;
+  height: 4rpx;
+  background: #8A8A8A;
+  margin: 16rpx 0 8rpx;
+}
+.effectiveDay{
+  color: #8A8A8A;
+  font-size: 24rpx;
+}
+.timeCount{
+  width:590rpx;
+  height:90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  background:linear-gradient(180deg,rgba(213,213,213,1) 0%,rgba(171,171,171,1) 100%);
+  box-shadow:0px 3px 4px 0px rgba(195,0,0,0.2);
+  border-radius:50rpx;
+  color: #FEFFFF;
+  font-size: 32rpx;
+  font-weight: 600;
+  position: absolute;
+  top:752rpx;
+}
+.receiveBtn{
+  width:590rpx;
+  height:90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  background:linear-gradient(180deg,rgba(255,243,174,1) 0%,rgba(255,205,104,1) 100%);
+  box-shadow:0px 3px 4px 0px rgba(195,0,0,0.2);
+  border-radius:50rpx;
+  color: #ED381C;
+  font-size: 32rpx;
+  font-weight: 600;
+  position: absolute;
+  top:752rpx;
+}
+.popBox{
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  position: absolute;
+  top:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.receiveBox{
+  width: 550rpx;
+  height: 450rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.priceImage{
+  width: 256rpx;
+  height: 240rpx;
+  margin-top:-120rpx;
+}
+.receiveTxt{
+  color: #343639;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-top:28rpx;
+  margin-bottom: 44rpx;
+}
+.useBtn{
+  width:430rpx;
+  height:88rpx;
+  line-height: 88rpx;
+  background:linear-gradient(180deg,rgba(255,147,89,1) 0%,rgba(255,89,86,1) 100%);
+  box-shadow:0px 3px 4px 0px rgba(195,0,0,0.2);
+  border-radius:44px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 28rpx;
+}
+.timeTxt{
+  color: #343639;
+  font-size: 28rpx;
+}
+.cantReceiveBtn{
+    width:590rpx;
+  height:90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  background:linear-gradient(180deg,rgba(213,213,213,1) 0%,rgba(171,171,171,1) 100%);
+   box-shadow:0px 3px 4px 0px rgba(195,0,0,0.2);
+  border-radius:50rpx;
+  color: #FEFFFF;
+  font-size: 32rpx;
+  font-weight: 600;
+  position: absolute;
+  top:752rpx;
+}

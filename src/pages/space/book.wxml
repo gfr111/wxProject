@@ -1,0 +1,107 @@
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="util" />
+
+<view class='bookContent'>
+
+  <view class='bookBox' bindtap='toSpaceDetail'>
+    <view class='listLeft'>
+      <image src='../../images/siteplace.png' class='spaceIcon'></image>
+      <span class='leftMess'>{{spaceMess.name}}</span>
+    </view>
+    <image src='../../images/changeRight.png' class='detailBtn'></image>
+  </view>
+  <scroll-view scroll-y class='scheduleList' style='height:{{height+24}}px'>
+    <view class='date-view'>
+      <view class='date-view-left-button-view' id='left' bindtap='changeCurrentWeek' wx:if="{{currentShowDaysIndex != 0}}">
+        <image class='date-view-left-button' src='../../images/blackLeft.png'></image>
+      </view>
+      <view class='date-view-left-button-view' id='left' wx:else>
+        <image class='date-view-left-button' src='../../images/greyLeft.png'></image>
+      </view>
+      <view class='date-view-right-button-view' id='right' wx:if="{{currentShowDaysIndex != divisor}}" bindtap='changeCurrentWeek'>
+        <image class='date-view-right-button' src='../../images/blackRight.png'></image>
+      </view>
+      <view class='date-view-right-button-view' id='right' wx:else>
+        <image class='date-view-right-button' src='../../images/greyRight.png'></image>
+      </view>
+      <scroll-view class='date-view-scroll-view'>
+        <view wx:for="{{currentShowDays}}" wx:for-index="index" wx:for-item="item" wx:key='currentShowDaysId' class="date-view-scroll-view-section {{index == daysScrollViewCurrentIndex?'active':''}}" wx:key="{{index}}">
+          <view class='date-view-scroll-view-section-tap' id="{{item.index}}" bindtap='dayBindTap'>
+            <text class='date-view-scroll-view-section-day' style='color:#303030;font-weight:600;' wx:if="{{index == daysScrollViewCurrentIndex}}">{{item.month+'.'+item.date==today?'今天':item.day}}</text>
+            <text class='date-view-scroll-view-section-day' style='color:#9F9F9F' wx:else>{{item.month+'.'+item.date==today?'今天':item.day}}</text>
+            <text class='date-view-scroll-view-section-date' style='color:#303030;font-weight:600;' wx:if="{{index == daysScrollViewCurrentIndex}}">{{item.month}}.{{item.date}}</text>
+            <text class='date-view-scroll-view-section-date' style='color:#9F9F9F' wx:else>{{item.month}}.{{item.date}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view wx:if="{{siteTime.reserved}}" class='scheduleContent clearfix'>
+      <scroll-view scroll-y style='height:100%;width:100%;' bindscroll='scroll' enable-back-to-top="true" scroll-with-animation="true" scroll-into-view="{{toView}}">
+        <view class='timeList'>
+          <!-- <span wx:for='{{siteTime.times}}' wx:key='index'>{{item}}</span> -->
+          <view wx:for='{{siteTime.times}}' wx:key='index'>{{item}}</view>
+        </view>
+        <scroll-view class='span_bgview_fixed' scroll-x scroll-left="{{scrollLeft}}">
+          <span class="span_data" wx:for="{{siteTime.reserve}}" wx:key='{{index}}'>{{item.serialNumber}}号</span>
+        </scroll-view>
+        <scroll-view scroll-x bindscroll='scroll2' style='float:left;position: absolute;left: 95rpx;height:{{41*siteTime.times.length}}px'>
+          <view  class='bookList' >
+          <!-- <block> -->
+          <!-- <view class='span_bgview' wx:if="{{!showTime}}">
+            <span class="span_data" wx:for="{{siteTime.reserve}}" wx:key=''>{{item.serialNumber}}号</span>
+          </view> -->
+          <view class='content_box' wx:for="{{siteTime.reserve}}" wx:key='index'>
+            <span></span>
+            <view class='siteList'>
+              <view wx:for-item="siteItem" wx:for="{{item.ins}}" wx:key='index' id='{{siteItem.isSelect==true?"markview":"one"}}' style="{{siteItem.isSelect==true?'background:#E2FAF1;color: #303030;':'background:#F6F6F6;color: #9F9F9F;'}}">
+                <span wx:if="{{siteItem.status==null}}">
+                  <text class="{{siteItem.checked?'selected':''}}" data-id='{{item.id}}' bindtap='chooseSit' data-index='{{index}}'>￥{{siteItem.unitPrice}}</text>
+                </span>
+                <!-- style='background:#FCD9D8' #ECECEC -->
+                <span wx:if="{{siteItem.status==-1||siteItem.status==0||siteItem.status==1||siteItem.status==2||siteItem.status==5}}" style='background:#F6F6F6;color: #9F9F9F;'>￥{{siteItem.unitPrice}}</span>
+              </view>
+            </view>
+          </view>
+          <!-- </block> -->
+        </view>
+        </scroll-view>
+      </scroll-view>
+    </view>
+    <view wx:else class="bookList_nomal">
+    <!-- 暂无数据 -->
+      <image src='../../images/noRank.png'></image>
+      <text>暂无可预约的场地</text>
+    </view>
+  </scroll-view>
+  <view class='statusBox' wx:if="{{!showSiteBox}}">
+    <view>
+      <span style='background:#CCF4E5;'></span>
+      <span>可预约</span>
+    </view>
+    <view>
+      <!-- #FCD9D8; #ECECEC-->
+      <span style='background:#F6F6F6;'></span>
+      <span>不可用</span>
+    </view>
+    <view>
+      <span style='background:#58D4A2;'></span>
+      <span>已选</span>
+    </view>
+  </view>
+  <view class='selectSiteBox' wx:if="{{showSiteBox}}">
+    <view wx:for="{{seatList}}" wx:key='index'>
+      <span>{{item.startTime}}-{{item.endTime}}</span>
+      <span>{{item.siteName}}号场地</span>
+      <view class='delete_view' data-id='{{item.sitesId}}' bindtap='deleteSit' data-idx='{{item.idx}}' data-index='{{index}}'>
+        <image src='../../images/deletespace.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='bookBottom' wx:if="{{seatList.length>0}}">
+    <span>合计：￥ {{allPrice}} </span>
+    <span bindtap='toSubmit'>提交预订</span>
+  </view>
+  <view class='bookBottom' wx:if="{{seatList.length==0}}">
+    <span>合计：￥ {{allPrice}} </span>
+    <span style='background:#BDBDBD;'>提交预订</span>
+  </view>
+</view>

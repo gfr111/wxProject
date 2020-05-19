@@ -1,0 +1,321 @@
+/* pages/leaverecord/leaverecord.wxss */
+
+page {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+}
+
+.main_view {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.main_view .bg_gray {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 380rpx;
+  border-radius: 0 0 90% 90% / 0 0 90% 90%;
+  background-color: #e0e0e0;
+}
+
+.main_view .swiper_container {
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  height: 356rpx;
+  top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 34rpx;
+  border-bottom: 20rpx solid #f7f8f9;
+}
+
+.swiper_container .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper .li {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper .li1 {
+  width: 97%;
+  margin: 0 auto;
+  height: 100%;
+  border-radius: 16rpx;
+}
+
+.swiper .name_view {
+  position: absolute;
+  top: 46rpx;
+  left: 40rpx;
+  width: 500rpx;
+  color: #F3D2AE;
+  font-weight: 600;
+  font-size: 40rpx;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.swiper .amount_view {
+  position: absolute;
+  top: 110rpx;
+  left: 40rpx;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28rpx;
+}
+
+.swiper .status_view {
+  position: absolute;
+  top: 46rpx;
+  right: 22rpx;
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+  width: 100rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background-color: #37383c;
+  border-radius: 20rpx 0 0 20rpx;
+}
+
+.swiper .time_view {
+  position: absolute;
+  bottom: 44rpx;
+  right: 50rpx;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24rpx;
+  text-align: right;
+  height: 34rpx;
+  line-height: 34rpx;
+}
+
+.main_view .info_view {
+  margin-top: 30rpx;
+  margin-left: 0;
+  width: 100%;
+  height: 192rpx;
+  border-bottom: 20rpx solid #f7f8f9;
+}
+
+.info_view .info_contview {
+  position: relative;
+  top: 40rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  height: 112rpx;
+  line-height: 112rpx;
+  background: linear-gradient(to right, #848795, #5a5d65);
+  border-radius: 16rpx;
+  display: flex;
+  flex-wrap: row;
+}
+
+.info_contview .info_bg {
+  margin-left: 0;
+  width: 50%;
+  margin-top: 26rpx;
+  margin-bottom: 26rpx;
+  line-height: 60rpx;
+  border-right: 2rpx solid rgba(255, 255, 255, 0.24);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info_bg .title_view {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24rpx;
+  margin-left: 20rpx;
+}
+
+.info_bg .day_view {
+  margin-left: 34rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.day_view span {
+  font-size: 26rpx;
+}
+
+.main_view .record_view {
+  position: relative;
+  margin-top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.record_view .title {
+  margin-top: 50rpx;
+  margin-left: 30rpx;
+  color: #383838;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.record_view .listbg_view {
+  margin-top: 20rpx;
+  width: 100%;
+  height: auto;
+  padding-bottom: 200rpx;
+}
+
+.listbg_view .line{
+  margin: 0 40rpx 0 100rpx;
+  height: 2rpx;
+  background-color: #ECECEC;
+}
+
+.listbg_view .list_view {
+  margin: 0 40rpx;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.list_view .mark_view{
+  margin-left: 0;
+  width: 24rpx;
+  height: 24rpx;
+  background-color: #EEEEEE;
+  border-radius: 50%;
+}
+
+.list_view .info_data{
+  margin-left: 36rpx;
+  width: 70%;
+  height: auto;
+  padding: 40rpx 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.info_data .reason{
+  width: 100%;
+  height: auto;
+  line-height: 40rpx;
+  color: #303030;
+  font-size: 28rpx;
+}
+
+.info_data .time{
+  width: 100%;
+  height: 34rpx;
+  line-height: 34rpx;
+  color: #C2C2C2;
+  font-size: 24rpx;
+}
+
+.list_view .time_view{
+  position: absolute;
+  right: 40rpx!important;
+  color: #303030;
+  font-size: 24rpx;
+  text-align: right;
+}
+
+.time_view span{
+  font-size: 32rpx;
+  font-weight: 600;
+  padding-right: 8rpx;
+}
+
+.nomal_data{
+  width: 100%;
+  height: 200rpx;
+  line-height: 200rpx;
+  color: #969696;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+.main_view .foot_view {
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+  border-top: 2rpx solid #e5e5e5;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.foot_view .data_view {
+  margin-left: 40rpx;
+  color: #383838;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.foot_view .apply_view {
+  position: absolute;
+  right: 30rpx !important;
+  top: 24rpx;
+  width: 320rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 40rpx;
+}
+
+.listbg_view .moreBtnBox {
+  position: relative;
+  height: 158rpx;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.moreBtnBox span {
+  color: #808080;
+  font-size: 28rpx;
+}
+
+.moreBtnBox image {
+  margin-left: 20rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+
+.nomal_view{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nomal_view image{
+  width: 372rpx;
+  height: 420rpx;
+  margin-top: 200rpx;
+  margin-bottom: 60rpx;
+}
+.nomal_view span{
+  color: #969696;
+  font-size: 32rpx;
+}

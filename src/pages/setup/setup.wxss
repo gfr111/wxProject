@@ -1,0 +1,59 @@
+/* pages/setup/setup.wxss */
+
+.main_view{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-top: 2rpx solid #EFEFEF;
+}
+
+.main_view .content_view{
+  margin: 0 30rpx;
+  background-color: #fff;
+}
+
+.content_view .list_view{
+  height: 130rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 2rpx solid #EFEFEF;
+}
+
+.list_view .title{
+  font-size: 30rpx;
+  color: #303030;
+}
+
+.list_view .sub_title{
+  font-size: 30rpx;
+  color: #8D8D8D;
+  position: absolute;
+  right: 80rpx !important;
+  text-align: right;
+}
+
+.list_view .sub_fix{
+  font-size: 30rpx;
+  color: #00BC71;
+  position: absolute;
+  right: 40rpx !important;
+  text-align: right;
+}
+
+.list_view .img{
+  width: 14rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+}
+
+.hidden_view{
+  display: none;
+}
+.rightBtn{
+  display: flex;
+  align-items: center;
+}

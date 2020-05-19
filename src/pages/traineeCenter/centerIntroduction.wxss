@@ -1,0 +1,67 @@
+
+page {
+  background-color: white;
+}
+.whiteBack {
+  background-color: white; 
+}
+
+.centerName {
+  color: #2B2B38;
+  font-size: 48rpx;
+  text-align: left;
+  line-height: 48rpx;
+  padding: 50rpx 40rpx 0 40rpx;
+  display: flex; 
+
+}
+
+.addressBack {
+  display: flex;
+  flex-direction: row;
+  margin-top: 16rpx;
+  align-items: center;
+  padding: 0 40rpx;
+  /* padding: 40rpx; */
+}
+
+.address {
+  color: #7A7A7A;
+  font-size: 30rpx;
+  height: 21rpx;
+  text-align: left;
+  line-height: 21rpx;
+  display: flex; 
+  /* margin-top: 16rpx; */
+}
+
+.separatorLine {
+  margin: 0rpx 40rpx;
+  height: 1rpx;
+  background-color: #E6E6E6;
+  margin-top: 40rpx;
+}
+
+.detailText {
+  padding: 40rpx;
+  color: #7A7A7A;
+  font-size: 30rpx;
+  text-align: left;
+  line-height: 48rpx;
+  display: flex; 
+}
+
+.greenBtn-bg {
+  bottom: 50rpx;
+  position: absolute;
+  left: 60rpx;
+  right: 60rpx;
+  padding: 0rpx;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+<!--pages/space/paysuccess.wxml-->
+
+<view class='main_view'>
+  <image class='paysuccess_icon' src='/images/shopSuccess.png'></image>
+  <view class='paysuccess_title'>付款成功</view>
+  <view class='paysuccess_sub'>感谢预订，运动让我们更美好！</view>
+  <view class='pay_info' bindtap='payInfo'>查看详情</view>
+  <view class='back_view' bindtap='backClick'>返回首页</view>
+</view>

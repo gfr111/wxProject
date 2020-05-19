@@ -1,0 +1,16 @@
+<!--pages/cardsPurchaseOnline/usePlace.wxml-->
+<view class='placeList'>
+  <view class='placeDetsail clearfix' wx:for="{{place}}" wx:key="{{item.id}}">
+    <image src='{{item.photo}}' style='width:100rpx;height:100rpx;float:left;border-radius:50%;' wx:if="{{item.photo}}" mode='aspectFill'></image>
+    <image src='../../images/teachPic.png' style='width:20%;height:100rpx;float:left;' wx:else></image>
+    <view class='placeTxt'>
+      <text class='placeName'>{{item.name}}</text>
+      <text class='placeAddress'>{{item.address||'--'}}</text>
+    </view>
+    <image src='../../images/phone2.png' class="telimg"  bindtap='callSome' data-phone='{{item.phone}}' wx:if="{{item.phone!=null}}"></image>
+  </view>
+   <view class='nullBox' wx:if='{{place.length==0}}'>
+     <image src='../../images/noRank.png' class='nullIcon'></image>
+      <text class='nullTxt'>暂无数据</text>
+  </view>
+</view>

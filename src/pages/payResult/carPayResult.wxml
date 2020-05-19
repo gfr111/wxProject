@@ -1,0 +1,10 @@
+<!--pages/payResult/carPayResult.wxml-->
+
+<view class='box'>
+   <image src='../../images/qrsuccess.png'></image>
+   <text class='payTxt'>支付成功</text>
+   <view class='selects'>
+     <button class='goMain active' bindtap='goMain'>查看会员卡</button>     
+     <button class='goCourse' bindtap='goCourse' style="background-color:{{pageBackgroundColor}};color:{{color}}">继续预订</button>
+   </view>
+</view>

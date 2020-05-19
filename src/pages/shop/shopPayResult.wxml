@@ -1,0 +1,59 @@
+<!--pages/shop/shopPayResult.wxml-->
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="util" />
+<view style='height:100%;width:100%;background-color:white;text-align:center;padding-top:100px;'>
+  <image src='../../images/shopSuccess.png' style='height:103px;width:128px'></image>
+  <view class='success'>付款成功</view>
+  <view class='tip'>正向场馆发送订单,请将确认结果展</view>
+  <view class='tip'>示给前台进行核实</view>
+  <view style='margin-top:52px;width:100%;display:flex;justify-content:center;'>
+    <view class='receive' bindtap="goGet">前往领取{{second>0?'('+second+'s)':''}}</view>
+  </view>
+</view>
+
+
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showMer}}"></view>
+<view class='getInfo' wx:if="{{showMer}}">
+  <image src='../../images/shopBack.png' style='width:100%;height:100%'></image>
+</view>
+<view class='getInfo' wx:if="{{showMer}}" style='z-index:3;padding:30rpx;box-sizing:border-box;text-align:center;'>
+  <view class="logo">
+    <image src="{{centerphoto?centerphoto:'../../images/bocai.png'}}"></image>
+  </view>
+  <view style='margin-top:20rpx'>
+    <image src='../../images/closeBack.png' class="close" bindtap='close'></image>
+    <view class='top-timetwo'>
+      <text class='top-time'>{{order.createTime[0]}}</text>
+      <text style="color:'#6F6F6F';font-size:'24rpx'">{{order.createTime[1]}}.{{order.createTime[2]}}</text>
+    </view>
+  </view>
+
+
+  <view wx:if="{{showgoods}}">
+    <view class="tips">您购买了以下商品</view>
+    <scroll-view scroll-x class='scroll-box'>
+      <view class="item" style='' wx:for="{{items}}">
+        <image class="bgcount" src='../../images/count.png'></image>
+        <view class="count">数量</view>
+        <view class="countnum">{{item.count}}</view>
+        <image class="goodspic" src='{{item.photo==null?"../../images/noPic.png":item.photo}}'></image>
+        <text class="goodname" style=''>{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <view wx:else>
+    <view class="tips">请将此页面展示给前台进行核实</view>
+    <text class="num {{order.taken?'numtaken':''}}" style=''>{{num}}</text>
+
+    <image class="code" src="{{imgsrc}}"></image>
+    <image wx:if="{{order.taken}}" class="pickup" src="../../../images/pickup.png"></image>
+  </view>
+
+
+
+
+  <view style='color:#B4B4B4;font-size:14px'>关闭后可在我的·商品订单·里查询</view>
+  <button class="btn" bindtap="show">{{showgoods?'核销码':'查看商品'}}</button>
+  <!-- <view style='color:#35B493;font-size:16px;margin-top:10px'>{{centerName}}祝您健身愉快</view> -->
+    <canvas class="canvas" style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;" canvas-id='canvas' bindlongtap='save'></canvas>
+
+</view>

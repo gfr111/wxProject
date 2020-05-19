@@ -1,0 +1,53 @@
+<wxs src="../../../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<view class='orderList'>
+   <view wx:if='{{orderList.length!=0}}'>
+     <view class='orderItem' wx:for='{{orderList}}' wx:if='{{item.status==0}}'  bindtap='toOrderDetail' data-item='{{item}}'>
+      <image src='../../resources/bg.png' class='ticketBg'></image>
+      <view class='ticketTop'>
+         <span class='colorBlock'></span>
+         <view class='ticketMess'>
+           <span class='ticketName'>{{item.ticketName}}</span>
+           <span class='ticketScene'>{{item.timesName}}</span>
+           <span class='ticketScene'>{{item.startTime}}-{{item.endTime}}</span>
+         </view>
+         <view class='codeBox'>
+            <image src='../../resources/qrCode.png' class='codeImg'></image>
+         </view>
+      </view>
+      <view class='ticketBottom'>
+        <image src='../../resources/tipsIcon.png' class='tipIcons'></image>
+        <text class='tipTxt'>有效期：{{dateUtil.formatTimes(item.effectiveStartDate)}}-{{dateUtil.formatTimes(item.effectiveEndDate)}}</text>
+      </view>
+     </view>
+      <view class='orderItem' wx:for='{{orderList}}' wx:if='{{item.status!=0}}' bindtap='toOrderDetail' data-item='{{item}}'>
+        <image src='../../resources/bg.png' class='ticketBg'></image>
+        <view class='ticketTop'>
+          <span class='colorBlock' style='background:#AFAFAF;'></span>
+          <view class='ticketMess'>
+            <span class='ticketName' style='color:#AFAFAF;'>{{item.ticketName}}</span>
+            <span class='ticketScene' style='color:#AFAFAF;'>{{item.timesName}}</span>
+            <span class='ticketScene' style='color:#AFAFAF;'>{{item.startTime}}-{{item.endTime}}</span>
+          </view>
+          <image src='../../resources/overdue.png' class='cantUseImg' wx:if='{{item.status==3}}'></image>
+          <image src='../../resources/refundTicket.png' class='cantUseImg' wx:if='{{item.status==2}}'></image>
+          <image src='../../resources/writeOff.png' class='cantUseImg' wx:if='{{item.status==1}}'></image>
+        </view>
+        <view class='ticketBottom'>
+          <image src='../../resources/tipsIcon.png' class='tipIcons'></image>
+          <text class='tipTxt' style='color:#AFAFAF;'>有效期：{{dateUtil.formatTimes(item.effectiveStartDate)}}-{{dateUtil.formatTimes(item.effectiveEndDate)}}</text>
+        </view>
+      </view>
+   </view>
+   <view class='emptyTicket' wx:else>
+     <view class='emptyTipBox'>
+         <image src='../../../../images/noRank.png' class='emptyTicketImg'></image>
+         <text class='ticketTxt'>暂无可用票券</text>
+     </view>
+     <view class='buyTicketBox' bindtap='buyTicket'>
+        <view>
+          <text>前往购买</text>
+          <image src='../../../../images/goRun.png'></image>
+        </view>
+     </view>
+   </view>
+</view>

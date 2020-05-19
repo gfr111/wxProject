@@ -1,0 +1,38 @@
+<!--pages/couponOrder/pages/newCouponCenter/newCouponCenter.wxml-->
+<wxs src="../../../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+  <view class="ticketList"> 
+    <view class="couponItem" wx:for="{{ticketList}}" bindtap="toRecive" data-id="{{item.id}}">
+      <view class="couponTop">
+          <view class="couponMess">
+            <view class="couponName">{{item.name}}</view>
+            <view class="couponIntro">满{{item.amountLimit}}元立减{{item.type==1?'':item.maxDeductionAmount?'，最高抵扣'+item.maxDeductionAmount+'元':''}}</view>
+            <view class="effctiveDay" wx:if="{{item.useTimeType==1}}">{{dateUtil.formatTimes(item.useStartTs)}}-{{dateUtil.formatTimes(item.useEndTs)}}</view>
+            <view class="effctiveDay" wx:if="{{item.useTimeType==2}}">领取后{{item.validDays}}天有效</view>
+          </view>
+          <view style="display: flex;flex-direction: column;align-items: flex-end">
+            <view class="couponPrice">
+               <text>{{item.type==1?item.discount:item.discount*10}}</text>
+                <text>{{item.type==1?'元':'折'}}</text>
+            </view>
+            <view class="getBtn"  wx:if="{{item.traineeCanReceiveStatus==1||item.canReceived}}">立即领取</view>
+            <view class="alreadyGetBtn" wx:if="{{item.traineeCanReceiveStatus==3}}">已领完</view>
+               <view class="alreadyGetBtn" wx:if="{{item.traineeCanReceiveStatus==2&&!item.canReceived}}">已领取</view>
+            <view class="alreadyGetBtn" wx:if="{{item.traineeCanReceiveStatus==0}}">不可领取</view>
+          </view>
+      </view>
+      <view class="couponBottom">
+        <view class="bottomTitle">
+          <view class="leftBox">
+            <image src="../../../../images/partUse.png"></image>
+            <text>{{item.useBizType>0?'部分可用':'全场通用'}}</text>
+          </view>
+          <image src="{{!item.selected?'../../../../images/couponDown.png':'../../../../images/couponUp.png'}}" wx:if="{{item.useBizType>0}}" catchtap="showBizType" data-id="{{item.id}}"></image>
+        </view>
+         <view class="couponIntroTxt"  wx:if="{{item.selected}}" >{{item.bizType}}</view>
+      </view>
+    </view>
+  <view class='nullBox' wx:if="{{ticketList.length==0}}">
+        <image src='../../../../images/noRank.png' class='nullIcon'></image>
+          <text class='nullTxt'>暂无数据</text>
+      </view>
+  </view>

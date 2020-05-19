@@ -1,0 +1,17 @@
+<!--pages/coupon/pages/payResult/payResult.wxml-->
+<view class='resultPage'>
+  <view class='success' wx:if='{{status==1}}'>
+     <image src='../../../../images/shopSuccess.png'></image>
+     <text class='resultTtx'>付款成功</text>
+     <text class='tips'>入场时请刷入场二维码进场，或在自助机上取票进场</text>
+     <text class='checkBtn' bindtap='checkCoupon'>查看订单</text>
+     <text class='returnIndex' bindtap='toIndex'>返回首页</text>
+  </view>
+  <view class='success' wx:if='{{status==1}}'>
+     <image src='../../resources/payFaild.png'></image>
+     <text class='resultTtx'>付款成功</text>
+     <text class='tips'>支付时出现了小差错，请重新支付</text>
+     <text class='checkBtn' bindtap='returnPage'>重新支付</text>
+
+  </view>
+</view>

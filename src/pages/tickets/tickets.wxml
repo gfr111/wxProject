@@ -1,0 +1,225 @@
+<!--pages/tickets/tickets.wxml-->
+<!-- <view class='main'>
+  <view class='ticketMain'>
+   <view class='ticketList' wx:for="{{ticketList}}" wx:key="{{item.id}}">
+    
+   <image src='../../images/activity.jpg' wx:if="{{item.type==2&&!item.status}}" class='bgColor'></image>
+  
+   <image src='../../images/experience.jpg' wx:if="{{item.type==1&&!item.status}}" class='bgColor'></image>   
+
+   <image src='../../images/oldTime.jpg' wx:if="{{item.status==3||item.status==4}}" class='bgColor'></image>  
+     <text class='tickets-number'>x{{item.count}}张</text>
+     <view class='ticket-middle'>
+        <text class='ticke-name'>{{item.name}}</text>
+        <text class='ticke-time'>{{item.startDate}}-{{item.endDate}}</text>
+        <navigator url='./ticketDetail?id={{item.id}}'>
+              <text class='ticke-go red' wx:if="{{item.type==2&&!item.status}}">去使用</text> 
+              <text class='ticke-go blue' wx:if="{{item.type==1&&!item.status}}">去使用</text>  
+        </navigator>  
+        <image class='usedOrPass' src='../../images/used.png' wx:if="{{item.status==4}}"></image>   
+        <image class='usedOrPass' src='../../images/timePass.png' wx:if="{{item.status==3}}"></image>                     
+     </view>
+     <text class='tip'>本券最多叠加使用2张</text>
+   </view>
+   <view class='nullOrder' wx:if="{{ticketList.length==0}}">
+          <image src='../../images/noOrders.png'></image>
+          <text>暂无票券</text>
+  </view>
+</view>
+</view> -->
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<view class='orderBox'>
+    <view class='topTabSwiper'>
+      <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>优惠券</view>
+      <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>活动券</view>
+      <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}'  data-current = "2" bindtap='checkCurrent'>赠券</view>
+  </view>
+  <swiper current="{{currentData}}" class='swiper' style="height: {{listHeight}}px;" duration="300" bindchange="bindchange" >
+    <swiper-item>
+      <view class='swiper_con'>
+      <scroll-view scroll-y="true" style="height: {{listHeight}}px;overflow:auto;" >
+         <view class="ticketList" wx:for="{{ticketList}}" wx:if="{{ticketList.length!=0}}"> 
+               <view class="couponItem"  wx:if='{{item.status==1}}' bindtap="toDetail" data-id="{{item.id}}">
+                <view class="couponTop" >
+                  <view class="couponMess">
+                      <view class="couponName">{{item.name}}</view>
+                      <view class="couponIntro">满{{item.amountLimit}}元立减{{item.type==1?'':item.maxDeductionAmount?'，最高抵扣'+item.maxDeductionAmount+'元':''}}</view>
+                      <view class="effctiveDay">{{dateUtil.formatTimes(item.useStartTs)}}-{{dateUtil.formatTimes(item.useEndTs)}}</view>
+                    </view>
+                    <view class="couponPrice">
+                      <text>{{item.type==1?item.discount:item.discount*10}}</text>
+                      <text>{{item.type==1?'元':'折'}}</text>
+                    </view>
+                </view>
+                <view class="couponBottom" >
+                  <view class="bottomTitle">
+                    <view class="leftBox">
+                      <image src="../../images/partUse.png"></image>
+                      <text>{{item.useBizType>0?'部分可用':'全场通用'}}</text>
+                    </view>
+                    <image src="{{!item.selected?'../../images/couponDown.png':'../../images/couponUp.png'}}" wx:if="{{item.useBizType>0}}" catchtap="showBizType" data-id="{{item.id}}"></image>
+                  </view>
+                  <view class="couponIntroTxt"  wx:if="{{item.selected}}" >{{item.bizType}}</view>
+                </view>
+              </view>
+              <view class="couponItem" wx:else>
+                <view class="couponTop">
+                  <view class="couponMess">
+                      <view class="couponName" style="border-color:#AFAFAF;color:#AFAFAF;">{{item.name}}</view>
+                      <view class="couponIntro" style="color:#AFAFAF;">满{{item.amountLimit}}元立减{{item.type==1?'':'，最多抵扣'+item.maxDeductionAmount+'元'}}</view>
+                      <view class="effctiveDay" style="color:#AFAFAF;" >{{dateUtil.formatTimes(item.useStartTs)}}-{{dateUtil.formatTimes(item.useEndTs)}}</view>
+                    </view>
+                    <view class="couponPrice">
+                      <text style="color:#AFAFAF;">{{item.discount}}</text>
+                      <text style="color:#AFAFAF;">{{item.type==1?'元':'折'}}</text>
+                    </view>
+                </view>
+                <view class="couponBottom">
+                  <view class="bottomTitle">
+                    <view class="leftBox">
+                      <image src="../../images/partUnavailable.png"></image>
+                      <text style="color:#AFAFAF;">{{item.useBizType>0?'部分可用':'全场通用'}}</text>
+                    </view>
+                    <image src=""></image>
+                  </view>
+                </view>
+                <image src="../../images/invalidimg.png" class="overdus" wx:if='{{item.status==3}}'></image>
+                 <image src="../../images/alreadyUse.png" class="overdus" wx:if='{{item.status==2||item.status==4}}'></image>
+              </view>
+        </view>
+         <view class='nullOrder' wx:if="{{ticketList.length==0}}">
+                <image src='../../images/noOrders.png'></image>
+                <text>暂无卡券</text>
+        </view>
+      </scroll-view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='swiper_con'>
+         <scroll-view scroll-y="true" style="height: {{listHeight}}px;overflow:auto;" >
+            <view class="ticketList" wx:for="{{ticketList}}" wx:if="{{ticketList.length!=0}}"> 
+              <view class="couponItem" wx:if='{{!item.status}}'>
+                <view class="couponTop">
+                  <view class="couponMess">
+                      <view class="couponName" style="border-color:#3B418B;">{{item.name}}</view>
+                      <view class="couponIntro"></view>
+                      <view class="effctiveDay" style="margin-top:40rpx;">{{item.startDate}}-{{item.endDate}}</view>
+                    </view>
+                  <view>
+                      <view class="couponPrice">
+                      <text style="color:#000000;">{{item.count}}</text>
+                      <text style="color:#000000;">张</text>
+                    </view>
+                    <navigator url='./ticketDetail?id={{item.id}}'>
+                      <view class="getBtn">立即使用</view>
+                    </navigator>
+                  </view>
+                </view>
+                <view class="couponBottom">
+                  <view class="bottomTitle">
+                    <view class="leftBox">
+                      <image src="../../images/partUse.png"></image>
+                      <text>本券最多叠加使用{{item.restrictUseCount}}张</text>
+                    </view>
+                    <image src=""></image>
+                  </view>
+                </view>
+              </view>
+               <view class="couponItem" wx:else>
+                <view class="couponTop">
+                  <view class="couponMess">
+                      <view class="couponName" style="border-color:#AFAFAF;color:#AFAFAF;">{{item.name}}</view>
+                      <view class="couponIntro" style="color:#AFAFAF;"></view>
+                       <view class="effctiveDay" style="margin-top:40rpx;">{{item.startDate}}-{{item.endDate}}</view>
+                    </view>
+                    <view class="couponPrice">
+                      <text style="color:#AFAFAF;">{{item.count}}</text>
+                      <text style="color:#AFAFAF;">张</text>
+                    </view>
+                </view>
+                <view class="couponBottom">
+                  <view class="bottomTitle">
+                    <view class="leftBox">
+                      <image src="../../images/partUnavailable.png"></image>
+                      <text style="color:#AFAFAF;">本券最多叠加使用{{item.restrictUseCount}}张</text>
+                    </view>
+                    <image src=""></image>
+                  </view>
+                </view>
+                <image src="../../images/invalidimg.png" class="overdus" wx:if='{{item.status==3}}'></image>
+                 <image src="../../images/alreadyUse.png" class="overdus" wx:if='{{item.status==4}}'></image>
+              </view>
+            </view>
+         <view class='nullOrder' wx:if="{{ticketList.length==0}}">
+                <image src='../../images/noOrders.png'></image>
+                <text>暂无卡券</text>
+        </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='swiper_con'>
+        <scroll-view scroll-y="true" style="height: {{listHeight}}px;overflow:auto;" >
+             <view class="ticketList" wx:for="{{ticketList}}" wx:if="{{ticketList.length!=0}}"> 
+              <view class="couponItem" wx:if='{{!item.status}}'>
+                <view class="couponTop">
+                  <view class="couponMess">
+                      <view class="couponName" style="border-color:#3B418B;">{{item.name}}</view>
+                      <view class="couponIntro"></view>
+                      <view class="effctiveDay" style="margin-top:40rpx;">{{item.startDate}}-{{item.endDate}}</view>
+                    </view>
+                  <view>
+                      <view class="couponPrice">
+                      <text style="color:#000000;">{{item.count}}</text>
+                      <text style="color:#000000;">张</text>
+                    </view>
+                    <navigator url='./ticketDetail?id={{item.id}}'>
+                      <view class="getBtn">立即使用</view>
+                    </navigator>
+                  </view>
+                </view>
+                <view class="couponBottom">
+                  <view class="bottomTitle">
+                    <view class="leftBox">
+                      <image src="../../images/partUse.png"></image>
+                      <text>本券最多叠加使用{{item.restrictUseCount}}张</text>
+                    </view>
+                    <image src=""></image>
+                  </view>
+                </view>
+              </view>
+               <view class="couponItem" wx:else>
+                <view class="couponTop">
+                  <view class="couponMess">
+                      <view class="couponName" style="border-color:#AFAFAF;color:#AFAFAF;">{{item.name}}</view>
+                      <view class="couponIntro" style="color:#AFAFAF;"></view>
+                       <view class="effctiveDay" style="margin-top:40rpx;">{{item.startDate}}-{{item.endDate}}</view>
+                    </view>
+                    <view class="couponPrice">
+                      <text style="color:#AFAFAF;">{{item.count}}</text>
+                      <text style="color:#AFAFAF;">张</text>
+                    </view>
+                </view>
+                <view class="couponBottom">
+                  <view class="bottomTitle">
+                    <view class="leftBox">
+                      <image src="../../images/partUnavailable.png"></image>
+                      <text style="color:#AFAFAF;">本券最多叠加使用{{item.restrictUseCount}}张</text>
+                    </view>
+                    <image src=""></image>
+                  </view>
+                </view>
+                <image src="../../images/invalidimg.png" class="overdus" wx:if='{{item.status==3}}'></image>
+                 <image src="../../images/alreadyUse.png" class="overdus" wx:if='{{item.status==4}}'></image>
+              </view>
+            </view>
+            <view class='nullOrder' wx:if="{{ticketList.length==0}}">
+                <image src='../../images/noOrders.png'></image>
+                <text>暂无卡券</text>
+        </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+<view class="moreBtn" wx:if="{{currentData==0}}" bindtap="toCenter">领更多好券</view>

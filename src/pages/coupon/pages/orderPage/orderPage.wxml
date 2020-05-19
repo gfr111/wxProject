@@ -1,0 +1,100 @@
+<!--pages/coupon/pages/orderPage/orderPage.wxml-->
+<view class='orderPage'>
+  <view class='couponMess'>
+    <image src='{{img?img:"https://www.forzadata.cn/static/images/ticket/swim.jpg"}}' class='couponIcon'></image>
+    <view class='couponName'>
+      <text>{{couponName}}</text>
+      <text>数量：{{num}}</text>
+    </view>
+  </view>
+  <view class='scenceList'>
+    <view class='remindBox'>
+      <view class='scenceIcon'>
+        <image src='../../resources/icon.png' class='couponImg'></image>
+        <text style='color:#303030;font-weight:600;font-size:28rpx;'>票券场次</text>
+      </view>
+      <text style='color:#21C483;font-size:28rpx;' bindtap='showRemind'>购买须知</text>
+    </view>
+    <view class='scenceItem' wx:for='{{list}}' wx:key="{{index}}">
+       <view class='leftBox'>
+          <image  src='../../resources/moring.png' wx:if="{{item.startTime<'08:00'}}"></image>
+          <image  src='../../resources/afternoon.png' wx:if="{{item.startTime>='08:00'&&item.startTime<'18:00'}}"></image>
+          <image  src='../../resources/night.png' wx:if="{{item.startTime>='18:00'}}"></image>
+         <view class='leftMess'>
+           <text class='name'>{{item.name}}</text>
+           <text class='times'>{{planData}} {{item.startTime}}-{{item.endTime}}</text>
+         </view>
+       </view>
+       <view class='rightBox'>
+         <text class='number'>x {{item.buyCount}}</text>
+         <text class='price'>¥{{item.price}}</text>
+       </view>
+    </view>
+  </view>
+
+  <view wx:if="{{couponList.length!=0}}" class="orderPrice"  bindtap="toCoupon">
+    <text>优惠券</text>
+    <view class='orderPayStyle'>
+      <text style="color:#FA4A11" wx:if="{{coupon==null}}">{{couponList.length}}张可用</text>
+      <text style="color:#FA4A11" wx:if="{{coupon!=null&&coupon.type==1}}">-{{coupon.discount}}</text>
+       <text style="color:#FA4A11" wx:if="{{coupon!=null&&coupon.type!=1}}">{{coupon.discount*10}}折</text>
+       <image src='../../../../images/changeRight.png' class='payIcon'></image>
+    </view>
+  </view>
+
+  <view class='orderPrices' wx:if='{{firstOpen!=null&&firstClose!=null&&usageType==2}}' style='margin-bottom:0;'>
+    <text style='color:#303030;font-size:28rpx;margin-left:30rpx;'>有效日期</text>
+    <text style='color:#303030;font-size:28rpx;margin-right:30rpx;'>{{openingDay}}至{{effEndDay}}</text>
+  </view>
+   <view class='orderPrices' wx:if='{{usageType==1}}' style='margin-bottom:0;'>
+    <text style='color:#303030;font-size:28rpx;margin-left:30rpx;'>有效日期</text>
+    <text style='color:#303030;font-size:28rpx;margin-right:30rpx;'>{{date}}</text>
+  </view>
+  <view class='orderPrice'>
+    <text>订单金额</text>
+    <text style='color:#FA4A11;'>¥{{allPrice}}</text>
+  </view>
+   <view class="priceBox" wx:if="{{couponList.length!=0}}">
+      <view class="priceItem">
+        <span>订单金额</span>
+        <span>¥{{amount}}</span>
+      </view>
+      <view class="priceItem">
+        <span>优惠</span>
+        <span>-¥{{discountPrice}}</span>
+      </view>
+      <view class="priceItem">
+        <span>实际支付</span>
+        <span style='font-weight:600;font-size:32rpx;'>¥{{realPrice}}</span>
+      </view>
+  </view>
+  <view class='orderPrice' style="margin-top: 20rpx;">
+    <text>支付方式</text>
+    <!--  -->
+    <view class='orderPayStyle' bindtap='changeStyle' >
+      <text>{{isWechat?'微信支付':'储值卡支付'}}</text>
+      <image src='../../../../images/changeRight.png' class='payIcon'></image>
+    </view>
+  </view>
+</view>
+<view class='bottomBox'>
+  <view class='priceBottom'>
+    <text style='font-size: 36rpx;'>合计：</text>
+    <text style='font-size:28rpx;'>¥</text>
+    <text style='font-size: 40rpx;'>{{coupon==null?allPrice:realPrice}}</text>
+  </view>
+  <text bindtap='toPay'>{{isWechat?'去支付':'确认支付'}}</text>
+</view>
+
+<view class='bg' wx:if="{{showCourse}}" catchtouchmove="preventTouchMove" >
+  <view class='courseBox'>
+    <view class='courseTop'>
+     <image src='' bindtap='hideCourse'></image>
+     <text style='color:#323232;font-size:36rpx;font-weight:600;'>购买须知</text>
+      <image src='../../../../images/closeRule.png' bindtap='hideCourse'></image>
+    </view>
+    <view style='margin-left:50rpx;margin-right:50rpx;'>
+      <rich-text nodes="{{notice}}" style='color:#6E6E6E;font-size:28rpx;'></rich-text>
+    </view>
+  </view>
+</view>

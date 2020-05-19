@@ -1,0 +1,62 @@
+<!--pages/couponOrder/pages/disparityOrder/disparityOrder.wxml-->
+<wxs src="../../../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<view class="orderMess" style="border-top:1px solid #E6E6E6;">
+ <view class="messItem">
+   <text>票券名称</text>
+   <text>{{ticket.name}}</text>
+ </view>
+  <view class="messItem">
+   <text>场次</text>
+   <text>{{ins.timesName}}</text>
+ </view>
+  <view class="messItem">
+   <text>使用时间</text>
+   <text>{{ins.startTime}} - {{ins.endTime}}</text>
+ </view>
+  <view class="messItem">
+   <text>有效期</text>
+   <text>{{timeDate}}</text>
+ </view>
+  <view class="messItem">
+   <text>在场时限</text>
+   <text>{{ticket.presenceRestrictMinutes}}分钟</text>
+ </view>
+</view>
+
+<view class="orderMess">
+ <view class="messItem">
+   <text>入场时间</text>
+   <text>{{dateUtil.getDates(ins.checkInTime)}}</text>
+ </view>
+  <view class="messItem">
+   <text>超出时间</text>
+   <text>{{ticketFareAdjustment.overtimeMinutes}}分钟</text>
+ </view>
+  <view class="messItem">
+   <text>补款规则</text>
+   <text>{{ticket.extraPayPricePerServeralMinutes}}元/{{ticket.extraPaySeveralMinutes}}分钟</text>
+ </view>
+  <view class="messItem">
+   <text>订单金额</text>
+   <text style="color:#FA4A11;">¥{{ticketFareAdjustment.payAmount}}</text>
+ </view>
+</view>
+
+<view class="orderMess">
+  <view class='messItem'>
+    <text>支付方式</text>
+    <!--  -->
+    <view class='orderPayStyle' bindtap='changeStyle'>
+      <text>{{isWechat?'微信支付':'储值卡支付'}}</text>
+      <image src='../../../../images/changeRight.png' class='payIcon'></image>
+    </view>
+  </view>
+</view>
+<view class='bottomBox'>
+  <view class='priceBottom'>
+    <text style='font-size: 36rpx;'>合计：</text>
+    <text style='font-size:28rpx;'>¥</text>
+    <text style='font-size: 40rpx;'>{{ticketFareAdjustment.payAmount}}</text>
+  </view>
+  <text bindtap='toPay'>{{isWechat?'去支付':'确认支付'}}</text>
+</view>

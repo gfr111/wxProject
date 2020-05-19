@@ -1,0 +1,11 @@
+<template name="centerListCell">
+  <view class='leftImageCell-bg' bindtap='selectCenter' id='{{index}}'>
+      <view class='leftImageCell-image-bg'>
+        <image class='leftImageCell-image' mode='aspectFit' src='{{item.id == selectedId ? "images/location_selected.png" : "images/location_normal.png"}}'></image>
+      </view>
+      <view class='leftImageCell-right-bg {{item.address ? "leftImageCell-right-bg-detail" : ""}}'>
+        <view class='leftImageCell-right-title {{item.id == selectedId ? "leftImageCell-right-green":""}}'>{{item.name}}</view>
+        <view class='leftImageCell-right-detail {{item.id == selectedId ? "leftImageCell-right-green":""}}' wx:if='{{item.address}}'>{{item.address}}</view>
+      </view>
+    </view>
+</template>

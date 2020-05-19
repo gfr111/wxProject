@@ -1,0 +1,22 @@
+var reservStatusUtil = (function () {
+  function showGreen(status, rated) {
+
+    switch (status) {
+      case 1://已预约
+        return true;
+      case 8: //去支付
+        return true;
+      case 2: //完成
+        return !rated;
+      case 5: //签到
+        return !rated;
+      default: //6 失约还有其他
+        return false;
+    }
+  }
+  return {
+    showGreen: showGreen
+  }
+})()
+
+module.exports = reservStatusUtil

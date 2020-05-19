@@ -1,0 +1,10 @@
+<import src="../../../templates/basicCell.wxml" />
+<template name='reservationDetailInfoSection'>
+<view class='basicSection-item'>
+    <template is='basicCell' data='{{title:"课程名称", value: name, next:false}}'></template>
+    <template is='basicCell' data='{{title:"课程日期", value: date, next:false}}'></template>
+    <template is='basicCell' data='{{title:"课程时间", value: time, next:false}}'></template>
+    <template is='basicCell' data='{{title:"上课教练", value: trainer, next:false}}'></template>
+    <template is='basicCell' data='{{title:"上课地点", value: room ? room:"--", next:false}}'></template>
+  </view>
+</template>

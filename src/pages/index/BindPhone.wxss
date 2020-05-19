@@ -1,0 +1,439 @@
+/* pages/index/BindPhone.wxss */
+
+page {
+  background-color: white;
+}
+
+.cancle {
+  width: 618rpx;
+  background: #F6F6F6;
+  color: #07AE57;
+  font-size: 32rpx;
+  border-radius: 4rpx;
+  margin-top: 40rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.codes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #a0a0a0;
+  font-size: 26rpx;
+  margin-top: 46rpx;
+}
+
+.view-title {
+  display: inline-block;
+  width: 100%;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: left;
+  color: #a0a0a0;
+  font-size: 26rpx;
+  padding: 30rpx 0 20rpx 0;
+}
+
+.get-code-button {
+  font-size: 26rpx;
+  height: 36rpx;
+  width: 132rpx;
+  line-height: 36rpx;
+  text-align: right;
+  color: #00bc71;
+}
+
+.phone-input {
+  height: 42rpx;
+  width: 100%;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: black;
+  padding-bottom: 26rpx;
+  border-bottom: 2rpx solid #d3d3d3;
+}
+
+.phone-input-line {
+  height: 0.5px;
+  background-color: #e5e5e5;
+  position: absolute;
+  left: 60rpx;
+  top: 224rpx;
+  right: 60rpx;
+}
+
+.code-input {
+  height: 42rpx;
+  width: 100%;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: black;
+  padding: 26rpx 0;
+  border-bottom: 2rpx solid #d3d3d3;
+}
+
+.phoneTitleView {
+  width: 156rpx;
+  padding: 26rpx 0 23rpx 26rpx;
+  line-height: 40rpx;
+  color: black;
+  text-align: left;
+}
+
+.green-btn {
+  height: 100rpx;
+  color: white;
+  background-color: #00bc71;
+  border-radius: 8rpx;
+  font-size: 36rpx;
+  line-height: 100rpx;
+  flex: 1;
+  text-align: center;
+  padding-left: 90rpx;
+  box-sizing: border-box;
+  width: 650rpx;
+}
+
+.green-btn::after {
+  border: none;
+}
+
+.white-btn {
+  color: #07c160;
+  background-color: white;
+  border-radius: 8rpx;
+  font-size: 36rpx;
+  line-height: 100rpx;
+  flex: 1;
+  text-align: center;
+  border: 1px solid #07c160;
+  height: 100rpx;
+  padding-left: 90rpx;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  font-size: 15px;
+  margin-top: 110rpx;
+  margin-bottom: 40rpx;
+}
+
+info-title {
+  font-weight: bold;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.auth-btn {
+  height: 100rpx;
+  width: 80%;
+  color: white;
+  background-color: #07C160;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  flex: 1;
+  text-align: center;
+}
+.auth-btn::after{
+  border: none;
+}
+/*  */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #3c3c3c;
+  font-size: 52rpx;
+  font-weight: 500;
+  padding-bottom: 50rpx;
+}
+
+.header image {
+  width: 106rpx;
+  height: 106rpx;
+  border: 2rpx solid rgba(255, 255, 255, 1);
+  background: red;
+  border-radius: 50%;
+}
+
+.name {
+  padding-top: 0;
+}
+
+.name>text {
+  color: #a0a0a0;
+  font-size: 26rpx;
+}
+
+.nickname {
+  border-bottom: 2rpx solid #d3d3d3;
+  padding-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24rpx;
+}
+
+.nickname input {
+  width: 60%;
+}
+
+.nickname>view {
+  width: 160rpx;
+  height: 60rpx;
+  background: rgba(242, 242, 242, 1);
+  border-radius: 30rpx;
+}
+
+.nickname>view>text {
+  display: inline-block;
+  width: 80rpx;
+  height: 58rpx;
+  border-radius: 26rpx;
+  text-align: center;
+  line-height: 52rpx;
+  color: #a0a0a0;
+  font-size: 32rpx;
+}
+
+.nickname>view>.woman {
+  background: rgba(255, 146, 167, 1);
+  color: #fff;
+}
+
+.nickname>view>.man {
+  background: #84a8ff;
+  color: #fff;
+}
+
+.btn {
+  position: relative;
+  height: 100rpx;
+  box-sizing: border-box;
+  width: 650rpx;
+}
+
+.btn>image {
+  width: 44rpx;
+  height: 44rpx;
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  margin-top: -22rpx;
+  left: 30%;
+}
+
+.line {
+  width: 650rpx;
+  margin: 44rpx 0;
+  border-top: 1px solid #eaebec;
+  position: relative;
+}
+
+.line>text {
+  position: absolute;
+  margin: 0 auto;
+  top: -28rpx;
+  left: 50%;
+  margin-left: -56rpx;
+  width: 112rpx;
+  display: inline-block;
+  height: 50rpx;
+  background: #fff;
+  text-align: center;
+  color: #b3b3b3;
+  font-size: 36rpx;
+}
+
+.allbtn {
+  position: fixed;
+  bottom: 100rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tip-bottom {
+  display: flex;
+  color: #b3b3b3;
+  font-size: 24rpx;
+}
+
+.tip-bottom>image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 5px;
+  margin-top: 1px;
+}
+.login{
+  max-width: 650rpx;
+  width: 650rpx;
+  padding-left: 0;
+  margin-left: 0;
+  margin-top: 20rpx;
+  background: #07C160;
+  color: #fff;
+  font-size: 36rpx;
+}
+.mask {
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+}
+.model {
+  position: absolute;
+  width: 550rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 16rpx;
+  z-index: 100;
+  margin-left: -275rpx;
+  top: 50%;
+  left: 50%;
+  margin-top: -272rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.model_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx 0;
+  color: #07C160;
+  font-size: 32rpx;
+background: #fff;
+}
+
+.close {
+  width: 30rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 36rpx;
+}
+.agreebtn{
+  background: #07C160;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 0;
+  margin-bottom: 0;
+  border-bottom-left-radius: 16rpx;
+  border-bottom-right-radius: 16rpx;
+}
+.agreebtn::after{
+  border: none;
+}
+.scroll{
+  height: 452rpx;
+  color: #565656;
+  font-size: 24rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  letter-spacing: 2rpx;
+  background: #fff;
+}
+.personalData{
+  border-top:1px solid #E6E6E6;
+  padding: 0 50rpx;
+}
+.dataTitle{
+  color: #3C3C3C;
+  font-size: 52rpx;
+  margin-top: 68rpx;
+  margin-bottom: 18rpx;
+  font-weight: 600;
+}
+.titelExplain{
+  color: #939393;
+  font-size: 28rpx;
+  margin-bottom: 90rpx;
+}
+.selectAddress>span{
+  color: #A0A0A0;
+  font-size: 26rpx;
+ 
+}
+.selectAddress .picker{
+  margin-top: 30rpx;
+  display: flex;
+}
+.selectAddress .picker>span:nth-child(1){
+  border-bottom: 1px solid #D3D3D3;
+  font-size: 32rpx;
+  padding-bottom: 26rpx;
+  margin-right: 20rpx;
+  width: 150rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+.selectAddress .picker>span:nth-child(2){
+
+  border-bottom: 1px solid #D3D3D3;
+  font-size: 32rpx;
+  padding-bottom: 26rpx;
+  margin-right: 20rpx;
+   width: 210rpx;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+.selectAddress .picker>span:nth-child(3){
+  border-bottom: 1px solid #D3D3D3;
+  font-size: 32rpx;
+  padding-bottom: 26rpx;
+  width: 250rpx;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+.IDbox{
+  margin-top: 70rpx;
+}
+.IDbox>span{
+  color: #A0A0A0;
+  font-size: 26rpx;
+}
+.cardBox{
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.cardBox>span{
+   border-bottom: 1px solid #D3D3D3;
+  font-size: 32rpx;
+  padding-bottom: 26rpx;
+  margin-right: 20rpx;
+  width: 150rpx;
+  line-height: 54rpx;
+  height: 54rpx;
+}
+.cardBox>input{
+  width: 480rpx;
+  padding-bottom: 26rpx;
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid #D3D3D3;
+  font-size: 32rpx;
+  height: 54rpx;
+}

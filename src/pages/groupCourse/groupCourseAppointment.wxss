@@ -1,0 +1,814 @@
+/* pages/groupCourse/groupCourseAppointment.wxss */
+
+.bg {
+  width: 345rpx;
+  height: 178rpx;
+  /* background: rgba(0, 0, 0, 0.5); */
+  border-radius: 8rpx;
+}
+.bottomF{
+  margin-bottom: 80rpx;
+}
+.mask {
+  position: absolute;
+  width: 345rpx;
+  height: 178rpx;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8rpx;
+}
+
+.confirm-button .paysbtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.confirm-button .paysbtn>view text{
+ color: #383838;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.confirm-button .paysbtn>view text:last-child{
+color: #070707;
+}
+
+.confirm-button .paysbtn>view:last-child {
+  box-sizing: border-box;
+  padding: 17rpx 150rpx;
+  color: white;
+  font-size: 32rpx;
+  text-align: center;
+  background: rgba(0, 188, 113, 1);
+  border-radius: 40px;
+  width: auto;
+}
+
+.title {
+  height: 178rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  font-size: 28rpx;
+  color: #898989;
+  /* background: red; */
+}
+
+.title text:first-child {
+  font-size: 32rpx;
+  color: #303030;
+  margin-bottom: 10rpx;
+  display: inline-block;
+  width: 290rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  font-weight: 600;
+}
+
+.title text:last-child {
+  margin-top: 40rpx;
+}
+
+.header {
+  padding: 30rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.model{
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.next {
+  height: 26rpx;
+  width: 16rpx;
+  /* margin-left: 20rpx; */
+}
+
+.course-detail-scroll-view {
+  width: 100%;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.course-infor-title-view {
+  width: 100%;
+  height: 72rpx;
+  margin-top: 0rpx;
+  position: absolute;
+  left: 0rpx;
+  background-color: #f2f2f2;
+}
+
+.course-infor-title {
+  width: 100%;
+  height: 34rpx;
+  color: #7a7a7a;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  margin-top: 26rpx;
+  left: 20rpx;
+}
+
+.course-view-scroll-view {
+  width: 100%;
+  left: 0rpx;
+}
+
+.course-infor-section {
+  width: 100%;
+  height: 112rpx;
+  padding: 0 26rpx;
+  background-color: white;
+  box-sizing: border-box;
+}
+.course-infor-section view{
+  border-bottom: 1rpx solid #e6e6e6;
+}
+
+.course-view-scroll-view-section-line {
+  background-color: #e6e6e6;
+  /* position: absolute; */
+  left: 16rpx;
+  width: 100%;
+  height: 2rpx;
+  margin-top: 110rpx;
+}
+
+.course-infor-section-title {
+  height: 44rpx;
+  line-height: 44rpx;
+  font-size: 28rpx;
+  color: #303030;
+}
+
+.course-infor-section-detail {
+  height: 44rpx;
+  line-height: 44rpx;
+  font-size: 30rpx;
+  margin-top: 34rpx;
+  color: #7a7a7a;
+  position: absolute;
+  right: 26rpx;
+  text-align: right;
+}
+
+.member-card-view {
+  width: 100%;
+  height: 112rpx;
+  background-color: white;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ECECEC;
+
+}
+.member-card-view-line {
+  background-color: #e6e6e6;
+  width: 94%;
+  height: 2rpx;
+  position: absolute;
+  left: 16rpx;
+  margin-top: 110rpx;
+
+}
+
+.reserve-count-view {
+  width: 100%;
+  height: 112rpx;
+  background-color: white;
+  display:flex;
+  align-items:center;
+ justify-content:space-between;
+
+}
+
+.reserve-count-view-line {
+  background-color: #e6e6e6;
+  width: 100%;
+  height: 2rpx;
+  position: absolute;
+  left: 16rpx;
+  margin-top: 110rpx;
+}
+
+.price-view {
+  width: 100%;
+  height: 112rpx;
+  background-color: white;
+  position: absolute;
+  left: 0rpx;
+  margin-top: 222rpx;
+}
+
+.price-detail {
+  color: #00bc71;
+  height: 42rpx;
+  line-height: 42rpx;
+  font-size: 30rpx;
+  position: absolute;
+  right: 22rpx;
+  margin-top: 35rpx;
+}
+
+.section-next {
+    height: 32rpx;
+  width: 32rpx;
+}
+
+.member-detail {
+  color: #00BC71;
+  font-size: 28rpx;
+  width: 300rpx;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+    margin-right: 10rpx;
+}
+
+.confirm-button {
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx;
+}
+
+.confirm-button>view {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: #fbf8d9;
+  color: #df7119;
+  font-size: 24rpx;
+  flex-direction: column;
+  padding: 4rpx;
+  padding-left: 30rpx;
+}
+
+.confirm-button>view>text {
+  margin-bottom: 6rpx;
+}
+
+.confirm-button>view:last-child {
+  box-sizing: border-box;
+  background: #fff;
+  padding: 24rpx 30rpx;
+  color: white;
+  font-size: 32rpx;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+}
+
+.confirm-button>view:last-child>text {
+  display: inline-block;
+  border-radius: 52rpx;
+  width: 100%;
+  text-align: center;
+  background: #00bc71;
+  padding: 14rpx 0;
+  border: none;
+}
+
+.select-member-card-back-view {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+}
+
+.noseat {
+  color: #303030;
+}
+
+.member-card-scroll-view {
+  width: 100%;
+  position: absolute;
+  bottom: 0rpx;
+  background-color: white;
+}
+
+.member-card-section {
+  width: 100%;
+  height: 196rpx;
+  background-color: white;
+}
+
+.member-card-section-view {
+  width: 100%;
+  height: 196rpx;
+}
+
+.member-card-section-line {
+  background-color: #e6e6e6;
+  position: absolute;
+  left: 0rpx;
+  width: 100%;
+  height: 1rpx;
+  margin-top: 195rpx;
+}
+
+.member-card-name {
+  height: 44rpx;
+  line-height: 44rpx;
+  font-size: 32rpx;
+  position: absolute;
+  left: 54rpx;
+  margin-top: 32rpx;
+  width: 88%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.member-card-date {
+  height: 34rpx;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  position: absolute;
+  left: 54rpx;
+  margin-top: 96rpx;
+}
+
+.member-card-remainingDate {
+  height: 34rpx;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  position: absolute;
+  left: 54rpx;
+  margin-top: 130rpx;
+}
+
+.member-card-price {
+  height: 44rpx;
+  line-height: 44rpx;
+  font-size: 32rpx;
+  position: absolute;
+  right: 34rpx;
+  margin-top: 32rpx;
+  text-align: right;
+}
+
+.member-card-title-view {
+  width: 100%;
+  height: 80rpx;
+  position: absolute;
+  left: 0rpx;
+  background-color: white;
+}
+
+.member-card-title-view-title {
+  height: 80rpx;
+  position: absolute;
+  left: 54rpx;
+  color: #575757;
+  line-height: 80rpx;
+  font-size: 24rpx;
+}
+
+.member-card-title-view-close {
+  height: 80rpx;
+  width: 80rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 0rpx;
+}
+
+.member-card-title-view-line {
+  background-color: #e6e6e6;
+  position: absolute;
+  left: 0rpx;
+  width: 100%;
+  height: 2rpx;
+  margin-top: 78rpx;
+}
+
+.select-seat-back-view {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+}
+
+.select-seat-view {
+  width: 100%;
+  position: absolute;
+  bottom: 0rpx;
+  background-color: white;
+  overflow: hidden;
+}
+
+.select-seat-image {
+  /* width: 680rpx; */
+  height: 304rpx;
+  position: absolute;
+  left: 36rpx;
+  top: 116rpx;
+  /* background-color: lightgray; */
+}
+
+.select-seat-confirm-button {
+  width: 100%;
+  height: 90rpx;
+  background-color: white;
+  color: #7a7a7a;
+  font-size: 32rpx;
+  line-height: 90rpx;
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+  text-align: center;
+}
+
+.select-seat-confirm-button-line {
+  background-color: #e6e6e6;
+  position: absolute;
+  left: 0rpx;
+  width: 100%;
+  height: 1rpx;
+  bottom: 90rpx;
+}
+
+.seat-view-section-back-view {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.seat-view-section-view-select {
+  width: 64rpx;
+  height: 64rpx;
+  color: #00bc71;
+  background-color: white;
+  position: absolute;
+  line-height: 64rpx;
+  font-size: 32rpx;
+  text-align: center;
+  border-radius: 4rpx;
+  border-color: #00bc71;
+  border-width: 2rpx;
+  border-style: solid;
+}
+
+.seat-view-section-view-selected {
+  width: 64rpx;
+  height: 64rpx;
+  color: white;
+  background-color: #00bc71;
+  position: absolute;
+  line-height: 64rpx;
+  font-size: 32rpx;
+  text-align: center;
+  border-radius: 4rpx;
+}
+
+.seat-view-section-view-unSelect {
+  width: 64rpx;
+  height: 64rpx;
+  color: white;
+  background-color: #f2f2f2;
+  position: absolute;
+  line-height: 64rpx;
+  font-size: 32rpx;
+  text-align: center;
+  border-radius: 4rpx;
+}
+
+.seat-num-reduce {
+  height: 40rpx;
+  width: 40rpx;
+  border-radius: 50%;
+}
+
+.seat-num {
+  width: 64rpx;
+  color: black;
+  font-size: 32rpx;
+ 
+  text-align: center;
+}
+
+.seat-num-add {
+  height: 40rpx;
+  width: 40rpx;
+  border-radius: 50%;
+}
+
+.no-cards-image {
+  width: 300rpx;
+  height: 118rpx;
+}
+
+.no-cards-title {
+  width: 100%;
+  height: 44rpx;
+  line-height: 44rpx;
+  font-size: 32rpx;
+  color: #7e7e7e;
+  text-align: center;
+  position: absolute;
+  left: 0rpx;
+  top: 448rpx;
+}
+
+.no-cards-detail1 {
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #7e7e7e;
+  text-align: left;
+  position: absolute;
+  left: 160rpx;
+  top: 542rpx;
+}
+
+.no-cards-detail2 {
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #7e7e7e;
+  text-align: left;
+  position: absolute;
+  left: 160rpx;
+  top: 582rpx;
+}
+
+.no-cards-detail3 {
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #7e7e7e;
+  text-align: left;
+  position: absolute;
+  left: 160rpx;
+  top: 622rpx;
+}
+
+.no-cards-detail4 {
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #7e7e7e;
+  text-align: left;
+  position: absolute;
+  left: 160rpx;
+  top: 662rpx;
+}
+
+.secondSection {
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.secondSection-lower {
+  top: 664rpx;
+  position: absolute;
+  width: 100%;
+}
+
+.seatBack {
+  height: 336px;
+  background: red;
+  position: absolute;
+  top: 421rpx;
+}
+
+.seatList {
+  width: 100%;
+  height: 800rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 70rpx;
+}
+
+.seattitle {
+  height: 80rpx;
+  color: #575757;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  margin-left: 20rpx;
+}
+
+.seatclose {
+  height: 80rpx;
+  width: 80rpx;
+  float: right;
+}
+
+.seatTop {
+  border-bottom: 1px solid #e6e6e6;
+  /* border-top: 1px solid #e6e6e6; */
+}
+
+.seatimage {
+  height: 304rpx;
+  margin-top: 20rpx;
+  width: 100%;
+}
+
+.backView {
+  background: black;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+}
+
+.backViewMain {
+  z-index: 9999;
+  position: absolute;
+}
+
+.seatMiddle text {
+  animation-name: center;
+  line-height: 52rpx;
+  display: inline-block;
+  font-size: 30rpx;
+  width: 77rpx;
+  height: 52rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+  border-radius: 28rpx;
+}
+
+.seats {
+  color: #00bc71;
+  border-radius: 28rpx;
+  border: 2rpx solid rgba(0, 188, 113, 1);
+}
+
+.selectSeats {
+  background: #00bc71;
+  color: #fff;
+  border-radius: 28rpx;
+  border: 1px solid #00bc71;
+}
+
+.unSelectSeats {
+  background: #ccc;
+  border: 1px solid #ccc;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.seatMiddle {
+  padding: 0 5%;
+  width: 90%;
+  margin-top: 10rpx;
+}
+
+.seatBox {
+  display: inline-block;
+  padding-left: 16rpx;
+}
+.seatContent{
+  padding-bottom: 50rpx;
+}
+.seatBottom {
+  width: 100%;
+  height: 84rpx;
+  background: #00bc71;
+  color: #fff;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 84rpx;
+  position: fixed;
+  bottom: 0;
+}
+
+
+
+
+
+.topIconBox{
+  width: 100%;
+  height: 386rpx;
+  position: relative;
+}
+.courseImg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.topIconBox>span{
+  display:flex;
+  width: 136rpx;
+  height: 54rpx;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 24rpx;
+  background: #00BC71;
+  position: absolute;
+  right: 0;
+  top:40rpx;
+  border-radius: 28rpx 0 0 28rpx;
+}
+.courseMessBox{
+  position: relative;
+}
+.coachMess{
+  position: absolute;
+  top:-64rpx;
+  right: 26rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.coachMess>image{
+  width:128rpx;
+  height:128rpx;
+  border:6rpx solid rgba(255,255,255,1);
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+}
+.coachMess>span{
+  color: #898989;
+  font-size: 28rpx;
+}
+.courseMessBox{
+  background: #ffffff; 
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+.courseName{
+  margin-top:15rpx;
+  color: #303030;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+}
+.seatBtn{
+  width: 690rpx;
+  height: 72rpx;
+  background: #00BC71;
+  border-radius: 40rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 72rpx;
+  margin-left: 30rpx;
+}
+.officePaysbtn{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  height:120rpx;
+  background:#ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.officePaysbtn>view:nth-child(1){
+  display: flex;
+  align-items: center;
+}
+.officePaysbtn>view:nth-child(2){
+  width:320rpx;
+  height:72rpx;
+  background:#00BC71;
+  color:#ffffff;
+  text-align:center;
+  line-height:72rpx;
+  border-radius:40rpx;
+  margin-right:30rpx;
+}
+.priceBox{
+  background: #ffffff;
+  padding: 30rpx;
+  margin-top: 20rpx;
+}
+.priceItem{
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.priceItem:last-child{
+  margin-bottom: 0;
+}
+.priceItem>span:nth-child(1){
+  color: #303030;
+  font-size: 28rpx;
+}
+.priceItem>span:nth-child(2){
+    color: #EE0100;
+  font-size: 28rpx;
+}

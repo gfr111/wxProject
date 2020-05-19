@@ -1,0 +1,118 @@
+/* pages/tickets/newCouponList.wxss */
+page{
+  background: #F7F8F9;
+}
+.ticketList{
+  padding: 40rpx;
+  padding-bottom: 96rpx;
+}
+.couponItem{
+  background:rgba(255,255,255,1);
+  box-shadow:0px 2px 4px 0px rgba(0,0,0,0.1); 
+  padding: 26rpx 0;
+  padding-bottom: 0;
+   width: 100%;
+  margin-bottom: 30rpx;
+  border-radius: 16rpx;
+  position: relative;
+}
+.overdus{
+  position: absolute;
+  width: 112rpx;
+  height: 112rpx;
+  right: 30rpx;
+  bottom: 22rpx;
+}
+.couponTop{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+
+}
+.couponName{
+  color: #303030;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-left: 12rpx solid #FA4A11;
+  padding-left: 38rpx;
+}
+.couponIntro{
+ color: #303030;
+ font-size: 24rpx;
+ margin-top: 12rpx; 
+ margin-left: 50rpx;
+}
+.effctiveDay{
+  color: #7C7C7C;
+  font-size: 24rpx;
+  margin-left: 50rpx;
+}
+.couponPrice{
+  margin-right: 28rpx;
+}
+.couponPrice text:nth-child(1){
+  color: #FA4A11;
+  font-size: 60rpx;
+  font-weight: 600;
+  margin-right: 14rpx;
+}
+.couponPrice text:nth-child(2){
+  color: #FA4A11;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+.couponBottom{
+  margin: 0 14rpx;
+  border-top: 1px dashed #E4E4E4;
+    padding: 12rpx 24rpx;
+    padding-left: 36rpx;
+}
+.bottomTitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.leftBox{
+   display: flex;
+  align-items: center;
+}
+.leftBox image{
+  width: 24rpx;
+  height: 24rpx;
+}
+.leftBox text{
+ color: #7C7C7C;
+ font-size: 24rpx;
+  margin-left: 12rpx;
+}
+.bottomTitle>image{
+  width: 24rpx;
+  height: 24rpx;
+}
+.couponIntroTxt{
+  color: #7C7C7C;
+  font-size: 24rpx;
+  margin-top: 16rpx;
+  margin-bottom: 12rpx;
+}
+.selecteBtn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40rpx;
+  height: 40rpx;
+}
+ .moreBtn{
+    width: 100%;
+    height: 100rpx;
+    box-shadow:0px 2px 10px 0px rgba(0,0,0,0.1);
+    color: #303030;
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 100rpx;
+    position: fixed;
+    bottom: 0;
+    background: #ffffff;
+    font-weight: 600;
+  }

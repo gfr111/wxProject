@@ -1,0 +1,25 @@
+<!-- <wxs src="../../../../utils/uiUtils/btnUtil.wxs" module="btnUtil"></wxs>  -->
+
+<template name="bottomTextView">
+
+  <view class="bottomTextView-bg">
+
+    <view class="topTextView-left-label">{{orderNum}}</view>
+    <!-- <view class="topTextView-right-green-label {{rightGreen ? '':'topTextView-right-gray-label'}}">{{value}}</view>
+       -->
+    <view class="oderActionBtn-blackBorder orderActionBtn-right" bindtap='checkSit' id='{{index}}' wx:if='{{seatEnabled}}' data-photo="{{seatPhoto}}">
+      <view class='btnTitle'>查看座位</view>
+    </view>
+
+    <view class="oderActionBtn-blackBorder orderActionBtn-right" bindtap='didTappedSecond' id='{{index}}' wx:if='{{btnStyle.showSecond}}'>
+      <view class='btnTitle'>取消预约</view>
+    </view>
+
+    <block>
+      <view class='{{btnStyle.btnStyle}}' bindtap='didTappedFirst' id='{{index}}' data-btnType='{{btnStyle.btnType}}'>
+        <view class='btnTitle'>{{btnStyle.title}}</view>
+      </view>
+    </block>
+    
+  </view>
+</template>

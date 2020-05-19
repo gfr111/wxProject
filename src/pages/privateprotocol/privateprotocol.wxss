@@ -1,0 +1,374 @@
+/* pages/privateprotocol/privateprotocol.wxss */
+
+page{
+  overflow-x: hidden;
+}
+.protocolBox{
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+.protocolMess{
+ width:92%;
+  margin:auto;
+  border-bottom: 1px solid #E5E5E5;
+  padding-bottom: 20rpx;
+  padding-top:30rpx;
+}
+.carNameBox{
+  margin-bottom: 10rpx;
+}
+.carNameBox span:nth-child(1){
+  color: #383838;
+  font-size: 28rpx;
+  display: inline-block;
+  margin-right: 20rpx;
+  font-weight: 600;
+    width: 116rpx;
+}
+.carNameBox>span:nth-child(2){
+  color: #6E6E6E;
+  font-size: 28rpx;
+  display: inline-block;
+}
+.useOfficeBox{
+  width: 100%;
+  padding:30rpx 0;
+}
+.clearfix::after {
+    content: ".";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    height: 0;
+}
+.centerListBox{
+  float: left;
+  margin-right: 20rpx;
+  width: 72%;
+  display:flex;
+align-items:center;
+ flex-wrap:wrap;
+
+}
+.centerListBox span{
+  color: #6E6E6E;
+  font-size: 28rpx;
+  margin-right:15rpx;
+}
+.useOfficeBox>span{
+  margin-left: 30rpx;
+  color: #383838;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-right: 30rpx;
+  width: 130rpx;
+  float: left;
+
+}
+.buyCarMess{
+  display: flex;
+  flex-wrap: wrap;
+}
+.leftBox{
+  margin-right: 56rpx;
+}
+.officeBox{
+  width:92%;
+  margin:auto;
+  background: #ffffff;
+  border-bottom: 1px solid #E5E5E5;
+  /* height: 100rpx; */
+  display: flex;
+  align-items: center
+}
+.wideBorder{
+  border:0;
+  border-top:1px solid #E5E5E5;
+}
+.buyerMess{
+  border-top:20rpx solid #F7F8F9;
+  padding:30rpx;
+  padding-right: 20rpx;
+  border-bottom:20rpx solid #F7F8F9;
+}
+.buyerMess{
+  display: flex;
+  flex-wrap: wrap;
+}
+.buyerMess span:nth-child(1){
+  margin-right: 20rpx;
+}
+.buyerName{
+    margin-right: 74rpx;
+}
+.buyerPhone span:nth-child(1){
+  width: 88rpx;
+}
+.salespersonBox{
+  padding:30rpx;
+}
+.salespersonBox{
+  border-bottom:20rpx solid #F7F8F9;
+}
+.officeSign{
+  display: flex;
+  flex-direction: column;
+  padding-left: 30rpx;
+  width:50%;
+}
+.officeSign>span{
+  color: #383838;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+.officeSign>image{
+  width: 314rpx;
+  height: 120rpx;
+  padding-right: 30rpx;
+  border-right: 1px solid #E5E5E5;
+}
+.officeSign .seal{
+  width: 120rpx;
+  height: 120rpx;
+  margin-left: 100rpx;
+}
+.officeSign .noBorder{
+  border:0;
+}
+.officeSign .nosign{
+  font-weight: 400;
+  width: 314rpx;
+  height: 120rpx;
+  text-align: center;
+  line-height: 120rpx;
+  color: #6E6E6E;
+}
+.signBox{
+  padding-top:30rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 20rpx solid #F7F8F9;
+  padding-bottom: 30rpx;
+}
+.protocolServe{
+  padding:30rpx;
+  background: #ffffff;
+  padding-bottom: 120rpx;
+  margin-bottom: 100rpx;
+}
+.title{
+  color: #383838;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  font-weight: 600;
+  display: inline-block;
+}
+.edition{
+ color: #6E6E6E;
+ font-size: 28rpx;
+ display: block;
+ margin-bottom: 8rpx;
+}
+.releaseTime{
+  color: #6E6E6E;
+  font-size: 28rpx;
+  display: block;
+  margin-bottom: 40rpx;
+}
+.richTxt{
+  color: #383838;
+  font-size: 28rpx;
+  background: #ffffff;
+  padding-bottom: 60rpx;
+}
+.signBtn{
+  position: fixed;
+  bottom:0;
+  height: 120rpx;
+  border-top:1px solid #E5E5E5;
+  background: #ffffff;
+  width: 100%;
+}
+.signBtn>span{
+  width: 690rpx;
+  height: 76rpx;
+  border-radius: 100rpx;
+  background: #00bc71;
+  color: #ffffff;
+  font-size: 32rpx;
+  display: block;
+  margin: auto;
+  margin-top:22rpx;
+  text-align: center;
+  line-height: 76rpx;
+}
+.popBox{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);  
+}
+.popSignBox{
+   position:fixed;
+  bottom:0;
+  width:100%;
+  height:100%;
+  background:#ffffff;
+  overflow:hidden;
+  display:flex;
+  justify-content:space-between;
+  border-top:1px solid #EDF0F2;
+}
+.popCancel{
+  width: 32rpx;
+  height: 32rpx;
+}
+.popTitle{
+ display: flex;
+ justify-content: space-between;
+}
+.popTitle span{
+  color:#303030;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.btnGroup{
+  position: absolute;
+  bottom:24rpx; 
+}
+.btnGroup>span:nth-child(1){
+  width: 212rpx;
+  height: 72rpx;
+  border-radius: 100rpx;
+  border:1px solid #E5E5E5;
+  text-align: center;
+  line-height: 72rpx;
+  color: #303030;
+  font-size: 32rpx;
+  display: inline-block;
+  margin-right: 40rpx;
+  z-index: 1000;
+}
+.btnGroup>span:nth-child(2){
+  width: 438rpx;
+  height: 72rpx;
+  border-radius: 100rpx;
+  border:1px solid #00BC71;
+  text-align: center;
+  line-height: 72rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  display: inline-block;
+  background: #00BC71;
+    z-index: 1000;
+}
+.canvas {
+ box-sizing: border-box;
+ border-right: 1px dashed #E5E5E5;
+ border-left: 1px dashed #E5E5E5;
+ z-index: 3;
+ /* background: red; */
+/* transform:rotate(-90deg); */
+} 
+.canvas2{
+ box-sizing: border-box;
+ border-right: 1px dashed #E5E5E5;
+ border-left: 1px dashed #E5E5E5;
+ /* background: yellow;  */
+ position: absolute;
+ left: 104rpx;
+} 
+.imageCanvas{
+  width: 100%;
+  height: 300rpx;
+}
+.buttonBox{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+
+
+.tip_bgview{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.6;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+}
+.tip_view{
+  position: fixed;
+  z-index: 100;
+  width: 70%;
+  height: 240rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+  color: #6E6E6E;
+  font-size: 34rpx;
+  text-align: center;
+  top: 30%;
+  left: 15%;
+}
+.tip_view .tit{
+  height: 140rpx;
+  line-height: 140rpx;
+}
+.tip_view navigator{
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-top: 2rpx solid #F7F8F9;
+  color: #40C623;
+  font-size: 34rpx;
+}
+.signTitle{
+  width:80rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   background: #ffffff;
+   z-index: 4;
+}
+.signTitle>image{
+ width:32rpx;
+ height:65rpx;
+}
+.imgButtonBox{
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 120rpx;
+  margin-left:8px;
+  background-color: #ffffff;
+  z-index: 4;
+}
+.returnBtn{
+  width: 76rpx;
+  height: 136rpx; 
+  margin-top: 60rpx;
+}
+.submitBtnBox{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30rpx;
+}

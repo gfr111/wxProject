@@ -1,0 +1,80 @@
+<view class="collageDetailMain">
+   <view class='collageDetailTop clearfix'>
+      <image src='../../../images/card_small_3.jpg' class='detailTopImg'></image>
+      <view style='margin-bottom:10rpx;'><text class='detailTopName'>线上两年卡</text><text class='collageNum'>3人团</text></view>
+       <view>
+          <text class='collageNewPriceIcon'>￥</text><text class='collageNewPrice'>2000</text>
+          <text class='collageOldPrice'>￥3000</text>
+       </view>
+       <image src='../../../images/next.png' class='detailTopRight'></image>
+   </view>
+   <view class='joinCollage'>
+       <text class='joinCollageTitle'>还差4人，快来参加我的团</text>
+       <view class='joinCollageTime'>
+          <text class='lineLeft'></text>
+          <text>剩余23时52分</text>
+          <text class='lineRight'></text>
+       </view>
+       <view class='joinCollagePicList clearfix'>
+          <image src='../../../images/defaultAvatar.png'></image>
+          <image src='../../../images/defaultAvatar.png'></image>
+          <image src='../../../images/defaultAvatar.png'></image>
+          <image src='../../../images/defaultAvatar.png'></image>
+          <image src='../../../images/defaultAvatar.png'></image>    
+       </view>
+      <image src='../../../images/collageSuccess.png' class='collageSuccess'></image>
+      <!-- <image src='../../../images/collageError.png' class='collageSuccess'></image> -->  
+   </view>
+   <view class='moreCollage'>
+     <text class='moreCollageTitle'>更多拼团</text>
+            <view class="right-item">
+                <block>
+                        <view class='content-item'>
+                            <image src='../../../images/defaultAvatar.png' class='avater'></image>
+                            <view class='collageMess'>
+                               <text>韩梅梅</text>
+                                <text>还差<text style='color:#00BC71;display:inline-block;'>1</text>人拼成</text>
+                             </view>
+                             <view class='goToCollage'>
+                                 <text bindtap='joinOtherCollage'>立即参团</text>                   
+                            </view>
+                        </view>
+                        <view class='content-item'>
+                            <image src='../../../images/defaultAvatar.png' class='avater'></image>
+                            <view class='collageMess'>
+                               <text>韩梅梅</text>
+                                <text>还差<text style='color:#00BC71;display:inline-block;'>1</text>人拼成</text>
+                             </view>
+                             <view class='goToCollage'>
+                                 <text bindtap='joinOtherCollage'>立即参团</text>
+                            </view>
+                        </view>
+                </block> 
+            </view>
+   </view>
+   <view class='collageStep'>
+     <text class='stepTittle'>拼团步骤</text>
+     <view>
+        <text>1.点击“立即开团”下单支付，发起拼团</text>
+        <text>2.点击“立即参团”下单支付，参与拼团</text>
+        <text>3.支付成功，邀请好友一起参团</text>
+        <text>4.达到人数，拼团成功，会员卡自动加入账户内</text>
+        <text>注：若未成团，款项100%退回</text>
+     </view>
+   </view>
+   <view class='inviteColage' bindtap='selectType'>再开一团</view>
+    <view class='selectTypeBg' wx:if="{{select}}">
+     <view class='select-box'>
+       <text class="dispire"  bindtap='hidden'>取消</text>
+       <text class='card-type'>开卡方式：原卡续卡，原卡到期后自动开卡</text>
+       <view class="select-car">
+         <text class='oldCar' style='margin-left:40rpx;'>新卡</text>       
+       </view>
+       <view class='all-price'>
+         <text style='font-size:24rpx;display:inline-block;margin-left:62rpx;color:#222222;margin-top:64rpx;'>总价 ￥</text>
+         <text style='font-size:40rpx;margin-left8rpx;'>2000</text>
+         <text class="toBuy" bindtap='toBuy'>确定</text>
+       </view>
+     </view>
+   </view>
+</view>

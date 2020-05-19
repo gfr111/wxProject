@@ -1,0 +1,245 @@
+.orderCell {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  background-color: #e6e6e6;
+}
+
+.bottomTextView-bg {
+  padding: 14rpx 24rpx 14rpx 16rpx;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  position: relative;
+  justify-content: flex-end;
+  border-top: 0.5px solid #e6e6e6;
+  /* height: 80rpx;  */
+}
+
+.topTextView-bg {
+  padding: 12rpx 24rpx 12rpx 16rpx;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  position: relative;
+  justify-content: flex-end;
+  border-bottom: 0.5px solid #e6e6e6;
+  /* margin-bottom: 0.5px; */
+}
+
+.topTextView-left-label {
+  text-align: left;
+  flex: 1;
+  color: #575757;
+  font-size: 24rpx;
+  height: 34rpx;
+  margin-right: 10rpx;
+}
+
+.topTextView-right-green-label {
+  text-align: right;
+  max-width: 10em;
+  color: #00BC71;
+  font-size: 24rpx;
+  /* height: 34rpx; *//* margin-right: 10rpx; */
+}
+
+.topTextView-right-gray-label {
+  color: #7e7e7e;
+  text-align: right;
+  max-width: 80%;
+  font-size: 24rpx;
+}
+
+.separatorLine {
+  height: 0.5px;
+  background-color: #e6e6e6;
+  flex: 1;
+}
+
+.oderActionBtn-blackBorder {
+  align-content: center;
+  border: 2rpx solid #e1e1e1;
+  border-radius: 28rpx;
+  /* height: 53rpx;  *//* min-height: 53rpx; */
+  width: 124rpx;
+  text-align: center;
+  font-size: 24rpx;
+  padding: 8rpx 0; 
+
+}
+
+.orderActionBtn-right {
+  margin-right: 32rpx;
+}
+
+.oderActionBtn-greenBack {
+  color: white;
+  background-color: #00bc71;
+  border: none;
+
+  width: 124rpx;
+  text-align: center;
+  border-radius: 28rpx;
+  align-content: center;
+  font-size: 24rpx;
+  padding: 8rpx 0; 
+}
+
+.oderActionBtn-greenBorder {
+  color: #00bc71;
+  background-color: white;
+  border: 2rpx solid #00bc71;
+
+  width: 124rpx;
+  text-align: center;
+  border-radius: 28rpx;
+  align-content: center;
+  font-size: 24rpx;
+  padding: 8rpx 0; 
+}
+
+.middleContentView {
+  padding: 24rpx 23rpx 31rpx 16rpx;
+  display: inline-flex;
+  align-items: center;
+  background-color: white;
+  position: relative;
+  flex-direction: row;
+  /* height: 191rpx; */
+}
+
+
+.coursePhotoBack {
+  width: 174rpx;
+  height: 130rpx;
+  position: relative;
+}
+
+
+.coursePhoto {
+  width: 170rpx;
+  height: 130rpx;
+  left: 2px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+}
+
+.courseLevelView-bg {
+  padding-top: 2px 0 5px;
+  background-color: blueviolet;
+  /* height: 26px; *//* align-items: center; */
+  justify-content: center;
+}
+
+.courseLevelView {
+  color: white;
+  background-color: lightGray;
+  font-size: 20rpx;
+  display: inline-flex;
+  padding: 0 12rpx 0 10rpx;
+  margin-top: 4rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  text-align: center;
+  justify-content: center;
+  position: absolute;
+  
+}
+
+.courseLevelRightImage {
+  height: 13px;
+  width: 26px;
+  /* flex: 1; *//* padding: 2px 0 0 0; *//* align-items: baseline; */
+  background-color: greenyellow;
+  margin-top: 2px;
+}
+
+.courseMiddleContent {
+  flex: 1;
+  flex-direction: row;
+  display: inline-flex;
+}
+
+.courseContent-bg {
+  flex: 1;
+  flex-direction: column;
+  display: inline-flex;
+  padding-left: 16rpx;
+  align-self: flex-start;
+  /* align-items: flex-start; */
+  /* padding-top: 20rpx;  */
+  /* position: relative */
+}
+
+.courseName-label {
+  text-align: left;
+  color: #2b2b38;
+  font-size: 32rpx;
+  /* line-height: 22rpx; */
+  /* flex: 1; */
+}
+
+.courseTime-bg {
+  display: inline-flex;
+  flex: 1;
+  flex-direction: row;
+  padding-right: 1rpx;
+  align-items: center;
+}
+
+.courseTime-label {
+  /* width: ; */
+  /* width: 220rpx; */
+  text-align: left;
+  color: #7a7a7a;
+  font-size: 32rpx;
+  /* line-height: 22rpx; */
+}
+
+.amount-label {
+  flex: 1;
+  text-align: right;
+  color: #00bc71;
+  font-size: 24rpx;
+  /* line-height: 27rpx; */
+}
+
+.checkDetail-bg {
+  display: inline-flex;
+  flex-direction: row;
+  /* margin-left: 10rpx; */
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.checkDetail-bg-info {
+  margin-top: 14rpx;
+}
+
+.checkDetail-detail {
+  flex: 1;
+  text-align: left;
+  color: #ABABAB;
+  font-size: 24rpx;
+  line-height: 34rpx;
+}
+
+.checkDetail-label {
+  width: 4em;
+  text-align: right;
+  color: #7e7e7e;
+  font-size: 24rpx;
+}
+
+.nextArrow {
+  width: 17rpx;
+  height: 17rpx;
+  align-content: center;
+  padding-left: 4rpx;
+  /* align-self: flex-end; */
+}

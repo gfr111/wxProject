@@ -1,0 +1,51 @@
+<!--pages/sign/sign.wxml-->
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<wxs src="../../utils/uiUtils/imageUrlUtil.wxs" module="imageUrlUtil"></wxs>
+
+<view class='signBox'>
+  <view class='topBox'>
+    <image src='/images/StoredvalueCard.jpg' class='bgImg' mode='aspectFill'></image>
+    <span class='signTitle'>我的健身记录</span>
+    <span class='signNum'>{{num}}
+      <i>次</i>
+    </span>
+  </view>
+  <view class='signRecordBox' style="padding:0;">
+    <view wx:if="{{signList.length==0||signList==null}}" class='nullOrder'>
+      <image src='../../images/noRank.png'></image>
+      <text>暂无健身记录</text>
+    </view>
+
+    <scroll-view wx:else scroll-y >
+       <view style="padding-left:46rpx;padding-bottom:20rpx;" >
+        <view class="fitRecordList">
+          <view class="fitRecordItem" wx:for="{{signList}}" w:key='index'>
+            <image src="../../images/recordIcon.png" class="recordIcon"></image>
+              <view class="fitRecordTop">
+                <view class="centetBox">
+                  <image src='{{item.centerPhoto||"../../images/default_user.png"}}'></image>
+                  <span>{{item.center}}</span>
+                </view>
+                <span>{{dateUtil.formatTimes(item.checkInTime)}}</span>
+              </view>
+            <view class="recordContain" style="padding-bottom:40rpx;">
+                <view style="margin-top:30rpx;margin-bottom:20rpx;">
+                  <span>扣卡：{{item.usedCardName?item.usedCardName:'无会员卡信息'}}</span>
+                  <span>{{item.cardType==3?'':item.cardType==4?item.deductionCount+'次':item.deductionAmount+'元'}}</span>
+                </view>
+                <view >
+                  <span>时间：{{dateUtil.getHours(item.checkInTime)}}-{{item.checkoutTime?dateUtil.getHours(item.checkoutTime):'暂未签出'}}</span>
+                  <span>{{item.interval}}</span>
+                </view>
+              </view>
+          </view>
+          </view>
+       </view>
+    </scroll-view> 
+     
+  </view>
+
+<view class='moreBtnBox' wx:if="{{shoeMore}}">
+  <span>没有更多了哦~</span>
+</view>
+</view>

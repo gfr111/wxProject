@@ -1,0 +1,229 @@
+/* pages/space/myreservation.wxss */
+
+page {
+  height: 100%;
+  position: relative;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica;
+  background-color: #f7f8f9;
+}
+
+.main_view {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.main_view .order_bgview {
+  margin: 0 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+.order_bgview .order_view {
+  width: 100%;
+  border-top: 20rpx solid #f7f8f9;
+}
+
+.order_view .top_view {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.top_view image {
+  margin-top: 34rpx;
+  margin-left: 40rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.top_view .title {
+  margin-left: 30rpx;
+  color: #303030;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.top_view .right_tit {
+  position: absolute;
+  margin-top: 0;
+  width: 20%;
+  height: 100rpx;
+  text-align: right;
+  right: 40rpx !important;
+  font-size: 28rpx;
+}
+
+.order_view .info_view {
+  width: 100%;
+  height: 132rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.info_view .ground_img {
+  width: 80rpx; /* 80 */
+  height: 80rpx; /* 80 */
+  margin: 0 30rpx 20rpx 40rpx;
+}
+
+.info_view .ground_info {
+  width: 50%;
+  height: 132rpx;
+  line-height: 40rpx;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 28rpx;
+}
+
+.order_view .foot_view {
+  /* width: 100%; */
+  margin: 0 40rpx;
+  height: 110rpx;
+  display: flex;
+  flex-direction: row;
+  font-size: 28rpx;
+  color: #303030;
+  line-height: 110rpx;
+  border-top: 1rpx solid #e5e5e5;
+}
+
+.foot_view .price {
+  /* position: absolute; */
+  margin-top: 0;
+  height: 110rpx;
+  text-align: left;
+  font-weight: bold;
+}
+
+.foot_view .order_info {
+  position: absolute;
+  color: #303030;
+  border: 1rpx solid #e5e5e5;
+  text-align: center;
+  width: 160rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  right: 40rpx !important;
+}
+
+.foot_view .order_qr {
+  position: absolute;
+  color: #00bc71;
+  border: 1rpx solid #00bc71;
+  text-align: center;
+  width: 160rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  right: 40rpx !important;
+}
+
+.nullOrder {
+  position: absolute;
+  left: 44%;
+  top: 28%;
+  transform: translate(-50% -50%);
+}
+
+.nullOrder image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.nullOrder text {
+  display: block;
+  font-size: 30rpx;
+  color: #7a7a7a;
+  margin-top: 40rpx;
+}
+
+.baffle_view {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.6;
+  overflow: hidden;
+  z-index: 9000;
+}
+
+.modal_dialog {
+  width: 90%;
+  height: 70%;
+  overflow: hidden;
+  position: fixed;
+  top: 15%;
+  left: 5%;
+  z-index: 9999;
+  background-color: #fff;
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal_dialog .title {
+  width: 100%;
+  margin-top: 34rpx;
+  color: #323232;
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+}
+
+.title image {
+  position: absolute;
+  right: 30rpx;
+  margin-top: 0;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.modal_dialog .qr_number {
+  height: 68rpx;
+  line-height: 68rpx;
+  background-color: #f8f8f8;
+  color: #303030;
+  font-size: 48rpx;
+  text-align: center;
+  font-weight: bold;
+  margin-top:60rpx;
+  margin-bottom: 44rpx;
+}
+
+.modal_dialog .qr_view {
+ 
+  height: 410rpx;
+  width: 410rpx;
+  margin:0 auto;
+  /* background-color: #f6f7f8; */
+}
+
+.modal_dialog .tip_view {
+  margin-top: 40rpx;
+  width: 100%;
+  text-align: center;
+  color: #323232;
+  font-size: 32rpx;
+}
+
+.modal_dialog .buy_vip {
+  margin: 60rpx 40rpx 40rpx 40rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: #00bc71;
+  border-radius: 50rpx;
+}

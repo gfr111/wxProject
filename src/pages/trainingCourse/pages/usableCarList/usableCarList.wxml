@@ -1,0 +1,23 @@
+<!--pages/trainingCourse//pages/usableCarList/usableCarList.wxml-->
+ <view class='nullBox' wx:if="{{list.length==0}}">
+     <image src='../../../../images/noRank.png' class='nullIcon'></image>
+      <text class='nullTxt'>暂无数据</text>
+  </view>
+<view class="list" wx:else>
+  <view class="listItem" wx:for="{{list}}" wx:key='{{index}}' bindtap="toDetail" data-id="{{item.id}}">
+        <view class="cardImgBox">
+          <image src="../../image/cardIcon.png" ></image>
+          <span>{{item.cardTypeStr}}</span>
+        </view>
+        <view class="courseMess">
+          <view class="courseName">{{item.name}}</view>
+          <view class="cardMess" wx:if="{{item.cardType==3}}">有效期 {{item.cardEffectiveDays}} 天</view>
+           <view class="cardMess" wx:if="{{item.cardType==4}}">卡内次数 {{item.availableCount}} 次</view>
+            <view class="cardMess" wx:if="{{item.cardType==5}}">卡内金额 {{item.amount}} 元</view>
+           <view class='courseIntro'>
+             <span>¥{{item.onlineBuyPrice}}</span>
+             <!-- <span>立即购买</span> -->
+           </view>
+        </view>
+    </view>
+</view>

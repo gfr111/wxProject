@@ -1,0 +1,359 @@
+/* pages/index/course.wxss */
+
+.main_view{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.main_view .nav_view{ 
+  zoom: 1; 
+  padding-right: 27%;
+  padding-left: 48rpx;
+  background: #fff;
+}
+
+.nav_view:after{
+  content: ""; 
+  clear: both;
+  display: block;
+  box-shadow:0px 4rpx 20rpx 0px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.nav_view .nav_bgview{
+  float: left;
+  text-align: center;
+  padding: 10rpx 0;
+  font-size: 32rpx; 
+  margin-right: 80rpx;
+  padding-bottom: 24rpx;
+  color: #999;
+}
+
+.nav_view .select{
+  border-bottom: 4rpx solid #333; 
+  color: #303030;
+  font-weight: 600;
+}
+
+.main_view .swiper{
+  width: 100%; 
+  box-shadow: 0px -4rpx 6rpx 0px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.swiper .swiper_bgview{
+  text-align: center;
+  width: 92%; 
+  height: 100%;
+  background-color: #F7F8F9;
+  padding: 0 30rpx 30rpx 30rpx;
+}
+
+.swiper_bgview .swiper_nomal{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.swiper_nomal image{
+  width: 372rpx;
+  height: 420rpx;
+  margin-top: 200rpx;
+  margin-bottom: 60rpx;
+}
+.swiper_nomal span{
+  color: #969696;
+  font-size: 32rpx;
+}
+
+
+.swiper_bgview .class_listview{
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+
+.class_listview .class_list{
+  width: 690rpx;
+  height: 240rpx;
+  position: relative;
+  box-shadow: 2rpx 2rpx 4rpx 0px rgba(0,0,0,0.16);
+  margin-bottom: 30rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.class_list .class_img{
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+  filter: brightness(50%);
+}
+
+.class_list .class_name{
+  position: absolute;
+  left: 40rpx;
+  top:40rpx;
+  color: #fff;
+  font-size: 40rpx;
+  width: 500rpx;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.class_list .class_limit{
+  position: absolute;
+  bottom: 30rpx;
+  left: 40rpx;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24rpx;
+  padding-right: 30rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  border-right: 2rpx solid #B9B9B9;
+}
+
+.class_list .left_view{
+  margin-left: 194rpx;
+  padding-left: 30rpx;
+  border-right: none;
+}
+
+.class_list .class_state{
+  position: absolute;
+  left: 40rpx;
+  top:42rpx;
+  width: 76rpx;
+  height: 120rpx;
+}
+
+.class_list .invaild{
+  width: 120rpx;
+  height: 72rpx;
+  position: absolute;
+  left: 40rpx;
+  bottom: 42rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .carContent{
+  padding:40rpx;
+}
+.carlist{
+  height: 400rpx;
+ 
+}
+.absent{
+  line-height: 60rpx;
+  display: block;
+  border-bottom: 2rpx solid #E6E6E6;
+  margin-top: 30rpx;
+  font-size: 30rpx;
+  margin-bottom: 20rpx;
+}
+.recordList{
+  color: #7A7A7A ;
+  font-size: 26rpx;
+  line-height: 60rpx;
+}
+.noRecord{
+  margin-left:44%;
+  margin-top:32%;
+}
+.noRecord image{
+ width: 100rpx;
+ height: 86rpx;
+}
+.noRecord text{
+  display: block;
+  font-size: 30rpx;
+  color: #7A7A7A;
+  margin-left: -8rpx;
+  margin-top: 20rpx;
+}
+.swiper-card{
+ width:100%;
+ height:386rpx;
+}
+.swiper-item-view{
+ height:98%;
+ width:96%;
+ margin:0 auto;
+ border-radius: 8rpx;
+}
+.three{
+  position: relative;
+}
+.three image{
+  position: absolute;
+  left:0;
+  top:0;
+  height:100%;
+  width:100%
+}
+.index{
+  background: white;
+  height: 100%;
+  padding-top:40rpx; 
+}
+.carType{
+  display: inline-block;
+  width: 80rpx;
+  height: 36rpx;
+  font-size: 24rpx;
+  color: #fff;
+  background: rgba(250, 249, 249, 0.4);
+  text-align: center;
+  line-height: 36rpx;
+  border-radius: 8rpx;
+  opacity: 0.6;
+  margin-top: 10rpx;
+}
+.courseName{
+  font-size: 34rpx;
+  color: #fff;
+  display: block;
+  margin-left: 40rpx;
+    overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+height: 48rpx;
+}
+.courseBottom{
+  position: absolute;
+  top:268rpx;
+  left:40rpx;
+  color: #fff;
+  font-size: 28rpx;
+}
+.courseTop{
+  margin-top:60rpx; 
+  position: absolute;
+}
+.carName{
+  display: block;
+  font-size: 34rpx;
+  color: #fff;
+  margin-top:10rpx;
+margin-bottom: 60rpx;
+opacity: 0.8;
+}
+.days{
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 34rpx;
+  opacity: 0.8;   
+}
+.timeTo{
+    color: #fff;
+  font-size: 28rpx;
+  line-height: 34rpx;
+  margin-left: 42rpx;
+
+  
+  opacity: 0.8;
+}
+.frequency{
+  display: block;
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 34rpx;
+  margin-top: 16rpx;
+  opacity: 0.8;
+}
+.bottomLeft{
+  float: left;
+  margin-right: 28rpx;
+}
+.bottomRight{
+  float: left;
+  border-left:2rpx solid rgba(255, 255, 255, 0.25);
+  padding-left: 24rpx;
+}
+.nullOrder{
+  position: absolute;
+  left: 44%;
+  top:28%;
+  transform: translate(-50% -50%)
+}
+.nullOrder image{
+  width: 120rpx;
+  height: 120rpx;
+}
+  .nullOrder text{
+    display: block;
+    font-size: 30rpx;
+    color: #7a7a7a;
+    margin-top:40rpx;
+    position: relative;
+    left:-10rpx;
+  }
+  .depositList{
+    padding:30px 20px;
+    background: white;
+  }
+  .depositTitle{
+    font-size:15px;
+    margin-bottom: 15px;
+  }
+  .itemTitle{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .itemStatus{
+    border:1px solid #E64646;
+color:#E64646;
+font-size:12px;
+padding:0 5px;
+  }
+  .depositItem{
+    margin-bottom: 25px;
+  }
+  .itemDetail{
+    padding:10px 15px 20px 15px;
+background:#F7F7F7;
+  }
+  .detailTitle{
+    color:#A5A5A5;
+    font-size:12px;
+  }
+  .detailBuyInfo{
+    display:flex;
+margin-bottom:20px;
+  }
+  .detailContent{
+    margin-top:5px;
+font-size:14px;
+contain:#4A4A4A;
+  }
+  .detailContent image{
+    width: 14px;
+    height: 14px;
+    margin-right: 3px;
+    margin-bottom:-2px;
+  } */

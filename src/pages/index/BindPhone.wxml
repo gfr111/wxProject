@@ -1,0 +1,112 @@
+<!--pages/index/BindPhone.wxml-->
+<import src='../templates/greenBtn.wxml' />
+<import src='../templates/whiteBtn.wxml' />
+<view wx:if="{{!isLogin}}">
+  <view class='userinfo' wx:if="{{userInfo==null}}">
+    <image class="userinfo-avatar" src="{{appInfo.img}}" mode="cover"></image>
+    <text class="info-title">{{appInfo.name}}</text>
+    <text class="userinfo-nickname">申请获取你的公开信息(昵称、头像等)</text>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfoByButton" class='auth-btn'>微信授权</button>
+    <text class="cancle" bindtap="canclegetuserInfo">取消</text>
+  </view>
+  <view style="padding:50rpx; box-sizing: border-box;" wx:else>
+    <view class="header">
+      <view>
+        <text>您好</text>
+      </view>
+      <image src="{{userInfo.avatarUrl}}"></image>
+    </view>
+    <view class="name">
+      <text>昵称</text>
+      <view class="nickname">
+        <input placeholder="请输入昵称" bindinput="changename" value="{{userInfo.nickName}}"></input>
+        <view>
+          <text bindtap="changesex" id='1' class="{{userInfo.gender==1?'man':''}}">男</text>
+          <text bindtap="changesex" id='2' class="{{userInfo.gender==2?'woman':''}}">女</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{step!=0}}">
+      <text class='view-title'>手机号</text>
+      <input disabled="{{step!=2}}" class='phone-input' placeholder='请输入手机号' value="{{phone}}" type='number' maxlength='11' bindinput='phoneBindInput'></input>
+    </view>
+
+    <view class="codes" wx:if="{{step==2}}">
+      <text>验证码</text>
+      <text bindtap='getCode' class='get-code-button'>{{codeButtonTitle}}</text>
+    </view>
+    <input wx:if="{{step==2}}" class='code-input' placeholder='输入验证码' type='number' maxlength='6' bindinput='codeBindInput'></input>
+
+    <view class="allbtn" wx:if="{{step==0}}">
+      <view class='tip-bottom' wx:if="{{agreecontent.showWxAppProtocol}}" style="margin-bottom:20rpx;">
+        <image src='{{agree?"../../images/selected.png":"../../images/unSelect.png"}}' bindtap='selectAgree'></image>点击确定表示同意
+        <text bindtap="showmodel" style='color:#07C160;' id="1">《服务协议》</text>
+      </view>
+
+      <view class="btn">
+        <image src="../../images/phonewei.png"></image>
+        <button  wx:if="{{agreecontent.showWxAppProtocol&&agree||!agreecontent.showWxAppProtocol}}"  class='green-btn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 微信一键授权 </button>
+        <button wx:else  class='green-btn' bindtap='getPhoneNumber'>微信一键授权</button>
+      </view>
+
+
+      <view class="line">
+        <text>or</text>
+      </view>
+
+      <view class="btn">
+        <image src="../../images/phonetel.png"></image>
+        <button class='white-btn' bindtap='didTapGreenBtn'>手机验证登录</button>
+      </view>
+    </view>
+
+
+
+
+    <view class="allbtn" wx:if="{{step!=0}}">
+      <view class='tip-bottom' wx:if="{{agreecontent.showWxAppProtocol}}">
+        <image src='{{agree?"../../images/selected.png":"../../images/unSelect.png"}}' bindtap='selectAgree'></image>点击确定表示同意
+        <text bindtap="showmodel" style='color:#07C160;' id="1">《服务协议》</text>
+      </view>
+      <button class="login" bindtap="bindUserPhone">登录 </button>
+    </view>
+
+  </view>
+  <view class="mask" wx:if="{{model==1}}" bindtap="showmodel" id="0"></view>
+  <view class="model" wx:if="{{model==1}}">
+    <view class="model_title">
+      <text>《服务协议》</text>
+      <image bindtap="showmodel" id="0" class="close" src="../../images/closeRule.png"></image>
+    </view>
+    <scroll-view class="scroll" scroll-y>
+    <text decode="true">{{agreecontent.protocolContent}}</text>
+    </scroll-view>
+    <button class="agreebtn" bindtap="agreement">同意</button>
+  </view>
+</view>
+<view class='personalData' wx:else>
+  <view class="dataTitle">添加其他信息</view>
+  <view class="titelExplain">我们将会对证件信息进行保密，请放心填写。</view>
+  <view class="selectAddress">
+    <span>社区</span>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="picker">
+        <span>{{multiArray[0][multiIndex[0]]}}</span>
+        <span>{{multiArray[1][multiIndex[1]]}}</span>
+        <span>{{multiArray[2][multiIndex[2]]}}</span>
+      </view>
+    </picker>
+  </view>
+  <view class="IDbox">
+    <span>证件号</span>
+    <view class="cardBox">
+      <span>身份证</span>
+      <input placeholder="证件号" type="idcard" bindinput='idNumInput' value="{{idNumber}}"></input>
+    </view>
+  </view>
+  <view class="allbtn">
+    <button class="login" bindtap="submitMess">确认 </button>
+  </view>
+
+</view>

@@ -1,0 +1,144 @@
+<view class='subscribeBox' style="height: 90%;overflow: scroll;background:#F7F8F9;">
+  <view class='topIconBox'>
+    <image src='{{item.pictures}}' class='courseImg'></image>
+    <span bindtap='toCourseDetail' data-instanceId='{{item.instanceId}}'>查看详情</span>
+  </view>
+  <view class='courseMessBox'>
+    <view class='coachMess'>
+      <image  bindtap="totrainer" src='{{item.personalPortrait||item.trainerPhoto||"../../images/default_user.png"}}'></image>
+      <span>{{item.trainerName}}</span>
+    </view>
+    <view class='courseName'>{{item.courseName}}</view>
+    <view style='color:#898989;font-size:28rpx;margin-bottom:40rpx;' wx:if="{{clubType!=8}}">{{courseDetail.duration}}分钟</view>
+    <view style='color:#898989;font-size:28rpx;margin-bottom:40rpx;' wx:else>{{courseDetail.room||''}}</view>
+    <view style='display:flex;align-item:center;margin-bottom:16rpx;' wx:if="{{clubType==8}}">
+      <image src='../../images/trainingClassIcon.png' style='width:32rpx;height:32rpx;margin-right:20rpx;'></image>
+      <span style='color:#898989;font-size:28rpx;'>{{courseDetail.class.name}}</span>
+    </view>
+    <view style='display:flex;align-item:center;margin-bottom:16rpx;'>
+      <image src='../../images/people.png' style='width:32rpx;height:32rpx;margin-right:20rpx;'></image>
+      <span style='color:#898989;font-size:28rpx;'>预约人数{{item.reservedNum+'/'+item.fixedNum}}</span>
+    </view>
+    <view style='display:flex;align-item:center;margin-bottom:16rpx;'>
+      <image src='../../images/officeTime.png' style='width:32rpx;height:32rpx;margin-right:20rpx;'></image>
+      <span style='color:#898989;font-size:28rpx;'>{{courseInforArray[0].detail+' '+courseInforArray[1].detail}}</span>
+    </view>
+  </view>
+  <view style='padding-left:30rpx;padding-right:30rpx;background:#ffffff;'>
+    <view class='member-card-view' bindtap='selectMemberCard'>
+      <text class='course-infor-section-title'>会员卡</text>
+      <view style='display:flex;align-items:center;'>
+        <text class='member-detail'>{{memberCardStr}}</text>
+        <image class='section-next' src='../../images/officeRight.png'></image>
+      </view>
+    </view>
+  </view>
+  <view style='padding-left:30rpx;padding-right:30rpx;background:#ffffff;' >
+    <view class='reserve-count-view' bindtap='showSelectSeat' wx:if="{{courseDetail.seatEnabled}}">
+      <text class='course-infor-section-title'>座位</text>
+      <view style='display:flex;align-item:center;'>
+        <text class="member-detail {{!seatTitle?'noseat':''}}">{{seatTitle!=''?seatTitle+'号':"未选择"}}</text>
+        <image class='section-next' src='../../images/officeRight.png'></image>
+        <!-- <view class='reserve-count-view-line' wx:if="{{memberCardList[memberCardSelectIndex].isPay}}"></view> -->
+      </view>
+    </view>
+    <view class='reserve-count-view' wx:else>
+      <text class='course-infor-section-title'>预约人数</text>
+      <view style='display:flex;align-item:center;'>
+        <image class='seat-num-reduce' src='../../images/reduce_disabled.png' wx:if="{{currentSeatSelectArray.length == 1}}"></image>
+        <image class='seat-num-reduce' src='../../images/reduce_normal.png' bindtap='seatSelectNumReduce' wx:else></image>
+        <text class='seat-num'>{{currentSeatSelectArray.length}}</text>
+        <image class='seat-num-add' src='../../images/add_disabled.png' wx:if="{{currentSeatSelectArray.length == maxSelectSeatCount}}"></image>
+        <image class='seat-num-add' src='../../images/addBuy.png' bindtap='seatSelectNumAdd' wx:else></image>
+      </view>
+      <!-- <view class='reserve-count-view-line' wx:if="{{memberCardList[memberCardSelectIndex].isPay}}"></view> -->
+    </view>
+  </view>
+  <view style='padding-left:30rpx;padding-right:30rpx;background:#ffffff;margin-top:20rpx;' wx:if="{{couponList.length!=0&&memberCardList[memberCardSelectIndex].isPay}}" >
+    <view class='member-card-view' bindtap="toCoupon" style="border-bottom:0;">
+      <text class='course-infor-section-title'>优惠券</text>
+      <view style='display:flex;align-items:center;'>
+        <text style="color:#FA4A11" wx:if="{{coupon==null}}" class='member-detail'>{{couponList.length}}张可用</text>
+        <text style="color:#FA4A11" wx:if="{{coupon!=null&&coupon.type==1}}" class='member-detail'>-{{coupon.discount}}</text>
+        <text style="color:#FA4A11" wx:if="{{coupon!=null&&coupon.type!=1}}" class='member-detail'>{{coupon.discount*10}}折</text>
+        <image class='section-next' src='../../images/officeRight.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class="priceBox bottomF" wx:if="{{couponList.length!=0&&memberCardList[memberCardSelectIndex].isPay}}" >
+    <view class="priceItem">
+      <span>订单金额</span>
+      <span>¥{{allPricre}}</span>
+    </view>
+    <view class="priceItem">
+      <span>优惠</span>
+      <span>-¥{{discountPrice}}</span>
+    </view>
+    <view class="priceItem">
+      <span>实际支付</span>
+      <span style='font-weight:600;font-size:32rpx;'>¥{{realPrice}}</span>
+    </view>
+</view>
+
+
+
+  <view class='confirm-button' wx:if="{{!showSeatView}}" >
+    <view wx:if="{{(courseDetail.premiseTime>0&&courseDetail.premiseCount>0)||courseDetail.minutesForCancelGroupCourseBeforeStart>0}}">
+      <text>温馨提示：</text>
+      <text wx:if="{{courseDetail.premiseTime>0&&courseDetail.premiseCount>0}}">上课前{{courseDetail.premiseTime}}小时，报名人数达到{{courseDetail.premiseCount}}人开团～  </text>
+      <text wx:if="{{courseDetail.minutesForCancelGroupCourseBeforeStart>0}}">开课前{{courseDetail.minutesForCancelGroupCourseBeforeStart}}分钟，无法取消预约～</text>
+    </view>
+    <view class='paysbtn' bindtap='toPay' wx:if="{{memberCardList[memberCardSelectIndex].isPay}}">
+      <view>
+        <text>实付：</text>
+        <text>¥{{coupon==null?payPrice:realPrice}}</text>
+      </view>
+      <view>确认</view>
+    </view>
+    <view bindtap='toPay' wx:else>
+      <text>确认</text>
+    </view>
+  </view>
+</view>
+<view  class='officeSubmitBox'>
+  <view class='officePaysbtn' bindtap='toPay' wx:if="{{memberCardList[memberCardSelectIndex].isPay}}">
+    <view style='margin-left:30rpx;'>
+      <text style='color:#383838;font-size:36rpx;font-weight:600;'>实付：</text>
+      <text style='color:#383838;font-size:36rpx;font-weight:600;'>¥{{coupon==null?payPrice:realPrice}}</text>
+    </view>
+    <view>
+      <text style='font-size:32rpx;'>确认</text>
+    </view>
+  </view>
+  <view bindtap='toPay' wx:else style='position:fixed;bottom:0;width:100%;height:120rpx;background:#ffffff;'>
+    <text class='seatBtn' style='display:block;margin-top:24rpx;'>确认</text>
+  </view>
+</view>
+<view class='model' wx:if="{{showSeatView}}">
+</view>
+
+<view class='backViewMain' wx:if="{{showSeatView}}" catchtouchmove="true">
+  <scroll-view class='seatList' wx:if="{{showSeatView}}" scroll-y catchtouchmove="true">
+    <view class='seatContent'>
+      <view class='seatTop'>
+        <text class='seattitle'>选择座位(最多选择{{maxSelectSeatCount}}个座位)</text>
+        <image class='seatclose' src='../../images/close.png' bindtap='selectSeatCancel'></image>
+      </view>
+      <image class='seatimage' src='{{courseDetail.seatPhoto}}' mode='aspectFit'></image>
+      <view class='seatMiddle'>
+        <view class='seatBox' wx:for="{{seatArray}}" wx:for-index="index" wx:for-item="item" wx:key='seatArrayId' wx:if="{{maxSelectSeatCount!=1}}">
+          <text wx:if="{{item.selectStatus!=2}}" class='{{item.selectStatus==1?"selectSeats":"seats"}}' bindtap='selectSeats' id="{{index}}" data-index='{{index+1}}' data-num="{{item.selectStatus}}" id="{{index}}">{{index + 1}}</text>
+          <text class='unSelectSeats' wx:if="{{item.selectStatus==2}}">{{index + 1}}</text>
+        </view>
+        <view class='seatBox' wx:for="{{seatArray}}" wx:for-index="index" wx:for-item="item" wx:key='seatArrayId' wx:if="{{maxSelectSeatCount==1}}">
+          <text wx:if="{{item.selectStatus!=2}}" class='{{_num==index?"selectSeats":"seats"}}' bindtap='selectSeats' id="{{index}}" data-index='{{index+1}}' data-num="{{item.selectStatus}}" id="{{index}}">{{index + 1}}</text>
+          <text class='unSelectSeats' wx:if="{{item.selectStatus==2}}">{{index + 1}}</text>
+        </view>
+
+      </view>
+    </view>
+  </scroll-view>
+  <view style='position:fixed;bottom:24rpx;'>
+    <view bindtap='seatSelectConfirms' class='seatBtn'>确认</view>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+<!--pages/agreement/agreement.wxml-->
+
+<view class='contant'>
+       <view class='nullOrder'  wx:if="{{descrip==true}}">
+           <image src='../../../images/noOrders.png' class='noOrderImg'></image>
+           <text class='noOrderTxt'>暂无协议</text>
+        </view>
+   <rich-text nodes="{{descrip}}"></rich-text>
+</view>

@@ -1,0 +1,68 @@
+/* pages/cardsPurchaseOnline/availableCardsList.wxss */
+
+.detailCell {
+  height: 145rpx;
+  padding: 20rpx 0rpx 20rpx 10rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rpx;
+  background-color: white;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.cardPhoto {
+  width: 161rpx;
+  height: 99rpx;
+  border-radius: 4rpx;
+}
+
+.rightDetailBack {
+  margin-left: 28rpx;
+  display: flex;
+  flex-direction: column;
+  height: 102rpx;
+  padding-top: 6rpx;
+  padding-bottom: 6rpx;
+  box-sizing: border-box;
+}
+
+.cardName {
+  display: flex;
+  color: #222;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  text-align: left;
+  margin-bottom: 12rpx;
+}
+.priceText{
+  font-size: 29rpx
+}
+.bought {
+  text-align: right;
+  font-size: 24rpx;
+  color: #fff;
+  background: #1ab394;
+}
+.price {
+  display: flex;
+  color: #222;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  float: right;
+  margin-bottom: 12rpx;
+}
+.rightPrice {
+  flex-grow:1;
+  text-align:right;
+  margin-right:10px;
+}
+
+.cardCenter {
+  display: flex;
+  color: #ababab;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  text-align: left;
+  margin-bottom: 12rpx;
+}

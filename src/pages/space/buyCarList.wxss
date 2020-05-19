@@ -1,0 +1,121 @@
+/* pages/space/buyCarList.wxss */
+
+.swiper_con{
+  text-align: center;
+   /* width: 92%;  */
+   width: 100%;
+   height: 100%;
+   background-color: #fff;
+   /* padding:30rpx; */
+}
+
+.nocarBox{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+.nocarBox>image{
+  width: 372rpx;
+  height: 420rpx;
+  margin-top: 130rpx;
+  margin-bottom: 60rpx;
+}
+.nocarBox>span{
+  color: #969696;
+  font-size: 32rpx;
+}
+
+.cardListBox{
+  /* padding: 30rpx 0 0 0; */
+  border-bottom: 20rpx solid #F7F8F9;
+  background-color: #fff;
+  padding: 30rpx;
+  width: 92%;
+}
+
+.cardListBox .card_title{
+  width: 100%;
+  height: 70rpx;
+  line-height: 30rpx;
+  text-align: left;
+  color: #000;
+  font-size: 28rpx;
+}
+
+.cardList{
+  width: 690rpx;
+  height: 80rpx;
+  position: relative;
+  margin-bottom: 30rpx;
+  background-color: #fff;
+}
+
+.cardList .cardImg{
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 138rpx;
+  height: 72rpx;
+  border-radius: 4rpx;
+}
+.cardName{
+  position: absolute;
+  left: 166rpx;
+  top:0;
+  color: #000;
+  font-size: 28rpx;
+  width: 400rpx;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cardLimit{
+  position: absolute;
+  top: 40rpx;
+  left: 166rpx;
+  color: #9F9F9F;
+  font-size: 24rpx;
+}
+
+.cardState{
+  position: absolute;
+  right: 40rpx;
+  top:15rpx;
+  display: flex;
+  padding-left: 18rpx;
+  padding-right: 10rpx;
+  font-size: 32rpx;
+  color: #F85A20;
+  height: 40rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.right_img{
+  position: absolute;
+  right: 0;
+  top: 18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+
+
+
+
+
+
+
+
+

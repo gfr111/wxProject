@@ -1,0 +1,16 @@
+<template name="loadMore">
+
+  <block wx:if="{{isRefreshing}}">
+    <view class="loadmore">
+      <view class="loading"></view>
+      <view class="zan-loadmore__tips">正在刷新中...</view>
+    </view>
+  </block>
+
+  <block wx:elif="{{isLoadingMore}}">
+    <view class="loadmore">
+      <view class="loading"></view>
+    </view>
+  </block>
+
+</template>

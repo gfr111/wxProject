@@ -1,0 +1,6 @@
+<template name='titleValueCell'>
+<view class='titleValueCell'>
+<text class='titleValueLeft'>{{leftValue}}</text>
+<text class='titleValueRight'>{[rightValue}}</text>
+</view>
+</template>

@@ -1,0 +1,232 @@
+/* pages/tickets/tickets.wxss */
+/* .ticketMain{
+  width: 94%;
+  margin: auto;
+  padding-top: 30rpx;
+}
+.ticketList{
+  width: 100%;
+  height: 292rpx;
+  position: relative;
+  margin-bottom: 40rpx;
+}
+.bgColor{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top:0;
+}
+.tickets-number{
+  position: absolute;
+  right:42rpx;
+  top:18rpx;
+  display: block;
+  color: #fff;
+  font-size: 34rpx;
+}
+.ticke-name{
+  color: #fff;
+  font-size: 44rpx;
+  position: absolute;
+  left:44rpx;
+  top:68rpx;
+  width:70%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  height: 53rpx;
+
+}
+.ticke-time{
+  position: absolute;
+  left:44rpx;
+  color: #fff;
+  font-size: 24rpx;
+  top:128rpx;
+}
+.ticke-go{
+  display: inline-block;
+  background: #fff;
+  width: 132rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  text-align: center;
+  position: absolute;
+  font-size: 24rpx;
+  top:106rpx;
+  right:41rpx;
+  border-radius: 8rpx;
+}
+.blue{
+  color: #68B3F9;
+}
+.red{
+  color: #FF9585;
+}
+.tip{
+  font-size: 24rpx;
+  color: #fff;
+  position: absolute;
+  bottom: 24rpx;
+  left:44rpx;
+}
+
+  .main{
+    width: 100%;
+    background: #ffffff;
+    padding-bottom: 38rpx;
+  }
+  .usedOrPass{
+    width: 182.2rpx;
+    height: 91.2rpx;
+    position: absolute;
+    top:84rpx;
+    right: 40rpx;
+  }
+  .ticketList:last-child{
+    margin-bottom: 0rpx;
+  } */
+  page{
+    background: #F7F8F9;
+  }
+.tab{float: left;text-align: center;padding: 10rpx 0;font-size: 30rpx; margin-right: 80rpx;padding-bottom: 24rpx;color: #999999;}
+.topTabSwiper{ zoom: 1; padding-right: 27%;padding-left: 48rpx;background: #ffffff;}
+.topTabSwiper:after{content: ""; clear: both;display: block;}
+.tabBorer{border-bottom: 2px solid #333333; color: #303030;font-weight: 600;}
+.swiper{width: 100%; box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.1);height: 100%;}
+.swiper_con{background: #F7F8F9;padding: 30rpx 40rpx;}
+.ticketList{
+  width: 100%;
+}
+.couponItem{
+  background:rgba(255,255,255,1);
+  box-shadow:0px 2px 4px 0px rgba(0,0,0,0.1); 
+  padding: 26rpx 0;
+  padding-bottom: 0;
+   width: 100%;
+  margin-bottom: 30rpx;
+  border-radius: 16rpx;
+  position: relative;
+}
+.couponItem:last-child{
+ margin-bottom: 40rpx;
+}
+.overdus{
+  position: absolute;
+  width: 112rpx;
+  height: 112rpx;
+  right: 30rpx;
+  bottom: 22rpx;
+}
+.couponTop{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+
+}
+.couponName{
+  color: #303030;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-left: 12rpx solid #FA4A11;
+  padding-left: 38rpx;
+}
+.couponIntro{
+ color: #303030;
+ font-size: 24rpx;
+ margin-top: 12rpx; 
+ margin-left: 50rpx;
+}
+.effctiveDay{
+  color: #7C7C7C;
+  font-size: 24rpx;
+  margin-left: 50rpx;
+}
+.couponPrice{
+  margin-right: 28rpx;
+}
+.couponPrice text:nth-child(1){
+  color: #FA4A11;
+  font-size: 60rpx;
+  font-weight: 600;
+  margin-right: 14rpx;
+}
+.couponPrice text:nth-child(2){
+  color: #FA4A11;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+.couponBottom{
+  margin: 0 14rpx;
+  border-top: 1px dashed #E4E4E4;
+    padding: 12rpx 24rpx;
+    padding-left: 36rpx;
+}
+.bottomTitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.leftBox{
+   display: flex;
+  align-items: center;
+}
+.leftBox image{
+  width: 24rpx;
+  height: 24rpx;
+}
+.leftBox text{
+ color: #7C7C7C;
+ font-size: 24rpx;
+  margin-left: 12rpx;
+}
+.bottomTitle>image{
+  width: 28rpx;
+  height: 28rpx;
+}
+.couponIntroTxt{
+  color: #7C7C7C;
+  font-size: 24rpx;
+  margin-top: 16rpx;
+  margin-bottom: 12rpx;
+}
+.nullOrder{
+  position: absolute;
+  left: 44%;
+  top:28%;
+  transform: translate(-50% -50%)
+}
+.nullOrder image{
+  width: 120rpx;
+  height: 120rpx;
+}
+  .nullOrder text{
+    display: block;
+    font-size: 30rpx;
+    color: #7a7a7a;
+    margin-top:40rpx;
+  }
+  .moreBtn{
+    width: 100%;
+    height: 100rpx;
+    box-shadow:0px 2px 10px 0px rgba(0,0,0,0.1);
+    color: #303030;
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 100rpx;
+    position: fixed;
+    bottom: 0;
+    background: #ffffff;
+    font-weight: 600;
+  }
+  .getBtn{
+  padding: 6rpx 20rpx;
+  color: #3B418B;
+  border:1px solid #3B418B;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  font-size: 20rpx;
+  margin-right: 36rpx;
+}

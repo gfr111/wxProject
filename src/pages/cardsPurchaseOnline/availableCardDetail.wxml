@@ -1,0 +1,159 @@
+<import src="../templates/cardAmountCell.wxml" />
+<import src="../templates/blackTitleValueCell.wxml" />
+<import src="../templates/spotGrayCell.wxml" />
+
+
+<view class='index'>
+  <!-- 卡背景图 -->
+  <image mode='aspectFill' class="bg" wx:if="{{card.card.cardBg}}" src="{{card.card.cardBg}}"></image>
+  <image wx:else src="../../images/{{card.card.cardType==5?'StoredvalueCard':card.card.cardType==4||card.card.cardType==7?'subCard':'timeLimitCard'}}.jpg" mode='aspectFill' class="bg"></image>
+  <!-- 会员卡信息 -->
+  <view class="header">
+    <view class="title">
+      <text>{{card.card.name}}</text>
+      <text wx:if="{{card.card.cardType==4&&card.card.availableCount!=null}}">卡内次数{{card.card.availableCount}}次</text>
+      <text wx:if="{{card.card.cardType==5&&card.card.amount!=null}}">卡内金额{{card.card.amount}}元</text>
+    </view>
+    <view class="money">
+      <view>
+        <text>¥</text>
+        <text>{{ price||'--'}}</text>
+      </view>
+      <text>有效期：{{card.card.cardEffectiveDays}}天</text>
+    </view>
+  </view>
+  <!-- 拼团 -->
+  <navigator class="groups" url='/pages/cardsPurchaseOnline/collageCarDetail?id={{groupBooking.id}}&pageTip=cards'>
+    <view class='toCollage' wx:if="{{isGroupBooking}}">
+      <text>￥{{groupBooking.collagePrice}} · {{groupBooking.groupNumber}}人团</text>
+      <text class='view'>去拼团</text>
+    </view>
+  </navigator>
+
+  <!-- 适用场馆，课程 -->
+  <view class="navs">
+    <view  class="navdetail" bindtap="toUseClass" id="{{card.card.id}}">
+      <image src="../../images/fitplace.png"></image>
+      <view>
+        <text>适用场馆</text>
+        <text>{{card.availableCenterCount}}家</text>
+      </view>
+      <view></view>
+    </view>
+    <view  bindtap="toUseCourse" class="navdetail" id="{{card.card.id}}">
+      <image src="../../images/fitcourse.png"></image>
+      <view>
+        <text>可用课程</text>
+        <text>{{card.availableCourseCount}}种</text>
+      </view>
+      <view></view>
+    </view>
+  </view>
+  <!-- 各种信息 -->
+
+  <view class="beforeBuy">
+    <text class='blackTitleValue'>购买须知</text>
+    <template is="spotGrayCell" wx:if="{{card.card.cardType==3||card.card.cardType==4||card.card.cardType==5}}" data='{{tint:"开卡方式：", value:card.card.onlineActivatedMode == 1? "立即开卡":(card.card.onlineActivatedMode == 2 ? ("购卡后" +card.card.onlineActivatedInDays+ "天内开卡"):"首次使用开卡")}}'></template>
+    <template is="spotGrayCell" data='{{tint:"开卡方式：", value:"立即开卡"}}' wx:if="{{card.card.cardType==6||card.card.cardType==7}}"></template>
+    <template is="spotGrayCell" data='{{tint:"课程预约：", value:"单节课最多预约"+card.card.maxGroupCourseReservedCount+"人"}}'></template>
+  
+     <view class="attention usetime" wx:if="{{card.card.onlineWarmReminder}}">
+        <text>温馨提示：</text>
+        <view>
+          <text>{{card.card.onlineWarmReminder}}</text>
+        </view>
+      </view>
+ 
+ 
+ 
+  </view>
+  <view class='showAllMess' wx:if="{{!showhide}}" bindtap='showEvent'>
+    <view class='btnBox'>
+      <span> 展开完整信息</span>
+      <image src='../../images/down.png'></image>
+    </view>
+  </view>
+
+
+  <view style="margin-bottom:60rpx" wx:if="{{showhide}}">
+    <view class="beforeBuy">
+      <text class='blackTitleValue'>使用限制</text>
+      <template is="spotGrayCell" data='{{tint:"使用人数：", value:"可给"+card.card.maxAllowedUserCount+"人使用（包括卡主）"}}'></template>
+      <template wx:if="{{card.card.cardType==4}}" is="spotGrayCell" data='{{tint:"使用次数：",value:"限制 每周 最多使用"+card.card.availableCount+"次"}}'></template>
+      <view class="attention usetime">
+        <text>使用时间</text>
+        <view>
+          <text wx:for="{{useTime}}" wx:key="index">{{item}}</text>
+          <text wx:if="{{usetime.length==0}}" wx:key="index">无限制</text>
+        </view>
+      </view>
+    </view>
+
+
+
+
+    <view class="beforeBuy">
+      <text class='blackTitleValue'>请假权益</text>
+      <template is="spotGrayCell" data='{{tint:"请假天数：", value:"最多允许请假"+(card.card.freeLeaveDays? card.card.freeLeaveDays : 0)+"天"}}'></template>
+      <template is="spotGrayCell" data='{{tint:"请假次数：", value:"最多允许请假"+(card.card.freeLeaveCount? card.card.freeLeaveCount : 0)+"次"}}'></template>
+    </view>
+
+    <view class='showAllMess' bindtap='hideEvent'>
+      <view class='hideMessBox'>
+        <span>收起</span>
+        <image src='../../images/up.png'></image>
+      </view>
+    </view>
+
+  </view>
+  <!-- 会员卡介绍 -->
+  <view wx:if="{{card.card.cardIntroRichText}}"  style="overflow: hidden">
+    <text class="carddes">会员卡介绍</text>
+    <rich-text nodes="{{card.card.cardIntroRichText}}"></rich-text>
+  </view>
+
+  <view style="margin-bottom:100rpx;"></view>
+
+</view>
+<view class="buy">
+  <button class="buybtn" bindtap="gobuy">立即购买</button>
+</view>
+
+
+
+
+
+<!-- <text class='blackTitleValue'>购买须知</text> -->
+<!-- <template wx:if="{{card.card.cardType==3}}" is="spotGrayCell" data='{{tint:"有效期：", value:"开卡后"+card.card.cardEffectiveDays+"天"}}'></template>
+  <template wx:if="{{card.card.cardType==5}}" is="spotGrayCell" data='{{tint:"卡内金额：", value:"开卡后"+card.card.amount+"元"}}'></template>
+
+  <template is="spotGrayCell" data='{{tint:"使用时间：", value:useTime}}'></template> -->
+
+
+
+
+
+<!-- 
+<view class='tip tip-bottom' style='display:flex;padding-left:15px;'>
+  <image src='{{agree?"../../images/selected.png":"../../images/unSelect.png"}}' style="width:32rpx;height:32rpx;margin-right:5px;margin-top:2px" bindtap='selectAgree'></image>点击确定表示同意
+  <navigator url='../agreement/agreement?tp=0' style='display:inline-block;color:#00BC71 ;'>《服务协议》</navigator>
+</view> -->
+
+
+
+<!-- <view wx:if="{{select}}" class='select-type'>
+  <view class='type-text'>
+    <text class='type-text-big'>开卡方式：</text>
+    <text>{{modeText}}</text>
+    <text class='cancel-select' bindtap='cancelSelect'>取消</text>
+  </view>
+  <view>
+    <button size='mini' class='btn-first {{newCard?"btn-selected":""}}' bindtap='selectWay' data-way='{{true}}'>新卡</button>
+    <button size='mini' wx:if="{{card.haveContractId!=null}}" class='{{newCard?"":"btn-selected"}}' bindtap='selectWay' data-way='{{false}}'>续卡</button>
+  </view>
+</view>
+<view class='buy-warp'>
+  <view class='price-unit'>总价￥</view>
+  <view class='price-amount'>{{price}}</view>
+  <view class='btn-buy' style='{{agree?"":"background:#99E4C6"}}' bindtap='{{agree?"selectType":""}}'>{{buyText}}</view>
+</view> -->

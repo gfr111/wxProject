@@ -1,0 +1,10 @@
+
+//课程图片
+<template name='coursePhotoView'>
+   <view class="coursePhotoBack">
+      
+    <view style='background-image:url({{url}})' class='coursePhoto'>
+    </view>
+    <view class='courseLevelView' style='background-color:{{levelColor}}'wx:if='{{levelStr}}'>{{levelStr}}</view>
+    </view>
+</template>

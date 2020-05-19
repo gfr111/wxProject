@@ -1,0 +1,429 @@
+/**index.wxss**/
+
+.bg1 {
+  width: 100%;
+  height: 100rpx;
+  background: #454649;
+}
+
+.bg2 {
+  width: 100%;
+  height: 240rpx;
+  background: linear-gradient(180deg, rgba(69, 70, 73, 1) 0%, rgba(69, 70, 73, 0) 100%);
+}
+
+.userInfoBox {
+  margin: 0 30rpx;
+  position: absolute;
+  top: 30rpx;
+  width: 630rpx;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.btnBox {
+  display: flex;
+  align-items: center;
+  margin-top: 40rpx;
+  padding-bottom: 10rpx;
+}
+
+.couponBox {
+  padding: 10rpx 40rpx;
+  background: #ff7a4c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  border-radius: 30rpx;
+  color: #fff;
+  font-size: 14px;
+}
+
+.pointBox {
+  padding: 10rpx 40rpx;
+  background: #ffba4c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30rpx;
+  color: #fff;
+  font-size: 14px;
+}
+
+.messBox {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0px;
+  width: 100%;
+  background-color: #323232;
+  justify-content: flex-start;
+  background: #fff;
+}
+
+.userinfo-avatar {
+  width: 132rpx;
+  height: 132rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+  left: 40rpx;
+  min-width: 132rpx;
+  /* background-color: #ccc; */
+}
+
+.peopleMess {
+  display: flex;
+  flex-direction: column;
+  padding-top: 6rpx;
+}
+
+.userinfo-nickname {
+  font-size: 44rpx;
+  font-weight: 600;
+}
+
+.tapLogin {
+  font-size: 34rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+}
+
+.center-name {
+  font-size: 28rpx;
+  margin-top: 10rpx;
+}
+
+.changeBox {
+  display: flex;
+  width: 150rpx;
+  height: 46rpx;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.userInfo-next {
+  width: 48rpx;
+  height: 48rpx;
+  min-width: 48rpx;
+}
+
+.qrcode-back {
+  height: 128rpx;
+  position: absolute;
+  bottom: 42rpx;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.qrcode {
+  width: 128rpx;
+  height: 128rpx;
+  right: 30rpx;
+  bottom: 34rpx;
+  position: fixed;
+}
+
+.qrcode-image {
+  width: 128rpx;
+  height: 128rpx;
+}
+
+.scroll-view {
+  position: absolute;
+  top: 402rpx;
+  height: 620rpx;
+}
+
+.scrollViewTap {
+  height: 150rpx;
+  width: 100%;
+  margin-top: 0rpx;
+}
+
+.class_view {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+  margin: 10rpx 30rpx;
+  border: 10rpx;
+  /* border-bottom: 20rpx solid #f7f8f9; */
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  padding-bottom: 30rpx;
+  padding-top: 20rpx;
+}
+
+.class_view .class_item {
+  /* width: 25%;
+  height: 170rpx;
+  position: relative;
+  color: #303030;
+  font-size: 26rpx;
+  letter-spacing: 2rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+
+
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+color: #303030;
+font-size: 26rpx;
+width: 25%;
+height: 152rpx;
+
+
+
+
+
+
+
+
+
+
+}
+
+.class_item .imgbg {
+  /* position: absolute;
+  left: 50%;
+  margin-left: -43%; */
+  width: 68rpx;
+  height: 68rpx;
+}
+
+.class_item .recom_goodtitle {
+  /* position: absolute;
+  bottom: 22rpx;
+  left: 7%; */
+  display: block;
+  margin-top: 10rpx;
+}
+
+.rightBox {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  color: #303030;
+  width: 100%;
+}
+
+.navList {
+  height: 130rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #efefef;
+}
+
+.navList text {
+  font-size: 30rpx;
+  color: #303030;
+}
+
+.navList image {
+  width: 14rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+}
+
+.navListBox {
+  margin: 0 30rpx;
+  padding: 0 30rpx;
+  background: #fff;
+  padding-bottom: 120rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+
+/*隐藏滚动条*/
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+page {
+  background: #fff;
+}
+
+.authenticationBox {
+  /* margin: 30rpx 0 0 0; */
+  margin: 10rpx 0 20rpx 28rpx;
+  margin-left: 4%;
+}
+
+.box {
+  position: relative;
+  display: inline-block;
+  width: 91%;
+  padding: 12rpx 14rpx 12rpx 20rpx;
+  border-radius: 8rpx;
+  background-color: #f6dfc0;
+  line-height: 40rpx;
+  font-size: 24rpx;
+}
+
+.authenticationBtn {
+  width: 84rpx;
+  height: 32rpx;
+  background: #303030;
+  color: #fff;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 32rpx;
+  border-radius: 16rpx;
+  display: inline-block;
+  margin-left: 20rpx;
+}
+
+.twentyPrecent {
+  width: 20%;
+  height: 200rpx;
+  position: relative;
+  color: #303030;
+  font-size: 26rpx;
+  letter-spacing: 2rpx;
+  text-align: center;
+}
+
+.twentyPrecent .imgbg {
+  margin-top: 40rpx;
+  width: 68rpx;
+  height: 68rpx;
+}
+
+.twentyPrecent .recom_goodtitle {
+  display: block;
+  margin-top: 10rpx;
+}
+
+.officeCard {
+  display: flex;
+  padding: 30rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardBox {
+  width: 330rpx;
+  height: 148rpx;
+  position: relative;
+}
+
+.cardBox>image {
+  width: 330rpx;
+  height: 148rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.cardBox>span:nth-child(2) {
+  color: #fff;
+  font-size: 25rpx;
+  position: absolute;
+  left: 30rpx;
+  top: 38rpx;
+  z-index: 100;
+}
+
+.cardBox>span:nth-child(3) {
+  color: #fff;
+  font-size: 20rpx;
+  position: absolute;
+  left: 30rpx;
+  bottom: 36rpx;
+  z-index: 100;
+}
+
+.index {
+  background: #f7f8f9;
+}
+
+.bopai {
+  background: #fff;
+  margin:20rpx 30rpx;
+  padding: 30rpx;
+  border-radius: 10rpx;
+  padding-left: 0;
+}
+
+.bopaititle {
+  color: #0b0b0b;
+  font-size: 28rpx;
+  display: block;
+  padding-left: 30rpx;
+}
+.bopainav{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.bopainav>view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #303030;
+  font-size: 26rpx;
+  width: 25%;
+  height:152rpx;
+}
+
+.bopaiitem>image {
+  width: 68rpx;
+  height: 68rpx;
+  margin-bottom: 16rpx;
+}
+
+.getbottom{
+  margin-bottom: 130rpx;
+}
+.inviteBox{
+  height: 110rpx;
+  width: 690rpx;
+  margin:20rpx auto;
+  position: relative;
+  background:linear-gradient(270deg,rgba(255,86,86,1) 0%,rgba(255,175,90,1) 100%);
+  border-radius: 10rpx;
+}
+.inviteBox>image{
+   height: 72rpx;
+   width: 84rpx;
+   position: absolute;
+   left: 0;
+   top:22rpx;
+}
+.inviteBox text:nth-child(2){
+  color: #FFFFFF;
+  font-size: 34rpx;
+  font-weight: 600;
+  position: absolute;
+  left: 70rpx;
+  top:32rpx;
+}
+.inviteBox text:nth-child(3){
+  width:120rpx;
+  height:44rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:4rpx 4rpx 8rpx 0px rgba(0,0,0,0.1);
+  border-radius:22rpx;
+  color: #FF5D56;
+  font-size: 28rpx;
+  font-weight: 600;
+  text-align: center;
+  line-height: 44rpx;
+  position: absolute;
+  right: 38rpx;
+  top:32rpx;
+}

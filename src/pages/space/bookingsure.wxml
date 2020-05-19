@@ -1,0 +1,125 @@
+<!--pages/space/bookingsure.wxml-->
+
+<view wx:if="{{carList.length!=0}}" class='main_view'>
+  <view class='top_view' bindtap='bookingPInfo'>
+    <view>
+      <text style='margin-right:30rpx;'>{{name}}</text>
+      <text>{{phone}}</text>
+    </view>
+    <image class='right_imgs' src='/images/next.png'></image>
+  </view>
+  <view class='address_view'>
+    <view class='tit_view'>
+      <image src='../../images/siteplace.png' class='spaceIcon'></image>
+      <text class='title'>{{spaceMess.name}}</text>
+    </view>
+    <view wx:for="{{orderDetail.sites}}" wx:key='' class='info_view' style="{{index>0?'border-top:1rpx solid #F7F7F7;padding-top:26rpx':'border-top:1rpx solid #FFF'}}">
+      <image class='ground_img' src='/images/ground.png'></image>
+      <view class='ground_info'>
+        <text style='color:#383838'>{{year}}.{{month}}.{{day}} {{item.startTime}}~{{item.endTime}}</text>
+        <text style='color:#9f9f9f'>{{item.siteName}}号场地</text>
+      </view>
+    </view>
+  </view>
+  <view class='discounts_view' bindtap='setDiscount'>
+    <span>会员卡</span>
+    <view>
+      <span class='sub'>
+        <text wx:if='{{orderDetail.name==null}}'>无卡预订</text>
+        <text wx:else class='discountName'>{{orderDetail.name}}</text>
+        <!-- <text style='color: #EE0100;margin-left:20rpx;' wx:if='{{orderDetail.discountRatio}}'>{{orderDetail.discountRatio}}折</text> -->
+      </span>
+      <image class='right_img' src='/images/next.png'></image>
+    </view>
+  </view>
+ <view class="discounts_view" wx:if='{{orderDetail.name==null&&couponList.length!=0}}'>
+    <span class='itemName'>优惠券</span>
+    <view bindtap="toCoupon">
+      <view style="display:flex;align-items:center">
+        <text style="color:#FA4A11" wx:if="{{coupon==null}}">{{couponList.length}}张可用</text>
+        <text style="color:#FA4A11" wx:if="{{coupon!=null&&coupon.type==1}}">-{{coupon.discount}}</text>
+        <text style="color:#FA4A11" wx:if="{{coupon!=null&&coupon.type!=1}}">{{coupon.discount*10}}折</text>
+          <image src="/images/next.png" class="right_img"></image>
+      </view>
+    </view>
+  </view> 
+
+  <view class='orderinfo_view'>
+    <view class='order_key'>
+      <text>订单金额</text>
+      <text class='order_value'>¥{{orderDetail.total}}</text>
+    </view>
+    <view class='order_key'>
+      <text wx:if='{{orderDetail.discountType==2||orderDetail.discountType==null}}'>优惠</text>
+      <text wx:if='{{orderDetail.discountType==1&&orderDetail.cardType==5}}'>扣卡金额</text>
+      <text wx:if='{{orderDetail.discountType==1&&orderDetail.cardType==4}}'>扣卡次数</text>
+      <text class='order_value' wx:if='{{(orderDetail.discountType==2||orderDetail.discountType==null)&&coupon==null}}'>¥{{reduceAmount}}</text>
+ <text class='order_value' wx:if='{{(orderDetail.discountType==2||orderDetail.discountType==null)&&coupon!=null}}'>¥{{discountPrice}}</text>
+      <text class='order_value' wx:if='{{orderDetail.discountType==1&&orderDetail.cardType==5}}'>¥{{orderDetail.deductionAmount}}</text>
+      <text class='order_value' wx:if='{{orderDetail.discountType==1&&orderDetail.cardType==4}}'>{{orderDetail.deductionCount}}次</text>
+    </view>
+    <view class='order_key'>
+      <text>还需支付</text>
+      <text class='order_value' style='font-size:32rpx;font-weight:bold;' wx:if='{{(orderDetail.discountType==2||orderDetail.discountType==null)&&coupon==null}}'>¥{{orderDetail.realAmount}}</text>
+       <text class='order_value' style='font-size:32rpx;font-weight:bold;' wx:if='{{(orderDetail.discountType==2||orderDetail.discountType==null)&&coupon!=null}}'>¥{{realPrice}}</text > 
+      <text class='order_value' style='font-size:32rpx;font-weight:bold;' wx:if='{{orderDetail.discountType==1&&orderDetail.cardType==5}}'>¥0.00</text>
+      <text class='order_value' style='font-size:32rpx;font-weight:bold;' wx:if='{{orderDetail.discountType==1&&orderDetail.cardType==4}}'>¥0.00</text>
+    </view>
+  </view>
+  <view class='payfor_type'>
+    <text>支付方式</text>
+    <text wx:if='{{orderDetail.discountType==2||orderDetail.discountType==null}}'>微信支付</text>
+    <text wx:if='{{orderDetail.discountType==1}}'>扣卡</text>
+  </view>
+  <view class='introduce_view' bindtap='agreement'>
+    <image src='{{isAgreement==false?"../../images/unpayagree.png":"../../images/payagree.png"}}' class='unpayagree'></image>我已阅读并同意
+    <text style='color:#00C068;text-indent: 0;' catchtap='lookForAgreement'>《预订须知》</text>
+  </view>
+  <view class='foot_view'>合计：
+    <text style='font-size:28rpx;text-indent: 10rpx;line-height:126rpx'>¥</text>
+    <text style='text-indent: 6rpx;' wx:if='{{(orderDetail.discountType==2||orderDetail.discountType==null)&&coupon==null}}'>{{orderDetail.realAmount}}</text>
+ <text style='text-indent: 6rpx;' wx:if='{{(orderDetail.discountType==2||orderDetail.discountType==null)&&coupon!=null}}'>{{realPrice}}</text>
+    <text style='text-indent: 6rpx;' wx:if='{{orderDetail.discountType==1&&orderDetail.cardType==5}}'>0</text>
+    <text style='text-indent: 6rpx;' wx:if='{{orderDetail.discountType==1&&orderDetail.cardType==4}}'>0</text>
+    <view class='payfor_view' style='{{isAgreement==false?"background-color: #BDBDBD;":"background-color: #00BC71;"}}' catchtap='{{isAgreement==false?"":"toPayFor"}}'>去支付</view>
+  </view>
+</view>
+
+<view class='bgBox' wx:else>
+  <view class='tipsBox'>
+    <view class='tipsTop'>
+      <view class='topTxt'>
+        <span>抱歉～您无法预订！</span>
+        <span>Sorry ~ you can't make a reservation</span>
+      </view>
+      <image src='../../images/closeRule.png' class='clearBtn' bindtap='returnBook'></image>
+    </view>
+    <view class='tipList'>
+      <view class='contentBox'>
+        <image src='../../images/tipsIconOne.png'></image>
+        <span>本场地只对【会员】开放</span>
+      </view>
+      <view class='contentBox'>
+        <image src='../../images/tipsIconTwo.png'></image>
+        <span>您的会员卡绑定的手机号 与微信【手机号不同】</span>
+      </view>
+      <view class='contentBox'>
+        <image src='../../images/tipsIconThree.png'></image>
+        <span>您的会员卡【暂无权限】预约</span>
+      </view>
+    </view>
+    <view class='buyCarBtn' bindtap='toBuyCar'>
+      <span>购买会员卡</span>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="baffle_view" wx:if="{{showModal}}" catchtap='onCancle'></view>
+<view class="modal_dialog" wx:if="{{showModal}}">
+  <view class='title' catchtap='onCancle'>预订须知
+    <image src='/images/closeRule.png'></image>
+  </view>
+  <view class='content_view'>{{spaceMess.reservedNotice||'暂无预订须知'}}</view>
+</view>

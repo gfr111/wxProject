@@ -1,0 +1,46 @@
+.topView-bg {
+  /* height: 240rpx; */
+  padding-top: 54rpx;
+  align-items: center;
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+}
+
+.topView-title {
+  line-height: 44rpx;
+  color: #7a7a7a;
+  font-size: 32rpx;
+  text-align: center;
+  flex: 1;
+}
+
+.topView-timeCount {
+  line-height: 74rpx;
+  color: #2b2b38;
+  font-size: 52rpx;
+  text-align: center;
+  /* margin-bottom: 60rpx; */
+  padding-bottom: 56rpx;
+  flex: 1;
+  height: 74rpx;
+}
+
+.topView-bottom-wave {
+  flex: 1;
+  height: 6px;
+  /* background-color: black; */
+  width: 100%;
+}
+
+.btnTop {
+  margin-top: 64rpx;
+  display: flex;
+  width: 100%;
+  align-content: center;
+  align-items: center;
+}
+
+.basicSection-item {
+  margin: 32rpx 0 0;
+}

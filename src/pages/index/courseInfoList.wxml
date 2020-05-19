@@ -1,0 +1,29 @@
+<!--pages/index/courseInfoList.wxml-->
+
+<view wx:if="{{type==11}}" class="placeList ">
+  <view class='placeDetsail clearfix' wx:for="{{centerList}}" wx:key="{{item.id}}">
+    <image class='centerImg' src='{{item.personalPortrait||item.photo}}' wx:if="{{item.photo}}" mode='aspectFill'></image>
+    <image class='centerPlaceImg' src='../../images/teachPic.png' wx:else></image>
+    <view class='placeTxt'>
+      <text class='placeName'>{{item.name}}</text>
+      <text class='placeAddress'>{{item.address}}</text>
+    </view>
+    <image class='phoneImg' src='../../images/phone.png' bindtap='callSome' data-phone='{{item.phone}}' wx:if="{{item.phone!=null}}"></image>
+  </view>
+</view>
+
+<view wx:else class='index'>
+  <view class='teacherList' wx:for="{{teachList}}" data-trainer-name='{{item.name}}' data-trainer-id='{{item.id}}' bindtap='toBack'>
+    <view class='pic'>
+      <image src="{{item.personalPortrait||item.photo||'/images/course.png'}}" class='headPortrait'></image>
+      <image src='../../images/woman.png' class='sex' wx:if="{{item.sex==1}}"></image>
+      <image src='../../images/man.png' class='sex' wx:if="{{item.sex==0}}"></image>
+    </view>
+    <view class='rightDetailBacks'>
+      <text class='cardName'>{{item.nickName||item.name}}</text>
+      <text class='cardCenter auto-newline'>简介：{{(item.description ? item.description : '--')}} </text>
+      <text class='cardCenter auto-newline'>专长与资质：{{(item.qualifications ? item.qualifications : '--')}}</text>
+    </view>
+  </view>
+</view>
+

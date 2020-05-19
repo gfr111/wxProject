@@ -1,0 +1,2 @@
+/* pages/courseBuyOnline/availableCourseList.wxss */
+@import "../cardsPurchaseOnline/availableCardsList.wxss";

@@ -1,0 +1,5 @@
+<!--pages/headOffice/pages/nullPage/nullPage.wxml-->
+ <view class='nullOrder' >
+      <image src='../../../../images/noRank.png' class='noOrderImg'></image>
+      <text class='noOrderTxt'>暂未开放</text>
+    </view>

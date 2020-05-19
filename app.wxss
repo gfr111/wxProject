@@ -1,0 +1,1 @@
+@import "pages/templates/basicUI.wxss";@import "pages/templates/orderCell/orderCell.wxss";.container{height:100%;display:flex;flex-direction:column;align-items:center;box-sizing:border-box;background-color:#f2f2f2}page{background-color:#f2f2f2;height:100%}

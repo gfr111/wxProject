@@ -1,0 +1,55 @@
+<!--pages/groupCourse/groupOrder.wxml-->
+<view class='myOrderDetail'>
+   <view class='warning'>
+
+     <image src='../../images/sup.png'></image>
+     <text>温馨提示： 开课前{{time}}无法取消预约{{enableAutoSignPrivateCourse?'；预约未签课将按正常扣费。':''}}</text>
+   </view>
+   <view class='myOrderDetailList'>
+      <text>课程名称</text>
+      <text>{{course.name}}</text>      
+   </view>
+   <view class='myOrderDetailList'>
+      <text>教练</text>
+      <text>{{trainer.name}}</text>      
+   </view>
+   <view class='myOrderDetailList'>
+      <text>时长</text>
+      <text>{{course.duration}}分钟</text>      
+   </view>
+   <!-- <view class='myOrderDetailList' bindtap='showCalender'>
+      <text>时间</text>
+      <text>{{year}}年{{month}}月{{day}}日</text>      
+   </view> -->
+
+ <view class='myOrderDetailList'>
+      <view class='title'>预约时间</view>
+      <picker class='picker' mode="date" value="{{date}}" start="{{pickerStart}}" end="{{pickerEnd}}" bindchange="bindDateChange" data-idx='2'>
+        <input class='pickerinput' value='{{year}}年{{month}}月{{day}}日'disabled='true' placeholder='{{year}}年{{month}}月{{day}}日'/>
+      </picker>
+    </view>
+
+
+   <view class='timeList' wx:for="{{grids}}" wx:key="{{index}}">
+     <text  class='timeStr unableChoose' wx:if="{{!item.available}}" data-id="{{index}}">{{item.display}}</text>
+     <text  class="{{index == id?'choose':'timeStr'}}" wx:if="{{item.available}}"  bindtap='chooseTime' data-item='{{item}}' data-id="{{index}}">{{item.display}}</text>
+   </view>
+
+<!--    
+   <picker-view indicator-style="height: 50px;color:#00BC71;"  value="{{value}}" bindchange="bindChange" class='calender' wx:if="{{showCalender}}">
+    <picker-view-column>
+      <view wx:for="{{years}}" style="line-height: 50px;" class='smallView' wx:key="{{index}}">{{item}}年</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{months}}" style="line-height: 50px" class='smallView' wx:key="{{index}}">{{item}}月</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{days}}" style="line-height: 50px" class='smallView' wx:key="{{index}}">{{item}}日</view>
+    </picker-view-column>
+  </picker-view>  -->
+
+
+
+
+   <view class='bottom' bindtap='reserve'>确定</view>
+</view>

@@ -1,0 +1,8 @@
+<template name="emptyView">
+ 
+ <view class="no-card">
+  <image src="{{emptyImage}}" class="no-card-image" mode='aspectFit'></image>
+  <text class="no-card-title">{{emptyTitle}}</text>
+ </view>
+
+</template>

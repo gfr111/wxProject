@@ -1,0 +1,82 @@
+/* pages/headOffice/pages/personalData/personalData.wxss */
+.dataBox{
+  background: #F5F7FA;
+}
+.avatarBox{
+  background: #ffffff;
+  padding: 40rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.avatarBox>span{
+  color: #303133;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}
+.avatarBox>image{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 50rpx;
+}
+.messBox{
+  background: #ffffff;
+  margin-top:20rpx;
+  margin-bottom: 20rpx;
+}
+.dataItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 110rpx;
+  padding: 0 30rpx;
+  background: #ffffff;
+}
+.itemTitle{
+  color: #303133;
+  font-size: 28rpx;
+}
+.itemContent{
+  color: #303133;
+  font-size: 28rpx;
+}
+.picker{
+  display: flex;
+  align-items: center;
+}
+.picker span{
+  color: #606266;
+  font-size: 28rpx;
+}
+.picker>image{
+  width: 16rpx;
+  height: 28rpx;
+  margin-left: 16rpx;
+}
+.dataItem>input{
+  text-align: right;
+  font-size: 28rpx;
+  color: #606266;
+}
+.submitBox{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+.submitBox>span{
+  width: 640rpx;
+  height: 88rpx;
+  text-align: center;
+  line-height: 88rpx;
+  background-color: #07C160;
+  color: #ffffff;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+}

@@ -1,0 +1,26 @@
+<import src="../templates/cardAmountCell.wxml" />
+
+<view class="center-info">
+  <text>{{centerName}}</text>
+</view>
+
+
+<view class='index'>
+  <block wx:for="{{cards}}">
+    <navigator url="availableCardDetail?id={{item.id}}" class="detailCell">
+      <image class='cardPhoto' src='/images/card_small_{{item.cardType}}.jpg'></image>
+      <view class='rightDetailBack'>
+        <text class='cardName'>{{item.name}}</text>
+
+        <text class='cardCenter' wx:if="{{item.cardType==3}}">有效期{{item.cardEffectiveDays}}天</text>
+        <text class='cardCenter' wx:if="{{item.cardType==4}}">次数{{item.availableCount}}次</text>
+        <text class='cardCenter' wx:if="{{item.cardType==5}}">卡内金额{{item.amount}}元</text>
+        <!--<template is="cardAmountCell" data='{{amount:item.amount, price:item.standardPrice}}'></template>-->
+      </view>
+      <view class='rightPrice'>
+       <text class='priceText'> ¥{{item.onlineBuyPrice}}\n</text>
+       <text wx:if="{{item.hasBoughtBefore}}" class='bought'>已购</text>
+      </view>
+    </navigator>
+  </block>
+</view>

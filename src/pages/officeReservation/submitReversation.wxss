@@ -1,0 +1,145 @@
+/* pages/groupCourse/groupOrder.wxss */
+.myOrderDetail{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: relative;
+  border-top:1px solid #F7F8F9;
+}
+.warning{
+  width: 100%;
+  height: 60rpx;
+  background: #F6FFED;
+  border-top: 2rpx solid #B7EB8F;
+  border-bottom: 2rpx solid #B7EB8F;
+}
+.warning text{
+  font-size:24rpx;
+  opacity: 0.65; 
+  line-height: 60rpx;
+}
+.warning image{
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 20rpx;
+  margin-right: 8rpx;
+}
+.myOrderDetailList{
+  width: 94.6%;
+  height:112rpx;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.1);
+  line-height: 112rpx;
+  font-size: 32rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+} 
+.myOrderDetailList text:nth-child(1){
+  /* margin-left: 32rpx; */
+  font-size: 28rpx;
+
+}
+.myOrderDetailList text:nth-child(2){
+  float: right;
+   font-size: 28rpx;
+}
+.timeList{
+  padding-left: 20rpx;
+  display: inline-block;
+}
+.timeList .timeStr{
+  width:120rpx;
+  height:  50rpx;
+  border-radius: 28rpx;
+  border:2rpx solid #00BC71 ;
+  font-size: 24rpx;
+  display: inline-block;
+  text-align: center;
+  line-height: 50rpx;
+  /* margin-right: 20rpx; */
+  margin-top: 30rpx;
+  color: #00BC71;
+}
+.timeStr text{
+    width:120rpx;
+  height:  50rpx;
+  border-radius: 28rpx;
+  display: inline-block;
+  /* background: #ccc; */
+}
+.timeList .choose{
+  color: #fff;
+background: #00BC71;
+border:2rpx solid #00BC71;
+width:120rpx;
+  height:  50rpx;
+  border-radius: 28rpx;
+  font-size: 24rpx;
+  display: inline-block;
+  text-align: center;
+  line-height: 50rpx;
+  /* margin-right: 20rpx; */
+  margin-top: 30rpx;
+}
+.timeList  .unableChoose{
+  background:#f5f5f5;
+  border:2rpx solid #f5f5f5;
+  color: rgba(0,0,0,0.25);
+}
+.bottom{
+  width: 100%;
+  height: 92rpx;
+  line-height: 92rpx;
+  text-align: center;
+  background: #00BC71;
+  color: #fff;
+  position:fixed;
+  bottom: 0;
+  font-size: 34rpx;
+}
+.bottomOffice{
+  width: 100%;
+  height: 100rpx;
+  position:fixed;
+  bottom: 0;
+  font-size: 34rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top:1px solid #E5E5E5;
+  background: #ffffff;
+}
+.submitBtn{
+  width: 320rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align: center;
+  background:#00BC71;
+  border-radius: 32rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  margin-right: 30rpx;
+}
+.calender{
+  width: 100%;
+  height: 400rpx;
+   position: absolute;
+   bottom: 0;
+   z-index: 100;
+   background:#ffffff;
+
+}
+.smallView{
+  text-align: center;
+  font-size: 24rpx;
+
+}
+.picker{
+  position: relative;
+  margin-top: -50px;
+  padding: 15px 0;
+}
+.pickerinput{
+  text-align: right;
+  color: #00BC71;
+  font-size:28rpx;
+}

@@ -1,0 +1,91 @@
+/* pages/couponOrder//pages/inviteList/inviteList.wxss */
+.inviteData{
+   background:#FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:50rpx 0;
+}
+.dataItem{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 33.33%;
+    text-align: center;
+}
+.dataItem span:nth-child(1){
+    color: #333333;
+    font-size: 36rpx;
+    font-weight: 600;
+}
+.dataItem span:nth-child(2){
+    color: #333333;
+    font-size: 24rpx;
+}
+ .dataItem:nth-child(2){
+    border-left: 2rpx solid #CECFD0;
+    border-right: 2rpx solid #CECFD0;
+}
+.nullBox{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nullIcon{
+  width: 372rpx;
+  height: 420rpx;
+  margin-bottom: 72rpx;
+  margin-top:27%;
+
+}
+.nullTxt{
+  color: #969696;
+  font-size: 32rpx;
+}
+.listBox{
+  padding:30rpx  40rpx 0;
+  background: #F7F8F9;
+}
+.listItem{
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+  
+}
+.left{
+  display: flex;
+  align-items: center;
+}
+.left>image{
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.peopleMess>view:nth-child(1) text:nth-child(1){
+  color: #353535;
+  font-size: 28rpx;
+}
+.peopleMess>view:nth-child(1) text:nth-child(2){
+  color: #B8B8B8;
+  font-size: 24rpx;
+}
+.peopleMess>view:nth-child(2){
+  color: #B8B8B8;
+  font-size: 24rpx;
+  margin-top: 12rpx;
+}
+.point span:nth-child(1){
+  color: #FF5956;
+  font-size: 32rpx;
+}
+.point span:nth-child(2){
+  color: #FF5956;
+  font-size: 22rpx;
+}

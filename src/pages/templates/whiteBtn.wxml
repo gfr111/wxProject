@@ -1,0 +1,5 @@
+<template name='whiteBtn'>
+<view class='whiteBtn-bg'>
+<view class='whiteBtn' bindtap='didTapWhiteBtn'>{{title}}</view>
+</view>
+</template>

@@ -1,0 +1,9 @@
+<template name='blackTitleValueCell'>
+<view class='blackTitleValueCell'>
+<text class='blackTitleValueLeft'>{{title}}</text>
+<text class='blackTitleValueRight'>{{value}}</text>
+<text wx:if="{{title=='可用课程'}}" class='names'>节</text>
+<text wx:if="{{title=='适用场馆'}}" class='names'>家</text>
+</view>
+ <!-- <view class='grayLine'></view>  -->
+</template>

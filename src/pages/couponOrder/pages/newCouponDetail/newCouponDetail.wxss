@@ -1,0 +1,104 @@
+/* pages/couponOrder/pages/newCouponDetail/newCouponDetail.wxss */
+.couponDetail{
+  background: #F7F8F9;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.couponBox{
+  margin: 40rpx;
+}
+.couponMessBox{
+  position: relative;
+  overflow: hidden;
+}
+.leftRadius{
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  left: -14rpx;
+  top:102rpx;
+  background: #ffffff;
+  border-radius: 50%;
+}
+.rightRadius{
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  right: -14rpx;
+  top:102rpx;
+  background: #ffffff;
+  border-radius: 50%;
+}
+.centerBox{
+  background: #FF8159;
+  padding: 16rpx 30rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px dotted #E4E4E4;
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+}
+.centerBox>image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+
+}
+.centerBox>text{
+  color:#ffffff;
+  font-size: 28rpx;
+}
+.messBox{
+  padding: 30rpx;
+  background: #FF8159;
+}
+.couponName{
+  color: #ffffff;
+  font-size: 28rpx;
+}
+.price{
+  display: flex;
+  align-items: flex-start;
+  margin-top:12rpx;
+}
+.price>text:nth-child(1){
+  color: #FFFFFF;
+  font-size: 24rpx;
+  margin-top:18rpx;
+}
+.price>text:nth-child(2){
+  color: #FFFFFF;
+  font-size: 64rpx;
+  margin-left: 32rpx;
+}
+.intro{
+   color: #FFFFFF;
+  font-size: 24rpx;
+  margin-top:20rpx;
+}
+.useBox{
+  background-color: #ffffff;
+  padding: 0 30rpx;
+  border-bottom-left-radius: 16rpx;
+  border--bottom-right-radius: 16rpx;
+}
+.useItem{
+  padding: 30rpx 0;
+  border-bottom: 1px solid #E4E4E4;
+  display: flex;
+  flex-direction: column;
+}
+.useItem:last-child{
+  border-bottom: 0;
+}
+.useItem text:nth-child(1){
+  color: #7C7C7C;
+  font-size: 24rpx;
+  margin-bottom: 10rpx;
+}
+.useItem text:nth-child(2){
+  color: #303030;
+  font-size: 24rpx;
+}

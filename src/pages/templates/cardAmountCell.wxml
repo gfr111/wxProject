@@ -1,0 +1,15 @@
+<template name="cardAmountCell">
+  <view class="info-body">
+    <view class='photo'>
+    <image class='size-100' src='{{cardImg}}'></image>
+    </view>
+    <view class='rightDetail'>
+      <view class='name' class='cardsName'>{{name}}</view>
+      <view>
+        <text class='yuanMark'>¥</text>
+        <text class='greenAmount'>{{price}}</text> <text class='oldAmount' wx:if="{{realPrice!=''&&realPrice!=undefined}}">¥{{realPrice}}</text>        
+      </view>
+
+    </view>
+  </view>
+</template>

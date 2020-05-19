@@ -1,0 +1,33 @@
+<!--pages/courseAndCar/courseAndCar.wxml-->
+
+<view current="{{currentData}}" class='swiper'>
+
+  <view class='swiper_con'>
+    <view class='nullOrder' wx:if="{{cards.length==0}}">
+      <image src='../../../images/noRank.png' class='noOrderImg'></image>
+      <text class='noOrderTxt'>当前场馆暂不支持在线购卡</text>
+    </view>
+    <navigator url="../cardsPurchaseOnline/availableCardDetail?id={{item.id}}&pageTip=cars" class='carList clearfix' wx:for="{{cards}}" wx:key="{{item.id}}">
+
+    <view class="mask"></view>
+
+      <image mode='aspectFill' style="float:left;" wx:if="{{item.cardBg}}" src="{{item.cardBg}}"></image>
+      <image wx:else src="../../images/{{item.cardType==5?'StoredvalueCard':item.cardType==4||item.cardType==7?'subCard':'timeLimitCard'}}.jpg" mode='aspectFill' style="float:left;"></image>
+
+      <text class="types">{{item.cardType==3?'期限卡':item.cardType==4?'次卡':'储值卡'}}</text>
+      <view class='carDetail'>
+        <text class='name'>{{item.name}}</text>
+
+        <text class='useful' wx:if="{{item.cardType==3&&item.cardEffectiveDays!=null}}">有效期{{item.cardEffectiveDays}}天</text>
+        <text class='useful' wx:if="{{item.cardType==4&&item.availableCount!=null}}">卡内次数{{item.availableCount}}次</text>
+        <text class='useful' wx:if="{{item.cardType==5&&item.amount!=null}}">卡内金额{{item.amount}}元</text>
+
+        <text class='collageNum' wx-if="{{item.isGroupBooking}}">{{item.personNumber}}人团</text>
+        <text style='font-size:32rpx;color:#FA4A11'>￥</text>
+        <text class='newPrice' wx-if="{{!item.isGroupBooking}}">{{item.onlineBuyPrice}}<text wx:if="{{item.cardType==4}}" style='font-size:24rpx;'></text></text>
+        <text class='newPrice' wx-if="{{item.isGroupBooking}}">{{item. groupBookingPrice}}<text wx:if="{{item.cardType==4}}" style='font-size:24rpx;'></text></text>
+        <text class='collageOldPrice' wx-if="{{item.isGroupBooking}}">￥{{item.onlineBuyPrice}}</text>
+      </view>
+    </navigator>
+  </view>
+</view>

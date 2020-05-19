@@ -1,0 +1,282 @@
+/* pages/collage/collageDetail/collageDetail.wxss */
+.collageDetailTop{
+  background: #ffffff;
+   margin-top: 1px;
+   padding-top: 34rpx;
+   padding-left: 30rpx;
+   position: relative;
+   border-bottom: 16rpx solid #f2f2f2;
+}
+.detailTopImg{
+  width: 204rpx;
+  height: 128rpx;
+  float: left;
+  margin-right: 32rpx;
+  margin-bottom: 40rpx;
+}
+.detailTopName{
+  font-size: 30rpx;
+  color: #222222;
+  margin-right: 12rpx;
+}
+.collageNum{
+ width: 84rpx;
+ height: 34rpx;
+ background: #00bc71;
+ color: #fff;
+ text-align: center;
+ line-height: 34rpx; 
+ font-size: 20rpx;
+ display: inline-block;
+}
+.collageNewPriceIcon{
+  font-size: 24rpx;
+  color: #00bc71;
+}
+.collageNewPrice{
+  font-size: 40rpx;
+  color: #00bc71;
+  margin-right:20rpx;
+  display: inline-block;
+}
+.collageOldPrice{
+  font-size: 24rpx;
+  color: #ababab;
+  text-decoration:line-through;
+}
+.detailTopRight{
+  width:18rpx;
+  height: 30rpx;
+  position: absolute;
+  right:16rpx;
+  top:78rpx;
+}
+.clearfix::after {
+    content: ".";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    height: 0;
+}
+.joinCollage{
+  background: #ffffff;
+  padding-top:22rpx;
+  padding-bottom: 54rpx;
+  position: relative;
+  border-bottom: 16rpx solid #f2f2f2;
+}
+.joinCollageTitle{
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  font-size: 26rpx;
+  color: #222222;
+  margin-bottom: 18rpx;
+}
+.lineLeft{
+  display: inline-block;
+  width: 200rpx;
+  height: 2rpx;
+  background: #f2f2f2;
+  margin-left: 64rpx;
+}
+.lineRight{
+  display: inline-block;
+  width: 200rpx;
+  height: 2rpx;
+  background: #f2f2f2;
+}
+.joinCollageTime text:nth-child(2){
+  margin-left:34rpx;
+  margin-right:40rpx;
+  font-size: 24rpx;
+  color: #7a7a7a;
+}
+.joinCollageTime{
+  margin-bottom: 76rpx;
+}
+.joinCollagePicList{
+   padding-right: 0;
+   text-align: center;
+   height: 120rpx;
+   overflow: hidden;
+   width: 98%;
+   padding-left: 2%;
+}
+.photos{
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+  margin-right:28rpx;
+
+}
+.collageSuccess{
+  width: 134rpx;
+  height: 134rpx;
+  position: absolute;
+  bottom:20rpx;
+  right: 20rpx;
+}
+.moreCollage{
+  background: #ffffff;
+  margin-bottom:16rpx; 
+}
+.moreCollageTitle{
+ line-height: 80rpx;
+ font-size: 26rpx;
+ border-bottom: 1px solid #f2f2f2;
+ padding-left: 40rpx;
+ display: block;
+}
+/* 底部滚动列表  */
+.right-item {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+.avater{
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 50%;
+  margin-left: 28rpx;
+  display: inline-block;
+  margin-right: 28rpx;
+  font-size: 0;
+}
+.collageMess{
+  display: inline-block;
+  position: relative;
+  top:-7rpx;
+}
+.collageMess text{
+  display: block;
+}
+.collageMess text:nth-child(1){
+  font-size: 30rpx;
+  color: #222222;
+  /* margin-top: 7rpx; */
+}
+.collageMess text:nth-child(2){
+  font-size: 26rpx;
+  color: #ababab;
+}
+.goToCollage{
+  display: inline-block;
+  float: right;
+  margin-right: 46rpx;
+  cursor: pointer;
+}
+.goToCollage text{
+  display: block;
+}
+.goToCollage text:nth-child(1){
+  display: block;
+  width: 140rpx;
+  height: 52rpx;
+  border: 1px solid #00bc71;
+  border-radius: 28rpx;
+  color: #00bc71;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 52rpx;
+  margin-top: 3rpx;
+}
+.goToCollage text:nth-child(2){
+  font-size: 20rpx;
+  color: #7a7a7a;
+  text-align: center;
+  width: 140rpx;
+}
+.content-item{
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 18rpx;
+  padding-top: 30rpx;
+  padding-left:70rpx;
+}
+.collageStep{
+  background: #ffffff;
+  padding-top: 32rpx;
+  padding-left: 40rpx;
+  padding-bottom: 110rpx;
+}
+.stepTittle{
+  font-size: 26rpx;
+  display:block;
+  margin-bottom: 20rpx;
+}
+.collageStep view text{
+  font-size: 26rpx;
+  color: #7a7a7a;
+  display: block;
+  margin-bottom: 4rpx;
+}
+.inviteColage{
+  width: 100%;
+  line-height: 92rpx;
+  background-color: #00bc71;
+  font-size: 34rpx;
+  color: #ffffff;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+page{
+  background: #ffffff;
+}
+.newColage{
+  width: 100%;
+  line-height: 140rpx;
+  background-color: #ffffff;
+  font-size: 24rpx;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  padding-left:40rpx; 
+}
+.collageClose{
+  width: 320rpx;
+  line-height: 84rpx;
+  color: #ffffff;
+  background: #D8D8D8;
+  display: inline-block;
+  float: right;
+  text-align: center;
+  margin-top: 28rpx;
+  margin-right: 40rpx;
+  border-radius: 42rpx;
+  font-size: 34rpx;
+}
+.returnIndex{
+ position:fixed;
+width:158rpx;
+line-height:60rpx;
+background:rgba(0, 0, 0, 0.6);
+color:#fff;
+font-size:24rpx;
+text-align:center;
+border-radius:30rpx;
+right:30rpx;
+bottom:160rpx;
+z-index: 1000;
+}
+.collageCourseDetailTop {
+  position: relative;
+}
+.collageCourseDetailTop .detailTopImg{
+  width:345rpx;
+  height: 178rpx;
+}
+.collageCourseDetailTop .collageNum{
+  position: absolute;
+  left: 30rpx;
+  top:50rpx;
+  border-radius: 0 20rpx 20rpx 0;
+  background: #FFA05D;
+}
+.collageCourseDetailTop .detailTopName{
+  color: #303030;
+  font-size: 32rpx;
+  font-weight: 600;
+}

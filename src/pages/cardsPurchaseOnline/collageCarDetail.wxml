@@ -1,0 +1,78 @@
+
+<view class='collageDetailTop clearfix' bindtap='returnPage'>
+
+  <image mode='aspectFill' wx:if="{{goods.bgImage}}" src="{{goods.bgImage}}" class='detailTopImg'></image>
+
+  <image wx:if="{{!goods.bgImage&&options.pageTip != 'courses'}}" src="../../images/{{goods.cardType==5?'StoredvalueCard':goods.cardType==4||goods.cardType==7?'subCard':'timeLimitCard'}}.jpg" mode='aspectFill' class='detailTopImg'></image>
+  <image wx:if="{{!goods.bgImage&&options.pageTip == 'courses'}}" src="/images/teachPic.png" mode='aspectFill' class='detailTopImg'></image>
+  <text class="cardtypes" wx:if="{{options.pageTip != 'courses'}}">{{goods.cardType==3?'期限卡':goods.cardType==4?'次卡':'储值卡'}}</text>
+  <text class="cardtypes" style="background: #FFA05D;left:30rpx;border-radius:0 20rpx 20rpx 0;padding:4rpx 6rpx;" wx:if="{{options.pageTip == 'courses'}}">{{goods.groupNumber}}人团</text>
+  <view style='margin-bottom:10rpx;'>
+    <text class='detailTopName'>{{goods.objectName}}</text>
+  </view>
+
+  <view style="margin-top:70rpx;">
+    <text class='collageNewPriceIcon'>￥</text>
+        <text class='collageNewPrice' wx:if="{{options.pageTip != 'courses'}}">{{goods.collagePrice}}</text>
+    <text class='collageNewPrice' wx:if="{{options.pageTip == 'courses'}}">{{goods.cardType==1?goods.collagePrice:goods.collagePrice}}</text>
+    <text wx:if="{{options.pageTip == 'courses'}}" style="color:#00bc71;font-size:26rpx">{{goods.cardType==1?'/'+goods.objectCount+'节':'/'+goods.effectiveDays+'天'}}</text>
+    <text  wx:if="{{options.pageTip == 'courses'}}" style="text-decoration:line-through;color:#C2C2C2;font-size:32rpx;margin-left:20rpx;">¥{{goods.standardPrice}}</text>
+    <text class='collageNum' wx:if="{{options.pageTip != 'courses'}}" style="margin-left:20rpx;">{{goods.groupNumber}}人团</text>
+  </view>
+</view>
+
+
+
+<view class='moreCollage' wx:if="{{showCollage&&instance.length!=0}}">
+  <view class="right-item">
+    <block wx:for="{{instance}}" wx:key="{{item.id}}" >
+      <view class='content-item'>
+        <image class="header" src="{{goods.personImg[index%5]}}"></image>
+        <view class='collageMess'>
+          <text>{{item.initiatorName}}</text>
+          <text>还差<text style='color:#00BC71;display:inline-block;'>{{item.groupNumber-item.realNumber}}</text>人拼成</text>
+        </view>
+        <view class='goToCollage'>
+          <navigator url='/pages/collage/joinOtherCollage/joinOtherCollage?id={{item.id}}'  hover-class="none">
+            <text>去拼团</text>
+          </navigator>
+          <text class="times">剩余：{{item.time}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<view class='collageStep'>
+  <text class='stepTittle'>拼团步骤</text>
+  <view>
+    <text>1.点击“立即开团”下单支付，发起拼团</text>
+    <text>2.点击“立即参团”下单支付，参与拼团</text>
+    <text>3.支付成功，邀请好友一起参团</text>
+    <text>4.达到人数，拼团成功，商品自动加入账户内</text>
+    <text>注：若未成团，款项100%退回</text>
+  </view>
+</view>
+<view class='newColage' wx:if="{{showCollage}}">
+  <text>剩余时间</text>
+  <text style='display:inline-block;color:#00BC71;margin-left:-30rpx;'>{{days}}天{{hours}}时{{minutes}}分</text>
+  <text class='collageNow' bindtap='selectType'>立即开团</text>
+</view>
+<view class='newColage' wx:if="{{!showCollage}}">
+  <text style='color:#ABABAB;'>本次拼团已结束</text>
+  <text class='collageClose'>立即开团</text>
+</view>
+
+<view class='selectTypeBg' wx:if="{{select}}">
+  <view class='select-box'>
+    <text class="dispire" bindtap='hidden'>取消</text>
+    <text class='card-type'>开卡方式：原卡续卡，原卡到期后自动开卡</text>
+    <view class="select-car">
+      <text class='oldCar' style='margin-left:40rpx;'>新卡</text>
+    </view>
+    <view class='all-price'>
+      <text style='font-size:24rpx;display:inline-block;margin-left:62rpx;color:#222222;margin-top:64rpx;'>总价 ￥</text>
+      <text style='font-size:40rpx;margin-left8rpx;'>{{goods.collagePrice}}</text>
+      <text class="toBuy" bindtap='toBuy'>确定</text>
+    </view>
+  </view>
+</view>

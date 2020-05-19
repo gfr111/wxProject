@@ -1,0 +1,30 @@
+<!--pages/leaverecord/applyleave.wxml-->
+
+<view class='main_view'>
+  <view class='time_view'>
+    <view class='begin_view'>
+      <view class='title'>开始时间</view>
+      <picker class='picker' mode="date" value="{{date}}" start="{{pickerStart}}" end="{{pickerEnd}}" bindchange="bindDateChange" data-idx='1'>
+        <input value='{{timeBegin}}' disabled='true' placeholder='选择时间'/>
+      </picker>
+    </view>
+    <view class='end_view'>
+      <view class='title'>结束时间</view>
+      <picker class='picker' mode="date" value="{{date}}" start="{{pickerStart}}" end="{{pickerEnd}}" bindchange="bindDateChange" data-idx='2'>
+        <input value='{{timeEnd}}' disabled='true' placeholder='选择时间'/>
+      </picker>
+    </view>
+  </view>
+  <view class='reasonbg_view'>
+    <view class='reason_view'>
+      <view class='title_view'>
+        <text class='tit'>理由</text>
+        <text class='num'>{{remark.length}}/20</text>
+      </view>
+      <textarea class='reason' placeholder-class='place' placeholder='输入请假理由（必填）' maxlength='20' value='{{remark}}' bindinput='remarkChange'></textarea>
+    </view>
+  </view>
+  <view class='foot_view'>
+    <view class='commit_view' style='{{remark.length>0&&timeEnd.length>0&&timeBegin.length>0?"background-color: #00BC71":"background-color: #BDBDBD"}}' bindtap='{{remark.length>0&&timeEnd.length>0&&timeBegin.length>0?"commit":""}}'>提交</view>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+<!--pages/space/bookingpeopleinfo.wxml-->
+
+<view class='main_view'>
+  <view class='input_view'>预订人<input placeholder='请输入预订人姓名' bindinput='nameInput' maxlength='15' placeholder-style='text-indent: 0;font-size: 28rpx;color:#9F9F9F'></input></view>
+  <view class='input_view'>手机号<input placeholder='请输入预订人手机号' bindinput='phoneInput' maxlength='11' placeholder-style='text-indent: 0;font-size: 28rpx;color:#9F9F9F' type='number'></input></view>
+  <view class='foot_view'>
+    <view class='sure' catchtap='sure'>确定</view>
+  </view>
+</view>

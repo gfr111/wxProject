@@ -1,0 +1,33 @@
+<!--pages/headOffice/pages/officeDetail/officeDetail.wxml-->
+<view class="officeDetail">
+  <image src="{{clubDetail.pictures?clubDetail.pictureList[0]:'../../images/default_center_icon.png'}}" class="officeImg"></image>
+  <view class="officeName">{{clubDetail.name}}</view>
+  <view class="officeMess">
+    <view class="messTitle">门店信息</view>
+    <view class="messItem">
+      <view>
+        <span class='itemTitle'>联系方式</span>
+        <span class='itemContent'>{{clubDetail.phone||'--'}}</span>
+      </view>
+      <image src="../../images/phone.png" class="itemIcon" wx:if="{{clubDetail.phone}}" bindtap="callPhone" ></image>
+    </view>
+     <view class="messItem" >
+     <view>
+        <view class='itemTitle' style="display:flex;justify-content: space-between;align-items: center;">
+         <span>地</span>
+         <span>点</span>
+        </view>
+        <span class='itemContent'>{{clubDetail.address||'--'}}</span>
+     </view>
+      <image src="../../images/navigation.png" class="itemIcon" wx:if='{{clubDetail.latitude&&clubDetail.longitude}}' bindtap="navigation"></image>
+    </view>
+     <map class="map" id="map" longitude="{{clubDetail.longitude}}" latitude="{{clubDetail.latitude}}" scale="17" show-location="true" markers="{{markers}}" wx:if='{{clubDetail.latitude&&clubDetail.longitude}}'></map>
+  </view>
+  <view class="officeIntro">
+    <view class="introTitle">门店介绍</view>
+     <rich-text nodes="{{clubDetail.description||'--'}}" class="intro"></rich-text>
+  </view>
+  <view class="intoOffice">
+   <span bindtap='toIndex'>进入</span>
+  </view>
+</view>

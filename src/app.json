@@ -1,0 +1,261 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/BindPhone",
+    "pages/courseBuyOnline/buyDetail",
+    "pages/changepeople/changepeople",
+    "pages/collage/collageList/collageList",
+    "pages/memberCarlist/assembleCourseList",
+    "pages/cardsPurchaseOnline/availableCardDetail2",
+    "pages/cardsPurchaseOnline/seller/seller",
+    "pages/cardsPurchaseOnline/courseDetail/courseDetail",
+    "pages/cardsPurchaseOnline/changeclub/changeclub",
+    "pages/memberCarlist/memberCarlist",
+    "pages/groupCourse/clubcourse/clubcourse",
+    "pages/groupCourse/trainercourse/trainercourse",
+    "pages/groupclassDetail/groupclassDetail",
+    "pages/groupCourse/memberCard/memberCard",
+    "pages/groupCourse/cardType/cardType",
+    "pages/expenseDetail/expenseDetail",
+    "pages/index/cardDetail",
+    "pages/privateprotocol/privateprotocol",
+    "pages/integral/integral",
+    "pages/mine/mine",
+    "pages/myReservations/reservationList/reservationList",
+    "pages/myOrders/orderList/orderList",
+    "pages/myOrders/orderDetail/orderDetail",
+    "pages/myReservations/reservationDetail/reservationPayment/createPayment/createPayment",
+    "pages/myReservations/reservationDetail/reservationPayment/paymentSuccess/paymentSuccess",
+    "pages/myReservations/reservationDetail/reservationCancellation/cancelReservation",
+    "pages/myReservations/reservationDetail/reservationEvaluation/evaluateCourse",
+    "pages/myReservations/reservationDetail/reservationDetailInfo/reservationDetailInfo",
+    "pages/index/Cards",
+    "pages/groupCourse/groupCourseList",
+    "pages/groupCourse/groupCourseAppointment",
+    "pages/groupCourse/groupOrder",
+    "pages/centers/centerList",
+    "pages/traineeCenter/centerIntroduction",
+    "pages/traineeCenter/notificationList",
+    "pages/traineeCenter/notificationDetail",
+    "pages/traineeCenter/activityDetail",
+    "pages/cardsPurchaseOnline/availableCardsList",
+    "pages/cardsPurchaseOnline/availableCardDetail",
+    "pages/trainers/trainerList",
+    "pages/traineeCenter/activityList",
+    "pages/traineeCenter/centerEvaluation",
+    "pages/messages/messageList",
+    "pages/messages/courseMessageList",
+    "pages/courseBuyOnline/availableCourseList",
+    "pages/courseBuyOnline/availableCourseDetail",
+    "pages/courseBuyOnline/selectTrainer",
+    "pages/courseAndCar/courseAndCar",
+    "pages/cardsPurchaseOnline/usePlace",
+    "pages/cardsPurchaseOnline/useClass",
+    "pages/courseBuyOnline/useClub",
+    "pages/agreement/agreement",
+    "pages/payResult/payResult",
+    "pages/index/course",
+    "pages/payResult/coursePayResult",
+    "pages/trainers/trainerDetail",
+    "pages/tickets/tickets",
+    "pages/tickets/ticketDetail",
+    "pages/tickets/share",
+    "pages/activity/activity",
+    "pages/notice/notice",
+    "pages/activity/signUp",
+    "pages/exprience/exprience",
+    "pages/collage/collageDetail/collageDetail",
+    "pages/cardsPurchaseOnline/collageCarDetail",
+    "pages/collage/joinOtherCollage/joinOtherCollage",
+    "pages/collage/myselfCollage/myselfCollage",
+    "pages/integral/integralChange",
+    "pages/shop/merchandiseList",
+    "pages/shop/shopPayResult",
+    "pages/shop/orderList",
+    "pages/shop/payway/payway",
+    "pages/shop/submitOrder/submitOrder",
+    "pages/account/account",
+    "pages/checkin/checkin",
+    "pages/confirmCourse/confirmCourse",
+    "pages/protocol/protocolValidation",
+    "pages/protocol/sign",
+    "pages/locker/openLocker",
+    "pages/checkout/checkout",
+    "pages/space/spaceBookList",
+    "pages/space/book",
+    "pages/space/spaceDetail",
+    "pages/space/availableCar",
+    "pages/space/bookingsure",
+    "pages/space/bookingpeopleinfo",
+    "pages/space/paysuccess",
+    "pages/space/orderinfo",
+    "pages/space/myreservation",
+    "pages/faceRecognition/uploadImg",
+    "pages/faceRecognition/comparePage",
+    "pages/sign/sign",
+    "pages/leaverecord/leaverecord",
+    "pages/setup/setup",
+    "pages/setup/agreement/agreement",
+    "pages/servicepassword/servicepassword",
+    "pages/index/courseDetial",
+    "pages/index/courseConsume",
+    "pages/index/courseInfoList",
+    "pages/leaverecord/applyleave",
+    "pages/index/swiperinfo",
+    "pages/space/buyCarList",
+    "pages/space/buyCarInfo",
+    "pages/payResult/carPayResult",
+    "pages/private-sign/private-sign",
+    "pages/deposit/deposit",
+    "pages/deposit/depositDetail",
+    "pages/officeReservation/submitReversation",
+    "pages/officeReservation/officeMemberCard",
+    "pages/signCourse/signCourse",
+    "pages/index/linkPage",
+    "pages/traineeCenter/evaluationList",
+    "pages/tickets/newCouponList"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "场馆定位/导航"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarFrontColor": "#000",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "custom": false,
+    "selectedColor": "#303030",
+    "borderStyle": "white",
+    "backgroundColor": "#fafafa",
+    "list": [
+      {
+        "selectedIconPath": "images/home_selected.png",
+        "iconPath": "images/home_normal.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/course_selected.png",
+        "iconPath": "images/course_normal.png",
+        "pagePath": "pages/groupCourse/groupCourseList",
+        "text": "预约"
+      },
+      {
+        "selectedIconPath": "images/shopping_selected.png",
+        "iconPath": "images/shopping.png",
+        "pagePath": "pages/shop/merchandiseList",
+        "text": "商城"
+      },
+      {
+        "selectedIconPath": "images/user_selected.png",
+        "iconPath": "images/user_normal.png",
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "subPackages": [
+    {
+      "root": "pages/coupon/",
+      "pages": [
+        "pages/couponList/couponList",
+        "pages/couponDetail/couponDetail",
+        "pages/orderPage/orderPage",
+        "pages/payResult/payResult",
+        "pages/payStyle/payStyle",
+        "pages/qrcode/QRCode",
+        "pages/shareCard/shareCard",
+        "pages/openShareCard/openShareCard"
+      ]
+    },
+    {
+      "root": "pages/couponOrder/",
+      "pages": [
+        "pages/orderList/orderList",
+        "pages/admissionCode/admissionCode",
+        "pages/orderDetail/orderDetail",
+        "pages/scenceAdmission/scenceAdmission",
+        "pages/scenceList/scenceList",
+        "pages/newCouponDetail/newCouponDetail",
+        "pages/newCouponCenter/newCouponCenter",
+        "pages/receiveNewCoupon/receiveNewCoupon",
+        "pages/disparityOrder/disparityOrder",
+        "pages/invite/invite",
+        "pages/inviteList/inviteList",
+        "pages/openInvite/openInvite"
+      ]
+    },
+    {
+      "root": "pages/headOffice/",
+      "pages": [
+        "pages/officeMap/officeMap",
+        "pages/officeDetail/officeDetail",
+        "pages/consumeRecord/consumeRecord",
+        "pages/personalData/personalData",
+        "pages/nullPage/nullPage"
+      ]
+    },
+    {
+      "root": "pages/trainingCourse/",
+      "pages": [
+        "pages/trainingCourseList/trainingCourseList",
+        "pages/trainingCourseDetail/trainingCourseDetail",
+        "pages/usableCarList/usableCarList"
+      ]
+    },
+    {
+      "root": "pages/distribution/",
+      "pages": [
+        "pages/distributionCenter/distributionCenter",
+        "pages/saleRecord/saleRecord",
+        "pages/inviteRecord/inviteRecord",
+        "pages/posterList/posterList",
+        "pages/poster/poster",
+        "pages/posterExtension/posterExtension",
+        "pages/openShare/openShare"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/coupon/pages/couponList/couponList": {
+      "network": "all",
+      "packages": [
+        "pages/coupon/"
+      ]
+    },
+    "pages/couponOrder/pages/orderList/orderList": {
+      "network": "all",
+      "packages": [
+        "pages/couponOrder/"
+      ]
+    },
+    "pages/trainingCourse/pages/trainingCourseList/trainingCourseList": {
+      "network": "all",
+      "packages": [
+        "pages/trainingCourse/"
+      ]
+    },
+    "pages/headOffice/pages/officeMap/officeMap": {
+      "network": "all",
+      "packages": [
+        "pages/headOffice/"
+      ]
+    },
+    "pages/distribution/pages/distributionCenter/distributionCenter": {
+      "network": "all",
+      "packages": [
+        "pages/distribution/"
+      ]
+    }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx8ec962aec839fc7e"
+  ]
+}

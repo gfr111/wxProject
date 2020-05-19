@@ -1,0 +1,74 @@
+<!--pages/expenseDetail/expenseDetail.wxml-->
+<view>
+  <view class='header'>
+    <text>消费金额</text>
+    <view class='money'>
+      <text>{{cardData.amount}}</text>
+      <text>元</text>
+    </view>
+  </view>
+  <view class='content'>
+    <view class='choose'>
+      <view class="section">
+        <picker mode="date" value="{{date}}" start="2000-9" end="2030-9" fields="month" bindchange="bindDateChange">
+          <view class="picker">
+            {{date}}
+            <text class='gochoose'></text>
+          </view>
+        </picker>
+      </view>
+
+      <view bindtap='gettype'>
+        <text class="typeclass">{{typeword}}</text>
+        <text class='gochoose'></text>
+      </view>
+
+    </view>
+
+    <view class='list' wx:for="{{cardData.logs.data}}" wx:key="index" wx:for-item="item">
+
+  <view>
+        <view class='time'>
+          <text class='{{item.opName=="消费"?"color1":item.opName=="延卡"?"color2":""}}'>{{item.opName}}</text>
+          <text>{{item.time}}</text>
+        </view>
+        <view wx:if="{{!item.btn}}" bindtap='{{item.showall?"showalls":""}}' id="{{index}}">
+          <text class='alldes aa'>{{item.opDetails?item.opDetails:item.remarks}}</text>
+          <text class='notall' wx:if="{{item.showall}}" >收起</text>
+        </view>
+        <text wx:if="{{item.btn}}" class='describ bb' bindtap='showalls' id="{{index}}">{{item.showall?item.showall:""}}</text>
+
+      </view>
+
+      <view class='allmoney {{item.color==true?"moneycolor":"ss"}}'>
+        <text class='spendMoney'>{{item.bigmoney}}</text>
+        <text class='spendMoney smallmoney'>{{item.smallmoney?"."+item.smallmoney:""}}</text>
+      </view>
+
+    </view>
+  </view>
+
+</view>
+
+<view class='cover' wx:if="{{opentype}}"></view>
+
+<view class='tpyeofmodel' wx:if="{{opentype}}">
+
+  <view class='close'>
+    <text>选择类型</text>
+  </view>
+  <view class='typeof'>
+    <text class='{{index==chooseId?"colors":""}}' bindtap='choosetype' wx:for="{{types}}" wx:key="index" id="{{index}}" wx:for-item="item">{{item}}</text>
+  </view>
+  <view class='cancel' bindtap='gettype'>取消</view>
+
+</view>
+
+
+<view class='empty' wx:if="{{cardData.logs.data.length==0}}">
+  <image src="../../images/noRank.png"></image>
+  <text>暂无记录~</text>
+</view>
+<view class='moreBtnBox ' wx:if="{{!ismore&&cardData.logs.data.length>3}}">
+  <span>没有更多了哦~</span>
+</view>

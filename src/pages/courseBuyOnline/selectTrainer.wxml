@@ -1,0 +1,16 @@
+<!--pages/courseBuyOnline/selectTrainer.wxml-->
+<view class='index'>
+    <view class='teacherList' wx:for="{{trainers}}"  data-trainer-name='{{item.nickName||item.name}}' data-trainer-id='{{item.id}}' bindtap='toBack'>
+      <view class='pic'>
+          <image src="{{item.personalPortrait||item.photo||'/images/course.png'}}" class='headPortrait'></image>
+          <!-- <image src="/images/course.png" class='headPortrait'></image>  -->
+          <image src='../../images/woman.png' class='sex' wx:if="{{item.sex==1}}"></image>
+          <image src='../../images/man.png' class='sex' wx:if="{{item.sex==0}}"></image>          
+      </view>
+      <view class='rightDetailBacks'>
+        <text class='cardName'>{{item.nickName||item.name}}</text>
+        <text class='cardCenter auto-newline'>简介：{{(item.description ? item.description : '--')}} </text>
+        <text class='cardCenter auto-newline'>专长与资质：{{(item.qualifications ? item.qualifications : '--')}}</text>
+      </view>
+    </view>
+</view>

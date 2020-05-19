@@ -1,0 +1,26 @@
+/* pages/headOffice/pages/nullPage/nullPage.wxss */
+.nullOrder {
+  width: 500rpx;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  transform: translateX(-250rpx);
+}
+
+.nullOrder .noOrderImg {
+  width: 272rpx;
+  height: 304rpx;
+}
+
+.nullOrder .noOrderTxt {
+  display: block;
+  font-size: 30rpx;
+  color: #7a7a7a;
+  margin-top: 40rpx;
+  position: relative;
+  left: -15rpx;
+}

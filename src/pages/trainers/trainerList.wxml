@@ -1,0 +1,16 @@
+<view class='index'>
+  <block wx:for="{{trainers}}" wx:key="item.id">
+    <navigator url="trainerDetail?id={{item.id}}" class="detail">
+      <view class='teacherList'>
+        <view >
+          <image src="{{(item.personalPortrait||item.photo)+'?x-oss-process=image/resize,l_100'}}" class='headPortrait' mode='aspectFill'></image>
+          <view class='rightDetailBacks'>
+            <text class='cardName'>{{item.nickName||item.name}}</text>
+            <text class='cardCenter auto-newline'>{{(item.qualifications ? item.qualifications : '--')}}</text>
+          </view>
+        </view>
+        <text>查看</text>
+      </view>
+    </navigator>
+  </block>
+</view>

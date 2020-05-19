@@ -1,0 +1,29 @@
+<!--pages/signCourse/signCourse.wxml-->
+<view class='signCourseBox'>
+  <view class='memberMess' bindtap='toMine'>
+    <view class='messBox'>
+      <image src='{{info.traineePhoto}}' mode='aspectFill' class='photo'></image>
+      <view>
+        <text>{{info.traineeName}}</text>
+        <text>{{info.traineePhone}}</text>
+      </view>
+    </view>
+    <image src='../../images/officeRight.png'></image>
+  </view>
+  <view class='signResultBox'>
+      <view class='signResult'>
+        <image src='../../images/signSuccess.png' wx:if="{{info.result==1}}"></image>
+         <image src='../../images/signError.png' wx:if="{{info.result==0}}"></image>
+        <text class='signTxt' wx:if="{{info.result==1}}">签课成功</text>
+        <text class='signTxt' wx:if="{{info.result==0}}">签课失败</text>
+        <view class='resultBox' wx:if="{{info.result==1}}">
+          <text>{{info.card}}</text>
+          <text wx:if="{{info.deductionDetail!=''}}">{{info.deductionDetail}}</text>
+        </view>
+         <view class='resultBox' wx:if="{{info.result==0}}">      
+           <text wx:if="{{info.message!=''}}">{{info.message}}</text>
+        </view>
+      </view>
+    </view>
+     <view class='submitBtn' bindtap='toIndex' >返回首页</view>
+</view>

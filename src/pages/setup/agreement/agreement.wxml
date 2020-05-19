@@ -1,0 +1,4 @@
+<!--pages/setup/agreement/agreement.wxml-->
+<text class="text">协议版本号：{{agreecontent.version}}</text>
+<text class="text" style="padding-top:8rpx">发布日期：{{agreecontent.issueDate}}</text>
+<text class="richtext" decode="true">{{agreecontent.protocolContent}}</text>

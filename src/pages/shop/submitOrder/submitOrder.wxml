@@ -1,0 +1,68 @@
+<!--pages/shop/submitOrder/submitOrder.wxml-->
+<view class="allgoods">
+  <view class="goodsitem" wx:for="{{goods.merchandises}}" wx:key="index" >
+    <image mode="aspectFill" src="{{item.photo?item.photo:'../../../images/noPic.png'}}"></image>
+    <view>
+      <text>{{item.name}}</text>
+      <text wx:if="{{!ischange}}">¥{{item.priceOnSale}}</text>
+      <text>数量：{{items[index].count}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="money" wx:if="{{!ischange}}">
+  <text>订单金额</text>
+  <text>¥{{price}}</text>
+</view>
+ <view class="money" wx:if="{{couponList.length!=0&&!ischange}}">
+    <span class='itemName'>优惠券</span>
+    <view bindtap="toCoupon">
+      <view style="display:flex;align-items:center">
+        <text style="color:#FA4A11;font-size: 28rpx;" wx:if="{{coupon==null}}">{{couponList.length}}张可用</text>
+        <text style="color:#FA4A11;font-size: 28rpx;" wx:if="{{coupon!=null&&coupon.type==1}}">-{{coupon.discount}}</text>
+        <text style="color:#FA4A11;font-size: 28rpx;" wx:if="{{coupon!=null&&coupon.type!=1}}">{{coupon.discount*10}}折</text>
+          <image src="../../../images/officeRight.png" class="rightIcon"></image>
+      </view>
+    </view>
+  </view> 
+<view class="money" wx:if="{{ischange}}">
+  <text>消耗积分</text>
+  <text>{{price}}积分</text>
+</view>
+
+ <view class="priceBox" wx:if="{{couponList.length!=0&&!ischange}}">
+    <view class="priceItem">
+      <span>订单金额</span>
+      <span>¥{{allPricre}}</span>
+    </view>
+    <view class="priceItem">
+      <span>优惠</span>
+      <span>-¥{{discountPrice}}</span>
+    </view>
+    <view class="priceItem">
+      <span>实际支付</span>
+      <span style='font-weight:600;font-size:32rpx;'>¥{{realPrice}}</span>
+    </view>
+  </view>
+
+<view class="money" wx:if="{{!ischange}}" bindtap="{{goods.cards.length>0?'chooseway':''}}">
+  <text>支付方式</text>
+  <view>
+    <text style="color:#303030;font-size:28rpx;">{{card.name}}</text>
+    <text class="goto" wx:if='{{goods.cards.length>0}}'></text>
+  </view>
+</view>
+
+ 
+
+<view class="bottom" wx:if="{{!ischange}}">
+  <view>
+    <text>合计:</text>
+    <text>¥</text>
+    <text>{{coupon==null?price:realPrice}}</text>
+  </view>
+  <view class="pay" bindtap="topay">去支付</view>
+</view>
+<view class="bottom" wx:if="{{ischange}}">
+  <view class=" ischangepay" bindtap="topay">确认兑换</view>
+</view>

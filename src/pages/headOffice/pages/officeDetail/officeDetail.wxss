@@ -1,0 +1,90 @@
+/* pages/headOffice/pages/officeDetail/officeDetail.wxss */
+.officeImg{
+  width: 100%;
+  height: 436rpx;
+}
+.officeName{
+  padding: 36rpx 30rpx;
+  color: #303030;
+  font-weight: 600;
+  border-bottom: 20rpx solid #F5F4F6;
+  background: #ffffff;
+}
+.officeMess{
+  padding: 50rpx 30rpx;
+  background: #ffffff;
+   border-bottom: 20rpx solid #F5F4F6;
+
+}
+.messTitle{
+  color: #303030;
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 40rpx;
+}
+.messItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+.messItem>view{
+  display: flex;
+  align-items: center;
+}
+.itemTitle{
+  color: #303030;
+  font-size: 28rpx;
+  width: 112rpx;
+  margin-right: 68rpx;
+  display: inline-block;
+}
+.itemContent{
+  color: #747474;
+  font-size: 28rpx;
+
+}
+.itemIcon{
+width: 36rpx;
+height: 36rpx;
+margin-top:15rpx;
+}
+.officeIntro{
+  padding: 50rpx 30rpx;
+  background: #ffffff;
+  margin-bottom: 90rpx;
+}
+.introTitle{
+  color: #303030;
+  font-size: 36rpx;
+  margin-bottom: 40rpx;
+}
+.intro{
+  color: #303030;
+  font-size: 28rpx;
+  text-indent: 30rpx;
+}
+.intoOffice{
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  border-top: 1px solid #E5E5E5;
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 690rpx;
+}
+.intoOffice span{
+  width: 100%;
+  line-height: 72rpx;
+  text-align: center;
+  color: #ffffff;
+  background: #00BC71;
+  border-radius: 40rpx;
+  font-size: 32rpx;
+}
+.map{
+  width: 100%;
+  height: 280rpx;
+}

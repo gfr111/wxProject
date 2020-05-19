@@ -1,0 +1,20 @@
+<import src="../../templates/basicCell.wxml" />
+<import src="../../templates/payMethodCell/payMethodCell.wxml" />
+
+<view class='index'>
+
+  <view class='basicSection-item'>
+    <!-- <template is='basicCell' data='{{title:"订单名称", value: order.orderName, next:true}} '></template> -->
+    <template is='basicCell' data='{{title:"订单名称", value:  order.orderName,  basicCellTapped:basicCellTapped}}'></template>
+    <template is='basicCell' data='{{title:"实付金额", value:  order.amount ? "￥" + order.amount : 0, rightGreen:true}}'></template>
+    <template is='payMethodCell'></template>
+  </view>
+
+  <view class='basicSection-item'>
+    <template is='basicCell' data='{{title:"订单编号", value: order.orderNo}}'></template>
+    <template is='basicCell' data='{{title:"创建时间", value: order.createTime}}'></template>
+    <template is='basicCell' data='{{title:"付款时间", value: order.paidTs}}'></template>
+  </view>
+
+
+</view>

@@ -1,0 +1,54 @@
+/* pages/payResult/carPayResult.wxss */
+
+.box{
+  width: 100%;
+  height: 100%;
+}
+image{
+  width: 200rpx;
+  height:200rpx;
+  position:absolute;
+  left:38%;
+  top:16%;
+}
+.payTxt{
+  font-size: 30rpx;
+  position: absolute;
+  top:35%;
+  left:43%;
+  font-weight: bold;
+}
+.selects{
+  position: absolute;
+  top:46%;
+left:23%;
+}
+button::after{
+  border: 0;
+}
+.goMain{
+  width: 200rpx;
+  height: 60rpx;
+  border:1px solid #00BC71;
+  display: inline-block;
+  text-align: center;
+  font-size: 24rpx;
+  line-height: 57rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+.goCourse{
+  width: 200rpx;
+  height: 60rpx;
+  border:1px solid #00BC71;
+  display: inline-block;
+  text-align: center;
+  font-size: 24rpx;
+  line-height: 57rpx;
+  border-radius: 8rpx;
+  color: #00BC71;
+}
+.active{
+  background: #00BC71;
+  color: #fff;
+}

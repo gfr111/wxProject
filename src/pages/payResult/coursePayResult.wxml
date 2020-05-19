@@ -1,0 +1,15 @@
+<!--pages/payResult/coursePayResult.wxml-->
+<!--pages/payResult/payResult.wxml-->
+<view class='box'>
+   <image src='../../images/qrsuccess.png'></image>
+   <text class='payTxt'>支付成功</text>
+   <view class='selects'>
+   <!-- <navigator url='../index/index' style='display:inline-block;'> -->
+     <button class='goMain active' bindtap='goMain'>回到主页</button>     
+   <!-- </navigator> -->
+   <!-- <navigator url='../../pages/index/index' style='display:inline-block;'>    -->
+     <button class='goCourse' bindtap='goCourse' style="background-color:{{pageBackgroundColor}};color:{{color}}" >查看私教课</button>
+     <!-- </navigator> -->
+   </view>
+</view>
+

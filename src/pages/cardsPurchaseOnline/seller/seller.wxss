@@ -1,0 +1,38 @@
+/* pages/cardsPurchaseOnline/seller/seller.wxss */
+
+page {
+  padding-top: 20rpx;
+  background: #fff;
+}
+
+.item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  border-bottom: 2rpx solid #ECECEC;
+}
+
+.item image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 30rpx;
+  border-radius: 50%;
+}
+item>text{
+ color: #303030;
+ font-size: 32rpx; 
+}
+item>text:last-child{
+  color: #00BC71;
+  padding: 4rpx;
+  font-size: 24rpx;
+  margin-left: 30rpx;
+}
+.choosedtext{
+  color: #00BC71;
+  font-size: 24rpx;
+  margin-left: 30rpx;
+  padding:2rpx 4rpx;
+   background:rgba(0,188,113,0.1);
+}

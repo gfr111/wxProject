@@ -1,0 +1,120 @@
+/* pages/space/spaceBook.wxss */
+
+page{
+  background-color: #fff;
+}
+.spaceBox{
+  width: 100%;
+  height: auto;
+  background: #ffffff;
+}
+.infoHeaderBack {
+  padding-left: 32rpx;
+  padding-right: 56rpx;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  height: 80rpx;
+  justify-content: space-between; 
+  border-top:1px solid #E6E6E6;
+}
+
+.infoHeaderLeftBack {
+  display: flex;
+  align-items: center;
+}
+
+.headerIconBack {
+  display: flex;
+  justify-content: flex-end;
+  width: 160rpx;
+}
+
+.blackTriangle {
+  width: 16rpx;
+  height: 8rpx;
+}
+
+.centerText {
+  height: 30rpx;
+  text-align: left;
+  color: #222222;
+  line-height: 30rpx;
+  font-size: 30rpx; 
+  margin-right: 10rpx;
+  display: flex; 
+}
+.infoHeaderLeftBack .clubImg{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+.bookList{
+  overflow-x: hidden;
+  padding:0 30rpx 300rpx 30rpx;
+}
+.bookBox{
+  height: 250rpx;
+  border-radius: 16rpx;
+  margin: 20rpx 0 20rpx 0;
+}
+
+.spaceIcon{
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+.bookList_view{
+  position: relative;
+  margin-left: 0;
+  margin-top: -230rpx;
+  width: 100%;
+  height: 100%;
+}
+.name{
+  position: relative;
+  margin-left: 30rpx;
+  margin-top: 52rpx;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.typeStr {
+  position: relative;
+  display: block;
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.bookBtn{
+  position: absolute;
+  bottom: 70rpx;
+  right: 0!important;
+  border-radius: 30rpx 0 0 30rpx;
+  background: #00BC71;
+  color:#ffffff;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 54rpx;
+  height: 54rpx;
+  width: 120rpx;
+}
+.nullOrder{
+  position: absolute;
+  left:30%;
+  top:28%;
+  transform: translate(-50% -50%);
+text-align: center;
+}
+.nullOrder image{
+  width: 342rpx;
+  height: 382rpx;
+}
+  .nullOrder text{
+    display: block;
+    font-size: 30rpx;
+    color: #7a7a7a;
+    margin-top:40rpx;
+  }

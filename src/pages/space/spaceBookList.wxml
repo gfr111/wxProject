@@ -1,0 +1,27 @@
+<!--pages/space/spaceBook.wxml-->
+<view class='spaceBox'>
+  <view class='infoHeaderBack'>
+    <view class='infoHeaderLeftBack' bindtap='goCenterList'>
+      <image src='../../images/clubImg.png' class='clubImg'></image>
+      <text class='centerText'>{{selectCenter.name}}</text>
+      <image src='../../images/blackTriangle.png' class='blackTriangle'></image>
+    </view>
+  </view>
+  <view >
+    <view class='bookList'  wx:if="{{spaceList.length>0}}">
+      <view class='bookBox' wx:for="{{spaceList}}" wx:key='index' wx:for-item="item" bindtap='toBook' data-id='{{item.id}}'>
+        <image src='{{item.typeImage}}' class='spaceIcon'></image> 
+        <view class='bookList_view'>
+          <span class="name">{{item.name}}</span>
+          <span class="typeStr">{{item.typeStr}}</span>
+          <span class='bookBtn'>去预订</span>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='nullOrder' wx:if="{{spaceList.length==0}}">
+    <image src='../../images/noRank.png'></image>
+    <text>暂无可预约的场地</text>
+  </view>
+  
+</view>

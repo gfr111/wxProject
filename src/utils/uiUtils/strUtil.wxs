@@ -1,0 +1,17 @@
+
+
+var strUtil = (function(){
+  function nameStr(name) {
+    if (name != null && typeof (name) != "undefined"){
+      return name.substring(0,1)+"*"+name.substring(2);
+    }
+    return '';
+  }
+  return {
+    nameStr: nameStr
+  }
+})()
+
+
+
+module.exports = strUtil;

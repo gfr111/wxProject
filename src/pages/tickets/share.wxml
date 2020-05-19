@@ -1,0 +1,46 @@
+<!--pages/tickets/share.wxml-->
+<view class='shareBox'>
+  <view class='shareDetail' wx:if="{{!shareResult&&!showOver}}">
+      <image src='../../images/shareBox.jpg' class='showBg'></image>
+      <image src='../../images/ticketCar2.png' class='ticketBg'></image>
+      <image src='{{coupon.centerIcon}}' class='logo'></image>
+      <view class='clubName'><text>{{coupon.centerName}}</text></view>
+      <view class='clubAdress'><text>地址：{{coupon.centerAddress}}</text></view>
+      <view class='smallTicket'>
+        <image src="{{coupon.cardType&&coupon.cardType==2?'../../images/activity.jpg':'../../images/experience.jpg'}}"></image>
+        <text class='smallTicketNum'><text style='font-size:20rpx;'>X</text>{{coupon.cardAmount}}张</text>
+        <text class='smallTicketName'>{{coupon.cardName}}</text>
+        <text class='smallTicketTime'>{{coupon.cardStart}}-{{coupon.cardEnd}}</text>   
+        <text class='smallTicketTip'>本券最多叠加使用{{coupon.cardRestrictNum}}张</text>     
+      </view> 
+      <view wx:if="{{receive1}}" class='receive' bindtap='receive'>立即领取</view>
+      <navigator url="../mine/mine" wx:else class='receive' open-type='switchTab'>查看我的</navigator>
+      <scroll-view scroll-y style='height:300rpx' class='activityRule'>
+        <text class='ruleTip'>活动规则</text>
+        <text class='ruleDetail'>{{coupon.cardDesc}}</text>
+        <!-- <text>1.优惠券不能叠加使用。</text>
+        <text>2.优惠券仅限在菠菜健身门店消费时使用。</text>
+        <text>3.每张优惠券均有使用有效期，过期作废。 </text>
+        <text>4.不同活动优惠券有不同的活动规则，请看清楚活动规则后再进行使用。</text>
+        <text>5.优惠券的使用规则最终解释权归菠菜健身所有。</text> -->
+      </scroll-view>
+  </view>
+  <view class='shareResult' wx:if="{{shareResult}}">
+     <image src='../../images/ticketCar.png' class='resultBg'></image>
+     <image src='../../images/qrcode.png' class='publicCode'></image>
+     <text style='top:598rpx; left:278rpx;'>关注微信公众号</text>
+     <text style='top:640rpx;'>获取更多优惠信息</text> 
+     <text style='bottom:374rpx;color:#00BC71;font-size:34rpx;'>恭喜您领取成功</text> 
+      <view class='myTicket' >查看我的赠券</view>              
+  </view> 
+
+   <view class='nullOrder'  wx:if="{{showOver}}">
+          <image src='../../images/noOrders.png'></image>
+          <text>{{couponText}}</text>
+           <text class='goIndex' bindtap='goIndex'>回到首页</text>
+
+  </view>
+  <view class='getDefault' animation="{{animationData}}" >
+     <text>领取失败</text>
+  </view>
+</view>

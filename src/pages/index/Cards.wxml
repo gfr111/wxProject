@@ -1,0 +1,59 @@
+<view class='cardBox'>
+  <view class='topTabSwiper'>
+    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>有效卡</view>
+    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>失效卡</view>
+  </view>
+  <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange" style="height:{{defaultHeight}}px;">
+    <swiper-item>
+      <view class='swiper_con'>
+        <view class='nocarBox' wx:if="{{effectiveList.length==0}}">
+          <image src='../../images/noCarIcon.png'></image>
+          <span>暂无会员卡</span>
+        </view>
+        <scroll-view scroll-y style="height:{{defaultHeight}}px;" wx:else>
+          <view class='cardListBox'>
+            <view class='cardList' wx:for="{{effectiveList}}" wx:key="{{index}}" bindtap='toCardDeatail' data-id='{{item.contractId}}' data-cardId='{{item.cardId}}'>
+              <image src='../../images/StoredvalueCard.jpg' mode='aspectFill' class='cardImg' wx:if="{{item.cardType==5||item.cardType==10}}"></image>
+              <image src='../../images/subCard.jpg' mode='aspectFill' class='cardImg' wx:if="{{item.cardType==4||item.cardType==7||item.cardType==9}}"></image>
+              <image src='../../images/timeLimitCard.jpg' mode='aspectFill' class='cardImg' wx:if="{{item.cardType==3||item.cardType==6||item.cardType==8}}"></image>
+              <span class="cardName" wx:if="{{item.cardType==5||item.cardType==10}}">{{item.cardName}}</span>
+              <span class="cardName" wx:if="{{item.cardType==4||item.cardType==7||item.cardType==9}}" style="color:#FFFFFF;">{{item.cardName}}</span>
+              <span class="cardName" wx:if="{{item.cardType==3||item.cardType==6||item.cardType==8}}" style="color:#9CC0F4;">{{item.cardName}}</span>
+              <span class="cardState">{{item.statusStr}}</span>
+              <span class='shareBtn' bindtap='shareEvent' data-contractId='{{item.contractId}}' data-count="{{item.availableCount}}" wx:if="{{item.allowWxShare&&(item.cardType==4||item.cardType==7||item.cardType==9)}}" data-img="{{item.cardBg}}">分享</span>
+           <view style="position: absolute;bottom: 30rpx;left: 40rpx;">
+                <span class="cardLimit" wx:if="{{item.cardType==5||item.cardType==10}}">剩余金额：{{item.amount>0?item.amount:0}}元</span>
+              <span class="cardLimit" wx:if="{{item.cardType==4||item.cardType==7||item.cardType==9}}">剩余次数：{{item.availableCount>0?item.availableCount:0}}次</span>
+              <span class="cardLimit" wx:if="{{item.cardType==3||item.cardType==6||item.cardType==8}}">剩余天数：{{item.remainDays?item.remainDays:0}}天</span>
+                <span class="cardLimit" wx:if="{{item.cardNumber}}" style='margin-left:30rpx;'>卡号：{{item.cardNumber}}</span>
+           </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='swiper_con'>
+        <view class='nocarBox' wx:if="{{invalidList.length==0}}">
+          <image src='../../images/noCarIcon.png'></image>
+          <span>暂无会员卡</span>
+        </view>
+        <scroll-view scroll-y style="height:{{defaultHeight}}px;">
+          <view class='cardListBox'>
+            <view class='cardList' wx:for="{{invalidList}}" wx:key="{{index}}" bindtap='toCardDeatail' data-id='{{item.contractId}}' data-cardId='{{item.cardId}}'>
+              <image src='../../images/StoredvalueCard.jpg' mode='aspectFill' class='cardImg' wx:if="{{item.cardType==5||item.cardType==10}}"></image>
+              <image src='../../images/subCard.jpg' mode='aspectFill' class='cardImg' wx:if="{{item.cardType==4||item.cardType==7||item.cardType==9}}"></image>
+              <image src='../../images/timeLimitCard.jpg' mode='aspectFill' class='cardImg' wx:if="{{item.cardType==3||item.cardType==6||item.cardType==8}}"></image>
+              <span class="cardName" wx:if="{{item.cardType==5||item.cardType==10}}">{{item.cardName}}</span>
+              <span class="cardName" wx:if="{{item.cardType==4||item.cardType==7||item.cardType==9}}" style="color:#FFFFFF;">{{item.cardName}}</span>
+              <span class="cardName" wx:if="{{item.cardType==3||item.cardType==6||item.cardType==8}}" style="color:#9CC0F4;">{{item.cardName}}</span>
+              <span class="cardState">{{item.statusStr}}</span>
+              <image src='../../images/invaild.png' class='invaild'></image>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+<navigator class="tobuy" url="/pages/memberCarlist/memberCarlist?a=0" wx:if="{{effectiveList.length==0&&currentData==0}}" hover-class="none" >去购卡</navigator>

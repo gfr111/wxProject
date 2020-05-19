@@ -1,0 +1,30 @@
+<!--pages/courseBuyOnline/availableCourseList.wxml-->
+<import src="../templates/cardAmountCell.wxml" />
+
+<wxs module="util">
+    var sub = function(val) {
+        return val.length>12? val.substring(0,12)+'..':val
+    }
+    module.exports.sub = sub;
+</wxs>
+
+<view class="center-info">
+  <text>{{centerName}}</text>
+</view>
+
+
+<view class='index'>
+  <block wx:for="{{courses}}">
+    <navigator url="availableCourseDetail?id={{item.id}}" class="detailCell">
+      <image class='cardPhoto' src="{{item.pictures||'/images/course.png'}}"></image>
+      <view class='rightDetailBack'>
+        <text class='cardName'>{{util.sub(item.name)}}</text>
+        <text class='cardCenter' wx:if="{{item.effectiveDays!=null}}">有效期{{item.effectiveDays}}天</text>
+      </view>
+      <view class='rightPrice'>
+       <text class='priceText'> ¥{{item.onlineBuyPrice}}{{item.effectiveDays!=null?'':'/课时'}}\n</text>
+       <text wx:if="{{item.hasBoughtBefore}}" class='bought'>已购</text>
+      </view>
+    </navigator>
+  </block>
+</view>

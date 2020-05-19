@@ -1,0 +1,29 @@
+<!--pages/memberCarlist/assembleCourseList.wxml-->
+<view class="assembleBox">
+   <view>
+     <view class="assembleItem" wx:if="{{groupBookings.length!=0}}" wx:for="{{groupBookings}}" wx:key="{{index}}" data-id="{{item.objectId}}"bindtap="toAssembleDetail">
+      <view class="assembleImgBox">
+         <image src="{{item.bgImage}}" mode="aspectFill" wx:if="{{item.bgImage}}"></image>
+         <image src="/images/teachPic.png" mode="aspectFill" wx:if="{{!item.bgImage&&item.objectType!=1}}"></image>
+         <image src="/images/StoredvalueCard.jpg" mode="aspectFill" wx:if="{{!item.bgImage&&item.objectType==1}}"></image>
+        <span>{{item.groupNumber}}人团</span>
+       </view>
+       <view class="assembleMessBox" style="flex:1">
+         <view class="assembleName">{{item.objectName}}</view>
+         <view class="assmblePrice">
+           <span>¥</span>
+           <span>{{item.collagePrice}}<i wx:if="{{item.objectType==2||item.objectType==3}}">{{item.cardType==1?'/'+item.objectCount+'节':'/'+item.effectiveDays+'天'}}</i></span>
+           <span>¥{{item.standardPrice}}</span>
+         </view>
+         <view class="assmbleBtn" >
+           <span style="background:#00BC71;" wx:if="{{item.startTs<=timeUtils}}">去拼团</span>
+           <span style='background:#4D8CEF;' wx:else>距开始 {{item.startTime}}</span>
+         </view>
+       </view>
+    </view> 
+    <view class='nullOrder' wx:if="{{groupBookings.length==0}}">
+      <image src='../../../images/noRank.png' class='noOrderImg'></image>
+      <text class='noOrderTxt'>暂无拼团</text>
+    </view>
+   </view>
+</view>

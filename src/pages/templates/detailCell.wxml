@@ -1,0 +1,9 @@
+<template name="detailCell">
+ 
+ <view class='detailCell'>
+ <text class='detailCellText'>{{title}}</text>
+ <text class='detailCellDetailText'>{{detailTitle}}</text>
+ </view>
+
+
+ </template>

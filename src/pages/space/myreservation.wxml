@@ -1,0 +1,59 @@
+<!--pages/space/myreservation.wxml-->
+<wxs module="splitString">
+var getStringNumber=function(array){
+  var num=array.info;
+  return num;
+}
+var getStringTime=function(array){
+  var time=array.name;
+  return time;
+}
+ module.exports={
+   getStringNumber:getStringNumber,
+   getStringTime:getStringTime
+ }
+</wxs>
+<view wx:if="{{listData.length>0}}" class='main_view'>
+  <view wx:for="{{listData}}" wx:key='index' class='order_bgview'>
+    <view class='order_view'>
+      <view class='top_view'>
+         <image src='../../images/siteplace.png' class='spaceIcon' ></image>
+         <text class='title'>{{item.groundName}}</text>
+         <text class='right_tit' wx:if='{{item.status==1}}' style='color:#FF4F4F;'>待核销</text>
+         <text class='right_tit' wx:if='{{item.status==2}}' style='color:#9F9F9F;'>已完成</text>
+         <text class='right_tit' wx:if='{{item.status==3}}' style='color:#9F9F9F;'>已取消</text>
+         <text class='right_tit' wx:if='{{item.status==4}}' style='color:#9F9F9F;'>已过期</text>
+      </view>
+      <view class='info_view' wx:for='{{item.ins}}' wx:for-item='space' wx:key='index'>
+        <image class='ground_img' src='../../images/ground.png'></image>
+        <view class='ground_info'>
+          <text style='color:#383838'>{{item.planDate}} {{splitString.getStringNumber(space)}}</text>
+          <text style='color:#9f9f9f'>{{splitString.getStringTime(space)}}号场地</text>
+        </view>
+      </view>
+      <view class='foot_view'>
+        <!-- <text class='price'>¥<text style='font-size: 40rpx;padding-left: 10rpx;'>{{item.amount}}</text></text> -->
+        <view wx:if='{{item.status==1}}' class='order_qr' catchtap='showQr' data-orderNo='{{item.orderNo}}'>预订码</view>
+        <view class='order_info' style="{{item.status==1?'right: 240rpx!important;':'right: 40rpx!important;'}}" catchtap='orderInfo' data-id='{{item.id}}'>订单详情</view> 
+
+        
+      </view>
+    </view>
+  </view>
+</view>
+<view class='nullOrder' wx:else>
+  <image src='../../images/noOrders.png'></image>
+  <text>暂无订单</text>
+</view>
+
+
+
+<view class="baffle_view" wx:if="{{showModal}}" catchtap='onCancle'></view>
+<view class="modal_dialog" wx:if="{{showModal}}">
+  <view class='title' catchtap='onCancle'>预订码
+    <image src='/images/closeRule.png'></image>
+  </view>
+  <view class='qr_number'>{{orderNo}}</view>
+  <image src='{{qrCode}}' class='qr_view'></image>
+  <view class='tip_view'>向前台展示此码进行核销</view>
+</view>

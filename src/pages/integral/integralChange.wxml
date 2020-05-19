@@ -1,0 +1,76 @@
+<!--pages/integral/integralChange.wxml-->
+<wxs src="../../utils/uiUtils/strUtil.wxs" module="strUtil"/>
+<view class='box'> 
+
+<view class='ruleBox' wx:if="{{showRule}}">
+<view class='title'>活动规则</view>
+<image bindtap='closeRule' src='../../images/closeRule.png'></image>
+<view class='content'>
+
+<view>·每达到{{wxSportExchangeCondition}}步数，即可兑换{{wxSportUnitScore}}个积分</view>
+<view wx:if="{{restrictMinWxSportCondition!=null}}">·每日达到{{restrictMinWxSportCondition}}步数，才可兑换积分</view>
+
+</view>
+</view>
+  <view class='containerBox'>
+  <view bindtap='openRule' class='rule'>活动规则</view>
+    <image class='bg-img' src='../../images/integralback.jpg'></image>
+<view class='textBox'>
+
+  <view class='squareBox'>
+    <text>今日步数</text>
+    <text >{{run==null?0:run}}</text>
+  </view>
+  <text wx:if="{{isShowTip}}" class='tips'>还差{{missSteps}}步可兑换</text>
+  <!-- <text wx:else class='tips'>每{{wxSportExchangeCondition}}步可兑换{{wxSportUnitScore}}分</text> -->
+  <text wx:else class='tips'>{{hasExchanged?'':'目前可兑换'+canGet+'分'}}</text>
+  <text class='joinNow' wx:if="{{!hasExchanged&&!isShowTip&&!loading}}" bindtap='join'>立即兑换</text>
+  <text class='joinAlready' wx:if="{{(!hasExchanged&&isShowTip)||loading}}">立即兑换</text>
+  <text class='joinAlready' wx:if="{{hasExchanged}}">今日已兑换</text>
+</view>
+
+</view>
+  <view class='peopleList' style="height:60%">
+     <view class='Todayscore' style="height:12%">今日兑换积分排名</view>
+            <view class='swiper_con' style="height:88%">
+               <scroll-view scroll-y="true" wx:if="{{list.length>0}}" style="height:100%;overflow:auto;">
+               <view class='moster moster1'>
+
+                <text class='moster-nth-child'>{{myRank.rankIndex>0?myRank.rankIndex:'--'}}</text>
+                <image src="{{myRank.photo}}"></image>
+                <text>{{myRank.name}}</text>
+                <text>{{myRank.changeValue}}分</text>
+               </view>
+
+              <view style='margin-top:30rpx'>
+              <view class='moster moster1' wx:for="{{list}}">
+
+                <text class='moster-nth-child index{{item.rankIndex>3?"":item.rankIndex}}'>{{item.rankIndex}}</text>
+                <image src="{{item.photo}}"></image>
+                <text>{{strUtil.nameStr(item.name)}}</text>
+                <text>{{item.changeValue}}分</text>
+               </view>
+               </view>
+               <!-- <view class='moster ranklist' wx:for="{{list}}" wx:key="index">
+
+                <view class='ranklist-item'>
+                  <text class='ranklist-item-txt'></text>
+                  <image class='ranklist-item-img' src="{{item.photo}}"></image>
+                  <text class='ranklist-item-txt first-txt'>{{item.name}}</text>
+                </view> 
+
+                  <text class='ranklist-item-txt last-txt' >{{item.changeValue}}分</text>
+              </view> -->
+
+
+
+              </scroll-view>
+
+
+              <view style='margin-top:42px;text-align:center;' wx:else>
+              <image src='../../images/noRank.png' style='width:136px;height:152px'></image>
+              <view style='font-size:16px;color:#757575;'>没有相关排名</view>
+              </view>
+            </view>
+  </view>
+</view>

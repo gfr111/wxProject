@@ -1,0 +1,380 @@
+.index {
+  background-color: white;
+  margin-bottom: 28rpx;
+  padding-bottom: 20rpx;
+}
+
+.header {
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  background: #fff;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+}
+
+.bgimg {
+  width: 346rpx;
+  height: 178rpx;
+  margin-right: 30rpx;
+}
+
+.header>view {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: auto;
+  height: 130rpx;
+  padding: 6rpx 0;
+  color: #fa4a11;
+  font-size: 32rpx;
+}
+
+.header>view>text:first-child {
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #303030;
+  font-size: 32rpx;
+}
+
+.choositem {
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  color: #303030;
+  font-size: 28rpx;
+  margin-bottom: 18rpx;
+}
+
+.tochoose {
+  display: inline-block;
+  width: 16rpx;
+  height: 16rpx;
+  border-top: 2rpx solid #000;
+  border-right: 2rpx solid #000;
+  transform: rotate(45deg);
+  margin-left: 20rpx;
+}
+
+.dely {
+  width: 100vh;
+  height: 100vh;
+  background: #000;
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 9;
+}
+
+.models {
+  position: fixed;
+  width: 100%;
+  background: #f4f4f4;
+  z-index: 100;
+  bottom: 0;
+}
+
+.models>view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #303030;
+  font-size: 36rpx;
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #cbcbd0;
+}
+
+.models>view>text:last-child {
+  font-size: 28rpx;
+}
+
+.models>.cancle {
+  background: #fff;
+  font-size: 40rpx;
+  color: #00bc71;
+}
+
+.blackTitleValue {
+  margin: 27rpx 40rpx 18rpx;
+  width: 160rpx;
+  color: #222;
+  font-size: 30rpx;
+  line-height: 68rpx;
+  text-align: left;
+}
+
+.tip {
+  text-align: center;
+  font-size: 29rpx;
+}
+
+.tip-bottom {
+  padding: 26rpx 0;
+  border-bottom: 2rpx solid #dfdfdf;
+  font-size: 28rpx;
+}
+
+.buy-warp {
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 2rpx solid #eee;
+  z-index: 150;
+  box-sizing: border-box;
+}
+
+.select-type {
+  background: #fff;
+  position: fixed;
+  font-size: 29rpx;
+  bottom: 130rpx;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  border-top: 2rpx solid #eee;
+  z-index: 150;
+}
+
+.price-unit {
+  float: left;
+  padding-left: 40rpx;
+  padding-top: 48rpx;
+  font-size: 24rpx;
+  color: #222;
+  letter-spacing: 0;
+  font-weight: bold;
+}
+
+.price-amount {
+  float: left;
+  font-size: 40rpx;
+  color: #222;
+  letter-spacing: 0;
+  padding-left: 8rpx;
+  padding-top: 32rpx;
+}
+
+.btn-buy {
+  float: right;
+  background: #00bc71;
+  border-radius: 42rpx;
+  width: 320rpx;
+  height: 84rpx;
+  font-size: 34rpx;
+  color: #fff;
+  letter-spacing: 0;
+  margin-top: 12rpx;
+  margin-right: 40rpx;
+  text-align: center;
+  line-height:84rpx;
+  margin: 20rpx 24rpx;
+}
+
+.btn-first {
+  margin-right: 30rpx;
+}
+
+.NOtrainer {
+  color: #b1b1b1;
+}
+
+.type-text {
+  margin-bottom: 10rpx;
+}
+
+.type-text-big {
+  font-size: 30rpx;
+}
+
+.btn-selected {
+  border: 1rpx solid #00b792;
+  color: #00b792;
+  background: #fff;
+}
+
+.btn-selected::after {
+  border: none;
+}
+
+.cancel-select {
+  float: right;
+  margin-right: 50rpx;
+  color: #00b792;
+}
+
+.oldAmount {
+  color: #ababab;
+  text-decoration: line-through;
+  font-size: 24rpx;
+  margin-left: 12rpx;
+}
+
+.toCollage {
+  width: 90%;
+  margin: auto;
+  background: #00bc71;
+  color: #fff;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+  padding-left: 28rpx;
+  font-size: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.view {
+  float: right;
+  margin-right: 22rpx;
+}
+
+.view text {
+  font-size: 26rpx;
+}
+
+.view image {
+  width: 17rpx;
+  height: 21rpx;
+  margin-left: 4rpx;
+}
+.listTitle{
+  color: #303030;
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} 
+.listTitle>span:nth-child(2){
+  color: #FA4A11;
+  font-size: 28rpx;
+}
+.multiCardBox{
+  background: #ffffff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+.multiCardItem{
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 16rpx;
+  background: #F7F8F9;
+  margin-bottom: 20rpx;
+  border:1px solid #ffffff;
+}
+.multiCardMess{
+  width: 270rpx;
+  height: 100%;
+  position: relative;
+}
+.multiCardMess>image{
+  width: 100%;
+   height: 100%;
+   position: absolute;
+   left: 0;
+   top: 0;
+}
+.multiCardMess>text:nth-child(2){
+  color: #FFFFFF;
+  font-size: 24rpx;
+  position: absolute;
+  left: 30rpx;
+  top:20rpx;
+  z-index: 2;
+}
+.multiCardMess>text:nth-child(3){
+  color: #FFFFFF;
+  font-size: 24rpx;
+  position: absolute;
+  left: 30rpx;
+  bottom:20rpx;
+  z-index: 3;
+  font-weight: 600;
+}
+.multiCardDate{
+  margin-left: 44rpx;
+  color: #303030;
+  font-size: 24rpx;
+}
+.multiCardPrice{
+  color: #FA4A11;
+  font-size: 32rpx;
+  margin-left: 64rpx;
+  font-weight: 600;
+}
+.active{
+  border:1px solid rgba(250,74,17,1);
+}
+.cannnotBuy{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.cannnotBuy>image{
+  width: 340rpx;
+  height: 380rpx;
+  margin-bottom: 40rpx;
+  margin-top:120rpx;
+}
+.cannnotBuy>text{
+  color: #969696;
+  font-size: 32rpx;
+}
+.rechargeBox{
+  width: 100%;
+  height: 120rpx;
+  border-top:1px solid #E5E5E5;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+.rechargeBox>span{
+  width: 670rpx;
+  height: 72rpx;
+  text-align: center;
+  line-height: 72rpx;
+  background: #00BC71;
+  font-size: 32rpx;
+  color: #ffffff;
+  border-radius: 40rpx;
+}
+.priceBox{
+  background: #ffffff;
+  padding: 30rpx;
+}
+.priceItem{
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.priceItem:last-child{
+  margin-bottom: 0;
+}
+.priceItem>span:nth-child(1){
+  color: #303030;
+  font-size: 28rpx;
+}
+.priceItem>span:nth-child(2){
+    color: #EE0100;
+  font-size: 28rpx;
+}

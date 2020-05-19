@@ -1,0 +1,37 @@
+page {
+
+  background-color: white;
+
+}
+
+.backView {
+  display: flex;
+  flex-direction: column;
+  /* align-content: center;*/
+  align-items: center; 
+  padding: 98rpx 30rpx
+
+}
+
+.successImage {
+  height: 186rpx;
+  width: 186rpx;
+  /* margin-top: 98rpx; */
+}
+
+.title {
+  margin-top: 48rpx;
+  color: #2B2B38;
+  font-size: 34rpx;
+  line-height: 48rpx;
+  text-align: center;
+}
+
+.greenBtn-bg {
+  margin-top: 64rpx;
+  width: 100%
+}
+
+.whiteBtn-bg {
+  width: 100%
+}

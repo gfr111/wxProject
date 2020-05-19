@@ -1,0 +1,128 @@
+/* pages/faceRecognition/comparePage.wxss */
+
+.controls {
+
+  position: relative;
+
+  top: 0%;
+
+  display: flex;
+  height: 100%;
+
+}
+
+.noticeTXT{
+
+  font-size: 10PX;
+
+  color: rgb(12, 242, 240);
+
+  text-align: center;
+
+
+}
+.img{
+  /* width: 464rpx;
+  height: 558rpx; */
+  margin: auto;
+  width: 88%;
+  height: 100%;
+}
+.considerationBox{
+  padding:0 60rpx;
+
+}
+.considerationBox view{
+  color: #5F5F5F;
+  font-size: 28rpx;
+}
+.compareTitle{
+   text-align: center;
+   width: 100%;
+   color: #282828;
+   font-size: 44rpx;
+   font-weight: 600;
+   margin-top:40rpx;
+   margin-bottom: 30rpx;
+}
+.takeBtn{
+ width: 160rpx;
+ height: 160rpx; 
+ margin-top:60rpx;
+}
+.popBox{
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.6);
+  position: absolute;
+  left: 0;
+  top:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.contentBox{
+  width: 550rpx;
+  height: 450rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+}
+.statusImg{
+ width: 56rpx;
+ height: 56rpx; 
+ margin-top: 60rpx;
+ margin-bottom: 50rpx;
+}
+.checkedTxt{
+  color: #303030;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 44rpx;
+}
+.toMineBtn{
+  width: 430rpx;
+  height: 88rpx;
+  background: #00BC71;
+  border-radius: 100rpx;
+  color: #FFFFFF;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 88rpx;
+  margin-bottom: 28rpx;
+}
+.autoJump{
+  color: #828282;
+  font-size: 28rpx;
+}
+.loadingGif{
+  width: 192rpx;
+  height: 144rpx;
+  margin-top: 100rpx;
+  margin-bottom: 60rpx;
+}
+.tipBox{
+  width: 100%;
+  height: 48rpx;
+  background: rgba(242, 229, 213, 0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top:0px;
+  z-index: 2;
+}
+.tipTxt{
+  color: #303030;
+  font-size: 24rpx;
+  margin-left: 20rpx;
+}
+.tipImg{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 20rpx;
+}

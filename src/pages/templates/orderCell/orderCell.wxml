@@ -1,0 +1,21 @@
+<import src="views/topTextView.wxml" />
+<import src="views/bottomTextView.wxml" />
+<import src="views/middleContentView.wxml" />
+<!-- <wxs src="../../../utils/uiUtils/btnUtil.wxs" module="btnUtil"></wxs>  -->
+<wxs src="../../../utils/uiUtils/imageUrlUtil.wxs" module="imageUrlUtil"></wxs> 
+
+ <!-- <wxs src="reservStatusUtil.wxs" module="reservStatusUtil"></wxs>  -->
+
+<template name="orderCell">
+  <view class="orderCell">
+    <template is='topTextView' data='{{title:dateStr, value: statusStr, showGreen:showGreen}}' id="1"></template>
+
+    <template is='middleContentView' data='{{url:imageUrlUtil.getUrl(url), index:index, levelColor:levelColor, levelStr:levelStr, courseName:courseName, courseTime:courseTime, amount:amount, showDetail:showDetail,  checkDetail:checkDetail, detailInfo:detailInfo}}'></template>
+    <!-- <view wx:if='{{btnUtil.btnStyle(status, cancelable, rated, orderNum).showSelf}}'> -->
+    
+    <template is='bottomTextView' data='{{orderNum:orderNum, didTappedFirst:didTappedFirst, didTappedSecond:didTappedSecond, status:status, index:index, btnStyle:btnStyle,seatEnabled:seatEnabled,seatPhoto:seatPhoto}}' id="2"  wx:if='{{btnStyle.showSelf}}'></template>
+    <!-- wx:if='{{btnUtil.btnStyle(status, cancelable, rated, plannedDateStr, endTime, orderNum).showSelf -->
+    <!-- </view> -->
+  </view>
+
+</template>

@@ -1,0 +1,37 @@
+<!--pages/checkout/checkout.wxml-->
+
+<wxs src="../../utils/uiUtils/imageUrlUtil.wxs" module="imageUrlUtil"></wxs>
+<view style='background-color:white;height:100%'>
+  <view class="userinfo">
+    <image class="avatar" src="{{imageUrlUtil.getDefaultAvatar(info.photo)}}" mode="aspectFill"></image>
+    <view class='peopleMess'>
+      <text class="nickname">{{info.name}}</text>
+      <text class='number'>{{info.phone}}</text>
+    </view>
+  </view>
+  <view wx:if="{{type==0}}" class='tipTitle'>
+    <view wx:if="{{locker!=null}}">
+      <text class='big_title'>携带好随身物品</text>
+      <view class='sub_title'>签出后，更衣柜将无法使用。</view>
+    </view>
+    <view wx:else class='tipTitle' style='margin-top: 0;'>
+      <image class='tipImage' src='/images/confirmSuccess.png'></image>
+      <text class='big_title'>签出成功</text>
+      <view class='sub_title'>元气满满的一天！继续加油！</view>
+    </view>
+  </view>
+  <view wx:elif="{{type==31}}" class='tipTitle'><text class='big_title'>请稍后...</text></view>
+  <view wx:else class='tipTitle'>
+    <image class='tipImage' src='/images/checkError.png'></image>
+    <text class='big_title'>签出失败</text>
+    <view class='sub_title'>您还
+      <text class='spans'>未签到</text>，无法签出～</view>
+  </view>
+  <view wx:if="{{type==0&&locker}}" class='suer_view'>
+    <view class='top_view'>
+      <view class='title_view'>
+        <text>{{locker.typeStr}}</text>{{locker.number}}</view>
+    </view>
+    <view class='bottom_view' catchtap='sureCheckOut'>确认签出</view>
+  </view>
+</view>

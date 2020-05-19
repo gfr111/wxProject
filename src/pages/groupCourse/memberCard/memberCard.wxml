@@ -1,0 +1,77 @@
+<!--pages/groupCourse/memberCard/memberCard.wxml-->
+<view>
+  <!-- <view class='header'>
+    <text id="0" bindtap='changeheader' class="{{header==0?'choosedheader':''}}">可使用</text>
+    <text id="1" bindtap='changeheader' class="{{header==1?'choosedheader':''}}">不可用</text>
+  </view> -->
+  <view wx:if="{{(cardData.cards&&cardData.cards.length==0)&&!cardData.isNoCard&&cardData.disableCards.length==0}}">
+    <view class='nocarBox'>
+      <image src='../../../images/noRank.png'></image>
+      <span>暂无会员卡</span>
+    </view>
+  </view>
+
+  <view class="item  {{index==showcardData.length-1&&cardData.disableCards.length==0&&len>6?'moreitem':''}}" wx:for="{{showcardData}}" wx:key="index" id="{{index}}" data-name="{{item.cardName}}" bindtap="{{header==0?'getonecard':''}}">
+    <view>
+      <image src="../../../images/{{item.cardType==3||item.cardType==8?'timeLimitCard':item.cardType==4||item.cardType==9?'subCard':item.cardType==5||item.cardType==10?'StoredvalueCard':''}}.jpg"></image>
+      <view>
+        <text>{{item.cardName}}</text>
+        <text wx:if="{{item.cardType==3||item.cardType==8}}">剩余{{item.remainDays}}天</text>
+        <text wx:if="{{item.cardType==4||item.cardType==9}}">剩余{{item.availableCount}}次</text>
+        <text wx:if="{{item.cardType==5||item.cardType==10}}">余额¥{{item.amount}}</text>
+      </view>
+    </view>
+    <text class='money'>{{item.isPay?('需支付'+item.payPrice+'元'):cardData.deduct4GroupCourse?(item.cardType==4||item.cardType==9?'扣卡1次':item.cardType==5||item.cardType==10?'扣卡'+item.payPrice+'元':''):''}}</text>
+  </view>
+
+
+  <view class="nocard {{cardData.disableCards.length==0&&cardData.isNoCard?'moreitem':''}}" wx:if="{{(cardData.isNoCard&&header==0)||(cardData.isNoEffectiveMember&&cardData.isNoEffectiveCard&&header==0)}}">
+    <text>其他</text>
+    <view class='nocardcontent' style="margin-top:40rpx;" id="-2" bindtap="getonecard" wx:if="{{cardData.isNoEffectiveMember&&cardData.isNoEffectiveCard&&header==0}}">
+
+      <view class='nocardleft'>
+        <image src="../../../images/payIcon.png"></image>
+        <view>
+          <text>普通会员</text>
+          <text>非本店会员</text>
+        </view>
+      </view>
+      <text>{{cardData.noEffectiveCardFee}}元</text>
+    </view>
+
+
+    <view class='nocardcontent' id="-1" bindtap="getonecard" wx:if="{{cardData.isNoCard&&header==0}}">
+      <view class='nocardleft'>
+        <image src="../../../images/payIcon.png"></image>
+        <view>
+          <text>无卡预定</text>
+          <text>在线预定</text>
+        </view>
+      </view>
+      <text>{{cardData.noCardFee}}元</text>
+    </view>
+
+  </view>
+  <view class="contentitem {{len>6?'moreitem':''}}" style="margin-top:20rpx" wx:if="{{cardData.disableCards.length!=0}}">
+    <text class="nocardtitle">不可预约卡</text>
+    <view class="item" style="opacity:0.3" wx:for="{{cardData.disableCards}}" wx:key="index" id="{{index}}" data-name="{{item.cardName}}">
+      <view>
+        <image src="../../../images/{{item.cardType==3||item.cardType==8?'timeLimitCard':item.cardType==4||item.cardType==9?'subCard':item.cardType==5||item.cardType==10?'StoredvalueCard':''}}.jpg"></image>
+        <view>
+          <text>{{item.cardName}}</text>
+          <text class="hassome" wx:if="{{item.cardType==3||item.cardType==8}}">剩余{{item.remainDays}}天</text>
+          <text class="hassome" wx:if="{{item.cardType==4||item.cardType==9}}">剩余{{item.availableCount}}次</text>
+          <text class="hassome" wx:if="{{item.cardType==5||item.cardType==10}}">余额¥{{item.amount}}</text>
+        </view>
+      </view>
+      <text>{{item.reason}}</text>
+    </view>
+  </view>
+
+
+
+  <view class='btn' bindtap='tocardType'>
+    <text>可预约卡种</text>
+    <text></text>
+  </view>
+</view>

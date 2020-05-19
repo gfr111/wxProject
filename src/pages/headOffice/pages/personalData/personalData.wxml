@@ -1,0 +1,68 @@
+<!--pages/headOffice/pages/personalData/personalData.wxml-->
+<view class="dataBox">
+  <view class="avatarBox">
+    <span>头像</span>
+    <image src="{{messageData.photo}}" wx:if="{{messageData.photo}}"></image>
+    <image wx:else src="../../../../images/exampleImg.png"></image>
+  </view>
+  <view class="messBox">
+    <view class="dataItem">
+      <span class='itemTitle'>姓名</span>
+      <span class="itemContent">{{messageData.name}}</span>
+    </view>
+     <view class="dataItem">
+      <span class='itemTitle'>手机号</span>
+      <span class="itemContent">{{messageData.phone}}</span>
+    </view>
+     <view class="dataItem">
+      <span class='itemTitle'>性别</span>
+      <picker bindchange="bindPickerChange" value="{{sexIndex}}" range="{{array}}">
+        <view class="picker">       
+          <span>{{array[sexIndex]}}</span>
+          <image src="../../images/right.png"></image>
+        </view>
+      </picker>
+    </view>
+    <view class="dataItem">
+      <span class='itemTitle'>出生年月</span>
+      <picker mode="date" value="{{date}}" start="" end="" bindchange="bindDateChange">
+        <view class="picker">       
+          <span>{{date}}</span>
+          <image src="../../images/right.png"></image>
+        </view>
+      </picker>
+    </view>
+  
+  </view>
+  <view class="dataItem">
+    <span class='itemTitle'>所在社区</span>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
+          <view style="margin-top:-8rpx;">
+            <span>{{multiArray[0][multiIndex[0]]}}</span>
+            <span>{{multiArray[1][multiIndex[1]]?'/':''}}{{multiArray[1][multiIndex[1]]}}</span>
+            <span>{{multiArray[2][multiIndex[2]]?'/':''}}{{multiArray[2][multiIndex[2]]}}</span>
+          </view>
+          <image src="../../images/right.png"></image>
+      </view>
+    </picker>
+  </view>
+  <view class="messBox" style="margin-bottom:160rpx;">
+    <view class="dataItem">
+      <span class='itemTitle'>证件类型</span>
+      <picker  value="{{sexIndex}}" range="{{arrayId}}" bindchange="bindPickerIdChange">
+        <view class="picker">       
+          <span>{{arrayId[idIndex]}}</span>
+          <image src="../../images/right.png"></image>
+        </view>
+      </picker>
+    </view>
+    <view class="dataItem">
+      <span class='itemTitle'>证件号</span>
+      <input placeholder="证件号" value="{{idNumber}}" bindinput='idNumInput' type="idcard"></input>
+    </view>
+  </view>
+  <view class="submitBox">
+    <span bindtap="submitMess">保存并提交</span>
+  </view>
+</view>

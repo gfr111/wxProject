@@ -1,0 +1,83 @@
+
+<view class='bg-view'>
+  <view class='qrcode-white-back' wx:if="{{status==1}}">
+    <!-- <image class="close" src="../../images/closeRule.png"></image> -->
+    <view class="userinfo-avatar">
+      <image src='{{photo}}' wx:if="{{photo}}" mode='aspectFill'></image>
+
+      <image src="/images/defaultAvatar.png" background-size="cover" mode='aspectFill' wx:else></image>
+    </view>
+
+
+    <view class='detail'>
+      <view class="users">
+        <text>{{name}}</text>
+      </view>
+    </view>
+
+    <image class='qrcode' mode='aspectFill' src="{{qrCode}}"></image>
+
+        <text class="club">{{club}}</text>
+    <view class="renovate" wx:if="{{isrefresh}}">
+      <image mode='aspectFill' src="/images/refresh.png"></image>
+      <text>已刷新</text>
+    </view>
+
+    <view class="renovate" wx:else>
+      <image mode='aspectFill' src="/images/renovate.png"></image>
+      <text>二维码自动</text>
+      <text class="renovatetext" bindtap="renovate">刷新</text>
+    </view>
+
+
+    <view class='tintLabel' wx:if="{{qrCode != ''}}">展示此码进行签到</view>
+  </view>
+
+
+
+
+
+  <view wx:else class='qrcode-white-back result'>
+    <view class="resultmodel">
+      <!-- <image class="close" src="/images/closeRule.png"></image> -->
+      <view class="userinfo-avatar">
+        <image src="/images/{{cardmsg.status==1?'qrsuccess':'qrfail'}}.png" mode='aspectFill'></image>
+      </view>
+      <text class="resultword">{{cardmsg.isIn?cardmsg.status==1?'签到成功':'签到失败':cardmsg.status==1?'签出成功':'签出失败'}} </text>
+      
+      <view class="resulttext {{cardmsg.status==1?'success':''}}">{{cardmsg.status==1?cardmsg.cardType==5?cardmsg.reductionAmount?'￥'+cardmsg.reductionAmount:'祝您健身愉快':'祝您健身愉快':cardmsg.errMsg||'已过期'}}</view>
+
+      <view class="carddetail">
+        <view wx:if="{{cardmsg.reductionTimeCharge}}">
+          <text>计费单价：</text>
+          <text>{{cardmsg.reductionTimeCharge}}</text>
+        </view>
+        <view wx:if="{{cardmsg.presenceTimeRange}}">
+          <text>在场时间：</text>
+          <text>{{cardmsg.presenceTimeRange}}</text>
+        </view>
+        <view wx:if="{{cardmsg.presenceMinutes}}">
+          <text>总时长：</text>
+          <text>{{cardmsg.presenceMinutes}}分钟</text>
+        </view>
+        <view wx:if="{{cardmsg.cardType!=4&&cardmsg.reductionAmount}}">
+          <text>支付总额：</text>
+          <text class="cardmoney">{{cardmsg.reductionAmount}}元</text>
+        </view>
+      </view>
+
+
+    </view>
+    <view class="reslutfooter" wx:if="{{cardmsg.status==1&&cardmsg.cardName}}">
+      <view class="footerleft">
+        <text class="footername">{{cardmsg.cardName}}</text>
+        <text class="footmoney">剩余：{{cardmsg.text}}</text>
+        <text class="footline"></text>
+        <text class="footdate">有效期至：{{cardmsg.cardEndDate}}</text>
+      </view>
+      <view class="footerright">
+        <image src="{{cardmsg.cardBg}}"></image>
+      </view>
+    </view>
+  </view>
+</view>

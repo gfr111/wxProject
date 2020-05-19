@@ -1,0 +1,36 @@
+<!-- <import src="centerListCell.wxml" />  -->
+
+<import src="../templates/emptyView.wxml" />
+
+<view wx:if="{{centers.length != 0}}">
+  <view class='bgView'>
+
+
+    <block wx:for-items="{{centers}}" wx:key="{{item.id}}">
+      <view class='leftImageCell-bg' bindtap='selectCenter' id='{{index}}'>
+        <!-- <view class='leftImageCell-image-bg'> -->
+          <image mode="aspectFill" class='leftImageCell-image'  src="{{item.pictureList[0]||'/images/centerlist.png'}}"></image>
+          <view class="colorbg"></view>
+        <!-- </view> -->
+        <view class='leftImageCell-right-bg {{item.address ? "leftImageCell-right-bg-detail" : ""}}'>
+          <view class='leftImageCell-right-title'>
+          <text > {{item.name}}</text>
+          <text wx:if="{{item.id == selectedId}}" class="selectbtn"> 选中</text>
+         
+          </view>
+          <view class='leftImageCell-right-detail' wx:if='{{item.address}}'>{{item.address}}</view>
+        </view>
+      </view>
+    </block>
+
+
+  </view>
+</view>
+
+<view wx:else>
+<template is="emptyView" data='{{emptyImage:"../../images/noOrders.png", emptyTitle:"暂无场馆"}}'></template>
+</view>
+
+<text class='message-title' wx:if="{{centers.length < 7}}" style='bottom: 26rpx'>找不到门店信息？请到前台核对手机号信息</text> 
+<text class='message-title' wx:else style='margin-top:60rpx'>找不到门店信息？请到前台核对手机号信息</text> 
+

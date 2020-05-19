@@ -1,0 +1,77 @@
+<!--pages/distribution//pages/saleRecord/saleRecord.wxml-->
+    <wxs src="../../../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<view class="saleRecordBox">
+  <view class="timeSelectBox">
+    <view class="leftBox">
+      <span wx:for="{{timeList}}" data-id="{{item.id}}" bindtap="selectTime" class="{{item.id==timeIndex?'active':''}}">{{item.name}}</span>
+    </view>
+    <picker mode="date" value="{{startDate}}" start="" end="{{endDate}}" bindchange="bindDateChange">
+         <view class="rightBox">
+          <span>{{date}}</span>
+          <image src="../../images/upIcon.png"></image>
+        </view>
+        </picker>
+  </view>
+  <view wx:if="{{list.length!=0}}">
+    <view class="interestBbox">
+      <view class="order" style="border-right:1px solid #CECFD0;">
+        <span>{{result.totalCount}}</span>
+        <span>总订单</span>
+      </view>
+      <view class="order">
+        <span>{{result.totalAmount}}</span>
+        <span>获得佣金</span>
+      </view>
+    </view>
+    <scroll-view scroll-y style="height:{{windowHeight}}px">
+      <view class="goodsBox"  wx:for='{{list}}' wx:key='{{index}}'>
+        <view class="itemTop">
+          <view class="orderMmess">
+            <view class='member'>会员：{{item.traineeName}} {{item.phone}}</view>
+            <view class="orderTime">
+              <image src="../../../../images/orderTime.png"></image>
+              <span>{{dateUtil.getDates(item.createTime)}}</span>
+            </view>
+          </view>
+          <view class="orderStatus" style="color:{{item.status==0?'#898989':item.status==1?'#898989':'#FF3300'}}">{{item.status==0?'已删除':item.status==1?'已完成':'已退款'}}</view>
+        </view>
+        <view class="itemCenter">
+          <view class="cardContent">
+            <image src="../../images/card.png" class="cardIcon"></image>
+            <view class="goodsMess">
+             <view class="name">{{item.objectName}}</view>
+             <view class="price">
+               <view>¥{{item.saleAmount}}</view>
+               <view>数量：{{item.quantity||'--'}}</view>
+             </view>
+            </view>
+          </view>
+        </view>
+        <view class="itemBottom">
+           <view class="membership"></view>
+           <view class="orderPrice">
+             <view>订单总价：¥{{item.saleAmount}}</view>
+              <view style="text-decoration:line-through" wx:if="{{item.status!=1}}">
+                <span style='color:#303030;font-size:32rpx;'>商品佣金：</span>
+                <span style='color:#FA4A11'>¥{{item.commissionAmount}}</span>
+              </view>
+               <view wx:else>
+                <span style='color:#303030;font-size:32rpx;'>商品佣金：</span>
+                <span style='color:#FA4A11'>¥{{item.commissionAmount}}</span>
+              </view>
+           </view>
+        </view>
+      </view>
+      <view class="moreBtn">
+        <view class='moreBtnBox' bindtap='showMore' wx:if="{{showMore&&list.length>=pageSize*(pageNum+1)}}">
+          <span>查看更多</span>
+          <image src='../../../../images/down.png'></image>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+   <view class='nullBox' wx:else>
+     <image src='../../../../images/noRank.png' class='nullIcon'></image>
+      <text class='nullTxt'>暂无销售记录</text>
+  </view>
+</view>

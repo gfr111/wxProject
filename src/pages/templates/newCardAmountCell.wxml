@@ -1,0 +1,28 @@
+<template name="newCardAmountCell">
+  <view class="info-body">
+    <view class='photo'>
+    
+    <view class='cardsmall cardsmall1' wx:if="{{cardType==3}}">
+              <image src='../../images/flower.png'></image>
+              <text>期限卡</text>
+          </view>
+          <view class='cardsmall cardsmall2' wx:if="{{cardType==4}}">
+              <image src='../../images/flower.png'></image>
+              <text>次卡</text>
+          </view>
+          <view class='cardsmall cardsmall3' wx:if="{{cardType==5}}">
+              <image src='../../images/flower.png'></image>
+              <text>储值卡</text>
+          </view>
+    </view>
+    <view class='rightDetail'>
+
+      <view class='name' class='cardsName'>{{name}}</view>
+      <view>
+        <text class='yuanMark'>¥</text>
+        <text class='greenAmount'>{{price}}</text>
+      </view>
+
+    </view>
+  </view>
+</template>

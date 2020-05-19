@@ -1,0 +1,30 @@
+<!--pages/cardsPurchaseOnline/useClass.wxml-->
+<!-- <text>pages/cardsPurchaseOnline/useClass.wxml</text> -->
+<view class='classList'>
+  <view class='select_box'>
+    <image src='../../images/clubImg.png' class='positions'></image>
+    <view class='select' catchtap='selectTap'>
+      <text class='select_text'>{{selectFirst}}</text>
+      <text class="updown"></text>
+    </view>
+
+
+    <view class='option_box' style='height:{{show?(selectData.length>5?300:selectData.length*60):0}}rpx;'>
+      <text class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap' data-Id='{{item.id}}' data-name="{{item.name}}">{{item.name}}</text>
+    </view>
+
+
+
+  </view>
+
+
+  <navigator url="/pages/cardsPurchaseOnline/courseDetail/courseDetail?instance={{item.id}}" class='list' wx:for="{{course}}" wx:key="{{item.id}}">
+    <text>{{item.name}}</text>
+</navigator> 
+
+
+  <view class='nullOrder' wx:if="{{course.length==0}}">
+    <image src='../../../images/noOrders.png'></image>
+    <text>暂无课程</text>
+  </view>
+</view>

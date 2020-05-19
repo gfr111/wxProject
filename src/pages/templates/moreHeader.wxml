@@ -1,0 +1,19 @@
+<template name='moreHeader'>
+
+<view bindtap='tapMoreHeader' id='{{index}}' data-id="{{index}}">
+  <view class='moreHeader'>
+  
+  <view class='leftTitleBack'>
+   <!-- <view class='leftGreenSquare'></view> -->
+   <text class='leftTitle'>{{leftTitle}}</text>
+  </view>
+  <view class='rightMoreBack' wx:if="{{show}}">
+   <text class='rightMoreTitle'>查看更多</text>
+   <!-- <image src='../../images/next.png' class='rightNextArrow'></image> -->
+  </view>
+
+  </view>
+
+</view>
+
+</template>

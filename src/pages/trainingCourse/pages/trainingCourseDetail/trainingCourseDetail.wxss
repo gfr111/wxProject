@@ -1,0 +1,122 @@
+/* pages/trainingCourse/pages/trainingCourseDetail/trainingCourseDetail.wxss */
+.detailBox{
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+.courseImg{
+  width: 100%;
+  height: 386rpx;
+}
+.courseMess{
+  padding: 30rpx;
+  border-bottom: 20rpx solid #F7F8F9;
+}
+.courseName{
+  color: #303030;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 22rpx;
+}
+.courseTime{
+  display: flex;
+  align-items: center;
+}
+.courseTime>image{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+.courseTime>span{
+  color: #898989;
+  font-size: 28rpx;
+}
+.courseIntro{
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+}
+.title{
+  color: #383838;
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 30rpx;
+}
+
+.introContent{
+ color: #6E6E6E;
+ font-size: 28rpx; 
+ box-sizing: border-box;
+ overflow: hidden;
+}
+.buybtn{
+  width: 100%;
+  line-height: 120rpx;
+  text-align: center;
+  background: #ffffff;
+  border-top:1px solid #E5E5E5;
+  position: fixed;
+  bottom: 0;
+}
+.buybtn>span{
+  width:  690rpx;
+  height: 72rpx;
+  background: #00BC71;
+  border-radius: 40rpx;
+  color: #ffffff;
+  text-align: center;
+  line-height: 72rpx;
+  display: inline-block;
+  font-size: 32rpx;
+}
+.pop{
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.6); 
+  position: absolute;
+  top:0;
+  left: 0;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.popBox{
+  background: #ffffff;
+  width: 650rpx;
+  border-radius: 16rpx;
+  padding-bottom: 46rpx;
+}
+.popTitle{
+  height: 188rpx;
+  background: #F4F4F4;
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.popTitle span{
+  line-height:188rpx;
+  color:#303030;
+  font-size:42rpx;
+  margin-left: 40rpx;
+  font-weight: 600
+}
+.popTitle image{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 30rpx;
+  margin-top:30rpx;
+  position: absolute;
+  right: 50rpx;
+}
+.continueBuy{
+  width: 570rpx;
+  line-height: 88rpx;
+  background: #00BC71;
+  border-radius: 50rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+  text-align: center;
+  font-weight: 600
+}

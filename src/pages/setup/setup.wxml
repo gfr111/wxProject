@@ -1,0 +1,13 @@
+<!--pages/setup/setup.wxml-->
+
+<view class='main_view'>
+  <view class='content_view'>
+    <view class='list_view' wx:for="{{listArr}}" wx:key='' bindtap='selectList' data-idx='{{index}}' wx:if="{{item.show}}">
+       <text class='title'>{{item.title}}</text>
+       <view class='rightBtn'>
+           <image class="{{status==1&&index==0?'hidden_view':'img'}}" src='{{item.img}}'></image>
+           <text wx:if="{{index==0}}" class="{{status==0?'sub_title':'sub_fix'}}">{{status==0?"未设置":"修改"}}</text>
+       </view>
+    </view>
+  </view>
+</view>

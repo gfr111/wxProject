@@ -1,0 +1,58 @@
+<!--pages/groupclassDetail/groupclassDetail.wxml-->
+
+<view>
+  <text class='ordered' wx:if="{{CourseDetail.reserveId}}">已预约</text>
+  <view class='mask'></view>
+  <image class='img' src='{{CourseDetail.course.pictures[0]}}'></image>
+  <view class='content'>
+    <view class='title'>
+      <text>{{CourseDetail.instance.courseName}}</text>
+      <view wx:if='{{clubType!=8}}'>
+        <text style='background:{{CourseDetail.instance.leves.color}}' wx:if="{{CourseDetail.instance.leves}}">{{CourseDetail.instance.leves.name}}</text>
+        <text>{{CourseDetail.instance.duration}}分钟</text>
+      </view>
+      <view wx:if='{{clubType==8}}'>
+        <text>{{CourseDetail.trainingClass.name}}</text>
+      </view>
+    </view>
+    <view class='tag tagtime'>
+      <text>课程时间</text>
+      <view class='tagright'>
+        <view>
+          <text>{{CourseDetail.instance.date}}</text>
+          <text decode="{{true}}">&nbsp; {{CourseDetail.instance.wek}}</text>
+        </view>
+        <text>{{CourseDetail.instance.startTime}}~{{CourseDetail.instance.endTime}}</text>
+      </view>
+    </view>
+
+    <view class='tag'>
+      <text>上课教练</text>
+      <text>{{CourseDetail.trainer.name}}</text>
+
+    </view>
+
+    <view class='tag'>
+      <text>上课教室</text>
+
+      <text>{{CourseDetail.instance.room?CourseDetail.instance.room:'--'}}</text>
+
+    </view>
+    <view class='tag' wx:if="{{clubType==8}}">
+      <text>上课人数</text>
+
+      <text>{{CourseDetail.instance.fixedNum}}人</text>
+
+    </view>
+  </view>
+  <view class='describle'>
+    <view>课程介绍</view>
+    <rich-text wx:if='{{clubType!=8}}' decode="true" nodes="{{CourseDetail.course.introduction?CourseDetail.course.introduction:'暂无介绍'}}"></rich-text>
+    <rich-text wx:if='{{clubType==8}}' decode="true" nodes="{{descrip}}" style="color: #6e6e6e;font-size: 28rpx;"></rich-text>
+  </view>
+</view>
+
+
+<view class="confirm-button" bindtap="{{CourseDetail.reserveId?(CourseDetail.reserveStatus==8?'goby': 'cancel'):''}}" wx:if="{{CourseDetail.reserveId||CourseDetail.unOpened}}">
+  <text class="{{CourseDetail.reserveId?(CourseDetail.reserveStatus==8?'gobys':' submit'):'noopen'}} ">{{CourseDetail.reserveId?(CourseDetail.reserveStatus==8?'去支付':'取消预约'):CourseDetail.openingTime+'开放'}} </text>
+</view>

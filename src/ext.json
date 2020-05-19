@@ -1,0 +1,10 @@
+{
+  "extEnable": true,
+  "extAppid": "wx21cf850b81e833ac",
+  "ext": {
+    "parentCenterId": 1148,
+    "centerName": "衢州",
+    "miniUrl": 1148,
+    "enableParent":false
+  }
+}

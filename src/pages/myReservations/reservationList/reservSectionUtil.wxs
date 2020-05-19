@@ -1,0 +1,21 @@
+var reservSectionUtil = (function(){
+
+
+     function showRoomInfo(item) {
+       var temp = "";
+       if (item.room)
+       {
+         temp += "教室：" + item.room
+       }
+       if (item.seatNums)
+       {
+         temp += "位置：" + item.seatNums
+       }
+       return temp;
+     }
+     return {
+       showRoomInfo:showRoomInfo
+     }
+})();
+
+module.exports = reservSectionUtil;

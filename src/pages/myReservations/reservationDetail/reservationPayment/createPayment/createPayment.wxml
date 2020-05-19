@@ -1,0 +1,24 @@
+
+<import src="../../../../templates/basicCell.wxml" />
+<import src="../../../../templates/payMethodCell/payMethodCell.wxml" />
+<import src="../../../../templates/greenBtn.wxml" />
+<view>
+ 
+  <view class='topView-bg'>
+
+   <view class='topView-title'>支付剩余时间</view>
+   <view class='topView-timeCount'>{{formatTime}}</view>
+   <image class='topView-bottom-wave' src='../../../../../images/waveLine.png' mode='aspectFill'></image>
+  </view>
+
+  <view class='basicSection-item'>
+    <template is='basicCell' data='{{title:"订单名称", value: order.orderName, next:false}}'></template>
+    <template is='basicCell' data='{{title:"实付金额", value: "￥" + order.amount, rightGreen:true}}'></template>
+    <template is='payMethodCell'></template>
+  </view>
+ 
+  <!-- <view class='btnTop'> -->
+    <template is='greenBtn' data='{{title: "确认支付 " + "￥" + order.amount, didTapGreenBtn:didTapGreenBtn, disabled:!isPayAvailable}}'></template>
+  <!-- </view> -->
+
+</view>

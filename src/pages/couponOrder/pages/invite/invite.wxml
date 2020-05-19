@@ -1,0 +1,54 @@
+<!--pages/couponOrder//pages/invite/invite.wxml-->
+<view class="inviteBox">
+ <image src="../../resources/invite.png" class="bg"></image>
+  <view class="inviteContent">
+    <view class="inviteTitle">{{invite.invitation.title}}</view>
+    <view class="inviteTxt">
+      <span>赠送{{invite.card.name}}给好友</span>
+      <span>{{invite.invitation.content}}</span>
+    </view>
+    <view class="cardBox">
+      <image src="{{invite.card.cardBg?invite.card.cardBg:'../../../../images/StoredvalueCard.jpg'}}"></image>
+      <view class="cardMess">
+        <span class='cardName'>{{invite.card.name}}</span>
+        <span class='cardPrice' wx:if="{{invite.card.cardType==6}}">{{invite.card.cardEffectiveDays}}天</span>
+        <span class='cardPrice' wx:if="{{invite.card.cardType==7}}">{{invite.card.availableCount}}次</span>
+        <span class='cardLine'></span>
+        <span class='cardEff'>有效期：{{invite.card.cardEffectiveDays}}天</span>
+      </view>
+    </view>
+    <button class="inviteBtn" open-type="share">{{invite.invitation.buttonName}}</button>
+    <view class="dateTitle">
+        <span class="radiusBox"></span>
+        <span class="radiusBox"></span>
+        <text>邀请战绩</text>
+        <span class="radiusBox"></span>
+        <span class="radiusBox"></span>
+    </view>
+    <view class="dataContent">
+        <view class="inviteData">
+            <view class="dataItem">
+                <span>{{invite.invitationSummary.invited}}</span>
+                <span>邀请成功</span>
+            </view>
+            <view class="dataItem">
+                <span>{{invite.invitationSummary.inviting}}</span>
+                <span>邀请中</span>
+            </view>
+            <view class="dataItem">
+                <span>{{invite.invitationSummary.point}}</span>
+                <span>获得积分</span>
+            </view>
+        </view>
+        <view class="checkDetail" bindtap="toDetail">查看详情</view>
+    </view>
+     <view class="dateTitle">
+        <span class="radiusBox"></span>
+        <span class="radiusBox"></span>
+        <text>活动细则</text>
+        <span class="radiusBox"></span>
+        <span class="radiusBox"></span>
+    </view>
+     <rich-text class="content" nodes="{{invite.invitation.description}}"></rich-text>
+  </view>
+</view>

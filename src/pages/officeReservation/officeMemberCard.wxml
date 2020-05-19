@@ -1,0 +1,54 @@
+<!--pages/groupCourse/memberCard/memberCard.wxml-->
+<view>
+  <view class='header'>
+    <text id="0" bindtap='changeheader' class="{{header==0?'choosedheader':''}}">可使用</text>
+    <text id="1" bindtap='changeheader' class="{{header==1?'choosedheader':''}}">不可用</text>
+  </view>
+  <view wx:if="{{header==0?(cardData.cards&&cardData.cards.length==0)&&!cardData.isNoCard:cardData.disableCards.length==0}}">
+    <view class='nocarBox'>
+      <image src='../../images/noRank.png'></image>
+      <span>暂无会员卡</span>
+    </view>
+  </view>
+
+  <view class="item {{index==0?'itemsh':''}}   {{showcardData.length>7&&index+1==showcardData.length&&!cardData.isNoCard?'moreitem':''}}" wx:for="{{showcardData}}" wx:key="index" id="{{index}}"  data-name="{{item.cardName}}" bindtap="{{header==0?'getonecard':''}}">
+    <view>
+      <image src="../../images/{{item.cardType==3?'timeLimitCard':item.cardType==4?'subCard':item.cardType==5?'StoredvalueCard':''}}.jpg"></image>
+      <view>
+        <view >
+          <text>{{item.cardName}}</text>
+          <text style='padding:4rpx 8rpx;background:#E5F8F0;color:#00BC71;font-size:20rpx;' wx:if="{{contractId==item.contractId}}">选中</text>
+        </view>
+        <text wx:if="{{item.cardType==3}}">剩余{{item.remainDays}}天</text>
+        <text wx:if="{{item.cardType==4}}">剩余{{item.availableCount}}次</text>
+        <text wx:if="{{item.cardType==5}}">余额¥{{item.amount}}</text>
+      </view>
+    </view>
+    <text wx:if="{{header==1}}">{{item.reason}}</text>
+    <text class='money' wx:else>{{item.isPay?('需支付'+item.payPrice+'元'):(item.cardType==4?'扣卡1次':item.cardType==5?'扣卡'+item.payPrice+'元':'')}}</text>
+  </view>
+
+
+
+  <view class="nocard {{cardData.isNoCard?'moreitem':''}}" id="-1" bindtap="getonecard" wx:if="{{cardData.isNoCard&&header==0}}">
+    <text>其他</text>
+    <view class='nocardcontent'>
+      <view class='nocardleft'>
+        <image src="../../images/payIcon.png"></image>
+        <view>
+         <view style='display:flex'> 
+            <text>无卡预定</text>
+            <text style='margin-left:20rpx;padding:4rpx 8rpx;background:#E5F8F0;color:#00BC71;font-size:20rpx;' wx:if="{{contractId==-1}}">选中</text>
+         </view>
+          <text>在线预定</text>
+        </view>
+      </view>
+      <text>{{cardData.noCardFee}}元</text>
+    </view>
+  </view>
+
+  <view class='btn' bindtap='tocardType'>
+    <text>可预约卡种</text>
+    <text></text>
+  </view>
+</view>

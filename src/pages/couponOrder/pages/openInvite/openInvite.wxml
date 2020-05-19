@@ -1,0 +1,32 @@
+<!--pages/couponOrder//pages/openInvite/openInvite.wxml-->
+<view class="inviteBox">
+    <image src="../../resources/invite.png" class="bgIconBox"></image>
+    <view class="shareContent">
+      <view class='userImageBox'>
+        <image mode='aspectFill' src="{{data.inviter.photo||'../../../../images/default_user.png'}}" class='userImage'></image>
+      </view>
+      <view   class='userName'>{{data.inviter.name}}</view>
+      <span class='shareTxt'>赠送{{data.card.name}}给你</span>
+      <view class="cardBox">
+        <image mode='aspectFill' src="{{data.card.cardBg||'../../../../images/teachPic.png'}}"></image>
+        <view class="cardMess">
+          <span class='cardName'>{{data.card.name}}</span>
+          <span class='cardPrice' wx:if="{{data.card.cardType==6}}">{{data.card.cardEffectiveDays}}天</span>
+            <span class='cardPrice' wx:if="{{data.card.cardType==7}}">{{data.card.availableCount}}次</span>
+          <span class='line'></span>
+          <span class='effectiveDay'>有效期：{{data.card.cardEffectiveDays}}天</span>
+        </view>
+      </view>
+      <view class="receiveBtn" bindtap="receiveCard"  wx:if="{{data.invitationCanReceiveStatus==1}}">立即领取</view>
+      <view class="timeCount"  wx:if="{{data.invitationCanReceiveStatus==2||isRecive}}">已领取</view>
+      <view class="timeCount"  wx:if="{{data.invitationCanReceiveStatus==0}}">活动已下架</view>
+    </view>
+</view>
+<view class="popBox" wx:if='{{showPop}}' catchtap="hide">
+  <view class="receiveBox">
+    <image src="../../resources/price.png" class="priceImage"></image>
+    <span class='receiveTxt'>恭喜你，领取成功！</span>
+    <view class="useBtn" bindtap="toList">立即使用</view>
+    <span class='timeTxt'>{{second}}s 后自动跳转</span>
+  </view>
+</view>

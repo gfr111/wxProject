@@ -1,0 +1,22 @@
+<import src="coursePhotoView.wxml" />
+
+
+<template name="middleContentView">
+  <view class="middleContentView" bindtap='checkDetail' id='{{index}}'>
+    <template is="coursePhotoView" data='{{url:url, levelColor:levelColor, levelStr:levelStr}}'></template>
+    <view class='courseContent-bg'>
+      <view class='courseName-label'> {{courseName}}</view>
+      <view class='courseTime-bg'>
+        <view class='courseTime-label'>{{courseTime}}</view>
+        <view class='amount-label' wx:if="{{amount}}">{{amount}}</view>
+      </view>
+      <view class='checkDetail-bg {{detailInfo ? "checkDetail-bg-info":""}}' >
+        <view class='checkDetail-detail'>{{detailInfo}}</view>
+        <block  wx:if="{{showDetail}}">
+        <view class='checkDetail-label'>查看详情</view>
+        <image class='nextArrow' src="images/next.png"></image>
+        </block>
+      </view>
+    </view>
+  </view>
+</template>

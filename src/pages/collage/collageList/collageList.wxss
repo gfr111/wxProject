@@ -1,0 +1,95 @@
+/* pages/collage/collageList/collageList.wxss */
+.collageList{
+   background: #ffffff;
+   margin-top:24rpx;
+   padding:0 40rpx;
+   padding-bottom: 0;
+}
+.collageListTop{
+  font-size: 24rpx;
+  line-height: 86rpx;
+  border-bottom: 1px solid #e6e6e6;
+}
+.collageTypeGreen{
+  float: right;
+  color: #00BC71;
+}
+.collageType{
+  float: right;  
+}
+.collagePic{
+  width: 345rpx;
+  height: 168rpx;
+  margin-right: 30rpx;
+}
+.clearfix::after {
+    content: ".";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    height: 0;
+}
+.collageListCenter{
+  display: flex;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 28rpx 0;
+}
+.checkDetail{
+  position: absolute;
+  right:16rpx;
+  bottom:39rpx;
+}
+.collageCarName{
+  font-size: 28rpx;
+  display: inline-block;
+  color: #2B2B38;
+}
+.checkDetail text{
+  font-size: 24rpx;
+  color: #ABABAB;
+  
+}
+.checkDetailImg{
+  width: 17rpx;
+  height:20rpx;
+}
+.collageListBottom{
+  height: 110rpx;
+}
+.collageListBottom button::after{
+   border: none;
+}
+.collageListBottom button{
+   border:1px solid #00BC71;
+   font-size: 24rpx;
+   width: 160rpx;
+   text-align: center;
+   line-height: 68rpx;
+   background: #ffffff;
+   float: right;
+   border-radius: 5px;
+   margin-top:20rpx;
+   margin-left: 20rpx;
+}
+.noCollage {
+  position: absolute;
+  top:40%;
+  left:50%;
+  transform: translate(-50%,-50%);
+
+}
+.noCollage image{
+   width: 138rpx;
+   height: 118rpx;
+}
+.noCollage text{
+  display: block;
+  font-size: 30rpx;
+  color: #7a7a7a;
+  text-align: center;
+}
+.mess{
+  display: flex;
+  flex-direction: column;
+}

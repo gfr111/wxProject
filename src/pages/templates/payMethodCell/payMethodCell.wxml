@@ -1,0 +1,11 @@
+<!-- <wxs src= "../../../utils/uiUtils/levelImageUtil.wxs" module = "levelImageUtil"></wxs> -->
+<template name="payMethodCell">
+  <view class="payMethodCell ">
+    <view class="payMethodCell-left-label">支付方式</view>
+    <!-- <image class="right-icon" src='{{levelImageUtil.wechatPayImage(level)}}'></image> -->
+    
+    <image class="right-icon" src="/images/wxPay.png"></image>
+    <view class="payMethodCell-right-label">微信支付</view>
+  </view>
+
+</template>

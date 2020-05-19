@@ -1,0 +1,289 @@
+/* pages/collage/collageDetail/collageDetail.wxss */
+page{
+  background: #F7F8F9;
+  
+}
+.collageDetailTop{
+  background: #fff;
+   margin-top: 1px;
+   padding-top: 34rpx;
+   padding-left: 30rpx;
+   position: relative;
+   margin-bottom: 20rpx;
+}
+.detailTopImg{
+  width: 346rpx;
+  height: 178rpx;
+  float: left;
+  margin-right: 32rpx;
+  margin-bottom: 30rpx;
+}
+.detailTopName{
+  font-size: 30rpx;
+  color: #222222;
+  margin-right: 12rpx;
+}
+.collageNum{
+ width: 84rpx;
+ height: 34rpx;
+ background: #00bc71;
+ color: #fff;
+ text-align: center;
+ line-height: 34rpx; 
+ font-size: 20rpx;
+ display: inline-block;
+}
+.collageNewPriceIcon{
+  font-size: 24rpx;
+  color: #00bc71;
+}
+.collageNewPrice{
+  font-size: 40rpx;
+  color: #00bc71;
+  /* margin-right:20rpx; */
+  display: inline-block;
+}
+.collageOldPrice{
+  font-size: 24rpx;
+  color: #ababab;
+  text-decoration:line-through;
+}
+
+.clearfix::after {
+    content: ".";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    height: 0;
+}
+.moreCollage{
+  background: #fff;
+  /* margin-bottom:16rpx;  */
+}
+.moreCollageTitle{
+ line-height: 80rpx;
+ font-size: 26rpx;
+ border-bottom: 1px solid #f2f2f2;
+ padding-left: 40rpx;
+ display: block;
+ border-top: 16rpx solid #f2f2f2;
+}
+/* 底部滚动列表  */
+.right-item {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    
+}
+.avater{
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 50%;
+  margin-left: 28rpx;
+  display: inline-block;
+  margin-right: 28rpx;
+  font-size: 0;
+}
+.collageMess{
+  display: inline-block;
+  position: relative;
+  top:-7rpx;
+}
+.collageMess text{
+  display: block;
+}
+.collageMess text:nth-child(1){
+  font-size: 30rpx;
+  color: #222222;
+  /* margin-top: 7rpx; */
+}
+.collageMess text:nth-child(2){
+  font-size: 26rpx;
+  color: #ababab;
+}
+.goToCollage{
+  float: right;
+  margin-right: 46rpx;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.goToCollage text{
+  display: block;
+}
+.goToCollage text:nth-child(1){
+  display: block;
+  width: 140rpx;
+  height: 52rpx;
+  border: 1px solid #00bc71;
+  border-radius: 28rpx;
+  color: #00bc71;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 52rpx;
+   margin-top:7rpx;
+}
+/* .goToCollage text:nth-child(2){
+  font-size: 20rpx;
+  color: #7a7a7a;
+  text-align: center;
+  width: 140rpx;
+} */
+.content-item{
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 18rpx;
+  padding-top: 30rpx;
+  padding-left:30rpx;
+
+}
+.collageStep{
+  background: #ffffff;
+  padding-top: 32rpx;
+  padding-left: 40rpx;
+  padding-bottom: 164rpx;
+ border-top: 16rpx solid #f2f2f2;
+  
+}
+.stepTittle{
+  font-size: 36rpx;
+  color:#383838; 
+  display:block;
+  margin-bottom: 40rpx;
+  font-weight: 600;
+}
+.collageStep view text{
+  font-size: 28rpx;
+  color: #6E6E6E;
+  display: block;
+  margin-bottom: 12rpx;
+}
+.newColage{
+  width: 100%;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  padding-left:40rpx; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 30rpx;
+  color: #383838;
+  font-size: 28rpx;
+}
+.collageNow{
+  width: 320rpx;
+  line-height: 84rpx;
+  color: #ffffff;
+  background: #00bc71;
+  display: inline-block;
+  text-align: center;
+  border-radius: 42rpx;
+  font-size: 34rpx;
+}
+
+.collageClose{
+  width: 320rpx;
+  line-height: 84rpx;
+  color: #ffffff;
+  background: #D8D8D8;
+  display: inline-block;
+  float: right;
+  text-align: center;
+  margin-top: 28rpx;
+  margin-right: 40rpx;
+  border-radius: 42rpx;
+  font-size: 34rpx;
+}
+.selectTypeBg{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.4);
+  top:0;
+  left: 0;
+}
+.select-box{
+  background: #ffffff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 40rpx;
+  z-index: 100;
+}
+.card-type{
+  font-size: 30rpx;
+  display: inline-block;
+  margin-left: 40rpx;
+  margin-bottom: 16rpx;
+}
+.newCar{
+  width: 140rpx;
+  line-height: 56rpx;
+  display: inline-block;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  background: #F4F4F4;
+  text-align: center;
+}
+.oldCar{
+  width: 140rpx;
+  line-height: 56rpx;
+  display: inline-block;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  background: #00bc71;
+  color: #ffffff;
+  text-align: center;
+}
+.select-car{
+  padding-bottom: 40rpx;
+  border-bottom: 1px solid #f2f2f2;
+}
+.toBuy{
+  display: inline-block;
+  float: right;
+ width: 320rpx;
+ line-height: 84rpx; 
+ background: #00bc71;
+ color: #ffffff;
+ text-align: center;
+ border-radius: 42rpx;
+margin-top:28rpx; 
+margin-right: 40rpx;
+font-size: 34rpx;
+}
+.all-price{
+  padding-bottom: 36rpx;
+}
+.dispire{
+  display: inline-block;
+  float: right;
+  font-size: 30rpx;
+  color: #00bc71;
+  margin-right:20rpx;
+  margin-top: 10rpx;
+}
+.cardtypes{
+  position: absolute;
+  left: 60rpx;
+  top: 50rpx;
+  z-index: 100;
+  color: #fff;
+  font-size: 24rpx;
+}
+.header{
+  width:100rpx;
+height:100rpx;
+border:2rpx solid rgba(235,235,235,1);
+border-radius: 50%;
+margin-right: 30rpx;
+display: inline-block;
+}
+.times{
+color: #6E6E6E;
+font-size: 20rpx;
+margin-top: 20rpx;
+}

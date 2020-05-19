@@ -1,0 +1,45 @@
+var imageUrlUtil = (function() {
+    
+    function getUrl(url) {
+      if (url)
+      {
+        if (url.indexOf("http") >=0)
+        {
+          return url;
+        }
+        else
+        {
+          return "https://www.forzadata.cn/static/images/course.png";
+        }
+      }
+      else
+      {
+        return "https://www.forzadata.cn/static/images/course.png";
+     
+      }
+    }
+
+    function getDefaultAvatar(url) {
+      if (url) {
+        if (url.indexOf("http") >= 0) {
+          return url;
+        }
+        else {
+          return "/images/defaultAvatar.png";
+        }
+      }
+      else {
+        return "/images/defaultAvatar.png";
+
+      }
+    }
+
+    return {
+      getUrl:getUrl,
+      getDefaultAvatar:getDefaultAvatar
+    }
+
+})();
+
+module.exports = imageUrlUtil;
+

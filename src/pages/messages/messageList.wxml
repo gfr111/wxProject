@@ -1,0 +1,33 @@
+<view class='index'>
+<view class='separatorLine'></view>
+<view class='messageCell'>
+  <image class='messageImage' src='../../images/courseNotif.png'></image>
+  <view class='messageRightBack'>
+      <view class='rightHalfBack'>
+        <text class='messageTitle'>课程通知</text>
+        <text class='timeLabel'>2018/09/10 19:00</text>
+      </view>
+      <view class='rightHalfBack'>
+        <text class='detailLabel'>说说对本次课程的感受</text>
+        <text class='redPoint'>10000</text>
+      </view> 
+   </view>
+</view>
+<view class='separatorLine'></view>
+<view class='messageCell'>
+  <image class='messageImage' src='../../images/consumeNotif.png'></image>
+  <view class='messageRightBack'>
+   <view class='rightHalfBack'>
+     <text class='messageTitle'>消费通知</text>
+     <text class='timeLabel'>2018/09/10 19:00</text>
+   </view>
+   <view class='rightHalfBack'>
+     <text class='detailLabel'>说说对本次课程的感受</text>
+     <text class='redPoint'> 10 </text>
+   </view> 
+   </view>
+</view>
+<view class='separatorLine'></view>
+
+
+</view>

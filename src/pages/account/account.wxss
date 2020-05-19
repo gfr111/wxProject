@@ -1,0 +1,100 @@
+/* pages/account/account.wxss */
+.changeAccountBox{
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-top: 1px solid #e6e6e6;
+}
+.phoneBox{
+  padding-top:56rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+.phoneBox{
+  display: flex;
+  flex-direction: column;
+}
+.phoneBox>text:nth-child(1){
+  font-size: 26rpx;
+  color: #a0a0a0;
+  margin-bottom: 34rpx;
+}
+.phone>image{
+  width: 42rpx;
+  height: 42rpx; 
+  margin-right: 30rpx;
+}
+.inputBox>image{
+   width: 42rpx;
+  height: 42rpx; 
+  margin-right: 30rpx;
+}
+.phone{
+  display: flex;
+  align-items: center;
+  padding-bottom: 26rpx;
+  border-bottom: 1px solid #ededed;
+}
+.placeholder{
+  font-size: 36rpx;
+  color: #c8c7cd;
+}
+input{
+    font-size: 36rpx;
+    color: #484848;
+}
+.codeBox{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.codeBox>text:nth-child(1){
+  font-size: 26rpx;
+  color: #A0A0A0;
+}
+.codeBox>text:nth-child(2){
+  font-size: 32rpx;
+  color: #00BC71;
+}
+.inputBox{
+  display: flex;
+  align-items: center;
+  padding-bottom: 26rpx;
+  border-bottom: 1px solid #ededed;
+}
+.sumbuitBox{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 60rpx;
+  padding-right: 40rpx;
+}
+.sumbuitBox>text{
+  width: 204rpx;
+  height:92rpx;
+  background:  #BDBDBD;
+  color: #ffffff;
+  display: block;
+  text-align: center;
+  line-height: 92rpx;
+  font-size: 32rpx;
+  border-radius: 100rpx;
+}
+.sumbuit{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 60rpx;
+  padding-right: 40rpx;
+}
+.sumbuit>text{
+  width: 204rpx;
+  height:92rpx;
+  background:  #00BC71;
+  color: #ffffff;
+  display: block;
+  text-align: center;
+  line-height: 92rpx;
+  font-size: 32rpx;
+  border-radius: 100rpx;
+}

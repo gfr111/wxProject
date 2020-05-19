@@ -1,0 +1,161 @@
+<!--pages/index/cardDetail.wxml-->
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="util" />
+<view class="ardDetail  {{ismodel?'modelfixed':''}}">
+  <!-- <image src='../../images/cardBG.png' class='cardBG'></image> -->
+  <view class='cardMess'>
+
+    <image src="../../images/{{cardMess.contract.cardType==5||cardMess.contract.cardType==10?'StoredvalueCard':cardMess.contract.cardType==4||cardMess.contract.cardType==7||cardMess.contract.cardType==9?'subCard':'timeLimitCard'}}.jpg" mode='aspectFill' class='cardImg'></image>
+    <!-- <image wx:if="{{cardMess.cardBg}}" src="{{cardMess.cardBg}}" mode='aspectFill' class='cardImg'></image>
+    <image wx:else src="../../images/{{cardMess.contract.cardType==5?'StoredvalueCard':cardMess.contract.cardType==4||cardMess.contract.cardType==7?'subCard':'timeLimitCard'}}.jpg" mode='aspectFill' class='cardImg'></image> -->
+
+      <span class="cardName " style="color:#9CC0F4;">{{cardMess.contract.cardName}}</span>
+
+
+
+    <view class="surplus" wx:if="{{(cardMess.contract.cardType==5||cardMess.contract.cardType==10)&&cardMess.contract.status!=3}}">剩余金额：{{cardMess.contract.amount||'--'}}元<span style='color:color: rgba(255, 255, 255, 0.8);font-size:24rpx;' wx:if="{{cardMess.contract.freeAmount}}">（含赠送 {{cardMess.contract.freeAmount}} 元）</span></view>
+    <view class="surplus" wx:if="{{(cardMess.contract.cardType==4||cardMess.contract.cardType==7||cardMess.contract.cardType==9)&&cardMess.contract.status!=3}}">剩余次数：{{cardMess.contract.availableCount||'--'}}次<span style='color:rgba(255, 255, 255, 0.8);font-size:24rpx;' wx:if="{{cardMess.contract.freeCount}}">（含赠送 {{cardMess.contract.freeCount}} 次）</span></view>
+    <view class="surplus" wx:if="{{(cardMess.contract.cardType==3||cardMess.contract.cardType==6||cardMess.contract.cardType==8)&&cardMess.contract.status!=3}}">剩余天数：{{cardMess.contract.remainEffectiveDays}}天<span style='color:rgba(255, 255, 255, 0.8);font-size:24rpx;' wx:if="{{cardMess.contract.freeEffectiveDays}}">（含赠送 {{cardMess.contract.freeEffectiveDays}} 天）</span></view>
+
+
+    
+    <span wx:if="{{cardMess.contract.cardType==5||cardMess.contract.cardType==10}}" class="surplus detail" bindtap="todetail">明细</span>
+
+    <image wx:if="{{cardMess.checkInQR}}" class='showcode' src='../../images/showcode.png' bindtap='showModel'></image>
+
+
+    <span class="sardStatus">{{cardMess.contract.statusStr}}</span>
+    <span class="tofv" wx:if='{{cardMess.contract.statusStr=="未开卡"}}'>有效期：365天</span>
+    <span class="tofv" wx:else>有效期：{{util.formatTimec(cardMess.contract.effectiveEndDate)}}</span>
+
+
+  </view>
+
+  <view class='electronicData' wx:if="{{cardMess.protocolShowType!=2}}">
+    <image src='../../images/elecData.png'></image>
+    <span wx:if="{{cardMess.protocolShowType==3}}">电子合同</span>
+    <span wx:if="{{cardMess.protocolShowType==1}}">条款协议</span>
+    <span wx:if='{{cardMess.protocolShowType==1}}' bindtap='toPro'>点击查看</span>
+    <span wx:if='{{cardMess.protocolShowType==3}}' bindtap='toElec'>点击查看</span>
+  </view>
+
+
+
+
+
+
+  <view class='applyMess'>
+    <view class='applygym' bindtap='toGym'>
+      <image src='../../images/applyGym.png'></image>
+      <view>
+        <span>适用场馆</span>
+        <span>{{cardMess.usableCenters.length}}家</span>
+      </view>
+      <image src='../../images/changeRight.png'></image>
+    </view>
+    <view class='applygym' bindtap='toCourse'>
+      <image src='../../images/applyCourse.png'></image>
+      <view>
+        <span>可用课程</span>
+        <span>{{cardMess.courses.length}}种</span>
+      </view>
+      <image src='../../images/changeRight.png'></image>
+    </view>
+  </view>
+  <view class='basicMess'>
+    <span class="title">基本信息</span>
+    <view class='messBox'>
+      <span>卡名称</span>
+      <span class="timeLimit">{{cardMess.contract.cardName}}</span>
+    </view>
+    <view class='messBox'>
+      <span>卡种类型</span>
+       <span wx:if="{{cardMess.contract.cardType==5}}" class="timeLimit">储值卡</span>
+       <span wx:if="{{ccardMess.contract.cardType==10}}" class="timeLimit">培训储值卡</span>
+       <span wx:if="{{cardMess.contract.cardType==4||cardMess.contract.cardType==7}}" class="timeLimit">次卡</span>
+       <span wx:if="{{cardMess.contract.cardType==9}}" class="timeLimit">培训次卡</span>
+       <span wx:if="{{cardMess.contract.cardType==3||cardMess.contract.cardType==6}}" class="timeLimit">期限卡</span>
+       <span wx:if="{{cardMess.contract.cardType==8}}" class="timeLimit">培训期限卡</span>
+    </view>
+    <view class='messBox' wx:if="{{cardMess.contract.statusStr=='已开卡'}}">
+      <span>开卡日期</span>
+      <span class="timeLimit">{{util.formatTimec(cardMess.contract.activatedTime)}}</span>
+    </view>
+    <view class='messBox' wx:if="{{cardMess.contract.statusStr=='未开卡'}}">
+      <span>开卡方式</span>
+      <span class="timeLimit" wx:if="{{cardMess.contract.activateMode==1}}">立即开卡</span>
+      <span class="timeLimit" wx:if="{{cardMess.contract.activateMode==2}}">指定{{cardMess.contract.beActivatedInDays}}天内开卡</span>
+      <span class="timeLimit" wx:if="{{cardMess.contract.activateMode==3}}">指定日期开卡</span>
+      <span class="timeLimit" wx:if="{{cardMess.contract.activateMode==4}}">首次使用开卡</span>
+    </view>
+    <view class='messBox'>
+      <span>购卡门店</span>
+      <span class="timeLimit">{{cardMess.center.name}}</span>
+    </view>
+  </view>
+  <view class='showAllMess' wx:if="{{!showhide}}" bindtap='showEvent'>
+    <view class='btnBox'>
+      <span>展开完整信息</span>
+      <image src='../../images/down.png'></image>
+    </view>
+  </view>
+  <view class="hiddenMess" wx:if="{{showhide}}">
+    <view class='basicMess'>
+      <span class="title">请假权益</span>
+      <view class='messBox'>
+        <span>请假天数</span>
+        <span class="timeLimit">最多允许请假{{cardMess.contract.remainFreeLeaveDays}}天</span>
+      </view>
+      <view class='messBox'>
+        <span>请假次数</span>
+        <span class="timeLimit">最多允许请假{{cardMess.contract.remainFreeLeaveCount}}次</span>
+      </view>
+    </view>
+    <view class='basicMess'>
+      <span class="title">预约限制</span>
+      <view class='messBox'>
+        <span>团课预约</span>
+        <span class="timeLimit">单节团课每次最多可预约{{cardMess.maxGroupCourseReservedCount}}人</span>
+      </view>
+    </view>
+    <view class='basicMess'>
+      <span class="title">使用限制</span>
+      <view class='messBox'>
+        <span>使用人数</span>
+        <span class="timeLimit">允许该卡使用人数 {{cardMess.contract.maxAllowedUserCount}}人（包括卡主）</span>
+      </view>
+      <view class='messBox'>
+        <span>使用次数</span>
+        <span class="timeLimit">{{cardMess.restriction.restrictPeriodStr||'--'}}</span>
+      </view>
+      <view class='messBox'>
+        <span>使用时间</span>
+        <!-- <span wx:for="{{cardMess.restriction.weekDays}}" wx:if="{{cardMess.restriction.weekDays.length!=0}}">{{item}}</span>
+        <span wx:if="{{cardMess.restriction.weekDays.length==0}}">--</span> -->
+        <view class='limitBox'>
+          <span class="timeLimit" wx:for="{{cardMess.restriction.weekDays}}" wx:if="{{cardMess.restriction.weekDays.length!=0}}">{{item}}</span>
+          <span wx:if="{{cardMess.restriction.weekDays.length==0}}">--</span>
+
+        </view>
+      </view>
+    </view>
+    <view class='showAllMess' bindtap='hideEvent'>
+      <view class='hideMessBox'>
+        <span>收起</span>
+        <image src='../../images/up.png'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="rechargeBox" bindtap="toRecharge" wx:if="{{!cardMess.contract.isFixed&&(cardMess.contract.cardType==4||cardMess.contract.cardType==5||cardMess.contract.cardType==9||cardMess.contract.cardType==10)}}">
+  <span>充值</span>
+</view>
+
+<view class='model' bindtap='closemodel' catchtouchmove="emptyFn" wx:if="{{ismodel}}"></view>
+<view class='modelcontent' catchtouchmove="emptyFn" wx:if="{{ismodel}}">
+  <view>
+    <text> 签到码</text>
+    <image src='../../../images/closeRule.png' bindtap='closemodel'></image>
+  </view>
+  <image src='{{cardMess.checkInQR}}'></image>
+  <text>扫描二维码签到</text>
+</view>

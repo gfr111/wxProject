@@ -1,0 +1,5 @@
+function getStarUrl(selected) {
+  return (selected == 1) ? "/images/yellowStar.png" : "/images/grayStar.png"
+}
+
+module.exports = getStarUrl;

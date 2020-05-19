@@ -1,0 +1,45 @@
+<!--pages/headOffice/pages/officeMap/officeMap.wxml-->
+<view class="searchContrain">
+  <view class="searchBox">
+    <view class="search">
+      <image src="../../images/searchIcon.png"></image>
+      <input placeholder="位置/地名/场馆" bindinput="bindInput" value='{{value}}'></input>
+      <!-- <span>搜索</span> -->
+    </view>
+  </view>
+
+
+  <cover-view class="searchList" >
+    <cover-view  class="searchItem" bindtouchstart="bindSearch" data-keywords="{{i}}"  wx:for="{{tips}}" wx:for-item="i">
+     {{i.name}}
+    </cover-view >
+  </cover-view >
+</view>
+
+
+
+<view class="map_container" wx:if='{{showMap}}'>
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" show-location markers="{{markers}}" bindmarkertap="makertap" include-points="{{include}}"  bindtap='hideCard'></map>
+  
+  <cover-image src="../../images/location.png" class="locationIcon" wx:if="{{!showDetail}}" style="bottom:30rpx;" bindtap="currentLocation"></cover-image>
+   <cover-image src="../../images/location.png" class="locationIcon" wx:else style="bottom:360rpx;" bindtap="currentLocation"></cover-image>
+  
+  <view class="officeMess" wx:if='{{showDetail}}'>
+    <view class="topBox">
+      <image src="{{centerDetail.photo?centerDetail.photo:'../../images/bocai.png'}}"></image>
+      <image src="../../images/cancel.png" bindtap="hideCard"></image>
+    </view>
+    <view class="officeName">{{centerDetail.name}}</view>
+    <view class="officeAdress">{{centerDetail.distance}}km ｜{{centerDetail.address}}</view>
+    <view class="detailBox">
+      <view class="detailBtn" bindtap="toDetail">
+        <image src="../../images/detailIcon.png"></image>
+        <span>查看详情</span>
+      </view>
+      <view class="mapBox" bindtap="navigation">
+         <image src="../../images/mapIcon.png"></image>
+         <span>导航</span>
+      </view>
+    </view>
+  </view>
+</view>

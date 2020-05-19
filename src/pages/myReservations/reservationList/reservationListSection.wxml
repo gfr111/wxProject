@@ -1,0 +1,21 @@
+<import src="../../templates/basicCell.wxml" />
+<!-- <import src="../../templates/payMethodCell/payMethodCell.wxml" /> -->
+<import src="../../templates/orderCell/orderCell.wxml" />
+
+
+<wxs src="../../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<wxs src="../../templates/orderCell/reservStatusUtil.wxs" module="reservStatusUtil"></wxs> 
+<wxs src="reservSectionUtil.wxs" module="reservSectionUtil"></wxs>
+
+<template name='reservationListSection'>
+  <view class="basicSection-item">
+    <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+      <view wx:if="{{item.plannedYear}}" class="sectionTitle">
+        {{item.plannedYear}}
+      </view>
+      <view wx:elif="{{index != 0}}" class='sectionTopView'>
+      </view>
+      <template is="orderCell" data="{{dateStr:dateUtil.chineseDateStr(item.plannedDay), statusStr:item.statusStr , showGreen:reservStatusUtil.showGreen(item.status, item.rated), url:item.pictures, levelColor:item.levelColor, levelStr:item.levelStr,courseTime:item.startTime + '-' + item.endTime, courseName:item.courseName, status:item.status, amount:null, showDetail:false, detailInfo:reservSectionUtil.showRoomInfo(item),index:index, didTappedFirst:didTappedFirst, didTappedSecond:didTappedSecond, btnStyle:item.btnStyle,seatEnabled:item.seatEnabled,seatPhoto:item.seatPhoto}}"></template>
+    </block>
+  </view>
+</template>

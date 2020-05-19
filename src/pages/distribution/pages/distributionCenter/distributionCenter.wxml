@@ -1,0 +1,40 @@
+<!--pages/distribution//pages/distributionCenter/distributionCenter.wxml-->
+<view class='distributionBox'>
+  <view class='userMess'>
+     <view class="messBox">
+       <view style='display: flex;'>
+         <image src="{{mess.traineePhoto?mess.traineePhoto:'../../../../images/default_user.png'}}" class="avatur"></image>
+        <view class="rightBox">
+          <view class="name">{{mess.traineeName}}</view>
+          <view class="centerName">{{mess.centerName}}</view>
+        </view>
+       </view>
+       <view style="color:#ffffff;font-size:26rpx;">{{mess.status==99?"已停用":""}}</view>
+     </view>
+     <view class="levelBox">
+       <image src="../../images/levelIcon.png" ></image>
+       <span>{{mess.levelName}}</span>
+     </view>
+  </view>
+  <view class="navBox">
+    <view class="navItem" bindtap="toNextPage" data-index="1">
+      <image src="../../images/saleIcon.png"></image>
+      <span>销售记录</span>
+    </view>
+     <view class="navItem" bindtap="toNextPage" data-index="2">
+      <image src="../../images/inviteIcon.png"></image>
+      <span>邀请记录</span>
+    </view>
+  </view>
+  <view class="navlistBox" wx:if="{{mess.status!=99}}">
+     <view class="navIist" bindtap="toNextPage" data-index="4">
+      <span>邀请分销</span>
+      <image src="../../../../images/officeRight.png"></image>
+    </view>
+      <view class="navIist" bindtap="toNextPage" data-index="3">
+      <span>推广海报</span>
+      <image src="../../../../images/officeRight.png"></image>
+    </view>
+  </view>
+
+</view>

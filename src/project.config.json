@@ -1,0 +1,129 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.5.0",
+	"appid": "wx2fe2b278af60777f",
+	"projectname": "%E6%96%B0%E8%8F%A0%E8%8F%9C%E7%AC%AC%E4%B8%89%E6%96%B9",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/couponOrder/pages/receiveNewCoupon/receiveNewCoupon",
+					"pathName": "pages/couponOrder/pages/receiveNewCoupon/receiveNewCoupon",
+					"query": "scene=1_24",
+					"scene": 1011
+				},
+				{
+					"id": 1,
+					"name": "pages/collage/joinOtherCollage/joinOtherCollage",
+					"pathName": "pages/collage/joinOtherCollage/joinOtherCollage",
+					"query": "share=isShare&id=41",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "pages/myReservations/reservationList/reservationList",
+					"pathName": "pages/myReservations/reservationList/reservationList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/groupCourse/memberCard/memberCard",
+					"pathName": "pages/groupCourse/memberCard/memberCard",
+					"query": "centerId=269&instanceId=3907248&courseId=9260",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "pages/activity/activity",
+					"pathName": "pages/activity/activity",
+					"query": "id=603&centerId=700&centerName=%E6%B5%B7%E5%88%A9%E5%BC%80%E5%85%83%E9%9F%B5%E5%8A%A8%E5%81%A5%E8%BA%AB%E4%B8%AD%E5%BF%83&centerAddress=%E6%B5%B7%E7%9B%90%E5%8E%BF%E6%B5%B7%E5%88%A9%E5%BC%80%E5%85%83%E5%A4%A7%E9%85%92%E5%BA%97B%E5%BA%A72%E6%A5%BC%E5%81%A5%E8%BA%AB%E4%B8%AD%E5%BF%83&centerPhone=057386688188",
+					"scene": 1013
+				},
+				{
+					"id": 12,
+					"name": "pages/couponOrder/pages/newCouponDetail/newCouponDetail",
+					"pathName": "pages/couponOrder/pages/newCouponDetail/newCouponDetail",
+					"query": "269_10",
+					"scene": 1011
+				},
+				{
+					"id": -1,
+					"name": "pages/checkin/checkin",
+					"pathName": "pages/checkin/checkin",
+					"query": "id=269",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/changepeople/changepeople",
+					"pathName": "pages/changepeople/changepeople",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "pages/signCourse/signCourse",
+					"pathName": "pages/signCourse/signCourse",
+					"query": "q= https%3A%2F%2Fwww.forzadata.cn%2Fwxapp%2Fcoso%2F1054%2Fr%2Fstudio%2F7932893",
+					"scene": null
+				},
+				{
+					"id": 18,
+					"name": "pages/couponOrder/pages/openInvite/openInvite",
+					"pathName": "pages/couponOrder/pages/openInvite/openInvite",
+					"query": "inviterId=2895295&centerId=269&activityId=1",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "pages/cardsPurchaseOnline/availableCardDetail",
+					"pathName": "pages/cardsPurchaseOnline/availableCardDetail",
+					"query": "centerId=269&exid=undefined&id=39310",
+					"scene": null
+				}
+			]
+		}
+	}
+}

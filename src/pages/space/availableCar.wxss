@@ -1,0 +1,468 @@
+/* pages/space/availableCar.wxss */
+
+page {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+}
+.tab{float: left;text-align: center;padding: 10rpx 0;font-size: 32rpx; margin-right: 80rpx;padding-bottom: 24rpx;color: #999999;}
+ .topTabSwiper{ zoom: 1; padding-right: 27%;padding-left: 48rpx;background: #ffffff;}
+.topTabSwiper:after{content: ""; clear: both;display: block;box-shadow:0px 2px 10px 0px rgba(0,0,0,0.1);z-index: 100;}
+.tabBorer{border-bottom: 2px solid #333333; color: #303030;font-weight: 600;}
+.swiper{width: 100%; box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.1);height: 100%;}
+.swiper_con{
+  text-align: center;
+   /* width: 92%;  */
+   width: 100%;
+   height: 100%;
+   background-color: #fff;
+   /* padding:30rpx; */
+}
+.nocarBox{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+.nocarBox>image{
+  width: 372rpx;
+  height: 420rpx;
+  margin-top: 130rpx;
+  margin-bottom: 60rpx;
+}
+.nocarBox>span{
+  color: #969696;
+  font-size: 32rpx;
+}
+.cardList{
+  width: 690rpx;
+  height: 80rpx;
+  position: relative;
+  margin-bottom: 30rpx;
+  background-color: #fff;
+}
+.cardListBox{
+  padding: 30rpx;
+  width: 92%;
+}
+
+.line_view{
+  width: 100%;
+  height: 20rpx;
+  padding: 0 30rpx 0 30rpx;
+  background-color: #F7F8F9;
+}
+
+.cardListBox .card_title{
+  width: 100%;
+  height: 70rpx;
+  line-height: 30rpx;
+  text-align: left;
+  color: #000;
+  font-size: 28rpx;
+}
+.cardList .cardImg{
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 138rpx;
+  height: 72rpx;
+  border-radius: 4rpx;
+}
+.cardName{
+  position: absolute;
+  left: 160rpx;
+  top: 0;
+  color: #000;
+  font-size: 28rpx;
+  width: 320rpx;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+}
+.cardName .name{
+  max-width: 260rpx;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cardLimit{
+  position: absolute;
+  top: 40rpx;
+  left: 160rpx;
+  color: #9F9F9F;
+  font-size: 24rpx;
+}
+.cardState{
+  position: absolute;
+  right: 0;
+  top:15rpx;
+  display: flex;
+  padding-left: 18rpx;
+  padding-right: 10rpx;
+  font-size: 32rpx;
+  color: #F85A20;
+  height: 40rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.selectDiscount{
+  background: #ffffff;
+  padding:0 30rpx;
+  margin-top:20rpx;
+}
+
+.title{
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  font-size: 28rpx;
+  border-bottom: 1px solid #F7F7F7;
+  font-weight: 600;
+}
+
+.payStyle{
+  padding: 30rpx 0;
+}
+
+.listLeft{
+    display: flex;
+   align-items: center;
+}
+
+.wechat{
+  width: 54rpx;
+  height: 50rpx;
+  margin-right: 40rpx;
+}
+
+.carMess{
+  display: flex;
+  flex-direction: column;
+}
+.carMess_name{
+  color: #000;
+  font-size: 28rpx;
+  width: 320rpx;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+}
+.carMess_name .name{
+  /* width: 240rpx; */
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.carMess_name .isSelect{
+  margin-top: 6rpx;
+  margin-left: 20rpx;
+  padding: 0 5rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  background-color: rgba(0,188,113,0.1);
+  color: #00BC71;
+  font-size: 20rpx;
+  text-align: center;
+  border-radius: 4rpx;
+}
+.carMess_sub{
+  text-align: left;
+  color: #9F9F9F;
+  font-size: 24rpx;
+}
+/* .carMess span:nth-child(1){
+  text-align: center;
+  color: #000000;
+  font-size: 28rpx;
+  width: 300rpx;
+  height: 36rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.carMess span:nth-child(2){
+  color: #9F9F9F;
+  font-size: 24rpx;
+  text-align: center;
+} */
+
+.listRight_span{
+  display: flex;
+  align-items: center;
+  color: #F85A20;
+  font-size: 32rpx;
+  margin-right: 40rpx;
+  position: absolute;
+  right: 0!important;
+}
+
+.foot_view{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+}
+
+.foot_view .more_view{
+  width: 278rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: center;
+  font-weight: bold;
+  background-color: #00BC71;
+  box-shadow: 0 4rpx 8rpx 0 rgba(0,0,0,0.15);
+  margin-bottom: 34rpx;
+  border-radius: 46rpx;
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.more_view .next_img{
+  width: 14rpx;
+  height: 24rpx;
+  margin-left: 20rpx;
+}
+
+.isSelect{
+  margin-top: 6rpx;
+  margin-left: 10rpx;
+  padding: 0 5rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  background-color: rgba(0,188,113,0.1);
+  color: #00BC71;
+  font-size: 20rpx;
+  text-align: center;
+  border-radius: 4rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.carList{
+  border-top:1px solid #F7F7F7;
+}
+.memberCarList{
+ background: #ffffff;
+ padding:0 30rpx;
+}
+.title{
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  font-size: 28rpx;
+  border-bottom: 1px solid #F7F7F7;
+  font-weight: 600;
+}
+.carsList{
+  padding-top:34rpx;
+  padding-bottom: 32rpx;
+}
+.lists,.payStyle{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 36rpx;
+}
+.payStyle{
+  padding: 30rpx 0;
+}
+.lists:last-child{
+  margin-bottom: 0;
+}
+.listLeft{
+    display: flex;
+   align-items: center;
+}
+.carIcon{
+  width: 124rpx;
+  height: 72rpx;
+  margin-right: 30rpx;
+  border-radius: 4rpx;
+}
+.wechat{
+  width: 54rpx;
+  height: 50rpx;
+  margin-right: 40rpx;
+}
+.listRight>view>image{
+  width: 36rpx;
+  height: 36rpx;
+}
+.listRight{
+  display: flex;
+  align-items: center;
+}
+.carMess{
+  display: flex;
+  flex-direction: column;
+}
+.carMess span:nth-child(1){
+  color: #000000;
+  font-size: 28rpx;
+  width: 300rpx;
+  height: 36rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.carMess span:nth-child(2){
+  color: #9F9F9F;
+  font-size: 24rpx;
+}
+.listRight view span{
+  color: #F85A20;
+  font-size: 32rpx;
+  margin-right: 40rpx;
+}
+.emptyList{
+  height: 160rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #969696;
+  font-size: 28rpx;
+}
+.selectDiscount{
+  background: #ffffff;
+  padding:0 30rpx;
+  margin-top:20rpx;
+}
+.tip{
+  width: 100%;
+  text-align: center;
+  font-size: 24rpx;
+  color: #9F9F9F;
+  margin-top:300rpx;
+}
+.bookBottom{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+.computeBtn{
+  width: 690rpx;
+  height: 72rpx;
+  border-radius: 40rpx;
+  background: #00bc71;
+  color: #ffffff;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 72rpx;
+  display: block;
+}
+.bgBox{
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.tipsBox{
+  width: 650rpx;
+  height: 830rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.tipsTop{
+  width: 100%;
+  height: 180rpx;
+ background: #F4F4F4;
+ display: flex;
+ justify-content: space-between;
+ border-radius: 16rpx;
+}
+.topTxt{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 40rpx;
+}
+.topTxt span:nth-child(1){
+  color: #303030;
+  font-size: 42rpx;
+  font-weight: 600;
+}
+.topTxt span:nth-child(2){
+  color: #303030;
+  font-size: 28rpx;
+}
+.clearBtn{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 30rpx;
+  margin-top: 30rpx;
+}
+.contentBox{
+  height: 150rpx;
+  display: flex;
+  align-items: center;
+}
+.contentBox image{
+  width:60rpx;
+  height: 60rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+.contentBox span{
+  width: 450rpx;
+  height: 100%;
+  color: #303030;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+ border-bottom: 1px solid #F7F7F7;
+}
+.buyCarBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:60rpx;
+}
+.buyCarBtn span{
+  width: 570rpx;
+  height: 88rpx;
+  background: #00BC71;
+  border-radius: 50rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 88rpx;
+} */

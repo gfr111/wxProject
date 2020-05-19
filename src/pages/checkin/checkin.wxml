@@ -1,0 +1,122 @@
+<!--pages/checkin/checkin.wxml-->
+<wxs src="../../utils/uiUtils/imageUrlUtil.wxs" module="imageUrlUtil"></wxs>
+<view style='background-color:white;height:100%'>
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{imageUrlUtil.getDefaultAvatar(info.traineePhoto)}}" mode="aspectFill"></image>
+    <view class='rightBox'>
+      <view class='peopleMess'>
+        <text class="userinfo-nickname">{{info.traineeName}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='authenticationBox' wx:if="{{showPops}}">
+    <view class="box">
+      <view style="display: inline-block;">上传真实头像认证身份，就可以
+        <span style=' color:#FF5200;'>人脸识别入场</span>啦～ </view>
+      <span class='authenticationBtn' bindtap='recognitionEvent'>去认证</span>
+    </view>
+  </view>
+
+  <view>
+    <view class='tipTitle'>
+      <block wx:if="{{status==0}}">
+        <text wx:if="{{info.traineeStatus==1}}">确认中...</text>
+        <text wx:if="{{info.traineeStatus==2}}">{{greet}}</text>
+      </block>
+      <block wx:else>
+        <text>签到成功</text>
+      </block>
+    </view>
+
+
+    <view class='tipContent'>
+      <block wx:if="{{status==0}}">
+        <text wx:if="{{info.traineeStatus==1}}">前台正在核对信息，请耐心等待~</text>
+        <text wx:if="{{info.traineeStatus==2}}">欢迎到访，马上为您安排接待~</text>
+      </block>
+      <block wx:else>
+        <text>祝您健身愉快~</text>
+      </block>
+    </view>
+    <block wx:if="{{status==0}}">
+      <block wx:if="{{info.traineeStatus==1}}">
+        <view class='cardList' wx:for="{{cardList}}" wx:key="index">
+          <view class='cardItem'>
+            <image src='../../images/valueCard.png'></image>
+            <view class='cardContent'>
+              <view class="cardNameAndStatus">
+                <view class='cardName'>{{item.cardName}}</view>
+                <view class='cardStatus'>{{item.statusStr}}</view>
+              </view>
+              <view class='cardInfo' wx:if="{{item.cardType==3}}">剩余天数：{{item.remainDays}}</view>
+              <view class='cardInfo' wx:if="{{item.cardType==4}}">剩余次数：{{item.availableCount}}</view>
+              <view class='cardInfo' wx:if="{{item.cardType==5}}">剩余金额：{{item.amount}}</view>
+              <view class='cardEndTime'>有效期至:{{item.effectiveEndDate!=null?item.effectiveEndDate:'-'}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <block wx:else>
+        <view style='text-align:center;'>
+          <image src='../../images/visit.png' style='width:298px;height:217px;margin-top:90px'></image>
+        </view>
+      </block>
+    </block>
+
+
+    <block wx:else>
+      <view class='cardList' wx:if="{{card!=null}}">
+        <view class='cardItem'>
+          <image src='../../images/valueCard.png'></image>
+          <view class='cardContent'>
+            <view class="cardNameAndStatus">
+              <view class='cardName'>{{card.cardName}}</view>
+              <view class='cardStatus'>{{card.statusStr}}</view>
+            </view>
+            <view class='cardInfo'>剩余：{{card.remainEffectiveDays}}</view>
+            <view class='cardEndTime'>有效期至:{{card.effectiveEndDate!=null?card.effectiveEndDate:'-'}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+
+
+
+
+
+
+  <view class="btn">
+    <button bindtap="toindex">返回首页</button>
+  </view>
+
+
+
+
+</view>
+<view class='pop' catchtouchmove="preventTouchMove" wx:if='{{showPop}}'>
+  <view class='swiperBox'>
+    <swiper class='swiper' indicator-dots="{{indicatorDots}}" autoplay='true' interval='5000' duration='1000' bindchange='swiperImg'>
+      <block wx:for='{{checkInPoster}}' wx:key="index">
+        <swiper-item style='border-radius:8rpx;'>
+          <image src="{{item.photo}}" class="slide-image" indload="imageLoad" bindtap='swiperInfo' mode='aspectFill' />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="swiperDots" wx:if='{{checkInPoster.length>1}}'>
+      <block wx:for='{{checkInPoster}}' wx:key="index">
+        <view class="swiperDot {{index==current?'actives':''}}"></view>
+      </block>
+    </view>
+    <image src='../../images/posterCancel.png' class='posterCancel' bindtap='closePop'></image>
+  </view>
+
+
+
+
+
+
+
+</view>

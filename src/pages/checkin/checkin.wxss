@@ -1,0 +1,230 @@
+/* pages/checkin/checkin.wxss */
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0px;
+  width: 100%;
+  height: 216rpx;
+  background-color: white;
+  justify-content: flex-start;
+}
+
+.userinfo-top-line {
+  width: 100%;
+  height: 1rpx;
+  background-color: #e5e5e5;
+  margin-top: 0rpx;
+}
+
+.userinfo-avatar {
+  width: 132rpx;
+  height: 132rpx;
+  border-radius: 50%;
+  margin-left: 40rpx;
+  margin-right: 30rpx;
+  /* margin-top: 42rpx; */
+  /* position: absolute;
+  left: 40rpx; */
+}
+.peopleMess{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.userinfo-nickname {
+ color: #000;
+  font-size: 44rpx;
+  margin-bottom: 10rpx;
+  /*  height: 44rpx;
+  line-height: 44rpx;
+  position: absolute;
+  left: 200rpx; */
+}
+.userInfo-next {
+  /* margin-top: 95rpx; */
+  width: 16rpx;
+  height: 26rpx;
+  margin-left: 10rpx;
+  /* position: absolute;
+  right: 32rpx; */
+}
+.tipTitle{
+  font-size:24px;
+  margin:20px 15px 0 21px;
+}
+.tipContent{
+  font-size:18px;
+ color:#808080;
+ margin:8px 15px 25px 20px;
+}
+.cardItem{
+  width: 100%;
+  height: 110px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  position:relative;
+
+}
+.cardList{
+padding:0 15px 0 15px;
+
+}
+.cardItem image{
+  width: 100%;
+  height: 100%;
+}
+.cardContent{
+  position:absolute;
+top:12px;
+left:17px;
+width:100%;
+padding-right:17px;
+box-sizing:border-box;
+color:#F3D2AE;
+}
+.cardNameAndStatus{
+  display:flex;
+justify-content:space-between;
+}
+.cardName{
+  font-size: 16px;
+  width:80%;
+  height: 46rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cardStatus{
+  width:50px;
+height:20px;
+font-size:12px;
+background-color:#37383C;
+text-align:right;
+padding-top:3px;
+border-bottom-left-radius:50px;
+border-top-left-radius:50px;
+color:#D7D7D7;
+padding-right:3px;
+}
+.cardInfo{
+  font-size:12px;
+}
+.cardEndTime{
+  margin-top: 26px;
+   font-size:12px;
+}
+.pop{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left:0;
+  top:0;
+  background:RGBA(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.swiper {
+  width: 622rpx;
+  height: 788rpx;
+  border-radius:8rpx; 
+}
+.swiperBox{
+    width: 622rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8rpx;
+    margin-top:60rpx;
+}
+.swiperDots{  
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}  
+.slide-image{
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+}
+/*未选中时的小圆点样式 */
+.swiperDot{
+  width: 26rpx;
+  height: 8rpx;
+  background: rgba(228, 228, 228, 0.5);
+  margin-right: 10rpx;
+  border-radius: 8rpx;
+}
+/*选中以后的小圆点样式  */
+.actives{
+   background-color: #FFFFFF;
+    width: 50rpx;
+    border-radius: 8rpx;
+    margin-right: 10rpx;
+}
+.posterTitle{
+  color: #323232;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-top: 36rpx;
+  margin-bottom: 18rpx;
+  margin-left: 48rpx;
+}
+.posterTxt{
+  color: #A3A3A3;
+  font-size: 32rpx;
+  margin-left: 48rpx;
+}
+.posterCancel{
+  width: 72rpx;
+  height: 72rpx;
+  margin-top: 50rpx;
+}
+.btn{
+  position: fixed;
+  bottom: 0;
+  padding:  20rpx;
+  width:100%;
+  box-sizing: border-box;
+}
+.btn>button::after{
+  border: none;
+}
+.btn>button{
+  background: #00BC71;
+  border-radius: 50rpx;
+  color: #fff;
+  font-size: 32rpx;
+
+}
+.authenticationBox{
+  margin: 30rpx 0 0 0;
+  margin-left: 4%;
+}   
+.box{           
+  position: relative;    
+  display: inline-block;           
+  width: 91%;           
+  padding: 12rpx 14rpx 12rpx 20rpx;           
+  border-radius: 8rpx;          
+  background-color: #F6DFC0;           
+  line-height: 40rpx;           
+  font-size: 24rpx;       
+} 
+.authenticationBtn{
+  width: 84rpx;
+  height: 32rpx;
+  background: #303030;
+  color: #ffffff;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 32rpx;
+  border-radius: 16rpx;
+  display: inline-block;
+  margin-left: 20rpx;
+}

@@ -1,0 +1,46 @@
+<!--pages/groupCourse/clubcourse/clubcourse.wxml-->
+<view>
+  <text class='type'>支持线上购买</text>
+  <view class='item' wx:for="{{course}}" wx:key="index">
+    <image mode='aspectFill' src='{{item.pictures}}'></image>
+    <view class='itemContent'>
+      <text>{{item.courseName}}</text>
+      <text>{{item.duration+'分钟'}}</text>
+      <view>
+        <view class='money'>
+          <text style='font-size:32rpx;'>¥</text>
+          <text> {{item.onlineBuyPrice}}</text>
+        </view>
+        <view>
+          <navigator url='/pages/courseBuyOnline/availableCourseDetail?id={{item.courseId}}&trainerName={{trainer.trainerName}}&trainerId={{trainer.trainerId}}' class='goby'>去购买</navigator>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <text class='type'>不支持线上购买</text>
+
+  <view class='item nobuy' wx:for="{{coursecantby}}" wx:key="index">
+   <image mode='aspectFill'  src='{{item.pictures}}'></image>
+    <view class='itemContent'>
+      <text>{{item.courseName}}</text>
+      <text>{{item.duration+'分钟'}}</text>
+      <view>
+        <view class='money'>
+          <text style='font-size:32rpx;'>¥</text>
+          <text> {{item.onlineBuyPrice}}</text>
+        </view>
+        <view>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+</view>
+
+
+
+
+

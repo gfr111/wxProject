@@ -1,0 +1,31 @@
+<!--pages/tickets/newCouponList.wxml-->
+<!--pages/couponOrder/pages/newCouponCenter/newCouponCenter.wxml-->
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+  <view class="ticketList"> 
+    <view class="couponItem" wx:for="{{couponList}}">
+      <view class="couponTop" bindtap="chooseCoupon" id="{{item.id}}">
+          <view class="couponMess">
+            <view class="couponName">{{item.name}}</view>
+            <view class="couponIntro">满{{item.amountLimit}}元立减{{item.type==1?'':item.maxDeductionAmount?'，最高抵扣'+item.maxDeductionAmount+'元':''}}</view>
+            <view class="effctiveDay">{{dateUtil.formatTimes(item.useStartTs)}}-{{dateUtil.formatTimes(item.useEndTs)}}</view>
+          </view>
+         <view class="couponPrice">
+              <text>{{item.type==1?item.discount:item.discount*10}}</text>
+                <text>{{item.type==1?'元':'折'}}</text>
+            </view>
+      </view>
+      <view class="couponBottom">
+        <view class="bottomTitle">
+          <view class="leftBox">
+            <image src="../../images/partUse.png"></image>
+              <text>{{item.useBizType>0?'部分可用':'全场通用'}}</text>
+          </view>
+          <image src="{{!item.selected?'../../images/couponDown.png':'/../../images/couponUp.png'}}" wx:if="{{item.useBizType>0}}" catchtap="showBizType" data-id="{{item.id}}"></image>
+        </view>
+        <view class="couponIntroTxt"  wx:if="{{item.selected}}" >{{item.bizType}}</view>
+      </view>
+      <image src="../../images/selectCoupon.png" class="selecteBtn" wx:if="{{item.id==chooseId}}"></image>
+    </view>
+  </view>
+  <view class="moreBtn" bindtap="nullCoupon">不使用优惠券</view>
+

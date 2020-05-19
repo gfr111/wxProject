@@ -1,0 +1,55 @@
+/* pages/changepeople/changepeople.wxss */
+page{
+  padding-top: 20rpx;
+}
+.content{
+  background: #fff;
+  padding: 0 44rpx 0 42rpx;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 40rpx 0 36rpx 0;
+  border-bottom: 1rpx solid #EFEFEF;
+}
+
+.item>image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.photo {
+  width: 80rpx;
+  height: 80rpx;
+  min-width: 80rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+
+.litem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #898989;
+  font-size: 30rpx;
+}
+
+.name {
+  color: #303030;
+  font-size: 30rpx;
+}
+
+.tag {
+  padding: 0rpx 8rpx;
+  color: #fff;
+  background: #0BBE77;
+  font-size: 22rpx;
+  margin-left: 20rpx;
+  border-radius: 8rpx;
+}
+.contact{
+  background: #E6F8F1;
+  color: #0BBE77;
+}

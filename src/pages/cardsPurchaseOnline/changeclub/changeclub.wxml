@@ -1,0 +1,13 @@
+<!--pages/cardsPurchaseOnline/usePlace.wxml-->
+<view class='placeList'>
+  <view class='placeDetsail clearfix' wx:for="{{place}}" wx:key="{{item.id}}" data-name="{{item.name}}" id="{{item.id}}" bindtap="chooseclub">
+    <image src='../../../images/clubImg.png' style='width:40rpx;height:40rpx;float:left;margin-top:-40rpx;'></image>
+    <view class='placeTxt'>
+      <view>
+        <text class='placeName'>{{item.name}}</text>
+        <text wx:if="{{item.id==centerId}}"  class='choosed'>选中</text>
+      </view>
+      <text class='placeAddress'>{{item.address||'--'}}</text>
+    </view>
+  </view>
+</view>

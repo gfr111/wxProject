@@ -1,0 +1,253 @@
+/* pages/index/courseDetial.wxss */
+
+page{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.main_view{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.main_view .topimg_view{
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 386rpx;
+  background-color: #eee;
+}
+
+.topimg_view .img{
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 386rpx;
+}
+
+.topimg_view .tip_view{
+  position: absolute;
+  right: 0!important;
+  top: 40rpx;
+  background-color: #37383C;
+  border-radius: 20rpx 0 0 20rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  padding: 4rpx 20rpx 4rpx 26rpx;
+}
+
+.main_view .nameinfo_view{
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.nameinfo_view .name_view{
+  color: #303030;
+  font-size: 40rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  width: 60%;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.nameinfo_view .instruc_view{
+  margin-left: 30rpx;
+  margin-top: 10rpx;
+  width: 60%;
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.instruc_view .course_view{
+  margin-right: 10rpx;
+  background-color: #F2F2F2;
+  color: #6E6E6E;
+  font-size: 24rpx;
+  text-align: center;
+  padding: 8rpx 12rpx;
+}
+
+.nameinfo_view .class_bgview{
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+  background-color: #eee;
+  border-radius: 8rpx;
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 200rpx; */
+  width: auto;
+  height: 120rpx;
+}
+
+.class_bgview .title{
+  margin-top: 18rpx;
+  color: #6E6E6E;
+  font-size: 18rpx;
+  width: 100%;
+  text-align: center;
+}
+
+.class_bgview .sub{
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #383838;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.class_bgview span{
+  font-size: 24rpx;
+}
+
+.main_view .protocal_view{
+  margin: 60rpx 30rpx 0 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+  background: linear-gradient(to right, #AEA79A, #9F988C);
+  display: flex;
+  flex-direction: row;
+}
+
+.protocal_view .img{
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.protocal_view .title{
+  color: #fff;
+  font-size: 32rpx;
+  margin-left: 20rpx;
+}
+
+.protocal_view .look_for{
+  position: absolute;
+  margin-top: 18rpx;
+  right: 56rpx!important;
+  width: 136rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  border-radius: 22rpx;
+  background-color: #393A3E;
+  color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.nameinfo_view .oneline{
+  background-color: #ECECEC;
+  margin: 50rpx 30rpx 0 30rpx;
+  height: 2rpx;
+}
+
+.nameinfo_view .teaching_address{
+  margin: 0 30rpx 0 30rpx;
+  height: 170rpx;
+  border-bottom: 2rpx solid #ECECEC;
+  display: flex;
+  flex-direction: row;
+}
+
+.teaching_address .teaching{
+  width: 50%;
+  margin-top: 36rpx;
+  margin-bottom: 36rpx;
+  border-right: 2rpx solid #ECECEC;
+  display: flex;
+  flex-direction: row;
+}
+
+.teaching_address .address{
+  width: 50%;
+  margin-top: 36rpx;
+  margin-bottom: 36rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.teaching_address .img{
+  margin-top: 30rpx;
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.teaching_address .cont_view{
+  margin-left: 22rpx;
+  width: 132rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cont_view .title{
+  margin-top: 10rpx;
+  color: #383838;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.cont_view .sub{
+  color: #6E6E6E;
+  font-size: 24rpx;
+}
+
+.teaching_address .next{
+  position: absolute;
+  margin-top: 31rpx;
+  right: 30rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.nameinfo_view .info_bgview{
+  margin: 50rpx 30rpx 40rpx 30rpx;
+  height: auto;
+  border-bottom: 2rpx solid #ECECEC;
+}
+
+.info_bgview .tit{
+  color: #383838;
+  font-size: 36rpx;
+  font-weight: bold;
+  padding-bottom: 50rpx;
+}
+
+.info_bgview .data_view{
+  padding-bottom: 30rpx;
+  font-size: 28rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.data_view .data_tit{
+  width: 116rpx;
+  color: #383838;
+  font-weight: bold;
+}
+
+.data_view .data{
+  margin-left: 50rpx;
+  color: #6E6E6E;
+  font-weight: normal;
+}

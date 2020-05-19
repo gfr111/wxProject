@@ -1,0 +1,115 @@
+/* pages/memberCarlist/assembleCourseList.wxss */
+page{
+  background: #fff;
+}
+.assembleBox{
+  width: 92%;
+  padding:0 4%;
+  height: 100%;
+  background: #ffffff;
+  border-top: 1px solid #E6E6E6;
+}
+.assembleItem{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30rpx 0;
+  border-bottom: 1px solid #E6E6E6;
+}
+.assembleImgBox{
+  width: 346rpx;
+  height: 180rpx;
+  border-radius: 8rpx;
+  position: relative;
+  margin-right: 30rpx;
+
+}
+.assembleImgBox>image{
+   width: 346rpx;
+  height: 180rpx;
+  border-radius: 8rpx;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.assembleImgBox>span{
+  width: 94rpx;
+  height: 40rpx;
+  border-radius: 0 20rpx 20rpx 0;
+  position: absolute;
+  left: 0;
+  top:20rpx;
+  background: #FFA05D;
+  color: #ffffff;
+  font-size: 28rpx;
+}
+
+.assembleName{
+  color: #303030;
+  font-size: 28rpx;
+  font-weight: 600;
+  max-width: 310rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 10rpx;
+}
+.assmblePrice{
+  margin-top:5rpx;
+}
+.assmblePrice>span:nth-child(1){
+  color: #FA4A11;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.assmblePrice>span:nth-child(2){
+  color: #FA4A11;
+  font-size: 40rpx;
+  margin-right: 40rpx;
+  font-weight: 600;
+}
+.assmblePrice>span:nth-child(2) i{
+  font-size: 24rpx;
+  font-style: normal;
+  font-weight: 600;
+}
+.assmblePrice>span:nth-child(3){
+  color: #C2C2C2;
+  font-size: 32rpx;
+  text-decoration: line-through;
+}
+.assmbleBtn{
+  text-align: right;
+  margin-top: 15rpx;
+}
+.assmbleBtn>span{
+  padding: 10rpx 30rpx;
+  border-radius: 28rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+}
+.nullOrder {
+  width: 500rpx;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  transform: translateX(-250rpx);
+}
+
+.nullOrder .noOrderImg {
+  width: 272rpx;
+  height: 304rpx;
+}
+
+.nullOrder .noOrderTxt {
+  display: block;
+  font-size: 30rpx;
+  color: #7a7a7a;
+  margin-top: 40rpx;
+  position: relative;
+  left: -15rpx;
+}

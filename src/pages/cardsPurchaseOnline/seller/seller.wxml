@@ -1,0 +1,6 @@
+<!--pages/cardsPurchaseOnline/seller/seller.wxml-->
+<view class="item" wx:for="{{trainer}}" wx:key="index" bindtap="choosetrainer" id="{{item.id}}" data-name="{{item.name}}">
+  <image  src='{{item.photo||defaultUser}}'></image>
+  <text>{{item.name}}</text>
+  <text wx:if="{{item.id==id}}" class="choosedtext">选中</text>
+</view>

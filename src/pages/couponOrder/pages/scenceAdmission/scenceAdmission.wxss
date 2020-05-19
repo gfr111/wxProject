@@ -1,0 +1,123 @@
+/* pages/couponOrder/pages/admissionCode/admissionCode.wxss */
+.codeBox{
+  width: 100%;
+  height: 100%;
+  background: #323232;
+  padding-top: 40rpx;
+}
+.admissionCodeBox{
+  width:650rpx;
+  height: 1080rpx;
+  margin: auto; 
+}
+.ceterBox{
+  width: 100%;
+  height: 140rpx;
+  background: #69625F;
+  display: flex;
+  align-items: center;
+}
+.centerImg{
+  width: 80rpx;
+  height: 80rpx;
+  border:4rpx solid #ffffff;
+  margin-left: 56rpx;
+  margin-right: 36rpx;
+  border-radius: 50%;
+}
+.centerName{
+  color: #ffffff;
+  font-size: 28rpx;
+}
+.ticketBg{
+  width: 100%;
+  height: 940rpx;
+  position: relative;
+}
+.ticketBgIcon{
+   width: 100%;
+  height: 940rpx;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.ticketMess{
+  position: absolute;
+  top:30rpx;
+  left: 50rpx;
+  border-bottom: 1px dashed #E4E4E4;
+  width: 85%;
+}
+.ticketTop{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30rpx;
+}
+.coupon{
+   display: flex;
+   flex-direction: column;
+   width:50%;
+}
+.coupon>text:nth-child(1){
+  color: #BDBDBD;
+  font-size: 20rpx;
+  margin-bottom: 10rpx;
+}
+.coupon>text:nth-child(2){
+  color: #303030;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.tiketBottom{
+  margin-bottom: 40rpx;
+}
+.ticketCode{
+  position: absolute;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  top:330rpx;
+}
+.ticketCode>image{
+  width: 288rpx;
+  height: 288rpx;
+}
+.ticketCodeBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ticketCode>text{
+  width:450rpx;
+  line-height:40px;
+  border:1px solid #E4E4E4;
+  color:#303030;
+  font-size:32rpx;
+  margin-top:40rpx;
+  border-radius:8rpx;
+  text-align:center;
+}
+.checkDetailBtn{
+  color: #69625F;
+  font-size: 32rpx;
+  position: absolute;
+  top:846rpx;
+  left: 150rpx;
+  font-weight: 600;
+}
+.weekdayList{
+  display: flex;
+  align-items: center;
+  margin-bottom: 50rpx;
+}
+.weekDayItem{
+  width:60rpx;
+  height: 32rpx;
+  background: #F0F0F0;
+  font-size: 20rpx;
+  border-radius: 16rpx;
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

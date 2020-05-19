@@ -1,0 +1,207 @@
+<!--pages/space/availableCar.wxml-->
+
+<view wx:if="{{carList.length!=0}}">
+  <view class='topTabSwiper'>
+    <view class='tab  {{currIdx == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>可使用</view>
+    <view class='tab  {{currIdx == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>不可用</view>
+  </view>
+  <swiper current="{{currIdx}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange" style="height:{{defaultHeight}}px;">
+    <swiper-item>
+      <view class='swiper_con'>
+        <view class='nocarBox' wx:if="{{carList.length==0}}">
+          <image src='../../images/noRank.png'></image>
+          <span>暂无可用会员卡</span>
+        </view>
+        <scroll-view scroll-y style="height:{{defaultHeight}}px;" wx:else>
+          <view class='cardListBox' wx:if="{{buckle.length>0}}">
+            <view class='card_title'>扣卡</view>
+            <view class='cardList' wx:for="{{buckle}}" wx:key="{{index}}" bindtap='chooseCar' data-id='{{item.objectId}}' data-discount='{{item.discountRatio}}' data-count='item.deductionCount'>
+              <image src='../../images/StoredvalueCard.jpg' class='cardImg' wx:if="{{item.cardType==5}}"></image>
+              <image src='../../images/subCard.jpg' class='cardImg' wx:if="{{item.cardType==4||item.cardType==7}}"></image>
+              <image src='../../images/timeLimitCard.jpg' class='cardImg' wx:if="{{item.cardType==3||item.cardType==6}}"></image>
+              <view class="cardName"><view class="name">{{item.objectName}}</view><span wx:if="{{item.checked==true}}" class="isSelect">选中</span></view>
+              <span wx:if="{{item.cardType==4||item.cardType==7}}" class="cardState">{{item.deductionCount||'1'}}次</span>
+              <span wx:if="{{item.cardType==5}}" class="cardState">{{item.deductionAmount||'0'}}元</span>
+              <span class="cardLimit" wx:if="{{item.cardType==5}}">剩余金额：{{item.remain||'--'}}元</span>
+              <span class="cardLimit" wx:if="{{item.cardType==4||item.cardType==7}}">剩余次数：{{item.remain||'--'}}次</span>
+              <span class="cardLimit" wx:if="{{item.cardType==3||item.cardType==6}}">剩余天数：{{item.remain||'--'}}天</span>
+            </view>
+          </view>
+          <view class='line_view' wx:if="{{buckle.length>0}}"></view>
+          <view class='cardListBox' wx:if="{{preferential.length>0}}">
+            <view class='card_title'>优惠</view>
+            <view class='cardList' wx:for="{{preferential}}" wx:key="{{index}}" bindtap='chooseCar' data-id='{{item.objectId}}' data-discount='{{item.discountRatio}}' data-count='item.deductionCount'>
+              <image src='../../images/StoredvalueCard.jpg' class='cardImg' wx:if="{{item.cardType==5}}"></image>
+              <image src='../../images/subCard.jpg' class='cardImg' wx:if="{{item.cardType==4||item.cardType==7}}"></image>
+              <image src='../../images/timeLimitCard.jpg' class='cardImg' wx:if="{{item.cardType==3||item.cardType==6}}"></image>
+              <view class="cardName"><view class="name">{{item.objectName}}</view><span wx:if="{{item.checked==true}}" class="isSelect">选中</span></view>
+              <span wx:if="{{item.discountRatio}}" class="cardState">{{item.discountRatio}}折</span>
+              <!-- <span wx:if="{{item.cardType==4||item.cardType==7}}" class="cardState">5折</span>
+              <span wx:if="{{item.cardType==4||item.cardType==7}}" class="cardState">7折</span>
+              <span wx:if="{{item.cardType==4||item.cardType==7}}" class="cardState">8折</span> -->
+              <span class="cardLimit" wx:if="{{item.cardType==5}}">剩余金额：{{item.remain||'--'}}元</span>
+              <span class="cardLimit" wx:if="{{item.cardType==4||item.cardType==7}}">剩余次数：{{item.remain||'--'}}次</span>
+              <span class="cardLimit" wx:if="{{item.cardType==3||item.cardType==6}}">剩余天数：{{item.remain}}天</span>
+            </view>
+          </view>
+          <view class='line_view' wx:if="{{preferential.length>0}}"></view>
+          <view class='selectDiscount' wx:if='{{unusefulCar.length!=0}}'>
+            <view class='title'>其他优惠</view>
+            <view class='payStyle' wx:for='{{unusefulCar}}' wx:key='index' bindtap='chooseDisableCar' data-id='{{item.objectId}}' data-discount='{{item.discountRatio}}'>
+              <view class='listLeft'>
+                <image src='../../images/wxPay.png' class='wechat'></image>
+                <view class='carMess'>
+                  <view class="carMess_name"><view class="name">线上预订</view><span wx:if="{{item.checked==true}}" class="isSelect">选中</span></view>
+                  <span class="carMess_sub">在线预约优惠</span>
+                </view>
+                <span class="listRight_span" wx:if='{{item.discountRatio}}'>{{item.discountRatio}}折</span>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='swiper_con'>
+        <view class='nocarBox' wx:if="{{noUseCard.length==0}}">
+          <image src='../../images/noRank.png'></image>
+          <span>暂无会员卡</span>
+        </view>
+        <scroll-view scroll-y style="height:{{defaultHeight}}px;" wx:else>
+          <view class='cardListBox' style='border-bottom:none;'>
+            <view class='cardList' wx:for="{{noUseCard}}" wx:key="{{index}}">
+              <image src='../../images/StoredvalueCard.jpg' mode='aspectFill' class='cardImg' wx:if="{{item.cardType==5}}"></image>
+              <image src='../../images/subCard.jpg' mode='aspectFill' class='cardImg' wx:if="{{item.cardType==4||item.cardType==7}}"></image>
+              <image src='../../images/timeLimitCard.jpg' mode='aspectFill' class='cardImg' wx:if="{{item.cardType==3||item.cardType==6}}"></image>
+              <span class="cardName">{{item.cardName}}</span>
+              <span class="cardLimit" style="color:#F19776">无预订权限</span>
+              <!-- <span class="cardState">{{item.statusStr}}</span> -->
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view class='foot_view'>
+  <view class='more_view' bindtap='toBuyCar'>购买更多卡<image class='next_img' src='../../images/whiteNext.png'></image></view>
+</view>
+
+
+
+
+
+<!-- <view wx:if="{{carList.length!=0}}">
+  <view class='carList'>
+      <view class='memberCarList'>
+        <view class='title'>选择会员卡</view>
+        <view class='carsList' wx:if="{{usefulCar.length>0}}">
+          <view class='lists' wx:for='{{usefulCar}}' wx:key='index' bindtap='chooseCar' data-id='{{item.objectId}}' data-discount='{{item.discountRatio}}' data-count='item.deductionCount'>
+            <view class='listLeft'>
+                <image src='../../images/StoredvalueCard.jpg' class='carIcon' wx:if="{{item.cardType==5}}"></image>
+                <image src='../../images/subCard.jpg' class='carIcon' wx:if="{{item.cardType==4}}"></image>
+                <image src='../../images/timeLimitCard.jpg' class='carIcon' wx:if="{{item.cardType==3}}"></image>
+                <view class='carMess'>
+                  <span>{{item.objectName}}</span>
+                  <span wx:if="{{item.cardType==5}}">余额￥{{item.remain}}</span>
+                  <span wx:if="{{item.cardType==4}}">剩余{{item.remain}}次</span>
+                  <span wx:if="{{item.cardType==3}}">剩余{{item.remain}}天</span>
+                </view>       
+            </view>
+            <view class='listRight' wx:if="{{item.cardType==4&&item.discountType==1}}">
+                <view wx:if='{{item.deductionCount*sites.length<=item.remain}}'>
+                   <span wx:if='{{item.discountRatio}}'>{{item.discountRatio}}折</span>
+                   <span wx:else>-{{item.deductionCount*sites.length}}次</span>
+                   <image src='{{!item.checked?"../../images/circularNullSelcted.png":"../../images/circularSelcted.png"}}' ></image>
+               </view>
+               <view wx:else>
+                   <span style='margin-right:0;font-size:24rpx;'>卡内剩余不足</span>
+               </view>
+            </view>
+            <view class='listRight' wx:if="{{item.cardType==5&&item.discountType==1}}">
+               <view wx:if='{{item.counts<=item.remain}}'>
+                   <span wx:if='{{item.discountRatio}}'>{{item.discountRatio}}折</span>
+                    <span wx:else>-￥{{item.counts}}</span>
+                   <image src='{{!item.checked?"../../images/circularNullSelcted.png":"../../images/circularSelcted.png"}}' ></image>
+               </view>
+               <view wx:else>
+                   <span style='margin-right:0;font-size:24rpx;'>卡内剩余不足</span>
+               </view>
+            </view> 
+             <view class='listRight' wx:if="{{item.discountType==null}}">
+                   <image src='{{!item.checked?"../../images/circularNullSelcted.png":"../../images/circularSelcted.png"}}' style='width:36rpx;height:36rpx;'></image>
+            
+            </view>  
+            <view class='listRight' wx:if="{{item.discountType==2}}">
+               <view>
+                   <span wx:if='{{item.discountRatio}}'>{{item.discountRatio}}折</span>
+                   <image src='{{!item.checked?"../../images/circularNullSelcted.png":"../../images/circularSelcted.png"}}' ></image>
+               </view>
+            </view>     
+          </view>
+        </view>
+        <view class='emptyList' wx:else>没有找到有效会员卡</view>
+      </view>
+      <view class='selectDiscount' wx:if='{{unusefulCar.length!=0}}'>
+          <view class='title'>其他优惠</view>
+          <view class='payStyle'  wx:for='{{unusefulCar}}' wx:key='index' bindtap='chooseDisableCar' data-id='{{item.objectId}}' data-discount='{{item.discountRatio}}'>
+            <view class='listLeft'>
+                <image src='../../images/wxPay.png' class='wechat'></image>
+                <view class='carMess'>
+                  <span>线上预订</span>
+                  <span>在线预约优惠</span>
+                </view>       
+            </view>
+            <view class='listRight'>
+               <view>
+                  <span wx:if='{{item.discountRatio}}'>{{item.discountRatio}}折</span>
+                <image src='{{!item.checked?"../../images/circularNullSelcted.png":"../../images/circularSelcted.png"}}'  ></image>
+               </view>
+            </view>       
+          </view>
+      </view>
+      <view class='tip'>不适用的储值卡已隐藏</view>
+  </view>
+   <view class='bookBottom'  wx:if="{{!showSumbit}}">
+        <span wx:if='{{discount==null}}' style='background:#BDBDBD;' class='computeBtn'>还需支付 ¥{{showPrice}}</span>
+        <span wx:else style='background:#BDBDBD;' class='computeBtn'>还需支付 ¥{{showPrice}}</span>
+   </view>
+   <view class='bookBottom' bindtap='needPay' wx:if="{{showSumbit}}">
+     <view wx:if='{{discountType==2||discountType==null}}'>
+       <span wx:if='{{discount==null}}' class='computeBtn'>还需支付 ¥{{allPrice}}</span>
+        <span wx:else class='computeBtn'>还需支付 ¥{{showPrice}}</span> 
+     </view>
+     <view wx:if='{{discountType==1}}'>
+        <span class='computeBtn'>去结算</span> 
+     </view>
+  </view>
+</view>
+<view class='bgBox' wx:else >
+  <view class='tipsBox'>
+     <view class='tipsTop'>
+        <view class='topTxt'>
+          <span>抱歉～您无法预订！</span>
+          <span>Sorry ~ you can't make a reservation</span>
+        </view>
+        <image src='../../images/closeRule.png' class='clearBtn' bindtap='returnBook'></image>
+     </view>
+     <view class='tipList'>
+       <view class='contentBox'>
+          <image src='../../images/tipsIconOne.png'></image>
+          <span>本场地只对【会员】开放</span>
+       </view>
+       <view class='contentBox'>
+          <image src='../../images/tipsIconTwo.png'></image>
+          <span>您的会员卡绑定的手机号     与微信【手机号不同】</span>
+       </view>
+       <view class='contentBox'>
+          <image src='../../images/tipsIconThree.png'></image>
+          <span>您的会员卡【暂无权限】预约</span>
+       </view>
+     </view>
+     <view class='buyCarBtn' bindtap='toBuyCar'>
+       <span>购买会员卡</span>
+     </view>
+  </view>
+</view> -->

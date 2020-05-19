@@ -1,0 +1,44 @@
+<!--pages/index/courseConsume.wxml-->
+
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<wxs src="../../utils/uiUtils/imageUrlUtil.wxs" module="imageUrlUtil"></wxs>
+
+<view class='signBox'>
+  <view class='topBox'>
+    <image src='/images/StoredvalueCard.jpg' class='bgImg' mode='aspectFill'></image>
+    <span class='signTitle'>{{seleInfo.type==1?'总课时':'总天数'}}</span>
+    <span class='signNum'>{{seleInfo.buyCount}}
+      <i>{{seleInfo.type==1?'节':'天'}}</i>
+    </span>
+    <span class='signTitle' style="margin-left:240rpx">剩余</span>
+    <span class='signNum' style="margin-left:240rpx">{{seleInfo.remainCount}}
+      <i>{{seleInfo.type==1?'节':'天'}}</i>
+    </span>
+  </view>
+  <view class='signRecordBox'>
+    <span class='signRecordTitle'>历史纪录</span>
+    <view wx:if="{{signList.length==0||signList==null}}" class='nullOrder'>
+      <image src='../../images/noRank.png'></image>
+      <text>暂无记录</text>
+    </view>
+
+    <scroll-view wx:else scroll-y style='height:{{height}}px'>
+      <view class='signRecordList'>
+        <view class='recordList' wx:for="{{signList}}" w:key='index'>
+          <view class='recordTop'>
+            <image src='{{item.trainerPhoto||"../../images/default_user.png"}}'></image>
+            <view>{{item.trainerName}}</view>
+          </view>
+          <view>
+            <text style="padding:4rpx;color:#90AAC6;border:1px solid #90AAC6;border-radius:8rpx;margin-right:10rpx;font-size:20rpx;" wx:if="{{item.isCompletedBySystem}}">系统签课</text>
+          <text decode="true" class='recordBottom'>{{item.completedTime}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- <view class='moreBtnBox' wx:if='{{shoeMore}}'>
+  <span bindtap='showMore'>查看更多</span>
+  <image src='../../images/down.png'></image>
+</view> -->

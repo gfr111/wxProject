@@ -1,0 +1,366 @@
+<import src="../templates/moreHeader.wxml" />
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<!-- <scroll-view scroll-y>  -->
+<view class='index'>
+  <view class='infoHeaderBack'>
+    <view class='infoHeaderLeftBack' bindtap='goCenterList'>
+      <image src='../../images/clubImg.png' class='clubImg'></image>
+      <text class='centerText'>{{selectCenter.name}}</text>
+      <image src='../../images/blackTriangle.png' class='blackTriangle'></image>
+    </view>
+
+    <view class="peoplenum" wx:if="{{wxAppSetting.showCenterPersonCount}}">
+      <image src="../../images/indexpeople.png"></image>
+      <text>在场人数</text>
+      <text class="peoplenomal {{actualNumberstatus==1?'toomany':actualNumberstatus==2?'much':actualNumberstatus==3?'nomal':actualNumberstatus==4?'less':''}}">{{actualNumberstatus==1?'爆满':actualNumberstatus==2?'拥挤':actualNumberstatus==3?'正常':actualNumberstatus==4?'较少':'极少'}}</text>
+    </view>
+
+    <!-- <view class='headerIconBack'>
+          <image src='../../images/qrcodeIcon.png' class='qrcodeIcon' bindtap='showQrcode'></image>
+          <image src='../../images/messageIcon.png' class='messageIcon' bindtap='showMessages'></image> 
+        </view> -->
+    <text class='redLabel' wx:if="{{msgCount > 0}}">{{msgCount}}</text>
+  </view>
+  <!--微信步数入口-->
+  <view class='run' bindtap="runTo" wx:if="{{active&&(isother=='false'||!isother)}}">
+    <!-- <image class='first-img' src='../../images/run.png'></image> -->
+    步数换积分
+    <!-- <image class='last-img' src='../../images/goRun.png'></image> -->
+  </view>
+  <view class='swiperBox'>
+    <swiper class='swiper' indicator-dots="{{indicatorDots}}" autoplay='{{banner}}' interval='5000' current="{{current}}" duration='1000' bindchange='swiperImg'>
+      <block wx:for="{{sliders}}" wx:key="index">
+        <swiper-item>
+          <view style="height:400rpx;width:690rpx;margin-left:30rpx;border-radius:8rpx;overflow:hidden;">
+            <image src="{{item.picture+'?x-oss-process=image/resize,l_750'}}" indload="imageLoad" bindtap='swiperInfo' data-title='{{item.title}}' data-idx='{{index}}' data-type='{{item.type}}' mode='aspectFill' style="height:400rpx;width:690rpx;min-width:690rpx;"></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="swiperDots">
+      <block wx:for="{{sliders}}" wx:key="index">
+        <view class="swiperDot {{index==current?'actives':''}}"></view>
+      </block>
+    </view>
+  </view>
+
+  <view class="air" wx:if="{{wxAppSetting.showAirQuality}}">
+    <!-- <view class="air"  wx:if="{{!wxAppSetting.showAirQuality}}"> -->
+
+    <view class="airquality {{airindex==0?'airgood':airindex==1?'':'airbad'}}">
+      <view>
+        <image class="airimg" src="../../images/leaf.png"></image>
+        <text class="airtext">空气质量</text>
+      </view>
+      <view>
+        <text class="airnum">{{airscore}}</text>
+        <text class="airstatus">{{airstatus}}</text>
+      </view>
+    </view>
+    <view class="airitem">
+      <view>
+        <image class="airimg" src="../../images/humidity.png"></image>
+        <text class="airitemtext">湿度</text>
+      </view>
+      <text class="airitemnum">{{air.latest.humidity}}%</text>
+    </view>
+    <view class="airitem">
+      <view>
+        <image class="airimg" src="../../images/temperature.png"></image>
+        <text class="airitemtext">温度</text>
+      </view>
+      <text class="airitemnum">{{air.latest.temperature}}°C</text>
+    </view>
+    <view class="airitem">
+      <view>
+        <image class="airimg" src="../../images/pm.png"></image>
+        <text class="airitemtext">PM2.5</text>
+      </view>
+      <text class="airitemnum">{{air.latest.pm25}}/m³</text>
+    </view>
+  </view>
+
+
+
+  <view class="" wx:if="{{!enableParent||(enableParent&&clubType!=4)}}" class="{{trueNumber>4?'nav_five nav':'nav_four nav'}}">
+    <block>
+
+      <navigator wx:if="{{wxAppSetting.showHomeMemberQr}}" url="/pages/coupon/pages/qrcode/QRCode" class="nav-item" hover-class="none">
+        <image src="../../images/number.png" mode='aspectFill'></image>
+        <text>二维码</text>
+      </navigator>
+      <navigator wx:if="{{wxAppSetting.showHomeBuyCard}}" url="../memberCarlist/memberCarlist?a=0" class="nav-item" data-current-data='0' hover-class="none">
+        <image src="../../images/buyCardOnline.png"></image>
+        <text>在线购卡</text>
+      </navigator>
+
+      <navigator wx:if="{{wxAppSetting.showHomeBuyCourse&&clubType!=4}}" url="../courseAndCar/courseAndCar?a=1" class="nav-item" data-current-data='1' hover-class="none">
+        <image src="../../images/class.png"></image>
+        <text>在线购课</text>
+      </navigator>
+
+
+
+      <navigator wx:if="{{wxAppSetting.showHomeSignupTrainingCourse}}" url="/pages/trainingCourse/pages/trainingCourseList/trainingCourseList" class="nav-item" hover-class="none">
+        <image src="../../images/enrollIcon.png"></image>
+        <text>在线报名</text>
+      </navigator>
+
+
+
+      <navigator wx:if="{{wxAppSetting.showHomeBuyTicket}}" url="../coupon/pages/couponList/couponList" class="nav-item" data-current-data='1' hover-class="none">
+        <image src="../../images/couponIcon.png"></image>
+        <text>在线购票</text>
+      </navigator>
+      <navigator wx:if="{{wxAppSetting.showHomeFeedback}}" url="../traineeCenter/centerEvaluation?status=0" class="nav-item" hover-class="none">
+        <image src="../../images/feedback.png"></image>
+        <text>评价反馈</text>
+      </navigator>
+    </block>
+  </view>
+
+  <view class='officeNav' wx:if="{{enableParent&&clubType==4}}">
+    <navigator url="../memberCarlist/memberCarlist?a=0" data-current-data='0' hover-class="none">
+      <view class='officeBuyCarBox'>
+        <image src='../../images/officeBuyCar.png'></image>
+        <span style='position:absolute;left:30rpx;top:35rpx;color:#ffffff;font-size:28rpx;'>在线购卡</span>
+        <span style='position:absolute;left:30rpx;top:80rpx;color:#ffffff;font-size:20rpx;'>线上购买更快捷</span>
+      </view>
+    </navigator>
+
+    <navigator url="/pages/coupon/pages/qrcode/QRCode" hover-class="none">
+      <view class='officeBuyCarBox'>
+        <image src='../../images/qrcodeBg.png'></image>
+        <span style='position:absolute;left:30rpx;top:35rpx;color:#ffffff;font-size:28rpx;'>二维码</span>
+        <span style='position:absolute;left:30rpx;top:80rpx;color:#ffffff;font-size:20rpx;'>线下门禁出入</span>
+      </view>
+    </navigator>
+  </view>
+
+  <!-- <view class='officeNav' wx:if="{{clubType==4}}">
+    <navigator url="../memberCarlist/memberCarlist?a=0" data-current-data='0' hover-class="none">
+      <view class='officeBuyCarBox'>
+        <image src='../../images/officeBuyCar.png'></image>
+        <span style='position:absolute;left:30rpx;top:35rpx;color:#ffffff;font-size:28rpx;'>在线购卡</span>
+        <span style='position:absolute;left:30rpx;top:80rpx;color:#ffffff;font-size:20rpx;'>线上购买更快捷</span>
+      </view>
+    </navigator>
+    <navigator url="../traineeCenter/centerEvaluation?status=0" hover-class="none">
+      <view class='officeBuyCarBox'>
+        <image src='../../images/officeJudge.png'></image>
+        <span style='position:absolute;left:30rpx;top:35rpx;color:#ffffff;font-size:28rpx;'>评价反馈</span>
+        <span style='position:absolute;left:30rpx;top:80rpx;color:#ffffff;font-size:20rpx;'>您的建议很重要</span>
+      </view>
+    </navigator>
+  </view> -->
+  <!-- <view class='newcomerExperience' wx:if="{{exprience.length>0}}">
+      <view class='newcomerContent'>
+      <image src='../../images/newcomerExperience.png'></image>
+      <view class='experienceLine'></view>
+       <swiper class='experienceSwiper'   duration='1000' >
+         <block wx:for="{{exprience}}" wx:if="{{exprience.length>0}}">
+         <navigator url='../cardsPurchaseOnline/availableCardDetail?exId={{item.id}}&id={{item.goodsId}}'>
+          <swiper-item class="experienceSwiperItem"  data-exId="{{item.id}}" data-id="{{item.goodsId}}">
+           <text class='titles'>#{{item.name}}#</text><text class='experienceName'>{{item.goodsName}}</text><text class="experienceButton">立即参与</text>
+        </swiper-item> 
+         </navigator>         
+    </block>   
+</swiper>
+      </view>
+    </view> -->
+  <view class='newcomerExperience' wx:if="{{exprience.length>0}}">
+    <swiper class='swipers' indicator-dots="{{indicatorDot}}" autoplay='{{autoplay}}' interval='5000' duration='1000' indicator-active-color='#000000' bindchange='swiperChange'>
+      <block wx:for="{{exprience}}" wx:key="index">
+        <navigator url='../cardsPurchaseOnline/availableCardDetail?exId={{item.id}}&id={{item.goodsId}}' hover-class="none">
+          <swiper-item data-exId="{{item.id}}" data-id="{{item.goodsId}}">
+            <view class='newcomerContent'>
+              <view class='newcomerTop'>
+                <image src='../../images/activityBg.png' class='newComerBg'></image>
+                <view class='newComerName'>
+                  <view class='leftName'>
+                    <text>{{item.name}}</text>
+                    <text>{{item.goodsName}}</text>
+                  </view>
+                  <view class='experienceButton'>立即领取</view>
+                </view>
+              </view>
+            </view>
+          </swiper-item>
+        </navigator>
+      </block>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{exprience}}" wx:key="index">
+        <view class="dot {{index==cur?'active':''}}"></view>
+      </block>
+    </view>
+  </view>
+  <view wx:if="{{notifications.length>0}}">
+    <!-- <template is='moreHeader' data='{{leftTitle:"公告", tapMoreHeader:tapMoreHeader, index:0}}' ></template>  -->
+    <!-- <view class="activity">
+            <scroll-view scroll-x style="width:93%;height:274rpx;"  scroll-x class="scroll-header">
+              <block wx:for="{{notifications}}" wx:key="item.id">
+                  <view class='scroll-view-item'  data-index='{{item.id}}'>
+                      <navigator url='../notice/notice?id={{item.id}}' style='width:300rpx;'>
+                          <image src="{{item.pictures[0]||'../../images/indexNotice.jpg'}}" class='activity-image' mode='aspectFill'></image>  
+                          <view class='avtivityName'>{{item.title}}</view>       
+                    </navigator> 
+                  </view>
+              </block>
+              </scroll-view>
+        </view>   -->
+    <view class='noticeBox'>
+      <image src='../../images/notice.png'></image>
+      <text class='verticalLine'></text>
+      <text class='noticeTitle'>精选公告</text>
+      <swiper class='experienceSwiper' duration='1000' vertical='true' autoplay='true'>
+        <block wx:for="{{notifications}}" wx:key="item.id">
+          <navigator url='../notice/notice?id={{item.id}}' style='width:300rpx;' hover-class="none">
+            <swiper-item class="experienceSwiperItem">
+              <text class='titles'>{{item.title}}</text>
+            </swiper-item>
+          </navigator>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <view wx:if="{{activities.length>0}}">
+    <template is='moreHeader' data='{{leftTitle:"精选活动", tapMoreHeader:tapMoreHeader, index:1}}'></template>
+    <view class='activity'>
+      <scroll-view style="width:93%;height:274rpx;" scroll-x class="scroll-header">
+        <block wx:for="{{activities}}" wx:key="item.id">
+          <view class='scroll-view-item' data-index='{{item.id}}' bindtap='activitiesDetail' data-id='{{item.id}}'>
+            <!-- <navigator url='../activity/activity?id={{item.id}}' style='width:300rpx;' hover-class="none"> -->
+            <image src="{{item.pictures[0]||'../../images/indexActivity.jpg'}}" class='activity-image' mode='aspectFill'></image>
+            <view class='avtivityName'>{{item.title}}</view>
+            <!-- </navigator> -->
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class='bottomLine' style='margin-top:22rpx;'></view>
+  </view>
+  <!-- 拼团活动 -->
+  <view class="assembleBox" wx:if="{{groupBookings.length>0}}">
+    <view class="assembleTitle">
+      <span>拼团活动</span>
+      <span bindtap='toAssembleList'>查看更多</span>
+    </view>
+    <view class="assembleItem" wx:for="{{groupBookings}}" wx:key="{{index}}" data-id="{{item.objectId}}" bindtap="toAssembleDetail">
+      <view class="assembleImgBox">
+        <image src="{{item.bgImage}}" mode="aspectFill" wx:if="{{item.bgImage}}"></image>
+        <image src="/images/teachPic.png" mode="aspectFill" wx:if="{{!item.bgImage&&item.objectType!=1}}"></image>
+        <image src="../../images/StoredvalueCard.jpg" mode="aspectFill" wx:if="{{!item.bgImage&&item.objectType==1}}"></image>
+        <span>{{item.groupNumber}}人团</span>
+      </view>
+      <view class="assembleMessBox" style="flex:1">
+        <view class="assembleName">{{item.objectName}}</view>
+        <view class="assmblePrice">
+          <span>¥</span>
+          <span>{{item.collagePrice}}
+            <i wx:if="{{item.objectType==2||item.objectType==3}}">{{item.cardType==1?'/'+item.objectCount+'节':'/'+item.effectiveDays+'天'}}</i>
+          </span>
+          <span>¥{{item.standardPrice}}</span>
+        </view>
+        <view class="assmbleBtn">
+          <span style="background:#00BC71;" wx:if="{{item.startTs<=timeUtils}}">去拼团</span>
+          <span style='background:#4D8CEF;' wx:else>距开始 {{item.startTime}}</span>
+        </view>
+      </view>
+    </view>
+    <view class='bottomLine'></view>
+  </view>
+  <view wx:if="{{trainers.length>0}}">
+    <template is='moreHeader' data='{{leftTitle:"教练团队", show:trainers.length > 0,  tapMoreHeader:tapMoreHeader, index:2}}'></template>
+    <scroll-view scroll-x style="height: 268rpx;display:flex" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <view class="trainerItem">
+        <view class="trainermsg" wx:for="{{trainers}}" wx:key="item.id">
+          <view class="trainernav" bindtap="toPage" id="{{item.id}}">
+            <text class="recommend">推荐</text>
+            <image src="{{(item.personalPortrait||item.photo)+'?x-oss-process=image/resize,l_114'}}" class='trainer-image' mode='aspectFill'></image>
+            <text class='trainer-text'>{{item.nickName||item.name}}</text>
+            <text class="trainerdes">{{item.description||'暂无简介'}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class='bottomLine'></view>
+
+
+  </view>
+  <!-- 总店时才出现相关门店 -->
+  <view class="settingBtnBox" wx:if="{{!isauthSetting&&selectCenter.mainCenter}}">
+    <button open-type="openSetting" class="btnsave" bindopensetting='getopensetting'>一键获取位置信息，查看附近门店</button>
+  </view>
+  <view class="relatedStores" wx:if="{{selectCenter.mainCenter&&branchCenterList.length>0}}">
+    <view class="moreHeader">
+      <view class="assembleTitle" style="margin-bottom:0;">
+        <span>相关门店</span>
+      </view>
+      <view class="mapBox" bindtap="toMap">
+        <image src="../../images/mapIcon.png"></image>
+        <span>地图显示</span>
+      </view>
+    </view>
+    <view class="officeList">
+      <view class="officeBox" wx:for="{{branchCenterList}}" wx:key="{{index}}">
+        <image class="officeImage" src="{{item.photo?item.photo:'../../images/default_center_icon.png'}}"></image>
+        <view class="officeMess">
+          <view class="officeName">{{item.name}}</view>
+          <view class="officeAdress">{{item.distance}}km ｜{{item.address||'--'}}</view>
+          <view class="intoCenterBtn" bindtap="toDetail" data-id="{{item.id}}">详情</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style='font-size:36rpx;color:#000000;font-weight:600;margin-top:50rpx;margin-bottom:40rpx;margin-left:30rpx;'>场馆介绍</view>
+  <view wx:if="{{clubPhotoList.length>0}}" style='margin-bottom:30rpx;'>
+    <scroll-view scroll-x style="height: 172rpx;display:flex" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <view class="trainerItem">
+        <view class="trainermsg" wx:for="{{clubPhotoList}}" wx:key="index" style=" width: 240rpx;height: 172rpx;padding:0;">
+          <view class="trainernav" style="  margin-right: 20rpx;width:240rpx;padding:0">
+            <image src="{{item+'?x-oss-process=image/resize,l_456'}}" class='clubPhoto' bindtap="previewImage" id="{{item}}" mode='aspectFill'></image>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class='clubDetail'>
+    <view class="addressBox">
+      <image src="../../images/position.png" class="positionIcon"></image>
+      <span class='addressTxt' style='border-right: 1px solid #D8D8D8;' wx:if="{{phone}}">{{selectCenter.address?selectCenter.address:'暂无位置信息'}}</span>
+      <span class='addressTxt' wx:else>{{selectCenter.address?selectCenter.address:'暂无位置信息'}}</span>
+      <image src="../../images/phone.png" class="phoneIcon" wx:if="{{phone}}" bindtap='callPhone' data-phone='{{phone}}'></image>
+    </view>
+    <view class='rachTxt'>
+      <rich-text nodes="{{descrip}}" bindtap="tap"></rich-text>
+    </view>
+  </view>
+  <!-- <image wx:if="{{wxAppSetting.showOtherMerchandise&&!selectCenter.mainCenter}}" src='../../images/indexCar.png' class='floatScan' style="bottom:174rpx" bindtap='goShop'></image> -->
+  <image wx:if="{{wxAppSetting.showOtherOpenDoorViaQr}}" src='../../images/floatScan.png' class='floatScan' bindtap='qrCode'></image>
+</view>
+<!-- </scroll-view>   -->
+<view class="popBox" catchtouchmove="preventTouchMove" wx:if="{{showCoupon}}">
+  <view class="couponListBox">
+    <view class="iconBox">
+      <view class="radius"></view>
+      <text>有新的优惠券到账了</text>
+      <image src="../../images/couponPopIcon.png"></image>
+    </view>
+    <view class="couponList">
+      <view class="couponItem" wx:for="{{couponList}}" wx:key="{{index}}">
+        <view class="couponMess">
+          <view class="couponName">{{item.name}}</view>
+          <view class="couponIntro">满{{item.amountLimit}}元立减{{item.type==1?'':item.maxDeductionAmount?'，最高抵扣'+item.maxDeductionAmount+'元':''}}</view>
+          <view class="effctiveDay">{{dateUtil.formatTimes(item.useStartTs)}}-{{dateUtil.formatTimes(item.useEndTs)}}</view>
+        </view>
+        <view class="couponPrice">
+          <text>{{item.type==1?item.discount:item.discount*10}}</text>
+          <text>{{item.type==1?'元':'折'}}</text>
+        </view>
+      </view>
+      <view class="detailBtn" bindtap="couponCenter">立即查看</view>
+    </view>
+  </view>
+  <image src="../../images/posterCancel.png" class="hideConpun" bindtap="hideList"></image>
+</view>

@@ -1,0 +1,153 @@
+/* pages/trainers/trainerDetail.wxss */
+
+page {
+  background-color: #fff;
+}
+
+.trainerDetail {
+  border-top: 2rpx solid #e6e6e6;
+  padding-bottom: 100rpx;
+}
+
+.trainer-detail-top {
+  height: 192rpx;
+  background-color: #fff;
+  margin: 30rpx 30rpx 0 30rpx;
+  box-shadow: 0px 2rpx 10rpx 0px rgba(0, 0, 0, 0.1);
+  border-radius: 4rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.photo {
+  margin-left: 44rpx;
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 50%;
+}
+
+.sex {
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  right: 0;
+  bottom: 6rpx;
+}
+
+.mainPic {
+  margin-top: 26rpx;
+  width: 136rpx;
+  height: 136rpx;
+  /* margin: auto;
+  position: relative; */
+}
+
+.info_view {
+  margin-left: 40rpx;
+  width: 75%;
+  height: 136rpx;
+
+}
+
+.name {
+  width: 83%;
+  color: #303030;
+  font-size: 48rpx;
+  text-align: left;
+  font-weight: 500;
+  margin-left: 40rpx;
+  margin-top: 40rpx;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.level {
+  margin-top: 10rpx;
+  margin-left: 40rpx;
+  text-align: left;
+  line-height: 30rpx;
+}
+
+.level image {
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 6rpx;
+}
+
+.trainer-detail-intro {
+  width: 90%;
+  padding-top: 50rpx;
+  padding-bottom: 40rpx;
+  margin: 0 auto;
+  border-bottom: 2rpx solid #f7f7f7;
+}
+
+.intro {
+  /* margin-top: 58rpx; */
+  font-size: 36rpx;
+  color: #383838;
+  font-weight: 600;
+}
+
+.intro-txt {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #6e6e6e;
+  /* line-height: 40rpx; */
+  width: 100%;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.trainer-detail-pic {
+  width: 90%;
+  padding-top: 58rpx;
+  padding-bottom: 80rpx;
+  margin: auto;
+  border-bottom: 2rpx solid #e6e6e6;
+  /* margin-bottom:30rpx; */
+}
+
+.intro-pic {
+  margin-top: 40rpx;
+}
+
+.inputButton {
+  position: fixed;
+  bottom: 0;
+  height: 120rpx;
+  text-align: center;
+  line-height: 120rpx;
+  background-color: #fff;
+  border-top: 2rpx solid #e5e5e5;
+  color: #fff;
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.inputButton>view {
+  margin: 22rpx 30rpx 0 30rpx;
+  background-color: #00bc71;
+  border-radius: 40rpx;
+  text-align: center;
+  height: 72rpx;
+  line-height: 72rpx;
+}
+
+.pic {
+  width: 320rpx;
+  height: 320rpx;
+  background: #ccc;
+  border-radius: 8px;
+  margin-right: 32rpx;
+  margin-bottom: 16rpx;
+}
+
+.pic:nth-child(even) {
+  margin-right: 0;
+}

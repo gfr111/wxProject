@@ -1,0 +1,228 @@
+<!-- <import src="reservationListSection.wxml" />
+<import src="../../templates/loadMoreView/loadMore.wxml" />
+<import src="../../templates/emptyView.wxml" />
+ <view class='index'>
+  
+    <block wx:if='{{list.length > 0}}'>
+    <template is='reservationListSection' data="{{list:list}}"></template>
+    <template is='loadMore' data='{{isLoadingMore:isLoadingMore}}' ></template> 
+    </block>
+    <block wx:else>
+    <template is="emptyView" data='{{emptyImage:"../../../images/noOrders.png", emptyTitle:"暂无预约"}}'></template>
+    </block>
+</view> -->
+<view class='orderBox'>
+    <view class='topTabSwiper'>
+      <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>团课</view>
+      <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>私教课</view>
+      <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}'  data-current = "2" bindtap='checkCurrent' wx:if="{{clubType!=4&&clubType!=8}}">培训课</view>
+      <view class='tab  {{currentData == 3 ? "tabBorer" : ""}}'  data-current = "3" bindtap='checkCurrent' wx:if="{{featureSetting.allowTrainingModule}}">培训班</view>
+  </view>
+  <swiper current="{{currentData}}" class='swiper' style="height: {{listHeight}}px;" duration="300" bindchange="bindchange" >
+    <swiper-item >
+      <view class='swiper_con'>
+      <scroll-view scroll-y="true"  style="height: {{listHeight}}px;overflow:auto;" bindscrolltoupper='upper' bindscrolltolower="lower">
+        <block wx:for="{{list}}" wx:key="index" >
+            <view class='box'>
+              <text class='dateBox'>{{item.plannedDateStr}}</text>
+              <view class='courseBox'>
+                 <view class='courseTop'>
+                   <view class='courseTime'>
+                     <image src='../../../images/clock.png'></image>
+                     <span>{{item.startTime}} - {{item.endTime}}</span>
+                   </view>
+                   <view class='courseStatus' wx:if="{{item.status<0||item.status==0}}" style='color:#898989;'>已取消</view>
+                    <view class='courseStatus' wx:if="{{item.status==1}}" style='color:#04BD73;'>待上课</view>
+                    <view class='courseStatus' wx:if="{{item.status==5}}" style='color:#898989;'>已完成</view>
+                    <view class='courseStatus' wx:if="{{item.status==6}}" style='color:#898989;'>失约</view>
+                    <view class='courseStatus' wx:if="{{item.status==8}}" style='color:#FF8F4B;'>待支付</view>
+                 </view>
+                 <view class='courseMiddle'>
+                    <view class='courseImg'>
+                       <image src='{{item.pictures}}' mode='aspectFill'></image>
+                       <text class='level'>{{item.levelStr}}</text>
+                    </view>
+                    <view class='courseMess'>
+                      <text>{{item.courseName}}</text>
+                      <text>门店：{{center.name}}</text>
+                      <view>
+                       <text style='color: #A1A1A1;font-size: 24rpx;margin-right:40rpx;'>教室：{{item.room||'--'}}</text>
+                       <text style='color: #A1A1A1;font-size: 24rpx;'>位置：{{item.seatNums||'--'}}</text>
+                      </view>
+                    </view>
+                 </view>
+                 <view class='courseBottom' wx:if="{{item.seatEnabled||item.cancelable||item.status==8||(item.status == 5 && !item.rated)}}">
+                    <span wx:if="{{item.seatEnabled}}" bindtap='checkSit' id='{{index}}'  data-photo="{{item.seatPhoto}}">查看座位</span>
+                    <span  bindtap='didTappedFirst' id='{{index}}' data-btnType='cancelBtn' wx:if='{{item.cancelable}}'>取消预约</span>
+                    <span style='font-size:#04BD73' wx:if="{{item.status==8}}" bindtap='didTappedFirst' id='{{index}}' data-btnType='payBtn'>去支付</span>
+                    <span wx:if="{{item.status == 5 && !item.rated}}" bindtap='didTappedFirst' id='{{index}}' data-btnType='evaluateBtn'>评价</span>
+                 </view>
+              </view>
+            </view>
+        </block>
+         <view class='swiper_nomal' wx:if="{{list.length==0}}">
+          <image src='../../../images/noRank.png'></image>
+          <span>暂无团课</span>
+        </view>
+      </scroll-view>
+      </view>
+    </swiper-item>
+    <swiper-item >
+      <view class='swiper_con'>
+         <scroll-view scroll-y="true" style="height: {{listHeight}}px;overflow:auto;" bindscrolltoupper='upper' bindscrolltolower="lower">
+          <block wx:for="{{list}}" wx:key="index">
+            <view class='box'>
+              <text class='dateBox'>{{item.plannedDateStr}}</text>
+              <view class='courseBox'>
+                  <view class='courseTop'>
+                    <view class='courseTime'>
+                      <image src='../../../images/clock.png'></image>
+                      <span>{{item.startTime}} - {{item.endTime}}</span>
+                    </view>
+                    <view class='courseStatus' wx:if="{{item.status<=0}}" style='color:#898989;'>已取消</view>
+                    <view class='courseStatus' wx:if="{{item.status==1}}" style='color:#04BD73;'>待上课</view>
+                    <view class='courseStatus' wx:if="{{item.status==2}}" style='color:#898989;'>已完成</view>
+                    <view class='courseStatus' wx:if="{{item.status==6&&clubType==4}}" style='color:#898989;'>待完成</view>
+                      <view class='courseStatus' wx:if="{{item.status==6&&clubType!=4&&clubType!=8}}" style='color:#898989;'>失约</view>
+                    <view class='courseStatus' wx:if="{{item.status==8}}" style='color:#FF8F4B;'>待支付</view>
+                  </view>
+                  <view class='courseMiddle'>
+                    <view class='courseImg'>
+                        <image src='{{item.pictures}}' mode='aspectFill'></image>
+                    </view>
+                    <view class='courseMess' style="flex:1;flex-direction:row;align-items:center;justify-content:space-between;">
+                      <view style="flex-direction:column;height:140rpx;align-items:flex-start;">
+                        <text style="color:#303030;font-size:28rpx;font-weight:600;margin-bottom:20rpx;">{{item.courseName}}</text>
+                        <text>门店：{{center.name}}</text>
+                      </view>
+                      <view>
+                            <image src='{{item.personalPortrait||item.trainerPhoto}}'></image>
+                            <text>{{item.trainerName}}</text>
+                          </view>
+                    </view>
+                  </view>
+                  <view class='courseBottom' wx:if="{{item.status==8||(item.status == 2 && !item.rated)||item.status==1}}">
+                    <span bindtap='didTappedFirst' id='{{index}}' data-btnType='cancelBtn' wx:if='{{item.status==1}}'>取消预约</span>
+                    <span style='font-size:#04BD73' wx:if="{{item.status==8}}" bindtap='didTappedFirst' id='{{index}}' data-btnType='payBtn'>去支付</span>
+                    <span wx:if="{{item.status == 2 && !item.rated}}" bindtap='didTappedFirst' id='{{index}}' data-btnType='evaluateBtn'>评价</span>
+                  </view>
+              </view>
+            </view>
+          </block>
+           <view class='swiper_nomal' wx:if="{{list.length==0}}">
+          <image src='../../../images/noRank.png'></image>
+          <span>暂无私教课</span>
+        </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+    <swiper-item wx:if="{{clubType!=4&&clubType!=8}}" >
+      <view class='swiper_con'>
+        <scroll-view scroll-y="true" style="height: {{listHeight}}px;overflow:auto;" bindscrolltoupper='upper' bindscrolltolower="lower">
+            <block wx:for="{{list}}" wx:key="index">
+            <view class='box'>
+              <text class='dateBox'>{{item.plannedDateStr}}</text>
+              <view class='courseBox'>
+                  <view class='courseTop'>
+                    <view class='courseTime'>
+                      <image src='../../../images/clock.png'></image>
+                      <span>{{item.startTime}} - {{item.endTime}}</span>
+                    </view>
+                    <view class='courseStatus' wx:if="{{item.status<=0}}" style='color:#898989;'>已取消</view>
+                    <view class='courseStatus' wx:if="{{item.status==1}}" style='color:#04BD73;'>待上课</view>
+                    <view class='courseStatus' wx:if="{{item.status==2}}" style='color:#898989;'>已完成</view>
+                    <view class='courseStatus' wx:if="{{item.status==6}}" style='color:#898989;'>失约</view>
+                    <view class='courseStatus' wx:if="{{item.status==8}}" style='color:#FF8F4B;'>待支付</view>
+                  </view>
+                  <view class='courseMiddle'>
+                    <view class='courseImg'>
+                        <image src='{{item.pictures}}' mode='aspectFill'></image>
+                        <text class='level'>{{item.levelStr}}</text>
+                    </view>
+                    <!-- <view class='courseMess'>
+                      <text>{{item.courseName}}</text>
+                      <view>
+                            <image src='{{item.personalPortrait||item.trainerPhoto}}'></image>
+                            <text>{{item.trainerName}}</text>
+                          </view>
+                    </view> -->
+                     <view class='courseMess' style="flex:1;flex-direction:row;align-items:center;justify-content:space-between;">
+                      <view style="flex-direction:column;height:140rpx;align-items:flex-start;">
+                        <text style="color:#303030;font-size:28rpx;font-weight:600;margin-bottom:20rpx;">{{item.courseName}}</text>
+                        <text>门店：{{center.name}}</text>
+                      </view>
+                      <view>
+                            <image src='{{item.personalPortrait||item.trainerPhoto}}'></image>
+                            <text>{{item.trainerName}}</text>
+                          </view>
+                    </view>
+                  </view>
+                  <view class='courseBottom' wx:if="{{item.cancelable||item.status==8||(item.status == 5 && !item.rated)}}">
+                    <span bindtap='didTappedFirst' id='{{index}}' data-btnType='cancelBtn'wx:if='{{item.cancelable}}'>取消预约</span>
+                    <span style='font-size:#04BD73' wx:if="{{item.status==8}}" bindtap='didTappedFirst' id='{{index}}' data-btnType='payBtn'>去支付</span>
+                    <span wx:if="{{item.status == 5 && !item.rated}}" bindtap='didTappedFirst' id='{{index}}' data-btnType='evaluateBtn'>评价</span>
+                  </view>
+              </view>
+            </view>
+          </block>
+           <view class='swiper_nomal' wx:if="{{list.length==0}}">
+          <image src='../../../images/noRank.png'></image>
+          <span>暂无培训课</span>
+        </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+    <swiper-item wx:if="{{featureSetting.allowTrainingModule}}" >
+       <view class='swiper_con'>
+        <scroll-view scroll-y="true"  style="height: {{listHeight}}px;overflow:auto;" bindscrolltoupper='upper' bindscrolltolower="lower">
+          <block wx:for="{{list}}" wx:key="index" >
+              <view class='box'>
+                <text class='dateBox'>{{item.plannedDateStr}}</text>
+                <view class='courseBox'>
+                  <view class='courseTop'>
+                    <view class='courseTime'>
+                      <image src='../../../images/clock.png'></image>
+                      <span>{{item.startTime}} - {{item.endTime}}</span>
+                    </view>
+                    <view class='courseStatus' wx:if="{{item.status<0||item.status==0}}" style='color:#898989;'>已取消</view>
+                      <view class='courseStatus' wx:if="{{item.status==1}}" style='color:#04BD73;'>待上课</view>
+                      <view class='courseStatus' wx:if="{{item.status==2}}" style='color:#898989;'>已完成</view>
+                      <view class='courseStatus' wx:if="{{item.status==6}}" style='color:#898989;'>失约</view>
+                      <view class='courseStatus' wx:if="{{item.status==8}}" style='color:#FF8F4B;'>待支付</view>
+                  </view>
+                  <view class='courseMiddle' style="justify-content: space-between">
+                     <view style="display:flex;align-item:center;">
+                        <view class='courseImg'>
+                        <image src='{{item.pictures}}' mode='aspectFill'></image>
+                         <!-- <text class='level'>{{item.levelStr}}</text> -->
+                      </view>
+                      <view class='courseMess'>
+                        <text>{{item.courseName}}</text>
+                        <text>门店：{{center.name}}</text>
+                        <text>课程：{{item.courseName||'--'}}</text>
+                        <text>场地：{{item.room||'--'}}</text>
+                      </view>
+                     </view>
+                     <view class="trainerMess">
+                       <image src="{{item.personalPortrait||item.trainerPhoto}}"></image>
+                       <text>{{item.trainerName}}</text>
+                     </view>
+                  </view>
+                  <view class='courseBottom' wx:if="{{item.seatEnabled||item.cancelable||item.status==8||(item.status == 2 && !item.rated)}}">
+                      <span wx:if="{{item.seatEnabled}}" bindtap='checkSit' id='{{index}}'  data-photo="{{item.seatPhoto}}">查看座位</span>
+                      <span  bindtap='didTappedFirst' id='{{index}}' data-btnType='cancelBtn' wx:if='{{item.cancelable}}'>取消预约</span>
+                      <span style='font-size:#04BD73' wx:if="{{item.status==8}}" bindtap='didTappedFirst' id='{{index}}' data-btnType='payBtn'>去支付</span>
+                      <span wx:if="{{item.status == 2 && !item.rated}}" bindtap='didTappedFirst' id='{{index}}' data-btnType='evaluateBtn'>评价</span>
+                  </view>
+                </view>
+              </view>
+          </block>
+          <view class='swiper_nomal' wx:if="{{list.length==0}}">
+            <image src='../../../images/noRank.png'></image>
+            <span>暂无培训班课程</span>
+          </view>
+         </scroll-view>
+        </view>
+    </swiper-item>
+  </swiper>
+</view>

@@ -1,0 +1,143 @@
+/* pages/couponOrder/pages/orderList/orderList.wxss */
+.orderList{
+  padding: 40rpx;
+}
+.orderItem{
+  width: 670rpx;
+  height: 234rpx;
+  position: relative;
+  box-shadow:0px 0px 8px 0px rgba(0,0,0,0.1);
+  margin-bottom: 30rpx;
+}
+.ticketBg{
+  width: 670rpx;
+  height: 234rpx;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.ticketTop{
+  width: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.codeImg{
+  width: 60rpx;
+  height: 60rpx;
+  margin-left:12rpx;
+}
+.tipIcons{
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 50rpx;
+  margin-right: 12rpx;
+}
+.ticketMess{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.colorBlock{
+  width: 12rpx;
+  height: 46rpx;
+  background: #A18477;
+  position: absolute;
+  left: 0;
+  top:26rpx;
+}
+.ticketMess{
+  position: absolute;
+  left: 50rpx;
+  top:26rpx;
+}
+.ticketName{
+  color: #303030;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 12rpx;
+}
+.ticketScene{
+  color: #7C7C7C;
+  font-size: 24rpx;
+}
+.codeBox{
+  position: absolute;
+  right: 0;
+  top:26rpx;
+  width: 110rpx;
+  height: 88rpx;
+  background: #F0F0F0;
+  border-top-left-radius: 100rpx;
+  border-bottom-left-radius: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ticketBottom{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 15rpx;
+}
+.tipTxt{
+  color: #7C7C7C;
+  font-size: 24rpx;
+}
+.cantUseImg{
+  width: 112rpx;
+  height: 112rpx;
+  position: absolute;
+  top:25rpx;
+  right: 30rpx;
+}
+.emptyTicket{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.emptyTipBox{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 200rpx;
+}
+.emptyTicketImg{
+  width: 372rpx;
+  height: 410rpx;
+  margin-bottom: 72rpx;
+}
+.ticketTxt{
+  color: #969696;
+  font-size: 32rpx;
+}
+.buyTicketBox{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 34rpx;
+}
+.buyTicketBox>view{
+  width: 278rpx;
+  height: 84rpx;
+  border-radius: 100rpx;
+  background: #00BC71;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buyTicketBox>view>text{
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-right: 20rpx;
+}
+.buyTicketBox>view>image{
+   width: 14rpx;
+   height: 24rpx;
+}

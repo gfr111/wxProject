@@ -1,0 +1,34 @@
+<!--pages/coupon//pages/openShareCard/openShareCard.wxml-->
+<view class="inviteBox">
+    <image src="../../resources/bg.png" class="bgIconBox"></image>
+    <view class="shareContent">
+      <view class='userImageBox'>
+        <image mode='aspectFill' src="{{data.trainee.photo||'../../../../images/default_user.png'}}" class='userImage'></image>
+      </view>
+      <view   class='userName'>{{data.trainee.name}}</view>
+      <span class='shareTxt'>分享{{data.card.name}}给你</span>
+      <view class="cardBox">
+        <image mode='aspectFill' src="{{data.card.cardBg||'../../../../images/teachPic.png'}}"></image>
+        <view class="cardMess">
+          <span class='cardName'>{{data.card.name}}</span>
+          <span class='cardPrice'>{{data.shareLog.receiveCount}}次</span>
+          <span class='line'></span>
+          <span class='effectiveDay'>有效期：{{data.remainEffectiveDays}}天</span>
+        </view>
+      </view>
+      <view class="timeCount" wx:if="{{!data.received&&isRemain&&!isOverdus&&!isRecive}}">领取倒计时：{{countTimeObj.h+':'+countTimeObj.m+':'+countTimeObj.s}}</view>
+      <view class="timeCount" wx:if="{{isOverdus||(isOverdus&&!isRemain)}}">链接失效，已过领取时间</view>
+       <view class="timeCount" wx:if="{{!isRemain&&!isOverdus}}">次卡已被领完</view>
+      <view class="receiveBtn" bindtap="receiveCard" wx:if="{{!data.received&&!isOverdus&&!isRecive&&isRemain}}">立即领取</view>
+      <view class="cantReceiveBtn"  wx:if="{{data.received||isRecive}}">已领取</view>
+      <view class="cantReceiveBtn"  wx:if="{{(!isRemain||isOverdus)&&!data.received&&!isRecive}}">立即领取</view>
+    </view>
+</view>
+<view class="popBox" wx:if='{{showPop}}' catchtap="hide">
+  <view class="receiveBox">
+    <image src="../../resources/price.png" class="priceImage"></image>
+    <span class='receiveTxt'>恭喜你，领取成功！</span>
+    <view class="useBtn" bindtap="toList">立即使用</view>
+    <span class='timeTxt'>{{second}}s 后自动跳转</span>
+  </view>
+</view>

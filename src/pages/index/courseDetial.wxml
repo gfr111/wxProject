@@ -1,0 +1,61 @@
+<!--pages/index/courseDetial.wxml-->
+
+<wxs src="../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+
+<view class='main_view'>
+  <view class='topimg_view'>
+    <image class='img' src='../../images/teachPic.png'></image>
+    <view class='tip_view' bindtap='courseConsume'>消课记录</view>
+  </view>
+  <view class='nameinfo_view'>
+    <view class='name_view'>{{deposits.name}}</view>
+    <view class='instruc_view'>
+      <view class='course_view'>{{deposits.type==1?'私教课':'包月课'}}</view>
+      <view class='course_view'>{{deposits.status==1?'一对一':'一对多'}}</view>
+    </view>
+    <view class='class_bgview'>
+      <view class='title'>剩余{{deposits.type==1?'课时':'天数'}}</view>
+      <view class='sub'>{{deposits.remainCount}}/{{deposits.buyCount}}
+        <span>{{deposits.type==1?'节':'天'}}</span>
+      </view>
+    </view>
+    <view wx:if="{{deposits.electronicContractUrl!=null}}" class='protocal_view' bindtap='lookForProtocal'>
+      <image class='img' src='../../images/elecData.png'></image>
+      <text class='title'>电子合同</text>
+      <view class='look_for'>点击查看</view>
+    </view>
+    <view wx:if="{{deposits.protocolId!=null}}" class='protocal_view' bindtap='lookForAgreement'>
+      <image class='img' src='../../images/elecData.png'></image>
+      <text class='title'>条款协议</text>
+      <view class='look_for'>点击查看</view>
+    </view>
+    <view class='oneline'></view>
+    <view class='teaching_address'>
+      <view class='teaching' bindtap='teaching'>
+        <image class='img' src='../../images/trainerIcon.png'></image>
+        <view class='cont_view'>
+          <text class='title'>授课教练</text>
+          <text class='sub'>{{deposits.courseTrainerCount==null?'---':deposits.courseTrainerCount}}人</text>
+        </view>
+        <image class='next' style='right:54%;' src='../../images/changeRight.png'></image>
+      </view>
+      <view class='address' bindtap='address'>
+        <image class='img' style='margin-left:32rpx;' src='../../images/applyGym.png'></image>
+        <view class='cont_view'>
+          <text class='title'>适用场馆</text>
+          <text class='sub'>{{deposits.usableCenterCount==null?'---':deposits.usableCenterCount}}家</text>
+        </view>
+        <image class='next' src='../../images/changeRight.png'></image>
+      </view>
+    </view>
+    <view class='info_bgview'>
+      <view class='tit'>基本信息</view>
+      <view class='data_view'><text class='data_tit'>课名称</text><text class='data' style='margin-left: 80rpx;'>{{deposits.name}}</text></view>
+      <view class='data_view'><text class='data_tit'>生效日期</text><text class='data'>{{deposits.buyTs==null?'---':dateUtil.formatTime(deposits.buyTs)}}</text></view>
+      <view class='data_view'><text class='data_tit'>有效期至</text><text class='data'>{{deposits.endTs==null?'---':dateUtil.formatTime(deposits.endTs)}}</text></view>
+      <view class='data_view'><text class='data_tit'>课程类型</text><text class='data'>{{deposits.type==1?'私教课':'包月课'}}</text></view>
+      <view class='data_view'><text class='data_tit'>授课方式</text><text class='data'>{{deposits.status==1?'一对一':'一对多'}}</text></view>
+      <view class='data_view'><text class='data_tit'>购课门店</text><text class='data'>{{deposits.buyCourseCenter==null?'---':deposits.buyCourseCenter}}</text></view>
+    </view>
+  </view>
+</view>

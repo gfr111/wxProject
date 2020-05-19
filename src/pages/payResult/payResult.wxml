@@ -1,0 +1,8 @@
+<!--pages/space/paysuccess.wxml-->
+
+<view class='main_view'>
+  <image class='paysuccess_icon' src='/images/shopSuccess.png'></image>
+  <view class='paysuccess_title'>付款成功</view>
+  <view class='pay_info' bindtap='goMain'>查看会员卡</view>
+  <view class='back_view' bindtap='goCourse'>去预约</view>
+</view>

@@ -1,0 +1,26 @@
+<view class="collageMain">
+   <view class='collageList' wx:for="{{collageList}}">
+      <view class='collageListTop'>
+         <text class='collageTime'>  {{item.payTs}}</text>
+         <text class='collageTypeGreen'>{{item.statusStr}}</text>  
+      </view>
+      <!--  url='' -->
+      <view class='collageListCenter clearfix'>
+       <image src='{{item.bgImage}}' class='collagePic' wx:if="{{item.bgImage}}"></image>
+        <image src='../../../images/StoredvalueCard.jpg' class='collagePic' wx:if="{{item.objectType==1&&!item.bgImage}}"></image>
+        <image src='../../../images/teachPic.png' class='collagePic' wx:if="{{(item.objectType==2||item.objectType==3)&&!item.bgImage}}"></image>
+       <view class="mess">
+          <text class='collageCarName'>{{item.objectName}}</text>
+          <text style="margin-top:50rpx;color:#303030;font-size:28rpx;font-weight:600;">￥{{item.payAmount}}</text>
+       </view>
+      </view>
+      <view class='collageListBottom clearfix' >
+           <button open-type="share" data-id='{{item.id}}' wx:if="{{item.status==1}}" class="orderBtn" style="color:#00BC71;">邀请成团</button>
+           <button  data-id='{{item.id}}' bindtap="toDetail" class="orderBtn"  style="color:#303030;border:1px solid #E5E5E5;">订单详情</button>
+      </view>
+   </view>
+    <view class='noCollage' wx:if="{{collageList.length==0}}">
+      <image src='../../../images/noOrders.png'></image>
+      <text>暂无数据</text>
+   </view> 
+</view>

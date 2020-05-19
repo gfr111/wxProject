@@ -1,0 +1,54 @@
+<!--pages/couponOrder/pages/receiveNewCoupon/receiveNewCoupon.wxml-->
+<wxs src="../../../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<view class="couponDetail">
+  <view class="couponBox">
+     <view class="couponMessBox">
+       <view class="centerBox">
+         <image src="{{ticket.centerInfo.photo||'../../../../images/default_center_icon.png'}}" mode='aspectFill'></image>
+         <text>{{ticket.centerInfo.name}}</text>
+       </view>
+       <view class="messBox">
+         <view class="couponName">{{ticket.name}}</view>
+         <view class="price">
+           <text>面值</text>
+            <text>{{ticket.type==1?ticket.discount:ticket.discount*10+'折'}}</text>
+         </view>
+         <view class='intro'>订单满{{ticket.amountLimit}}可用{{ticket.type==1?'':ticket.maxDeductionAmount?'，最高抵扣'+ticket.maxDeductionAmount+'元':''}}</view>
+       </view>
+       <text class="leftRadius"></text>
+       <text class="rightRadius"></text>
+       <image src="../../resources/get.png" class="getIcon" wx:if="{{!ticket.canReceived&&ticket.received}}"></image>
+     </view>
+     <view class="btnBox">
+       <text class="receiveBtn" wx:if="{{ticket.canReceived}}" bindtap="recieveCoupon">立即领取</text>
+       <text class="alreadyReceive" bindtap="toTicket" wx:else >查看我的优惠券</text>
+     </view>
+     <view class="useBox">
+       <view class="useItem">
+          <text>适用商品</text>
+          <text>{{ticket.bizType}}</text>
+       </view> 
+        <view class="useItem">
+          <text>适用门店</text>
+          <text>{{ticket.supportCenters}}</text>
+       </view> 
+        <view class="useItem" wx:if="{{ticket.useTimeType==1}}">
+          <text>开始时间</text>
+          <text>{{dateUtil.getDates(ticket.useStartTs)}}</text>
+       </view> 
+        <view class="useItem" wx:if="{{ticket.useTimeType==1}}">
+          <text>结束时间</text>
+          <text>{{dateUtil.getDates(ticket.useEndTs)}}</text>
+       </view> 
+          <view class="useItem" wx:if="{{ticket.useTimeType==2}}">
+          <text>使用时间</text>
+          <text>领取后{{ticket.validDays}}天有效</text>
+       </view> 
+        <view class="useItem">
+          <text>使用须知</text>
+          <text>{{ticket.content}}</text>
+       </view> 
+     </view>
+  </view>
+</view>
+

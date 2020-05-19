@@ -1,0 +1,10 @@
+<import src="../../../templates/basicCell.wxml" />
+<import src="reservationDetailInfoSection.wxml" />
+<view class='index'>
+ 
+  <template is='reservationDetailInfoSection' data='{{name:info.courseName, date:info.date,time:info.courseTime,trainer:info.trainerName,room:info.room}}'></template>
+  <view class='basicSection-item'>
+   <template is='basicCell' data='{{title:"会员卡", value:info.cardName, next:false}}'></template>
+   <template is='basicCell' data='{{title:"座位", value:info.seats ? info.seats:"--", next:false}}'></template>
+  </view>
+</view>

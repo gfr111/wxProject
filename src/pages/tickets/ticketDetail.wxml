@@ -1,0 +1,31 @@
+<!--pages/tickets/ticketDetail.wxml-->
+<view class='box'>
+  <view class='main' wx:if="{{showTicket}}" >
+   <image src='../../images/ticketCar.png' class='bgs'></image>
+   <image mode='aspectFill' src="{{qrCode}}" class='qrcode'></image>
+   <view class='code'>NO.{{datas.couponInstance.couponNo}}</view>
+   <view class='acvitity-time' wx:if="{{datas.couponType==2}}">活动时间：{{datas.activity.startDate}}至{{datas.activity.endDate}}</view>
+   <view class='acvitity-address' wx:if="{{datas.couponType==2&&datas.activity.address!=null}}">活动地点：{{datas.activity.address}}</view>   
+  <!-- <navigator url='../activity/activity?id={{datas.activity.id}}' class='activity-detail' wx:if="{{datas.couponType==2}}">查看活动详情</navigator> -->
+    <view bindtap='actInfo' class='activity-detail' wx:if="{{datas.couponType==2}}">查看活动详情</view>
+   <view class='largess' wx:if="{{datas.couponType==2}}" bindtap='showModel' >赠送活动券给好友</view>
+    <view class='usertime' wx:if="{{datas.couponType==1}}">可使用次数：{{datas.remainUseCount}}次</view>   
+   <view class='tip' bindtap='showModel' wx:if="{{datas.couponType==1}}">次数用完了？试试分享给好友吧</view>
+   <view class='largess' bindtap='showModel' wx:if="{{datas.couponType==1}}">分享给好友</view>
+</view>
+<view class='chooseNum' wx:if="{{!showTicket}}">
+  <view class='opacityBack'></view>
+  <view class='center'>
+    <view class='center-top'>
+      <text style='color:#030303;font-size:34rpx;'>选择分享数量</text><text style='float:right;font-size:40rpx;color:#d8d8d8;' bindtap='dispire'>x</text>
+    </view>
+     <view class="tui-content">
+        <view class="tui-slider-head"></view>
+        <view class="tui-slider-box">
+         <slider bindchange="changeSlider" value="{{slider}}"  min="1" max="{{datas.remains}}" show-value/>
+        </view>
+     </view>
+     <button open-type="share" class='sharing'>分享给好友</button>
+  </view>
+</view>
+</view>

@@ -1,0 +1,36 @@
+<!--pages/confirmCourse/confirmCourse.wxml-->
+<!--pages/checkin/checkin.wxml-->
+<wxs src="../../utils/uiUtils/imageUrlUtil.wxs" module="imageUrlUtil"></wxs>
+<view style='background-color:white;height:100%'>
+  <view class="userinfo" bindtap="tomine">
+
+    <image class="userinfo-avatar" src="{{imageUrlUtil.getDefaultAvatar(info.traineePhoto)}}" mode="aspectFill"></image>
+    <view class='rightBox'>
+      <view class='peopleMess'>
+        <text class="userinfo-nickname">{{info.traineeName}}</text>
+        <text class="center-name">{{info.traineePhone}}</text>
+      </view>
+    </view>
+    <text class="goto"></text>
+  </view>
+  <view>
+    <view wx:if="{{info.result==1}}" class='tipTitle'>
+      <image class='tipImage' src='/images/confirmSuccess.png'></image>确认成功
+      <!-- <text >{{greet}}</text> -->
+    </view>
+    <view wx:else class='tipTitle'>
+      <image class='tipImage' src='/images/checkError.png'></image>确认失败
+      <!-- <text >{{greet}}</text> -->
+    </view>
+    <view class='tipContent'>
+      <text wx:if="{{info.result==1}}">时间：{{info.startTs}}</text>
+      <text wx:else>{{info.massage}}</text>
+    </view>
+
+    <view class='content'>
+      <!-- <image style='height:260px;width:260px' src='{{info.result==1?"/images/courseSuccess.png":"/images/courseFail.png"}}'></image> -->
+      <view style='margin-top:38px;font-size:14px;color:#808080;'>如有疑问请联系前台</view>
+    </view>
+
+  </view>
+</view>

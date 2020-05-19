@@ -1,0 +1,60 @@
+/* pages/distribution//pages/posterList/posterList.wxss */
+page{
+  background-color: #ffffff;
+}
+.nullBox{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nullIcon{
+  width: 372rpx;
+  height: 420rpx;
+  margin-bottom: 72rpx;
+  margin-top:27%;
+
+}
+.nullTxt{
+  color: #969696;
+  font-size: 32rpx;
+}
+.posterList{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30rpx;
+}
+.posterItem{
+  width: 335rpx;
+  height: 532rpx;
+  position: relative;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+.posterItem:nth-of-type(even){
+  margin-right: 0;
+}
+.posterImg{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 335rpx;
+  height: 532rpx;
+  margin-right: 20rpx;
+  border-radius: 16rpx;
+}
+.posterMess{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 16rpx;
+  color: #ffffff;
+}
+.posterNname{
+  font-size: 28rpx;
+  margin-bottom: 6rpx;
+}
+.posterTime{
+  font-size: 20rpx;
+}

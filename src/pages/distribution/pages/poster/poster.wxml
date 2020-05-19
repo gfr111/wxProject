@@ -1,0 +1,21 @@
+<!--pages/distribution//pages/poster/poster.wxml-->
+<view class="posterBox">
+  <view class='canvas'>
+    <painter  palette="{{template}}" bind:imgOK="onImgOK" />
+  </view>
+  <view class="btnBox" wx:if="{{imagePath!=''}}">
+    <button class="saveBox" wx:if="{{isauthSetting}}"  style="background:#2E7EE6;" bind:tap='saveImage'>
+      <image src="../../images/save.png"></image>
+      <span>保存图片</span>
+    </button>
+    <button class="saveBox" wx:else open-type="openSetting"  style="background:#2E7EE6;" bindopensetting='getopensetting'>
+      <image src="../../images/save.png"></image>
+      <span>保存图片</span>
+    </button>
+     <button class="saveBox" style="background:#00BC71;" open-type="share">
+      <image src="../../images/share.png"></image>
+      <span>分享好友</span>
+    </button>
+  </view>
+</view>
+

@@ -1,0 +1,99 @@
+<view class="collageDetailMain">
+  <view class='collageDetailTop clearfix' bindtap='gotoCarDetail' wx:if="{{goods.cardType>2}}">
+    <image src='../../../images/card_small_3.jpg' wx:if="{{goods.cardType==3}}" class='detailTopImg'></image>
+    <image src='../../../images/card_small_4.jpg' wx:if="{{goods.cardType==4}}" class='detailTopImg'></image>
+    <image src='../../../images/card_small_5.jpg' wx:if="{{goods.cardType==5}}" class='detailTopImg'></image>
+    <view style='margin-bottom:10rpx;'>
+      <text class='detailTopName'>{{goods.objectName}}</text>
+      <text class='collageNum'>{{goods.personNumber}}人团</text>
+    </view>
+    <view>
+      <text class='collageNewPriceIcon'>￥</text>
+      <text class='collageNewPrice'>{{goods.price}}</text>
+      <text class='collageOldPrice'>￥{{goods.standardPrice}}</text>
+    </view>
+    <image src='../../../images/next.png' class='detailTopRight'></image>
+  </view>
+  <!-- 课程拼团 -->
+    <view class='collageDetailTop clearfix collageCourseDetailTop' bindtap='gotoCarDetail' wx:else style="position:relative">
+      <image src='../../../images/teachPic.png' class='detailTopImg'></image>
+      <view style='margin-bottom:70rpx;'>
+        <text class='detailTopName'>{{goods.objectName}}</text>
+        <text class='collageNum'>{{goods.personNumber}}人团</text>
+      </view>
+      <view>
+        <text class='collageNewPriceIcon'>￥</text>
+        <text class='collageNewPrice' style="margin-right:0;">{{goods.price}}</text>
+        <text style="color:#00bc71;font-size:26rpx">{{goods.cardType==1?'/'+goods.objectCount+'节':'/'+goods.effectiveDays+'天'}}</text>
+        <text class='collageOldPrice' style="margin-left:20rpx;">￥{{goods.standardPrice}}</text>
+      </view>
+
+      <image src='../../../images/next.png' class='detailTopRight' style="top:110rpx;"></image>
+    </view>
+  <view class='joinCollage' wx:if="{{showCollage}}">
+    <text class='joinCollageTitle'>还差{{goods.personNumber-goods.realNumber}}人，快来参加我的团</text>
+    <view class='joinCollageTime'>
+      <text class='lineLeft'></text>
+      <text wx:if="{{goods.status!=1}}">剩余0天0时0分</text>
+      <text wx:else>剩余{{days}}天{{hours}}时{{minutes}}分</text>
+      <text class='lineRight'></text>
+    </view>
+    <view class='joinCollagePicList clearfix'>
+      <block wx:for="{{goods.personImg}}" wx:key="index">
+        <image src='{{item}}' class='photos'></image>
+      </block>
+      <block wx:for="{{remain}}" wx:key="index">
+        <image src='../../../images/defaultAvatar.png' class='photos'></image>
+      </block>
+      <image src='../../../images/collageSuccess.png' class='collageSuccess' wx:if="{{goods.status==2}}"></image>
+      <image src='../../../images/collageError.png' class='collageSuccess' wx:if="{{goods.status==3}}"></image>
+    </view>
+  </view>
+
+  <view class='moreCollage' wx:if="{{status==2&&other.length>0}}">
+    <text class='moreCollageTitle'>小伙伴们正在拼团，可直接参与</text>
+    <view class="right-item">
+      <block wx:for="{{other}}" wx:key="{{item.id}}">
+        <view class='content-item'>
+          <view class='collageMess'>
+            <text>{{item.initiatorName}}</text>
+            <text>还差<text style='color:#00BC71;display:inline-block;'>{{item.groupNumber-item.realNumber}}</text>人拼成</text>
+          </view>
+          <navigator url='/pages/collage/joinOtherCollage/joinOtherCollage?id={{item.id}}' class='goToCollage' hover-class="none">
+            <view>
+              <text>立即参团</text>
+            </view>
+          </navigator>
+
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class='collageStep'>
+    <text class='stepTittle'>拼团步骤</text>
+    <view>
+      <text>1.点击“立即开团”下单支付，发起拼团</text>
+      <text>2.点击“立即参团”下单支付，参与拼团</text>
+      <text>3.支付成功，邀请好友一起参团</text>
+      <text>4.达到人数，拼团成功，商品自动加入账户内</text>
+      <text>注：若未成团，款项100%退回</text>
+    </view>
+  </view>
+
+  <block wx:if="{{status==1}}">
+    <view class='inviteColage' wx:if="{{showCollage}}" bindtap='joinCollage'>立即参团</view>
+    <view class='newColage' wx:if="{{!showCollage}}">
+      <text style='color:#ABABAB;'>本次拼团已结束</text>
+      <text class='collageClose'>立即开团</text>
+    </view>
+  </block>
+  <block wx:else>
+    <!-- <view class='inviteColage' wx:if="{{cars.status>1}}" bindtap='joinCollage'>再开一团</view> -->
+    <navigator class='inviteColage' wx:if="{{goods.status>1&&goods.cardType>2}}" url='/pages/cardsPurchaseOnline/collageCarDetail?id={{goods.groupBookingId}}&pageTip=cards'>再开一团</navigator>
+    <navigator class='inviteColage' wx:if="{{goods.status>1&&goods.cardType<=2}}" url='/pages/courseBuyOnline/availableCourseDetail?id={{goods.groupBookingId}}&pageTip=courses'>再开一团</navigator>
+
+    <button open-type="share" wx:if="{{goods.status<=1}}" class='inviteColage'>邀请好友开团</button>
+  </block>
+  <view class='returnIndex' bindtap='returnToIndex' wx:if="{{isShare}}">回到首页</view>
+</view>

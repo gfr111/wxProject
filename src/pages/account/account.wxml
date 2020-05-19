@@ -1,0 +1,28 @@
+<!--pages/account/account.wxml-->
+<view class='changeAccountBox'>
+  <view class='phoneBox'>
+     <text>切换至</text>
+     <view class='phone'>
+       <image src='../../images/phoneImg.png'></image>
+       <input placeholder='请输入手机号' placeholder-class='placeholder' type='number' bindinput='getPhone'></input>
+     </view>
+      <view class='code'>
+       <view class='codeBox'>
+          <text>验证码</text>
+          <text bindtap='sendCode'>{{codeButtonTitle}}</text>
+       </view>
+       <view class='inputBox'>
+         <image src='../../images/codeImg.png'></image>
+         <input placeholder='请输入验证码' placeholder-class='placeholder' type='number' bindinput='getCode'></input>
+       </view>
+     </view>
+  </view>
+  <view class='sumbuitBox' wx:if="{{isSumbuit}}">
+     <text>确定</text>
+  </view>
+  <view class='sumbuit' bindtap='change' wx:else>
+     <text>确定</text>
+  </view>
+</view>
+
+

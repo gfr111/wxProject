@@ -1,0 +1,161 @@
+.tab {
+  float: left;
+  text-align: center;
+  padding: 10rpx 0;
+  font-size: 32rpx;
+  margin-right: 80rpx;
+  padding-bottom: 24rpx;
+  color: #999;
+}
+
+.topTabSwiper {
+  zoom: 1;
+  padding-right: 27%;
+  padding-left: 48rpx;
+  background: #fff;
+}
+
+.topTabSwiper:after {
+  content: "";
+  clear: both;
+  display: block;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.tabBorer {
+  border-bottom: 2px solid #333;
+  color: #303030;
+  font-weight: 600;
+}
+
+.swiper {
+  width: 100%;
+  box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.swiper_con {
+  text-align: center;
+  width: 92%;
+  height: 100%;
+  background: #f7f8f9;
+  padding: 30rpx;
+}
+
+.nocarBox {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.nocarBox>image {
+  width: 548rpx;
+  height: 468rpx;
+  margin-top: 130rpx;
+  margin-bottom: 60rpx;
+}
+
+.nocarBox>span {
+  color: #969696;
+  font-size: 32rpx;
+}
+
+.cardList {
+  width: 690rpx;
+  height: 240rpx;
+  position: relative;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 14rpx;
+  margin-bottom: 30rpx;
+}
+
+.cardListBox {
+  padding-bottom: 30rpx;
+}
+
+.cardList .cardImg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 14rpx;
+}
+
+.cardName {
+  position: absolute;
+  left: 40rpx;
+  top: 40rpx;
+  color: #f3d2ae;
+  font-size: 40rpx;
+  width: 500rpx;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tobuy {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx;
+  background: rgba(0, 188, 113, 1);
+  color: #fff;
+}
+
+.cardLimit {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 24rpx;
+}
+
+.cardState {
+  position: absolute;
+  right: 0;
+  top: 40rpx;
+  display: flex;
+  padding-left: 18rpx;
+  padding-right: 10rpx;
+  font-size: 24rpx;
+  color: rgba(215, 215, 215, 1);
+  background: rgba(55, 56, 60, 1);
+  border-top-left-radius: 100rpx;
+  border-bottom-left-radius: 100rpx;
+  height: 40rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardList .invaild {
+  width: 120rpx;
+  height: 72rpx;
+  position: absolute;
+  left: 40rpx;
+  bottom: 20rpx;
+}
+.shareBtn{
+  width: 80rpx;
+  height: 34rpx;
+  border-radius: 12rpx;
+  background: #00BC71;
+  color: #ffffff;
+  border:1px solid #00BC71;
+  font-size: 24rpx;
+  margin-left: 20rpx;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  left: 20rpx;
+  top: 108rpx;
+
+}

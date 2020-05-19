@@ -1,0 +1,34 @@
+
+<cover-view class='tipBox' wx:if="{{showTip}}">
+    <cover-view class='tipTxt'>使用人脸识别需要场馆有设备和软件支持，请进一步确认。</cover-view>
+    <cover-image src='../../images/uploadCancel.png' bindtap='hideTip' class='tipImg'></cover-image>
+</cover-view>
+<camera mode="normal" device-position="{{positions}}" flash="off" binderror="error" style="width: 100%; height: 60%;"> 
+  <cover-view class="controls">      
+           <cover-image class="img" src="../../images/compareImg.png"/>  
+  </cover-view>  
+</camera>
+<view class='takePhotoBox'>
+  <view class='compareTitle'>请遵照要求进行人脸比对</view>
+  <view class='considerationBox'>
+       <view>1.请确认由本人亲自操作，与上传照片是同一个人</view>
+       <view>2.将脸置于提示框内，拍一张照片即可。</view>
+  </view>
+  <view style='text-align:center;'>
+    <image src='../../images/takePhotoBtn.png' class='takeBtn' bindtap="takePhoto"></image>
+  </view>
+</view>
+<cover-view class='popBox' wx:if='{{showPop}}'>
+   <cover-view class='contentBox' wx:if='{{status==1}}'>
+       <cover-image src='../../images/checkSuccess.png' class='statusImg'></cover-image>
+       <cover-view class='checkedTxt'>恭喜你，认证成功！</cover-view>
+       <cover-view class='toMineBtn' bindtap='toMineEvent'>确认</cover-view>
+       <cover-view class='autoJump'>{{second}}s 后自动跳转</cover-view>
+   </cover-view>
+   <cover-view class='contentBox' wx:if='{{status==2}}'>
+       <cover-image src='../../images/checkError.png' class='statusImg'></cover-image>
+       <cover-view class='checkedTxt'>抱歉，认证失败！</cover-view>
+       <cover-view class='toMineBtn' bindtap='againProbate'>重新认证</cover-view>
+       <cover-view class='autoJump' style='color:#00BC71;' bindtap='modifyPhoto'>修改照片</cover-view>
+   </cover-view>
+</cover-view>

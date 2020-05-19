@@ -1,0 +1,124 @@
+<!--pages/index/course.wxml-->
+
+
+<view class='main_view'>
+  <view class='nav_view'>
+    <view class='nav_bgview  {{currentData == 0 ? "select" : ""}}' data-current="0" bindtap='seledtCurrent'>有效课</view>
+    <view class='nav_bgview  {{currentData == 1 ? "select" : ""}}' data-current="1" bindtap='seledtCurrent'>失效课</view>
+  </view>
+  <swiper current="{{currentData}}" class='swiper' style="height:1500rpx;" duration="300" bindchange="swiperChange" style="height:{{swiperHeight}}rpx;">
+    <swiper-item>
+      <view class='swiper_bgview'>
+        <view class='swiper_nomal' wx:if="{{effectiveClass.length==0}}">
+          <image src='../../images/noRank.png'></image>
+          <span>暂无私教课</span>
+        </view>
+        <scroll-view scroll-y style="height:{{swiperHeight}}rpx;" wx:else>
+          <view class='class_listview'>
+            <view class='class_list' wx:for="{{effectiveClass}}" wx:key="" bindtap='toCourseDeatail' data-seleinfo='{{item}}'>
+              <image src='../../images/teachPic.png' mode='aspectFill' class='class_img'></image>
+              <span class="class_name">{{item.name}}</span>
+              <span class="class_limit" wx:if="{{item.type==1}}">总课时：{{item.buyCount||'--'}}节</span>
+              <span class="class_limit left_view" style="margin-left: 164rpx;" wx:if="{{item.type==1}}">剩余课时：{{item.remainCount||'--'}}节</span>
+              <span class="class_limit" wx:if="{{item.type==2}}">总天数：{{item.buyCount}}天</span>
+              <span class="class_limit left_view" wx:if="{{item.type==2}}">剩余：{{item.remainCount}}天</span>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+
+    <swiper-item>
+      <view class='swiper_bgview'>
+        <view class='swiper_nomal' wx:if="{{failureClass.length==0}}">
+          <image src='../../images/noRank.png'></image>
+          <span>暂无私教课</span>
+        </view>
+        <scroll-view scroll-y style="height:{{swiperHeight}}rpx;" wx:else>
+          <view class='class_listview'>
+            <view class='class_list' wx:for="{{failureClass}}" wx:key="" bindtap='toCourseDeatail' data-seleinfo='{{item}}'>
+              <image src='../../images/teachPic.png' mode='aspectFill' class='class_img'></image>
+              <span class="class_name">{{item.name}}</span>
+              <image src='../../images/failureimg.png' class='invaild'></image>
+            </view>
+          </view>
+        </scroll-view>
+
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <wxs src="../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<view class='index'>
+  <view class='nullOrder' wx:if="{{course.length==0}}">
+    <image src='../../images/noOrders.png'></image>
+    <text>暂无私教课</text>
+  </view>
+  <swiper class='swiper-card' duration="500" interval="2000" previous-margin="45rpx" next-margin="45rpx" bindchange="changeCard">
+    <block wx:for="{{course}}" wx:key="{{item.id}}">
+      <swiper-item>
+        <view class='swiper-item-view three'>
+          <image src='../../images/teachPic.png'></image>
+          <view class='courseTop'>
+            <text class='courseName'>{{item.name}}</text>
+          </view>
+          <view class='courseBottom'>
+            <view class='bottomLeft'>
+              <text style='display:block;'>{{item.remainCount}}</text>
+              <text style='display:block;'>剩余{{item.type==1?'课时':'天数'}}</text>
+            </view>
+            <view class='bottomRight'>
+              <text style='display:block;'>{{item.buyCount}}</text>
+              <text style='display:block;'>总{{item.type==1?'课时':'天数'}}</text>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+
+  </swiper>
+
+  <view class='depositList' wx:if="{{course.length>0}}">
+    <view class='depositTitle'>
+      合同列表
+    </view>
+
+
+    <view class='depositItem' wx:for="{{selectCourse.deposits}}">
+      <view class='itemTitle'>
+        <view>
+          <text style='font-size:24px;'>{{item.remainCount}}</text>
+          <text style='font-size:13px;'>/{{item.buyCount}}{{item.type==1?'节':'天'}}</text>
+        </view>
+
+        <view class='itemStatus' wx:if="{{item.status==0}}">已过期</view>
+      </view>
+      <view class='itemDetail'>
+        <view class='detailTitle'>购课信息：</view>
+        <view class='detailBuyInfo'>
+          <view class='detailContent' style='margin-right:40px;'>
+            <image src='../../images/wallet.png'></image>{{item.price}}元</view>
+          <view class='detailContent'>
+            <image src='../../images/clock.png'></image>{{dateUtil.formatTime(item.buyTs)}}</view>
+        </view>
+        <view class='detailTitle'>有效日期/上课教练：</view>
+        <view class='detailContent'>
+          <image src='../../images/wallet.png'></image>{{item.startTs==null?'':dateUtil.formatTimec(item.startTs)}}-{{item.endTs==null?'':dateUtil.formatTimec(item.endTs)}}</view>
+        <view class='detailContent'>
+          <image src='../../images/courseTrainer.png'></image>{{item.trainerName==null?'-':item.trainerName}}</view>
+      </view>
+    </view>
+  </view>
+</view> -->

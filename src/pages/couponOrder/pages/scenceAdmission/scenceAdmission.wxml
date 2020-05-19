@@ -1,0 +1,49 @@
+<!--pages/couponOrder/pages/admissionCode/admissionCode.wxml-->
+<wxs src="../../../../utils/uiUtils/dateUtil.wxs" module="dateUtil"></wxs>
+<view class='codeBox'>
+  <view class='admissionCodeBox'>
+      <view class='ceterBox'>
+        <image src='{{codeMess.photo||"../../resources/defaultImg.png"}}' class='centerImg'></image>
+        <text class='centerName'>{{codeMess.name}}</text>
+      </view>
+      <view class='ticketBg'>
+         <image src='../../resources/ticketBg.png' class='ticketBgIcon'></image>
+         <view class='ticketMess'>
+            <view class='ticketTop'>
+              <view class='coupon'style='width:50%;'>
+                <text>票券名称</text>
+                <text>{{orderMess.ticketName}}</text>
+              </view>
+              <view class='coupon' style='width:70%;'>
+                <text>场次</text>
+                <text>{{orderMess.timesName}}</text>
+              </view>
+            </view>
+            <view class='ticketTop'>
+              <view class='coupon'  style='width:50%;'>
+                <text>使用时间</text>
+                <text>{{orderMess.startTime}}-{{orderMess.endTime}}</text>
+              </view>
+              <view class='coupon' wx:if='{{orderMess.usageType==1}}' style='width:70%;'>
+                <text>有效期</text>
+                <text>{{orderMess.timeDate}}</text>
+              </view>
+              <view class='coupon' wx:if='{{orderMess.usageType==2}}' style='width:70%;'>
+                <text>有效期</text>
+                <text>{{dateUtil.formatTimes(orderMess.effectiveStartDate)}}-{{dateUtil.formatTimes(orderMess.effectiveEndDate)}}</text>
+              </view>
+            </view>
+            <view class='weekdayList' wx:if='{{orderMess.usageType==2}}'>
+                 <text class='weekDayItem' wx:for="{{weekDay}}">{{item}}</text>       
+            </view>
+         </view>
+         <view class='ticketCodeBox'>
+            <view class='ticketCode'>
+              <image src='{{codeMess.qr}}'></image>
+              <text>NO. {{orderMess.writeOffCode}}</text>
+            </view>
+         </view>
+         <text class='checkDetailBtn'>凭借二维码即可扫码入场</text>
+      </view>
+  </view>
+</view>

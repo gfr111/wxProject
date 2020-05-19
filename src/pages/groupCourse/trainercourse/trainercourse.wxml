@@ -1,0 +1,45 @@
+<!--pages/groupCourse/trainercourse/trainercourse.wxml-->
+<view>
+  <view  class='header' bindtap="back">
+    <view>
+      <image mode="aspectFill" src='{{trainer.personalPortrait||trainer.photo}}'></image>
+      <text> {{trainer.nickName||trainer.name}}</text>
+    </view>
+    <!-- <text></text> -->
+  </view>
+  <view class='content'>
+      <view wx:if="{{clubType==4}}" style='height:20rpx'></view>
+    <view class='title' wx:if="{{clubType!=4}}">
+      <text wx:if="{{clubType!=4}}">我的课程</text>
+      <navigator wx:if="{{clubType!=4}}" url='/pages/index/course' hover-class='none'>更多</navigator>
+    </view>
+    <view wx:if="{{course.length>0}}" class="item {{course.length>3&&course.length-1==index?'morebtn':''}}" wx:for="{{course}}" wx:key="index">
+      <view>
+        <image mode='aspectFill' src='{{item.pictures}}'></image>
+
+        <view>
+          <text>{{item.courseName}}</text>
+          <text style="margin-top:50rpx;">{{item.duration+'分钟'}}</text>
+          <text wx:if="{{clubType!=4}}">{{'剩余: '+item.availableCount+(item.cardType==2 ? '天':'节')}}</text>
+        </view>
+      </view>
+
+      <navigator url='/pages/groupCourse/groupOrder?courseId={{item.courseId}}&trainerId={{trainer.id}}' wx:if="{{clubType!=4}}">去预约</navigator>
+  <navigator url='/pages/officeReservation/submitReversation?courseId={{item.courseId}}&trainerId={{trainer.id}}' wx:if="{{clubType==4}}">去预约</navigator>
+    </view>
+    <view wx:if="{{course.length==0||course==null}}" class='noClass'>
+      <image src='../../../images/noRank.png'></image>
+      <text>暂无可预约课程</text>
+    </view>
+
+
+    <navigator class="btn " url='/pages/groupCourse/clubcourse/clubcourse?trainerId={{trainer.id}}&trainerName={{trainer.nickName}}' wx:if="{{clubType!=4}}">
+      <text>购买更多课程</text>
+      <text class='togo'></text>
+    </navigator>
+
+  </view>
+
+
+</view>
+

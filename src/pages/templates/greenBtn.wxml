@@ -1,0 +1,5 @@
+<template name='greenBtn'>
+<view class='greenBtn-bg'>
+<view class='greenBtn {{disabled ? "greenBtn-opacity" : "" }}' bindtap='didTapGreenBtn'>{{title}}</view>
+</view>
+</template>

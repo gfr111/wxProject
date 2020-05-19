@@ -1,0 +1,168 @@
+/* pages/shop/submitOrder/submitOrder.wxss */
+
+page {
+  background: #f7f8f9;
+}
+
+.allgoods {
+  padding: 0 30rpx;
+  background: #fff;
+}
+
+.goodsitem {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 30rpx 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ischangepay {
+  color: #fff;
+  font-size: 32rpx;
+  padding: 14rpx 112rpx;
+  background: #00bc71;
+  border-radius: 100rpx;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.goodsitem image {
+  display: inline-block;
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 10rpx;
+  border: 2rpx solid rgba(242, 242, 242, 1);
+  margin-right: 30rpx;
+}
+
+.goodsitem>view {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  font-size: 28rpx;
+  height: 128rpx;
+}
+
+.goodsitem>view>text:first-child {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #303030;
+}
+
+.goodsitem>view>text:nth-child(2) {
+  color: #fa4a11;
+}
+
+.goodsitem>view>text:last-child {
+  color: #898989;
+  font-size: 24rpx;
+}
+
+.money {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 30rpx;
+  margin-top: 20rpx;
+}
+
+.money>text {
+  color: #303030;
+  font-size: 28rpx;
+}
+
+.money>text:last-child {
+  color: #fa4a11;
+}
+
+.goto {
+  width: 16rpx;
+  height: 16rpx;
+  display: inline-block;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  transform: rotate(45deg);
+  margin-left: 20rpx;
+}
+
+.bottom {
+  background: #fff;
+  border-top: 1px solid #f7f8f9;
+  position: fixed;
+  bottom: 0;
+  padding: 20rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  color: #070707;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.bottom>view>text:first-child {
+  color: #383838;
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+
+.bottom>view>text:nth-child(2) {
+  font-size: 28rpx;
+  font-weight: 500;
+  margin-right: 6rpx;
+}
+
+.pay {
+  color: #fff;
+  font-size: 32rpx;
+  padding: 14rpx 112rpx;
+  background: #00bc71;
+  border-radius: 100rpx;
+}
+.rightIcon{
+  width: 32rpx;
+  height: 32rpx;
+}
+.itemName{
+   color: #303030;
+   font-size: 28rpx;
+}
+.numBox{
+  display: flex;
+  align-items: center;
+
+}
+.numBox>input{
+  width: 72rpx;
+  text-align: center;
+}
+.priceBox{
+  background: #ffffff;
+  padding: 30rpx;
+  margin-top:20rpx;
+}
+.priceItem{
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.priceItem:last-child{
+  margin-bottom: 0;
+}
+.priceItem>span:nth-child(1){
+  color: #303030;
+  font-size: 28rpx;
+}
+.priceItem>span:nth-child(2){
+    color: #EE0100;
+  font-size: 28rpx;
+}

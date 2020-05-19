@@ -1,0 +1,118 @@
+/* pages/tickets/ticketDetail.wxss */
+.box{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.main{
+  width: 92%;
+  margin:auto;
+  margin-top: 60rpx;
+  position: relative;
+}
+.bgs{
+   width: 100%;
+   height:852rpx;
+   position: absolute;
+   left: 0;
+   top:0;
+} 
+.qrcode{
+  position: absolute;
+  width: 520rpx;
+  height: 520rpx;
+  top:34rpx;
+  left:86rpx;
+}
+.code{
+  font-size: 48rpx;
+  position: absolute;
+  top:554rpx;
+  left:240rpx;
+}
+.acvitity-time{
+  font-size: 28rpx;
+  position: absolute;
+  top:686rpx;
+  left:104rpx;
+}
+.acvitity-address{
+  font-size: 28rpx;
+  position: absolute;
+   top:743rpx;
+  left:104rpx;
+}
+.activity-detail{
+  position: absolute;
+  font-size: 28rpx;
+  color: #00BC71 ;
+  left:264rpx;
+  top:790rpx;
+}
+.largess{
+  width: 100%;
+  height: 100rpx;
+  color: #fff;
+  background: #00BC71;
+  border-radius: 52rpx;
+  font-size: 34rpx;
+  line-height: 100rpx;
+  text-align: center;
+  position: absolute;
+  top:910rpx;
+  left:0;
+}
+.usertime{
+  font-size: 34rpx;
+  position: absolute;
+  left:220rpx;
+  top:706rpx;
+}
+.tip{
+  font-size: 28rpx;
+  color: #999999;
+  position: absolute;
+  left:150rpx;
+  top:768rpx;
+}
+.chooseNum{
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0, 0, 0, 0.6);
+}
+.center{
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  width: 566rpx;
+  height: 620rpx;
+  background: #fff;
+  border-radius: 4rpx;
+  padding-left:40rpx;
+  padding-right: 40rpx;
+   z-index: 1;
+}
+.center-top{
+height: 90rpx;
+width:100%;
+border-bottom: 2rpx solid #d8d8d8;
+line-height: 90rpx;
+}
+.tui-slider-box{
+ height: 80rpx;
+ line-height: 80rpx;
+ font-size: 35rpx;
+ color: #666;
+ margin-top:156rpx;
+}
+.sharing{
+  width: 100%;
+  line-height:100rpx;
+  text-align: center;
+  background: #00BC71;
+  border-radius: 52rpx;
+  color: #fff;
+  font-size: 34rpx;
+  margin-top:150rpx;
+}

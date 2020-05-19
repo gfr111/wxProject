@@ -1,0 +1,15 @@
+
+.headerTitle {
+  padding: 26rpx 10rpx 12rpx 20rpx;
+  color: #7A7A7A;
+  font-size: 24rpx;
+  text-align: left;
+  line-height: 34rpx;
+}
+
+
+
+.basicBtn-bg {
+  margin-top: 80rpx;
+}
+

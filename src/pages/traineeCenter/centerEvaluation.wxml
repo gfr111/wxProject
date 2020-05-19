@@ -1,0 +1,31 @@
+
+
+<view class='index' wx:if="{{!submited}}">
+<view class='whiteBack'>
+<textarea placeholder='说说你对场馆的意见和建议吧' class='textAreaStyle' bindinput='getText' placeholder-class='placeholder'></textarea>
+
+<text class='uploadTextStyle'>上传图片</text>
+<view>
+<view class='uploadImageStyle inline' wx:for="{{photo}}"><image class="cancel" catchtap='deleteImg' data-index='{{index}}' src='../../images/cancel.png'></image> <image class='fill' bindtap='showPhoto' data-url='{{item.path}}' src='{{item.path}}'></image></view>
+<view class='uploadImageStyle inline' wx:if="{{photo.length<3}}"><image class='fill' src='../../images/addPhoto.png' bindtap='selectPhoto'></image></view>
+
+</view>
+
+</view>
+<view class='greenBtn-bg'>
+<view class='greenBtn' bindtap='uploadEvaluation'>提交评价</view>
+</view>
+
+</view>
+
+
+
+<view class="container" wx:if="{{submited}}">
+  <view class="userinfo">
+    
+      <image class="userinfo-avatar" src="../../images/qrsuccess.png" mode="cover"></image>
+      <text class="userinfo-nickname">提交成功</text>
+
+  </view>
+  
+</view>

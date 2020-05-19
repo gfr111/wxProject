@@ -1,0 +1,100 @@
+/* pages/deposit/deposit.wxss */
+page{
+  height: 98%;
+}
+.depositBox{
+ background: #ffffff;
+ padding: 0 40rpx;
+ margin-top:20rpx;
+}
+.depositlist{
+  box-shadow:0px 1px 0px 0px rgba(0,0,0,0.02);
+}
+.listTop{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  border-bottom: 1px solid #E5E5E5;
+}
+.timeBox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.clockIcon{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 20rpx;
+}
+.time{
+  color: #303030;
+  font-size: 28rpx;
+}
+.status{
+ font-size: 28rpx; 
+}
+.listCenter{
+  height: 148rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #E5E5E5;
+}
+.depositIcon{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 30rpx;
+}
+.depositMess{
+  display: flex;
+  flex-direction: column;
+}
+.depositName{
+  color: #383838;
+  font-size: 28rpx;
+  margin-bottom: 6rpx;
+}
+.validity{
+  color: #9F9F9F;
+  font-size: 28rpx;
+}
+.listBottom{
+  height: 130rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.price{
+  color: #303030;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.checkBtn{
+  width: 160rpx;
+  height: 68rpx;
+  text-align: center;
+  line-height: 68rpx;
+  border-radius: 10rpx;
+  border:1px solid #E5E5E5;
+  font-size: 28rpx;
+  color: #303030
+}
+.nullBox{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nullIcon{
+  width: 372rpx;
+  height: 420rpx;
+  margin-bottom: 72rpx;
+  margin-top:27%;
+
+}
+.nullTxt{
+  color: #969696;
+  font-size: 32rpx;
+}

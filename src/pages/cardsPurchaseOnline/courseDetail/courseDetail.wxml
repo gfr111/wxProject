@@ -1,0 +1,31 @@
+<!--pages/groupclassDetail/groupclassDetail.wxml-->
+
+<view>
+<view class='mask'></view>
+  <image class='img' src='{{CourseDetail.pictures[0]}}'></image>
+  <view class='content'>
+    <view class='title'>
+      <text>{{CourseDetail.courseName}}</text>
+      <view>
+        <text style='background:{{CourseDetail.leves.color}}'>{{CourseDetail.leves.name}}</text>
+        <text>{{CourseDetail.duration}}分钟</text>
+      </view>
+    </view>
+
+
+    <view>
+    <text>可预约人数</text>
+    <text>{{CourseDetail.fixedNum}}</text>
+    </view>
+  </view>
+  <view class='describle'>
+    <view>课程介绍</view>
+    <text>{{CourseDetail.introduction?CourseDetail.introduction:'暂无介绍'}}</text>
+  </view>
+</view>
+
+
+<view class="confirm-button" bindtap="{{CourseDetail.reserveId?(CourseDetail.reserveStatus==8?'goby': 'cancel'):''}}" wx:if="{{CourseDetail.reserveId||CourseDetail.unOpened}}">
+  <text class="{{CourseDetail.reserveId?(CourseDetail.reserveStatus==8?'gobys':' submit'):'noopen'}} ">{{CourseDetail.reserveId?(CourseDetail.reserveStatus==8?'去支付':'取消预约'):CourseDetail.openingTime+'开放'}} </text>
+</view>
+

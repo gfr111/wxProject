@@ -1,0 +1,11 @@
+<import src="../../../../templates/greenBtn.wxml" />
+<import src="../../../../templates/whiteBtn.wxml" />
+
+<view class='backView'>
+ <!-- <view class='successImage'> -->
+ <image  class='successImage' src='../../../../../images/qrsuccess.png' mode='aspectFit'></image>
+ <!-- </view> -->
+ <view class='title'>支付成功</view>
+ <template is='greenBtn' data='{{title:"查看我的课程", didTapGreenBtn:checkCourse}}'></template>
+ <template is='whiteBtn' data='{{title:"订单详情", didTapWhiteBtn:didTapWhiteBtn}}'></template>
+</view>

@@ -1,0 +1,293 @@
+<!--pages/groupCourse/groupCourseList.wxml-->
+
+<import src="../templates/emptyView.wxml" />
+<view class="container whiteBg">
+  <view class='infoHeaderBack'>
+
+    <view class="infoHeaderLeftBack {{isshort&&allowTrainingModule?'short':''}}" bindtap='goCenterList'>
+      <image src='../../images/clubImg.png' class='locationIcon' class='locationIcon' style='position: relative;'></image>
+      <text class='centerText'>{{selectCenter.name}}</text>
+      <image src='../../images/blackTriangle.png' class='blackTriangle'></image>
+    </view>
+
+    <view class='infoHeaderRightBack'>
+      <text data-type='{{index+1}}' class='{{showGroup==index+1?"greenColor":""}}' wx:if="{{wxAppSetting[item.valname]}}" wx:for="{{nav}}" wx:key="index" bindtap='selectType'>{{item.name}}</text>
+      <text data-type='4' class='{{showGroup==4?"greenColor":""}}' wx:if="{{allowTrainingModule}}" bindtap='selectType'>培训</text>
+
+    </view>
+  </view>
+  <!-- 课程预约界面 -->
+  <block wx:if='{{showGroup==1}}'>
+    <view class='date-view'>
+      <view class='date-view-left-button-view' id='left' bindtap='changeCurrentWeek' wx:if="{{currentShowDaysIndex != 0}}">
+        <image class='date-view-left-button' src='../../images/blackLeft.png'></image>
+      </view>
+      <view class='date-view-left-button-view' id='left' wx:else>
+        <image class='date-view-left-button' src='../../images/greyLeft.png'></image>
+      </view>
+      <view class='date-view-right-button-view' id='right' wx:if="{{currentShowDaysIndex != 3}}" bindtap='changeCurrentWeek'>
+        <image class='date-view-right-button' src='../../images/blackRight.png'></image>
+      </view>
+      <view class='date-view-right-button-view' id='right' wx:else>
+        <image class='date-view-right-button' src='../../images/greyRight.png'></image>
+      </view>
+      <!-- 日期选择 -->
+      <scroll-view class='date-view-scroll-view'>
+        <view wx:for="{{currentShowDays}}" wx:for-index="index" wx:key="index" wx:for-item="item" wx:key='currentShowDaysId' class="date-view-scroll-view-section {{index == daysScrollViewCurrentIndex?'active':''}}" wx:key="{{index}}">
+          <view class='date-view-scroll-view-section-tap' id="{{item.index}}" bindtap='dayBindTap'>
+            <text class='date-view-scroll-view-section-day' style='color:#303030;font-weight:600;' wx:if="{{index == daysScrollViewCurrentIndex}}">{{item.month+'.'+item.date==today?'今天':item.day}}</text>
+            <text class='date-view-scroll-view-section-day' style='color:#9F9F9F' wx:else>{{item.month+'.'+item.date==today?'今天':item.day}}</text>
+            <text class='date-view-scroll-view-section-date' style='color:#303030;font-weight:600;' wx:if="{{index == daysScrollViewCurrentIndex}}">{{item.month}}.{{item.date}}</text>
+            <text class='date-view-scroll-view-section-date' style='color:#9F9F9F' wx:else>{{item.month}}.{{item.date}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 有效课程 -->
+    <scroll-view class='group-course-scroll-view' wx:if="{{showCourseList.length > 0 || invalidCourseList.length > 0}}" scroll-y='true'>
+      <view wx:for="{{allValidCourseList}}" wx:for-index="index" wx:for-item="course1" wx:key='index'>
+        <span style='color:#6E6E6E;font-size:24rpx;margin-left:30rpx;' wx:if='{{selectCenter.mainCenter}}'>{{course1.centerName}}</span>
+        <view bindtap='{{(item.courseStatus==1?"groupCourseAppointment":"gocoursedetail")}}' id="{{index}}" data-instanceId='{{item.instanceId}}' wx:for="{{course1.list}}" wx:for-index="index" wx:for-item="item" wx:key='showCourseListId' class="courseitem">
+          <image class='courseBg' mode='aspectFill' src='{{item.pictures+"?x-oss-process=image/resize,l_345"}}'></image>
+          <view class='mask'></view>
+          <view class='courseitemleft'>
+            <text>{{item.courseName}}</text>
+            <text>{{item.startTime + "-" + item.endTime}}  / 预约人数{{item.reservedNum+'/'+item.fixedNum}}</text>
+            <view class='photoandname'>
+              <text></text>
+              <image mode='aspectFill' src='{{item.personalPortrait||item.trainerPhoto||"../../images/default_user.png"}}' class='coachImg'></image>
+              <!-- <image mode='aspectFill' src='{{((item.personalPortrait||item.photo))?"../../images/default_user.png":item.trainerPhoto}}' class='coachImg'></image> -->
+              <text style="font-size:28rpx;">{{item.trainerName}}</text>
+            </view>
+          </view>
+          <view class='courserig'>
+            <text class="courseitemright {{item.courseStatus==5?'open':item.courseStatus==1?'goorder':''}}">{{item.courseStatus==1?"去预定":item.courseStatus==4?(item.reserveStatus==8?item.reserveStatusStr:"已预约") :item.courseStatus==5?item.countDown==null?'未开放':item.countDown:item.courseStatus==3?'已约满':"已过期"}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 无效课程 -->
+      <view class='show-invaild-course-view' wx:if="{{invalidCourseList.length > 0 && (!showInvalidCourse)}}">
+        <text class='breakAPP'>已过期课程{{invalidCourseList.length}}节</text>
+        <view wx:for="{{allInvalidCourseList}}" wx:for-index="index" wx:for-item="course2" wx:key='showCourseListId'>
+          <span style='color:#6E6E6E;font-size:24rpx;margin-left:30rpx;' wx:if='{{selectCenter.mainCenter}}'>{{course2.centerName}}</span>
+          <view wx:for="{{course2.list}}" wx:for-index="index" wx:for-item="item" wx:key='showCourseListId' class="courseitem">
+            <image class='courseBg' mode='aspectFill' src='{{item.pictures}}'></image>
+            <view class='mask'></view>
+            <view class='courseitemleft   exceedtime'>
+              <text>{{item.courseName}}</text>
+              <text>{{item.startTime + "-" + item.endTime}}/ 预约人数{{item.reservedNum+'/'+item.fixedNum}}</text>
+              <view class='photoandname'>
+                <image mode='aspectFill' src='{{item.personalPortrait||item.trainerPhoto||"../../images/default_user.png"}}' class='coachImg'></image>
+                <text style="font-size:28rpx;">{{item.trainerName}}</text>
+              </view>
+            </view>
+            <image class='invalidimg' src='../../images/invalidimg.png'></image>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view wx:else>
+      <template is="emptyView" data='{{emptyImage:"../../images/noOrders.png", emptyTitle:"暂无团课"}}'></template>
+    </view>
+  </block>
+
+
+
+
+
+  <!-- \/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--   私教课，选教练 教练列表 -->
+  <block wx:if='{{showGroup==2&&selectCenter.clubType!=4}}'>
+
+
+    <view class='coach' wx:if="{{trainers.courseTrainers.length!=0&&trainers.trainers.length!=0}}">
+
+      <block wx:if="{{trainers.courseTrainers}}">
+
+        <view class='officeTrainerItem' wx:for='{{trainers.courseTrainers}}' wx:key="index" bindtap='selectTrainer' data-trainer='{{item.id}}'>
+          <view class='officeTrainerMess'>
+            <view class='officeTrainerMessLetft'>
+              <view class='officeTrainerImg'>
+                <image mode='aspectFill' src="{{(item.personalPortrait||item.photo)+'?x-oss-process=image/resize,l_100'||'/images/default_user.png'}}" class='trainerIcon'></image>
+                <image src='../../images/woman.png' class='trainerSex' wx:if="{{item.sex==1}}"></image>
+                <image src='../../images/man.png' class='trainerSex' wx:if="{{item.sex==0}}"></image>
+              </view>
+              <text style='font-size:32rpx;color:#ffffff;'>{{item.nickName||item.name}}</text>
+            </view>
+            <view class='reversationBtn'>去预约</view>
+          </view>
+        </view>
+      </block>
+
+      <block wx:if="{{trainers.trainers!=null}}">
+        <view class='officeTrainerItem' wx:for='{{trainers.trainers}}' wx:key="index" bindtap='selectTrainer' data-trainer='{{item.id}}'>
+          <view class='officeTrainerMess2'>
+            <view class='officeTrainerMessLetft'>
+              <view class='officeTrainerImg'>
+                <image mode='aspectFill' src="{{(item.personalPortrait||item.photo)+'?x-oss-process=image/resize,l_100'||'/images/default_user.png'}}" class='trainerIcon'></image>
+                <image src='../../images/woman.png' class='trainerSex' wx:if="{{item.sex==1}}"></image>
+                <image src='../../images/man.png' class='trainerSex' wx:if="{{item.sex==0}}"></image>
+              </view>
+              <text style='font-size:32rpx;'>{{item.nickName||item.name}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class='noClass' wx:else>
+      <image src='../../images/noRank.png'></image>
+      <text>暂无教练</text>
+    </view>
+
+  </block>
+
+  <!--   工作室私教课，选教练 教练列表 -->
+  <block wx:if='{{showGroup==2&&selectCenter.clubType==4}}'>
+  <text>{{trainers.myTrainers.length!=0}}{{trainers.trainers.length!=0}}{{trainers.myTrainers.length!=0||trainer.trainers.length!=0}}</text>
+    <view class='coach' wx:if="{{trainers.myTrainers.length!=0||trainers.trainers.length!=0}}">
+        <!-- <view class='coachTitle' style='margin-top:30rpx;'>我的教练</view> -->
+        <block wx:if="{{trainers.myTrainers!=null}}">
+          <view class='officeTrainerItem' wx:for='{{trainers.myTrainers}}' wx:key="index" bindtap='selectTrainer' data-trainer='{{item.id}}'>
+            <!-- <image src='../../images/officeTrainer1.png' class='officeTrainerBg'></image> -->
+            <view class='officeTrainerMess'>
+              <view class='officeTrainerMessLetft'>
+                <view class='officeTrainerImg'>
+                  <image mode='aspectFill' src="{{item.photo||'/images/default_user.png'}}" class='trainerIcon'></image>
+                  <image src='../../images/woman.png' class='trainerSex' wx:if="{{item.sex==1}}"></image>
+                  <image src='../../images/man.png' class='trainerSex' wx:if="{{item.sex==0}}"></image>
+                </view>
+                <text style='font-size:32rpx;color:#ffffff;'>{{item.name}}</text>
+              </view>
+              <view class='reversationBtn'>去预约</view>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{otherTrainers!=null}}">
+          <view class='officeTrainerItem' wx:for='{{otherTrainers}}' wx:key="index" bindtap='selectTrainer' data-trainer='{{item.id}}'>
+            <view class='officeTrainerMess2'>
+              <view class='officeTrainerMessLetft'>
+                <view class='officeTrainerImg'>
+                  <image mode='aspectFill' src="{{item.photo||'/images/default_user.png'}}" class='trainerIcon'></image>
+                  <image src='../../images/woman.png' class='trainerSex' wx:if="{{item.sex==1}}"></image>
+                  <image src='../../images/man.png' class='trainerSex' wx:if="{{item.sex==0}}"></image>
+                </view>
+                <text style='font-size:32rpx;'>{{item.name}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+    </view>
+
+    <!-- 没有团课可以预约的时候 -->
+    <view class='noClass' wx:else>
+      <image src='../../images/noRank.png'></image>
+      <text>暂无教练</text>
+    </view>
+
+  </block>
+
+
+
+
+  <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+  <!-- 场地 -->
+  <view wx:if='{{showGroup==3}}'>
+    <view>
+      <view class='bookList' wx:if="{{spaceList.length>0}}">
+        <view class='bookBox' wx:for="{{spaceList}}" wx:key='index' wx:for-item="item" bindtap='toBook' data-id='{{item.id}}'>
+          <image src='{{item.typeImage}}' class='spaceIcon'></image>
+          <view class='bookList_view'>
+            <span class="name">{{item.name}}</span>
+            <span class="typeStr">{{item.typeStr}}</span>
+            <span class='bookBtn'>去预订</span>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='nullOrder' wx:if="{{spaceList.length==0}}">
+      <image src='../../images/noRank.png'></image>
+      <text>暂无可预约的场地</text>
+    </view>
+  </view>
+
+  <!-- 培训课 -->
+  <block wx:if='{{showGroup==4}}'>
+    <view class='date-view'>
+      <view class='date-view-left-button-view' id='left' bindtap='changeCurrentWeek' wx:if="{{currentShowDaysIndex != 0}}">
+        <image class='date-view-left-button' src='../../images/blackLeft.png'></image>
+      </view>
+      <view class='date-view-left-button-view' id='left' wx:else>
+        <image class='date-view-left-button' src='../../images/greyLeft.png'></image>
+      </view>
+      <view class='date-view-right-button-view' id='right' wx:if="{{currentShowDaysIndex != 3}}" bindtap='changeCurrentWeek'>
+        <image class='date-view-right-button' src='../../images/blackRight.png'></image>
+      </view>
+      <view class='date-view-right-button-view' id='right' wx:else>
+        <image class='date-view-right-button' src='../../images/greyRight.png'></image>
+      </view>
+      <!-- 日期选择 -->
+      <scroll-view class='date-view-scroll-view'>
+        <view wx:for="{{currentShowDays}}" wx:for-index="index" wx:key="index" wx:for-item="item" wx:key='currentShowDaysId' class="date-view-scroll-view-section {{index == daysScrollViewCurrentIndex?'active':''}}" wx:key="{{index}}">
+          <view class='date-view-scroll-view-section-tap' id="{{item.index}}" bindtap='dayBindTap'>
+            <text class='date-view-scroll-view-section-day' style='color:#303030;font-weight:600;' wx:if="{{index == daysScrollViewCurrentIndex}}">{{item.month+'.'+item.date==today?'今天':item.day}}</text>
+            <text class='date-view-scroll-view-section-day' style='color:#9F9F9F' wx:else>{{item.month+'.'+item.date==today?'今天':item.day}}</text>
+            <text class='date-view-scroll-view-section-date' style='color:#303030;font-weight:600;' wx:if="{{index == daysScrollViewCurrentIndex}}">{{item.month}}.{{item.date}}</text>
+            <text class='date-view-scroll-view-section-date' style='color:#9F9F9F' wx:else>{{item.month}}.{{item.date}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <scroll-view class='group-course-scroll-view' wx:if="{{showTrainingCourseList.length > 0 || invalidTrainingCourseList.length > 0}}" scroll-y='true'>
+      <view bindtap='{{(item.courseStatus==1?"groupCourseAppointment":"gocoursedetail")}}' id="{{index}}" data-instanceId='{{item.instanceId}}' wx:for="{{showTrainingCourseList}}" wx:for-index="index" wx:for-item="item" wx:key='showCourseListId' class="courseitem">
+        <image class='courseBg' mode='aspectFill' src='{{item.pictures+"?x-oss-process=image/resize,l_345"}}'></image>
+        <view class='mask'></view>
+        <view class='courseitemleft'>
+          <text>{{item.courseName}}{{item.className?'·'+item.className:''}}</text>
+          <text>{{item.startTime + "-" + item.endTime}}</text>
+          <text wx:if="{{item.room}}">{{'/'+item.room}}</text>
+          <text style="margin-left:20rpx;">{{item.reservedNum+'/'+item.fixedNum}}</text>
+          <view class='photoandname'>
+            <text></text>
+            <image mode='aspectFill' src='{{(item.trainerPhoto==null||item.trainerPhoto=="")?"../../images/default_user.png":item.trainerPhoto}}' class='coachImg'></image>
+            <text style="font-size:28rpx;">{{item.trainerName}}</text>
+          </view>
+        </view>
+        <view class='courserig'>
+          <text class="courseitemright fullReserve" wx:if="{{item.courseStatus==5}}">非该班级学员</text>
+          <text class="courseitemright goorder" wx:if="{{item.courseStatus==1}}">去预定</text>
+          <text class="courseitemright alreadyReserve" wx:if="{{item.courseStatus==4}}">已预约</text>
+          <text class="courseitemright fullReserve" wx:if="{{item.courseStatus==3}}">已约满</text>
+        </view>
+      </view>
+
+      <view class='show-invaild-course-view' wx:if="{{invalidTrainingCourseList.length > 0 && (!showInvalidCourse)}}">
+        <text class='breakAPP'>已过期课程{{invalidTrainingCourseList.length}}节</text>
+        <view wx:for="{{invalidTrainingCourseList}}" wx:for-index="index" wx:for-item="item" wx:key='showCourseListId' class="courseitem">
+          <image class='courseBg' mode='aspectFill' src='{{item.pictures}}'></image>
+          <view class='mask'></view>
+          <view class='courseitemleft   exceedtime'>
+            <text>{{item.courseName}}{{item.className?'·'+item.className:''}}</text>
+            <text>{{item.startTime + "-" + item.endTime}}</text>
+            <text wx:if="{{item.room}}">{{'/'+item.room}}</text>
+            <text style="margin-left:20rpx;">{{item.reservedNum+'/'+item.fixedNum}}</text>
+            <view class='photoandname'>
+              <image mode='aspectFill' src="{{(item.trainerPhoto==null||item.trainerPhoto=='')?'../../images/default_user.png':item.trainerPhoto}}" class='coachImg'></image>
+              <text style="font-size:28rpx;">{{item.trainerName}}</text>
+            </view>
+          </view>
+          <image class='invalidimg' src='../../images/invalidimg.png'></image>
+        </view>
+      </view>
+    </scroll-view>
+    <view wx:else>
+      <template is="emptyView" data='{{emptyImage:"../../images/noOrders.png", emptyTitle:"暂无培训课"}}'></template>
+    </view>
+  </block>
+</view>
